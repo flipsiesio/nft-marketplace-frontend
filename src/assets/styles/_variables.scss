@@ -1,0 +1,30 @@
+$defaultFont: 'Montserrat';
+$defaultFontSize: 16px;
+
+// colors
+$bgColor: #202538;
+$primaryColor: #f15566;
+$primaryColorGradient: linear-gradient(134.98deg, #EB5757 0%, #FF5286 100%);;
+$errorColor:#F64939;
+$successColor: #12C971;
+$grayColor: #828282;
+$lightBlueColor: #1C6FB3;
+$blueColor: #313850;
+$secondaryColor: #F2C94C;
+$blackColor: black;
+$whiteColor: white;
+$darkBlueColor: #12151E;
+
+$card-width: 68px;
+$card-height: 104px;
+$card-offset: 10px;
+$card-amount: 5;
+$corrector: if($card-amount % 2 > 0, 0.5, 0);
+
+$card-tablet-width: 45px;
+$card-tablet-height: 69px;
+$card-tablet-offset: 10px;
+
+$card-phone-width: 45px;
+$card-phone-height: 69px;
+$card-phone-offset: 3px;

@@ -1,0 +1,47 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $blueColor;
+  padding: 10px 50px 20px;
+}
+
+.title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.info {
+  @include flexbox(center, space-around);
+
+  width: 100%;
+  margin-top: 20px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.primary {
+  color: $primaryColor;
+}
+
+.infoBlock {
+  @include flexbox();
+
+  flex-direction: column;
+}
+
+.infoBlockLabel {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.infoBlockValue {
+  font-size: 16px;
+  font-weight: 600;
+}

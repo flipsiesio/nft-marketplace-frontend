@@ -1,0 +1,16 @@
+@import '../../assets/styles/mixins';
+
+.buttonOpenGameCombination {
+  width: 58px;
+  height: 58px;
+  text-align: center;
+  background: linear-gradient(90deg, #6F7797 0%, #2A3355 100%);
+  color: white;
+  font-size: 30px;
+  border-radius: 10px;
+
+  @include forTablet {
+    width: 40px;
+    height: 40px;
+  }
+}

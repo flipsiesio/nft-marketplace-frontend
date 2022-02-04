@@ -1,0 +1,53 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  flex-direction: column;
+}
+
+.cardContainer {
+  @include flexbox(flex-start);
+
+  flex-wrap: wrap;
+  margin-top: 30px;
+  gap: 70px;
+
+  @include forTablet {
+    flex-wrap: nowrap;
+    overflow: auto;
+    justify-content: initial;
+    gap: 50px;
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subTitle {
+  text-align: center;
+}
+
+.button {
+  font-size: 24px;
+  font-weight: bold;
+  width: 252px;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+
+.claimButton {
+  margin-top: 20px;
+  color: $whiteColor;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primaryColor;
+  }
+}

@@ -1,0 +1,101 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.flipper {
+
+  position: relative;
+  width: $card-width;
+  height: $card-height;
+  overflow: hidden;
+
+  @include forTablet {
+    width: $card-tablet-width;
+    height: $card-tablet-height;
+  }
+}
+
+.shirt {
+  .front {
+    transform: rotateY(180deg);
+  }
+  .back {
+    transform: rotateY(0);
+  }
+}
+
+.face {
+  .front {
+    transform: rotateY(0);
+  }
+  .back {
+    transform: rotateY(180deg);
+  }
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  z-index: 1;
+}
+
+.card {
+  pointer-events: none;
+
+  img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.front, .back {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 600ms;
+  z-index: 0;
+  backface-visibility: hidden;
+}
+
+.flipper {
+  &.enter {
+    .front {
+      transform: rotateY(180deg);
+    }
+    .back {
+      transform: rotateY(0);
+    }
+  }
+
+  &.enterActive {
+    .front {
+      transform: rotateY(180deg);
+    }
+    .back {
+      transform: rotateY(0);
+    }
+  }
+
+  &.exit {
+    .front {
+      transform: rotateY(0);
+    }
+    .back {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &.exitActive {
+    .front {
+      transform: rotateY(0);
+    }
+    .back {
+      transform: rotateY(180deg);
+    }
+  }
+}

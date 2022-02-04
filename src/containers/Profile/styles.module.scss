@@ -1,0 +1,35 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.header {
+  @include flexbox(center, flex-start);
+}
+
+.name {
+  margin-bottom: 5px;
+}
+
+.copy {
+  max-width: 220px;
+
+  @include forPhone {
+    max-width: 175px;
+  }
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  flex: 0 0 auto;
+
+  margin-right: 35px;
+
+  border-radius: 15px;
+
+  @include forDesktopBig {
+    width: 80px;
+    height: 80px;
+
+    margin-right: 20px;
+  }
+}

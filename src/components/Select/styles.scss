@@ -1,0 +1,133 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.rs__label {
+  margin-bottom: 5px;
+}
+
+.rs__select {
+  width: 100%;
+  position: relative;
+  min-width: 100px;
+
+  .rs {
+    &__control {
+      @include flexbox(center, space-between);
+      padding-right: 5px;
+      min-height: 40px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: black;
+      box-shadow: none;
+
+      &--menu-is-open {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow: hidden;
+        border-color: black;
+        box-shadow: none;
+
+        .rs__dropdown-indicator {
+          transform: rotate(180deg);
+        }
+      }
+
+      &--is-focused {
+        &:hover {
+          border-color: black;
+          box-shadow: none;
+        }
+      }
+    }
+
+    &__menu {
+      min-width: 100px;
+      margin-top: 5px;
+      background-color: black;
+      border-radius: 10px;
+      z-index: 5;
+      filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.25));
+
+      &-list {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    &__indicator-separator {
+      display: none;
+    }
+
+    &__multi-value__remove {
+      color: white;
+      &:hover {
+        background-color: $blueColor;
+        color: white;
+      }
+    }
+
+    &__placeholder {
+      width: 100%;
+      padding-left: 10px;
+      color: $grayColor;
+      font-size: 16px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__option {
+      @include flexbox(center, space-between);
+      padding: 10px 5px 10px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: black;
+
+      &:hover {
+        background-color: $blueColor;
+      }
+
+      &--is-focused {
+        background-color: transparent;
+      }
+
+      &:first-child {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      &--is-selected {
+        background-color: $blueColor;
+        &:after {
+          content: '\e805';
+          margin-right: 10px;
+          color: $successColor;
+          font-family: 'fontello';
+        }
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #535252;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+    }
+
+    &__single-value, &__input {
+      color: white;
+      font-size: 16px;
+    }
+
+    &__multi-value {
+      background-color: $blueColor;
+
+      &__label {
+        color: white;
+      }
+    }
+  }
+}

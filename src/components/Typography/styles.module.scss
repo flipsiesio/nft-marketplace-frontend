@@ -1,0 +1,101 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.h1 {
+  font-size: toRem(80px);
+}
+
+.h2 {
+  font-size: toRem(64px);
+}
+
+.h3 {
+  font-size: toRem(34px);
+
+  @include forTablet {
+    font-size: toRem(28px);
+  }
+
+  @include forPhone {
+    font-size: toRem(20px);
+  }
+}
+
+.h4 {
+  font-size: toRem(24px);
+
+  @include forPhone {
+    font-size: toRem(16px);
+  }
+}
+
+.h5 {
+  font-size: toRem(20px);
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: $bgColor;
+}
+
+.error {
+  color: $errorColor;
+}
+
+.primary {
+  color: $primaryColor;
+}
+
+.success {
+  color: $successColor;
+}
+
+.gray {
+  color: $grayColor;
+}
+
+.secondary {
+  color: $secondaryColor;
+}
+
+.p {
+  &.big {
+    font-size: toRem(18px);
+  }
+
+  &.medium {
+    font-size: toRem(16px);
+  }
+
+  &.small {
+    font-size: toRem(14px);
+  }
+
+  &.tiny {
+    font-size: toRem(12px);
+    line-height: toRem(16px);
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}

@@ -1,0 +1,288 @@
+{
+  "header": {
+    "rewardSystem": "Reward system",
+    "faq": "FAQ",
+    "howToPlay": "How to play?",
+    "nftMarket": "NFT Market",
+    "wallet": "Wallet",
+    "tronlink": "TronLink",
+    "referral": "Referral",
+    "betsHistory": "My bets history",
+    "logout": "Logout",
+    "extensionInstallTitle": "Please install the extension or login",
+    "extensionInstall": "Install extension",
+    "extensionLogin": "OK, I wil log in via extension"
+  },
+  "preview": {
+    "title": "Please <1>sign in</1> to TronLink and connect wallet to play",
+    "playNow": "Play now"
+  },
+  "betsHistory": {
+    "title": "My bets history",
+    "bet": "Bet",
+    "payout": "Payout",
+    "flip": "Poker",
+    "color": "Color",
+    "date": "Date & Time"
+  },
+  "preloader": {
+    "alert": "Please click on TronLink extension to activate app or login in TronLink!"
+  },
+  "combinations": {
+    "royalFlush": "Royal flush",
+    "straightFlush": "Straight flush",
+    "quads": "Quads",
+    "fullHouse": "Full house",
+    "flush": "Flush",
+    "straight": "Straight",
+    "threeOfKind": "Three of a kind",
+    "twoPair": "Two pair",
+    "pair": "Pair",
+    "highCard": "High card"
+  },
+  "game": {
+    "handleRankings": " Handle Rankings",
+    "showResults": "Show results",
+    "playAgain": "Play again",
+    "home": "Home",
+    "jackpot": "Jackpot",
+    "betOn": "You bet on",
+    "colorBet": "Your color bet",
+    "win": "won",
+    "lost": "lost",
+    "red": "red",
+    "black": "black",
+    "youWon": "You won",
+    "youLost": "You lost",
+    "youDraw": "It`s a draw",
+    "youWonJackpot": "You won Jackpot!",
+    "results": "Results",
+    "pokerHand": "Poker hand",
+    "flopColor": "Flop color",
+    "start": "Bet",
+    "sameBet": "Same bet",
+    "bet": "Bet",
+    "probablyFair": "Flipsies is a <1>provably fair</1> game.",
+    "balance": "Balance",
+    "amountOfBet": "Amount of bet"
+  },
+  "profile": {
+    "referral": "Referral",
+    "betsHistory": "My bets history",
+    "invitedPlayers": "Invited players",
+    "currentRank": "Current rank",
+    "ofHouseEdge": "of house edge wins",
+    "totalEarnings": "Total Earnings",
+    "withdraw": "Withdraw",
+    "note": "Please note: you have to pay energy fee for withdrawing transaction"
+  },
+  "ranks": {
+    "bronze": "bronze",
+    "silver": "silver",
+    "gold": "gold",
+    "platinum": "platinum",
+    "diamond": "diamond",
+    "emerald": "emerald",
+    "sapphire": "sapphire"
+  },
+  "rating": {
+    "jackpotWinners": "Jackpot winners",
+    "jackpot": "Jackpot"
+  },
+  "referral": {
+    "title": "Share the referral link with friends and get rewarded each time your friend wins.",
+    "provideEmail": "Provide your e-mail to join our referral program!",
+    "enterEmail": "Enter your email",
+    "join": "Join",
+    "copy": "Copy",
+    "rankUp": "Rank up to get higher rewards!",
+    "yourReferralLink": "Your referral link",
+    "completeRank": "Complete to rank up"
+  },
+  "notifications": {
+    "copy": "Value copied"
+  },
+  "termsOfServices": {
+    "title": "Terms of service",
+    "flipsies": "Flipsies",
+    "offers": "offers a online gambling experience that you must be of age to gamble in your country to participate in. If you reside in a location where gambling, lotteries or online betting is illegal, you must not enter this website.",
+    "provide": "The web site of Flipsies (\"we\") provides interface to the Smart Contract on the Tron blockchain, which accepts Tron tokens and transfers varying amounts of Tron tokens in return, depending on external factors.",
+    "verify": "We are not able to verify the legality of the service in each jurisdiction and provide you with any legal advice. It is your sole responsibility to comply with any relevant laws, policies and regulations of your jurisdiction regarding the use of Tron tokens in the way described above.",
+    "based": "Flipsies games are based on transparency, players should be aware of the risks and manage themselves accordingly. Please play responsibly and goodluck."
+  },
+  "howToPlay": {
+    "title": "How to play Flipsies",
+    "gameDerived": "Flipsies is a game derived from a \"coin flip\" or a “flip” in poker, where both you and your opponent have an equal chance at winning the hand. We added an optional side bet where you can bet on the majority color of the suits on the flop(2 or more of either red or black), this is often played in private poker games.",
+    "followStandart": "Flipsies follows standard Texas Holdem hand rankings, these rankings are provided in the drop down menu on the upper right hand corner of the game.",
+    "thankYou": "Thank you and good luck!",
+    "step": "Step",
+    "step1": "You are dealt two cards and the house also gets dealt two cards.",
+    "step2": "Select the size of your flip bet(poker hand) and your flop color bet, there is no further betting.",
+    "step3": "The flop(first 3 cards), turn(4th card) and river(5th card) are run out- these are the community cards.",
+    "step4": "Whoever makes the best 5 card hand wins the flip. If it’s a draw(tie), the pot gets split equally."
+  },
+  "faq": {
+    "title": "FAQ",
+    "question1": {
+      "title": "Does Flipsies offer a referral program?",
+      "content": "Yes, our referral program is comprised of seven levels (bronze, silver, gold, platinum, diamond, emerald and sapphire) each level is unlocked dependent on how much the referred player plays."
+    },
+    "question2": {
+      "title": "Do I need to sign up for an account?",
+      "content": "No, although registration is recommended because of our referral program which offers incentives, signing up is not mandatory."
+    },
+    "question3": {
+      "title": "What is the house edge?",
+      "content": "1.5% per bet (this helps pay bills to keep the game running) .2% goes into the jackpot."
+    },
+    "question4": {
+      "title": "What is provably fair?",
+      "content": "Most of the players think that they can be cheated on an online casino, they are right in most cases. It is, technically, very easy for an online casino to cheat you. In the crypto gambling world we have a solution called provably fair, this allows for total transparency through implementing smart contracts. Smart contracts contain a set of rules that cannot be tampered with and are automatically enforced. Any party can audit these smart contracts because they are public. Our random number generators are executed on these smart contracts which means it is technically impossible for them to be rigged, in any way."
+    },
+    "question5": {
+      "title": "Is Flipsies provably fair?",
+      "content": "Yes, all Flipsies wagers are executed through our smart contracts on the TRON network. This ensures total transparency and fairness for all users."
+    },
+    "question6": {
+      "title": "Who do I contact if I have an issue?",
+      "content": "support@flipsies.io"
+    },
+    "question7": {
+      "title": "How do I create a Tron account?",
+      "desktop": {
+        "1": "Download and install <1>TronLink Chrome Extension</1>",
+        "2": "Follow the instructions in TronLink to Create or Import Account.",
+        "3": "If you have an extension and wallet, just log in.",
+        "4": "Make sure you have enough TRX, bandwith and energy to start playing.",
+        "5": "Well done!"
+      },
+      "mobile": {
+        "title": "For mobile devices",
+        "1": "Download TronLink mobile application for <1>IOS</1> or <3>Android</3> device.",
+        "2": "Create or Import Account following the instructions.",
+        "3": "Go to build-in Browser and paste https://flipsies.io/  to open Flipsies dapp.",
+        "4": "Make sure you have enough TRX, bandwith and energy to start playing.",
+        "5": "Well done!"
+      }
+    },
+    "question8": {
+      "title": "What happens if my phone or computer gets disconnected or the battery suddenly dies?",
+      "content": "No need to worry, all bets can be claimed in my bet history."
+    },
+    "question9": {
+      "title": "About TRON",
+      "content": "<b>Tron</b> is a decentralized entertainment and content-sharing platform that uses blockchain and peer-to-peer (P2P) technology.<br/><br/><b>Bandwidth</b>: Having TRON bandwidth allows you to perform transactions on the TRON mainnet without paying any gas fees. Having sufficient bandwidth is crucial when using for dApps such as Flipsies.io, where you might want to make several smaller transactions without having to worry about using your TRX tokens in the process. Bandwidth is also used to cement yourself as an active member of the TRON community, allowing you to cast votes for Super Representatives.<br/><br/><b>Energy</b>: This is a special resource used to process smart contracts on the TRON network. Smart contracts consume Energy in addition to Bandwidth, so be sure you have enough of both when moving your tokens around.<br/><br/><b>Freezing</b> is a unique mechanism for the Tron blockchain. You can freeze your TRX in order to gain certain benefits. When you do this, your Tron will still be yours, but you cannot send it anywhere for 3 days. Freezing is similar to putting money onto a saving account: the money is there but you cannot spent it.<br/>When you freeze your TRX, there are several things you can gain.<br/> First you would have to choose if you want to freeze your Tron to gain either <i>Bandwidth points</i> (BP)or <i>Energy Points</i> (EP). On top of this, for each TRX frozen you will get 1 <i>Tron Power</i> - no matter which of the two you choose."
+    }
+  },
+  "nftMarket": {
+    "title": "NFT Market",
+    "marketTab": "Market",
+    "galleryTab": "Gallery",
+    "myGalleryTab": "My Gallery",
+    "id": "ID",
+    "tradingHistory": "Trading History",
+    "bids": "Bids",
+    "bid": "Bid",
+    "buyNow": "Buy now",
+    "price": "Price",
+    "setPrice": "Set price",
+    "confirm": "Confirm",
+    "purchaseConfirmation": "Purchase confirmation",
+    "putOnSale": "Put on sale",
+    "sellTitle": "Are you sure that you want to sell NFT",
+    "tableCols": {
+      "event": "Event",
+      "address": "Address",
+      "price": "Price",
+      "date": "Date",
+      "number": "Number"
+    },
+    "owner": "Owner",
+    "listingPrice": "Listing Price",
+    "highestBid": "Highest Bid",
+    "attributes": "Attributes"
+  },
+  "marketFilterModal": {
+    "title": "Filters",
+    "price": {
+      "title": "Price",
+      "highestPrice": "Highest price",
+      "highestBid": "Highest bid"
+    },
+    "type": {
+      "title": "Type",
+      "king": "King",
+      "jack": "Jack",
+      "queen": "Queen",
+      "rare": "Rare"
+    },
+    "suit": {
+      "title": "Suit",
+      "hearts": "Hearts",
+      "clubs": "Clubs",
+      "diamonds": "Diamonds",
+      "spades": "Spades"
+    }
+  },
+  "flipsiesNft": {
+    "title": "Flipsies NFT",
+    "text1": "FlipsiesNFT is a series of provably-rare NFT playing cards on the TRON blockchain, each NFT is uniquely programmatically auto-colored.",
+    "text2": "They are comprised of",
+    "text3": "2,760 kings, 2,760 queens, 2,759 jacks, 25 jokers and 7 one-of-ones.",
+    "text4": "Over the years many different nicknames have been given to distinctive playing cards. Most of these bynames have came from poker games, these are several of the classic bynames that have been designated to cards.",
+    "text5": "To gain access to our NFT marketplace, start by minting 1, 3 or 5 randomly generated NFTs!",
+    "explore": "Explore"
+  },
+  "explore": {
+    "title": "Explore Flipsies NFT",
+    "mintModalTitle1": "You need to pay",
+    "mintModalTitle2": "for",
+    "mintModalLabel1": "Hurry, only",
+    "mintModalLabel2": "Flipsies NFT left to mint!",
+    "mint": "Mint",
+    "mintNow": "Mint Now!",
+    "claimNft": "Claim Jackpot NFT",
+    "tryLuck": "Try your luck, buy a random NFT now and see which one you'll get!"
+  },
+  "exploreNft": {
+    "kingOfHearts": {
+      "title": "The King of Hearts",
+      "label": "The King of Hearts is usually depicted with a sword, although earlier decks often featured him with a battle axe. He is typically referred to as the \"suicide king\" because on a traditional deck he is pictured as stabbing himself with a sword, or at least holding a sword behind his head."
+    },
+    "kingOfDiamonds": {
+      "title": "The King of Diamonds",
+      "label": "This designation for the King of Diamonds reflects the fact that this is the only king not carrying a sword. That is why he is often referred to as The Man With The Axe"
+    },
+    "queenOfSpades": {
+      "title": "The Queen of Spades",
+      "label": "The nickname \"Black Lady\" for the Queen of Spades is closely connected with the game of Hearts, which is often referred to with alternative names like Black Lady, Black Maria, and Black Widow. In this trick-taking game, the idea is to avoid collecting points, with Hearts cards all worth one point each, while the Queen of Spades (sometimes dubbed \"Calamity Jane\" in this context) costs a massive 13 penalty points."
+    },
+    "queenOfClubs": {
+      "title": "The Queen of Clubs",
+      "label": "The Queen of Clubs is known as the \"Flower Queen\" for an obvious reason - she is usually depicted holding a Flower. Some decks picture all the Queens with flowers, with the style adjusted according to their suit."
+    },
+    "jackOfDiamonds": {
+      "title": "The Jack of Diamonds",
+      "label": "Jacks are also called Knaves, and are inferior to the more regal Kings and Queens, making them more playful. The Jack of Diamonds is known as the Laughing Boy, and in some variations of Poker and Black Jack, players are expected to chuckle every time this card is played or drawn."
+    },
+    "jackOfSpadesAndJackOfHearts": {
+      "title": "The Jack of Spades and the Jack of Hearts",
+      "label": "Unlike most of the other court cards, the Jack of Spades and the Jack of Hearts both have a side profile, hence their designation as \"one-eyed Jacks\". The only King facing sideways is the King of Diamonds, and together with the Jack of Spades and the Jack of Hearts, these three cards are sometimes referred to as the one-eyed royals."
+    }
+  },
+  "claimModalJackpot": {
+    "address1": "You wallet address",
+    "address2": "is eligible for",
+    "claim": "Claim",
+    "nftSentLabel": "You NFT has been successfully sent to your wallet address",
+    "claimLabel": "You have to claim your NFT by confirming the transaction in your TronLink wallet",
+    "seeInGallery": "See in gallery",
+    "seeOnTronscan": "See transaction on Tronscan"
+  },
+  "footer": {
+    "text": "Flipsies offers an online gambling experience. You must be over 18 years old to click on any gambling related activities on Flipsies. If you reside in a location where gambling, lotteries or internet betting is illegal you must not click on anything found on this website. Flipsies- will not be held responsible for any violation of local laws enforced in your region. Flipsies games are based on fairness, transparency and fun. Players should be aware of the risks and manage themselves accordingly. Please gamble and play responsibly.",
+    "link": "flipsies.io",
+    "copyright": "Copyright",
+    "reserved": "All rights reserved"
+  }
+}

@@ -1,0 +1,47 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  margin-top: 60px;
+  flex-direction: column;
+}
+
+.card {
+  max-width: 712px;
+  padding: 70px 120px 80px;
+  background-color: $darkBlueColor;
+  border-radius: 10px;
+
+  @include forTablet {
+    padding: 0 40px 45px;
+  }
+
+  @include forPhone {
+    padding: 0 35px 30px;
+    background-color: transparent;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.green {
+  color: $successColor;
+}
+
+.text {
+  margin-top: 35px;
+}
+
+.button {
+  font-weight: bold;
+  font-size: 24px;
+  width: 252px;
+  margin-top: 40px;
+  border-radius: 30px;
+}

@@ -1,0 +1,134 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
+
+$disabledColor: #4F4F4F;
+
+@mixin primaryView {
+  color: white;
+  background: $primaryColorGradient;
+  border-color: transparent;
+
+
+  &.disabled {
+    background: $disabledColor;
+    cursor: not-allowed;
+  }
+}
+
+.btn {
+  transition: 0.2s all;
+  border: 1px solid;
+}
+
+// sizes
+.tiny {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.small {
+  padding: 13px 15px;
+  min-width: 120px;
+  font-size: 14px;
+}
+
+.medium {
+  padding: 11px 15px;
+  min-width: 120px;
+  font-size: 18px;
+}
+
+.big {
+  padding: 14px 15px;
+  min-width: 220px;
+  font-size: 24px;
+}
+
+// themes
+.primary {
+  @include primaryView;
+
+  @include for-tablet {
+    &:not(.disabled):hover {
+      background: black;
+      color: white;
+      border-color: black;
+    }
+  }
+}
+
+.success {
+  background-color: $successColor;
+  color: white;
+  border-color: $successColor;
+
+  &.disabled {
+    background-color: $disabledColor;
+  }
+
+  @include for-tablet {
+    &:not(.disabled):hover {
+      background-color: black;
+      color: white;
+      border-color: black;
+    }
+  }
+}
+
+.play {
+  @include primaryView;
+
+  &.disabled {
+    background-color: transparent;
+    border: 1px solid $primaryColor;
+    color: $primaryColor;
+  }
+
+  @include for-tablet {
+    &:not(.disabled):hover {
+      background: transparent;
+      color: $primaryColor;
+      border-color: $primaryColor;
+    }
+  }
+}
+
+.blue {
+  background-color: $blueColor;
+  color: white;
+  border-color: $blueColor;
+
+  &.disabled {
+    background-color: $disabledColor;
+  }
+
+  @include for-tablet {
+    &:not(.disabled):hover {
+      background-color: black;
+      color: white;
+      border-color: black;
+    }
+  }
+}
+
+// uses
+.default {
+  border-radius: 6px;
+}
+
+.rounded {
+  border-radius: 30px;
+}
+
+.withIcon {
+  @include flexbox;
+}
+
+// other
+.boldText {
+  font-weight: bold;
+}
+
+.icon {
+  margin-right: 7px;
+}

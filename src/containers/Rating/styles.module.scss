@@ -1,0 +1,121 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.section {
+  // margin-top: 150px;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr auto 1fr;
+  position: relative;
+  margin-bottom: 55px;
+
+  @include forDesktopSm {
+    @include flexbox;
+    flex-direction: column-reverse;
+  }
+}
+
+.winnersTitle {
+  margin-right: auto;
+  @include flexbox(center, flex-start);
+
+  @include forDesktopSm {
+    margin-top: 30px;
+  }
+}
+
+.winnersTitleIcon {
+  flex-shrink: 0;
+  @include circleIcon;
+  margin-right: 20px;
+}
+
+.jackpotTitle {
+  position: relative;
+  padding: 25px 30px;
+  border: 1px solid $primaryColor;
+  border-radius: 40px;
+
+  @include forPhone {
+    padding-bottom: 15px;
+  }
+}
+
+.jackpotTitleIcon {
+  @include containerIcon;
+}
+
+.rating {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.player {
+  @include flexbox(center, flex-start);
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.address {
+  margin-right: 15px;
+  max-width: 15%;
+
+  @include forPhone {
+    margin-right: 5px;
+    max-width: 30%;
+    flex-shrink: 0;
+  }
+}
+
+.playerRating {
+  position: relative;
+  flex-grow: 1;
+  padding: 15px 15px 15px 45px;
+  border-radius: 8px;
+
+  @include forPhone {
+    padding-left: 30px;
+  }
+}
+
+.playerRatingValue {
+  position: relative;
+  z-index: 2;
+
+  @include inlineFlexbox(center, flex-start);
+
+  @include forTablet {
+    display: block;
+  }
+}
+
+.playerRatingUsd {
+  opacity: 0.6;
+  margin-left: toRem(12px);
+
+  @include forTablet {
+    margin-left: 0;
+  }
+}
+
+.band {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 8px;
+  max-width: 100%;
+
+  background-color: red;
+}

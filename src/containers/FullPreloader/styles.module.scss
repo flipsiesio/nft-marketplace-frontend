@@ -1,0 +1,28 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+
+
+  .preloader {
+    padding: 0;
+  }
+}
+
+.bg {
+  @include cardsSymbolsBg;
+}
+
+.logo {
+  $size: 205px;
+
+  width: $size;
+  position: absolute;
+  bottom: 30px;
+  left: calc(50% - #{$size / 2});
+}

@@ -1,0 +1,64 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.checkbox {
+  @include flexbox(center, flex-start);
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+  &:checked ~ .checkmark {
+    @include flexbox(center, center);
+    background-color: $successColor;
+
+    &:before {
+      content: '';
+      position: relative;
+      top: -1px;
+      width: 4px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(35deg);
+    }
+  }
+}
+
+.checkmark {
+  display: block;
+  position: relative;
+
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  margin-right: 15px;
+
+  border: 1px solid white;
+  border-radius: 100%;
+  overflow: hidden;
+
+  &.error {
+    border-color: $errorColor;
+  }
+}
+
+.text {
+  color: white;
+  font-size: 14px;
+
+  &.error {
+    color: $errorColor;
+  }
+}
+
+.errorText {
+  margin-top: 10px;
+}

@@ -1,0 +1,90 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+$bg-color: #12151E;
+$border-color: #313438;
+$border: 1px solid $border-color;
+
+.table {
+  .th {
+    padding: 20px;
+    background-color: $bg-color;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    border: {
+      right: $border;
+      top: $border;
+    }
+
+    &:first-child {
+      border-left: $border;
+    }
+  }
+
+  .row {
+    td {
+      background-color: $bg-color;
+      padding: 20px;
+
+      border: {
+        top: $border;
+        right: $border;
+      }
+
+      &:first-child {
+        border-left: $border;
+      }
+    }
+
+    &:nth-child(odd) {
+      td {
+        background-color: $bg-color;
+      }
+    }
+
+    &:last-child {
+      td {
+        border-bottom: $border;
+      }
+    }
+  }
+}
+
+.user {
+  @include flexbox(center, flex-start);
+}
+
+.userAvatar {
+  @include flexbox;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-right: 18px;
+
+  background-color: #fff;
+  border-radius: 50%;
+
+  & > div {
+    margin-top: 3px;
+  }
+}
+
+.userAddress, .hash {
+  max-width: 220px;
+}
+
+.amount {
+  @include flexbox(center, flex-start);
+}
+
+.amountIcon {
+  padding: 8px;
+  margin-right: 20px;
+
+  background-color: #313850;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 20px;
+}

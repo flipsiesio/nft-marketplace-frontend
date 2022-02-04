@@ -1,0 +1,19 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.main {
+  @include container;
+
+  margin-bottom: 60px;
+
+  @include forDesktopSm {
+    margin-bottom: 30px;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.bg {
+  @include cardsSymbolsBg;
+}

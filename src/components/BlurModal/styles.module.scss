@@ -1,0 +1,31 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.modal {
+  position: relative;
+  padding: 20px;
+  background-color: rgba(49, 56, 80, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  overflow: auto;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include forTablet {
+    width: 95%;
+  }
+}
+
+.overlay {
+  @include flexbox;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 9999;
+}

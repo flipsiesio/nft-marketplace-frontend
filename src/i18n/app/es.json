@@ -1,0 +1,181 @@
+{
+  "header": {
+    "rewardSystem": "Sistema de recompensa",
+    "faq": "PREGUNTAS FRECUENTES",
+    "howToPlay": "¿Cómo jugar?",
+    "wallet": "Billetera",
+    "tronlink": "TronLink",
+    "referral": "Referidos",
+    "betsHistory": "historial de apuestas",
+    "logout": "Cerrar sesión",
+    "extensionInstallTitle": "Instala la extensión o inicia sesión",
+    "extensionInstall": "Instalar extensión",
+    "extensionLogin": "OK, iniciaré sesión a través de la extensión"
+  },
+  "preview": {
+    "title": "Por favor <1>inicia sesión</1> en TronLink y conecta la billetera para jugar",
+    "playNow": "Jugar ahora"
+  },
+  "betsHistory": {
+    "title": "Mi historial de apuestas",
+    "bet": "Apuesta",
+    "payout": "Pago",
+    "flip": "Póker",
+    "color": "Color",
+    "date": "Fecha y hora"
+  },
+  "preloader": {
+    "alert": "¡Haz clic en la extensión TronLink para activar la aplicación o inicia sesión en TronLink!"
+  },
+  "combinations": {
+    "royalFlush": "Escalera real",
+    "straightFlush": "Escalera de color",
+    "quads": "Cuatro cartas iguales",
+    "fullHouse": "Pleno",
+    "flush": "Flush",
+    "straight": "Escalera",
+    "threeOfKind": "Trío",
+    "twoPair": "Doble pareja",
+    "pair": "Pareja",
+    "highCard": "Carta alta"
+  },
+  "game": {
+    "handleRankings": "Clasificación de Usuario",
+    "showResults": "Mostrar resultados",
+    "playAgain": "Jugar de nuevo",
+    "home": "Inicio",
+    "jackpot": "Jackpot",
+    "betOn": "Estás apostando al",
+    "colorBet": "Apuesta de color",
+    "win": "ganada",
+    "lost": "perdida",
+    "red": "rojo",
+    "black": "negro",
+    "youWon": "Ganaste",
+    "youLost": "Perdiste",
+    "youDraw": "Es un empate",
+    "youWonJackpot": " Ganaste el Jackpot!",
+    "results": "Resultados",
+    "pokerHand": "Póker",
+    "flopColor": "Color",
+    "start": "Empezar",
+    "sameBet": "Misma apuesta",
+    "bet": "Apuesta",
+    "probablyFair": "Flipsies es un juego <1>demostrablemente justo</1>."
+  },
+  "profile": {
+    "referral": "Referidos",
+    "betsHistory": "Mi historial de apuestas",
+    "invitedPlayers": "Jugadores invitados",
+    "currentRank": "Rango actual",
+    "ofHouseEdge": "de ganancias de la casa",
+    "totalEarnings": "Ganancias totales",
+    "withdraw": "Retirar",
+    "note": "Para tener en cuenta: tienes que pagar una tasa de energía para retirar la transacción"
+  },
+  "ranks": {
+    "bronze": "bronce",
+    "silver": "plata",
+    "gold": "oro",
+    "platinum": "platino",
+    "diamond": "diamante",
+    "emerald": "esmeralda",
+    "sapphire": "zafiro"
+  },
+  "rating": {
+    "jackpotWinners": "Ganadores del Jackpot",
+    "jackpot": "Jackpot"
+  },
+  "referral": {
+    "title": "Comparte el enlace de referencia con tus amigos y recibe una recompensa cada vez que tu amigo gane.",
+    "provideEmail": "Comparte tu correo electrónico para unirte a nuestro programa de referencias.",
+    "enterEmail": "Introduce tu correo electrónico",
+    "join": "Unrise",
+    "copy": "Copiar",
+    "rankUp": "¡Sube de rango para obtener mayores recompensas!",
+    "yourReferralLink": "Tu enlace de referencia",
+    "completeRank": "Haz la referencia para subir de rango"
+  },
+  "notifications": {
+    "copy": "Valor copiado"
+  },
+  "termsOfServices": {
+    "title": "Terminos de servicio",
+    "flipsies": "Flipsies",
+    "offers": "ofrece una experiencia de juego en línea en la que debes tener la mayoría de edad necesaria para poder jugar en tu país para poder participar. Si resides en un lugar donde el juego, las loterías o las apuestas en línea son ilegales, no debes ingresar a este sitio web.",
+    "provide": "El sitio web de Flipsies \"nosotros\" proporciona una interfaz para el contrato inteligente en la cadena de bloques de Tron, que acepta tokens de Tron y transfiere cantidades variables de tokens de Tron a cambio, dependiendo de factores externos.",
+    "verify": "No podemos verificar la legalidad del servicio en cada jurisdicción y brindarte asesoría legal. Es tu exclusiva responsabilidad cumplir con las leyes, políticas y regulaciones pertinentes de tu jurisdicción con respecto al uso de los tokens de Tron de la manera descrita anteriormente.",
+    "based": "Los juegos de Flipsies se basan en la transparencia, los jugadores deben ser conscientes de los riesgos y manejarse en consecuencia. Juega responsablemente y buena suerte."
+  },
+  "howToPlay": {
+    "title": "Cómo jugar Flipsies",
+    "gameDerived": "Flipsies es un juego derivado del \"lanzamiento de moneda\" o un \"flip\" en el póker, en el que tanto tú como tu oponente tienen la misma oportunidad de ganar la mano. Hemos añadido una apuesta paralela opcional en la que puedes apostar por el color mayoritario de los palos en el flop (2 o más de rojo o negro), lo que se conoce como apuesta paralela o de apoyo y se juega a menudo en partidas de póquer privadas.",
+    "followStandart": "Flipsies sigue la clasificación estándar de las manos de Texas Holdem, estas clasificaciones se proporcionan en el menú desplegable en la esquina superior izquierda del juego.",
+    "thankYou": "¡Gracias y buena suerte!",
+    "step": "Paso",
+    "step1": "Te reparten dos cartas y la casa también recibe dos cartas",
+    "step2": "Seleccionas el valor de tu apuesta invertida (mano de póker) y tu apuesta de color en el flop, no hay más apuestas.",
+    "step3": "El flop (primeras 3 cartas), el turn (4ª carta) y el river (5ª carta) se terminan; estas son las cartas comunitarias.",
+    "step4": "Quien haga la mejor mano de 5 cartas gana el lanzamiento. Si es un empate (empate), el bote se divide en partes iguales."
+  },
+  "faq": {
+    "title": "PREGUNTAS FRECUENTES",
+    "question1": {
+      "title": "¿Flipsies ofrece un programa de referidos?",
+      "content": "Sí, nuestro programa de referidos se compone de siete niveles (bronce, plata, oro, platino, diamante, esmeralda y zafiro), cada nivel se desbloquea dependiendo de cuánto juegue el jugador referido."
+    },
+    "question2": {
+      "title": "¿Necesito registrarme en una cuenta?",
+      "content": "No, aunque se recomienda el registro debido a que nuestro programa de referidos ofrece incentivos, registrarse no es obligatorio."
+    },
+    "question3": {
+      "title": "¿Cuál es la ventaja de la casa?",
+      "content": "1.5 % por apuesta (esto ayuda a pagar las facturas para mantener el juego en funcionamiento). El 0.2 % se destina al Jackpot (premio mayor)."
+    },
+    "question4": {
+      "title": "¿Qué es demostrablemente justo?",
+      "content": "La mayoría de los jugadores piensan que pueden reslultar engañados en un casino online, y tienen razón en la mayoría de los casos. Es, técnicamente, muy fácil que un casino online te engañe. En el mundo de las cripto apuestas tenemos una solución llamada \"demostrablemente justo\", esto permite una total transparencia a través de la implementación de contratos inteligentes. Los contratos inteligentes contienen un conjunto de reglas que no pueden ser manipuladas y se aplican automáticamente. Cualquier parte puede auditar estos contratos inteligentes porque son públicos. Nuestros generadores de números aleatorios se ejecutan en estos contratos inteligentes, lo que significa que es técnicamente imposible que sean amañados, de cualquier manera."
+    },
+    "question5": {
+      "title": "¿Flipsies es demostrablemente justo?",
+      "content": "Sí, todas las apuestas de Flipsies se ejecutan a través de nuestros contratos inteligentes en la red TRON. Esto asegura total transparencia y equidad para todos los usuarios."
+    },
+    "question6": {
+      "title": "¿Con quién me comunico si tengo un problema?",
+      "content": "support@flipsies.io"
+    },
+    "question7": {
+      "title": "¿Cómo creo una cuenta?",
+      "desktop": {
+        "1": "Descarga e instala <1>la extensión de Chrome TronLink</1>.",
+        "2": "Sigue las instrucciones en TronLink para crear o importar una cuenta.",
+        "3": "Si tienes una extensión y una billetera, simplemente inicia sesión.",
+        "4": "Asegúrate de tener suficiente TRX, ancho de banda y energía para empezar a jugar..",
+        "5": "¡Bien hecho!"
+      },
+      "mobile": {
+        "title": "Para dispositivos móviles",
+        "1": "Descarga la aplicación móvil TronLink para dispositivos <1>IOS</1> o <3>Android</3>.",
+        "2": "Crea o importa una cuenta siguiendo las instrucciones.",
+        "3": "Ve al navegador integrado y pega https://flipsies.io/ para abrir Flipsies dapp.",
+        "4": "Asegúrate de tener suficiente TRX, ancho de banda y energía para empezar a jugar..",
+        "5": "¡Bien hecho!"
+      }
+    },
+    "question8": {
+      "title": "¿Qué ocurre si mi teléfono o computador se desconecta o se queda sin batería repentinamente?",
+      "content": "No hay de que preocuparse, todas las apuestas se pueden reclamar en mi historial de apuestas."
+    },
+    "question9": {
+      "title": "A cerca de TRON",
+      "content": "<b>Tron</b> es una plataforma descentralizada de entretenimiento e intercambio de contenido que utiliza tecnología blockchain y peer-to-peer (P2P). <br/><br/><b>Ancho de banda</b>: Disponer de ancho de banda de TRON te permite realizar transacciones en la red principal de TRON sin tener que pagar ninguna tarifa de gas. Disponer de suficiente ancho de banda es crucial cuando se utiliza para dApps como Flipsies.io , en la que podrías querer realizar varias transacciones pequeñas sin tener que preocuparte de utilizar tus tokens TRX en el proceso. El ancho de banda también se utiliza para consolidarte como un miembro activo de la comunidad de TRON, permitiéndote emitir votos para los Super Representantes. <br/><br/><b>Energía</b>: este es un recurso especial que se utiliza para procesar contratos inteligentes en la red TRON. Los contratos inteligentes consumen energía además del ancho de banda, así que asegúrate de tener suficiente de ambos cuando muevas tus tokens.<br/><br/><b>La congelación</b>  es un mecanismo único para el blockchain de Tron. Puedes congelar tu TRX para obtener ciertos beneficios. Al hacerlo, tu Tron seguirá siendo tuyo, pero no podrás enviarlo a ningún sitio durante 3 días. Congelar es similar a poner dinero en una cuenta de ahorro: el dinero está ahí pero no puedes gastarlo. <br/> Cuando congelas tu TRX, hay varias cosas que puedes ganar. <br/> Primero, tendrías que elegir si deseas congelar tu Tron para obtener puntos de ancho de banda (BP) o puntos de energía (EP). Además de esto, por cada TRX congelado obtendrás 1 Tron Power, sin importar cuál de los dos elijas."
+    }
+  },
+  "footer": {
+    "text": "Flipsies ofrece una experiencia de juego en línea. Debe ser mayor de 18 años para hacer clic en cualquier actividad relacionada con el juego en Flipsies. Si reside en un lugar en el que los juegos de azar, las loterías o las apuestas por Internet son ilegales, no debe hacer clic en nada de lo que se encuentra en este sitio web. Flipsies no se responsabiliza de ninguna violación de las leyes locales que se apliquen en su región. Los juegos de Flipsies se basan en la equidad, la transparencia y la diversión. Los jugadores deben ser conscientes de los riesgos y manejarse en consecuencia. Por favor, apueste y juegue con responsabilidad.",
+    "link": "flipsies.io",
+    "terms": "Terminos de servicio",
+    "copyright": "Derechos de autor",
+    "reserved": "Todos los derechos reservados"
+  }
+}

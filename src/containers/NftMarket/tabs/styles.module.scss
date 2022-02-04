@@ -1,0 +1,76 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.searchWrap {
+  @include flexbox();
+
+  margin-bottom: 30px;
+}
+
+.search {
+  @include flexbox(center, flex-start);
+
+  border-radius: 15px;
+  background-color: $blackColor;
+  padding: 0 20px;
+  width: 270px;
+}
+
+.searchIcon {
+  font-size: 15px;
+  color: $grayColor;
+}
+
+.searchInput {
+  background-color: transparent;
+  color: $whiteColor;
+  font-size: 16px;
+  padding: 0;
+  height: 44px;
+
+  &::-webkit-input-placeholder {
+    color: $grayColor;
+  }
+}
+
+.searchInputWrap {
+  margin-left: 7px;
+}
+
+.filterButton {
+  margin: 0 20px;
+}
+
+.filterIcon {
+  color: $primaryColor;
+}
+
+.checkboxWrap {
+  @include flexbox(flex-start);
+
+  margin-bottom: 30px;
+}
+
+.checkbox {
+  &:not(:first-child) {
+    margin-left: 30px;
+  }
+}
+
+.cardContainer {
+  @include flexbox();
+
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  margin-bottom: 10px;
+}

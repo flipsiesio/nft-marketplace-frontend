@@ -1,0 +1,12 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
+
+.card {
+  padding: 20px;
+  position: relative;
+  background-color: black;
+
+  @include forDesktopSm {
+    background-color: $bgColor;
+  }
+}

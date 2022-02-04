@@ -1,0 +1,164 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.card {
+  padding: 0;
+}
+
+.cardGameContent {
+  width: 100%;
+  padding: 60px 60px 20px 60px;
+  @include flexbox(flex-start, space-between);
+  position: relative;
+
+  @include forDesktopMinHeight {
+    zoom: 0.75;
+    padding: 60px 80px;
+  }
+}
+
+.desktopSetup {
+  margin-right: 60px;
+  flex-basis: calc(45% - 30px);
+
+
+  .flipRangePicker,
+  .colorRangePicker,
+  .switcher {
+    margin-bottom: 35px;
+  }
+
+  .switcherActive {
+    border: 1px solid $whiteColor;
+  }
+
+  .redSwitch, .blackSwitch {
+    text-transform: capitalize;
+  }
+
+  .redSwitch.switcherActive {
+    color: $whiteColor;
+    background: $primaryColor;
+  }
+
+  .blackSwitch.switcherActive {
+    color: $whiteColor;
+    background: $blackColor;
+  }
+
+  .noBalanceLabel {
+    margin-top: 15px;
+  }
+
+  .startBtn {
+    display: block;
+    min-width: 230px;
+    margin-bottom: 30px;
+    margin-top: 70px;
+  }
+}
+
+.gameTable {
+  flex-basis: calc(55% - 30px);
+  @include forTablet {
+    padding: 20px;
+  }
+  @include forPhone {
+    padding: 0;
+  }
+}
+
+.mobileSetup {
+  display: none;
+}
+
+@include forDesktopSm {
+  .cardGameContent {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .desktopSetup {
+    display: none;
+  }
+
+  .gameTable {
+    flex-basis: 55%;
+  }
+
+  .mobileSetup {
+    display: block;
+    flex-basis: 100%;
+    margin-top: 20px;
+  }
+}
+
+@include forTablet {
+  .cardGameContent {
+    padding-top: 10px;
+  }
+}
+
+@include forTablet {
+  .gameTable {
+    flex-basis: 80%;
+  }
+}
+
+@include forPhone {
+  .gameTable {
+    flex-basis: 100%;
+  }
+}
+
+
+@mixin winCard {
+  box-shadow: 0 0 4px 2px $secondaryColor;
+  filter: drop-shadow(4px);
+  border-radius: 5px;
+}
+
+.winCard {
+  @include winCard;
+  margin-top: -20px;
+}
+
+.winPlayerCard {
+  @include winCard;
+}
+
+.lostPlayerCard {
+  opacity: 0.5;
+}
+
+.handRankingsBtn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 1;
+
+  @include forDesktopSm {
+    display: none;
+  }
+}
+
+.previousGames {
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 60px 60px 60px;
+
+  @include forDesktopSm {
+    display: none;
+  }
+}
+
+.provablyLink {
+  color: $primaryColor;
+
+  &:hover {
+    color: $whiteColor;
+  }
+}

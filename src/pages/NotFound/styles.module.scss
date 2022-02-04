@@ -1,0 +1,57 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.main {
+  @include mainMargins;
+  @include flexbox(center, flex-start);
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+.title {
+  font-size: 144px;
+  margin-bottom: 20px;
+}
+
+.text {
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+.link {
+  display: block;
+  font-size: 14px;
+
+  padding: {
+    top: 19px;
+    bottom: 19px;
+  }
+}
+
+.photo {
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+}
+
+@include forTablet {
+  .title {
+    font-size: 80px;
+  }
+
+  .link {
+    padding: {
+      top: 12px;
+      bottom: 12px;
+    }
+  }
+  .photo {
+    width: 200px;
+  }
+}
+
+@include forPhone {
+  .photo {
+    width: 150px;
+  }
+}

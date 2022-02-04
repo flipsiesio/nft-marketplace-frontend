@@ -1,0 +1,40 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: remove old frontend files
+      file:
+        path: "{{ www_path }}"
+        state: absent
+      become: true
+
+    - name: create frontend directory
+      file:
+        path: "{{ www_path }}"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+      become: true
+
+    - name: Copy build.tar
+      copy:
+        src:  build.tar
+        dest: "{{ www_path }}"
+
+    - name: Extract build.tar
+      unarchive:
+        src:   "{{ www_path }}/build.tar"
+        dest:  "{{ www_path }}"
+        mode:  0755
+        owner: www-data
+        group: www-data
+        remote_src: yes
+      become: true
+
+    - name: remove build.tar package
+      file:
+        path: "{{ www_path }}/build.tar"
+        state: absent
+      become: true

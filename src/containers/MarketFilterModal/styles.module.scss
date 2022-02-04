@@ -1,0 +1,46 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  flex-direction: column;
+  min-width: 562px;
+  padding: 50px 50px 40px 50px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.checkboxWrap {
+  @include flexbox();
+
+  margin-top: 25px;
+}
+
+.divider {
+  background-color: $whiteColor;
+  height: 1px;
+  width: 100%;
+  opacity: 0.1;
+}
+
+.dropdown {
+  margin: 20px 0;
+}
+
+.checkbox {
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.checkmark {
+  margin-right: 8px;
+}
+
+.button {
+  margin-top: 50px;
+}

@@ -1,0 +1,140 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.wrap {
+  @include forTablet {
+    width: initial;
+  }
+}
+
+.header {
+  @include flexbox(center, flex-start);
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.backButton {
+  @include flexbox();
+
+  min-width: 56px;
+  min-height: 56px;
+  width: 56px;
+  height: 56px;
+  background-color: #12151E;
+  border-radius: 100%;
+}
+
+.backButtonArrow {
+  color: $primaryColor;
+  font-size: 16px;
+
+  &:before {
+    transform: rotate(90deg);
+  }
+}
+
+.body {
+  border-radius: 10px;
+  background-color: $blueColor;
+  padding: 50px 50px 40px;
+  margin-top: 40px;
+
+  @include forPhone {
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+.info {
+  @include flexbox(flex-start, flex-start);
+
+  @include forTablet {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.rowWrap {
+  @include flexbox();
+
+  flex-wrap: wrap;
+  gap: 14px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.row {
+  @include flexbox(center, space-between);
+
+  width: 100%;
+}
+
+.primary {
+  color: $primaryColor;
+}
+
+.content {
+  @include flexbox(flex-start);
+
+  flex-direction: column;
+  margin-left: 30px;
+  width: 100%;
+
+  @include forTablet {
+    margin: 40px 0 0;
+  }
+}
+
+.img {
+  min-width: 241px;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.tables {
+  margin: 40px auto 0;
+  max-width: 800px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.bodyLabels {
+  @include flexbox(flex-start, flex-start);
+
+  font-size: 14px;
+  margin-bottom: 16px;
+
+  p:nth-child(1) {
+    margin-right: 70px;
+  }
+
+  p:nth-child(2) {
+    margin-right: 40px;
+  }
+
+  @include forTablet {
+    display: none;
+  }
+}
+
+.mobileBodyLabels {
+  margin-top: 40px;
+  display: none;
+
+  @include forTablet {
+    @include flexbox()
+  }
+
+  p:first-child {
+    margin-right: 70px;
+  }
+}

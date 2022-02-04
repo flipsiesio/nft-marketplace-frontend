@@ -1,0 +1,57 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.cellValue {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.buttonContainer {
+  @include flexbox();
+
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  @include forTablet {
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.buttonWrap {
+  @include flexbox(center, space-between);
+
+  width: 329px;
+  height: 105px;
+  padding: 24px 20px 24px 45px;
+  background: #191D2B;
+  border-radius: 6px;
+
+  @include forPhone {
+    background-color: #313850;
+  }
+}
+
+.buttonLabel {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.buttonValue {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.primary {
+  color: $primaryColor;
+}
+
+.tables {
+  margin-top: 30px;
+}

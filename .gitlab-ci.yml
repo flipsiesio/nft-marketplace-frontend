@@ -1,0 +1,77 @@
+---
+stages:
+  - build
+  - deploy
+
+
+# target - inventory filename for ansible
+.variables: &vars_dev
+  variables:
+    target: hosts-dev
+    build_env: "dev"
+
+.variables: &vars_prod
+  variables:
+    target: hosts-prod
+    build_env: "prod"
+
+
+# build template
+.build: &build_template
+  stage: build
+  image: node:12.20.1-alpine3.9
+  before_script:
+    - apk add git openssl
+  script:
+    - yarn install
+    - yarn build
+    - tar -cf ci/build.tar build
+  artifacts:
+    paths:
+      - ci/build.tar
+    expire_in: 1 day
+  tags:
+    - build
+
+# deploy template
+.deploy: &deploy_template
+  stage: deploy
+  image: willhallonline/ansible:2.9-alpine
+  before_script:
+    - apk add openssh-client
+    - eval `ssh-agent -s`
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - printf "[defaults]\nstdout_callback = yaml\nbin_ansible_callbacks = True\nhost_key_checking = False" >  /etc/ansible/ansible.cfg
+  script:
+    - ansible-playbook ci/deploy.yml -i ci/$target
+  tags:
+    - deploy
+
+
+# master branch
+build_master:
+  <<: *vars_prod
+  <<: *build_template
+  only:
+    - master
+
+
+deploy_master:
+  <<: *vars_prod
+  <<: *deploy_template
+  only:
+    - master
+
+
+## develop branch
+#build_develop:
+#  <<: *vars_dev
+#  <<: *build_template
+#  only:
+#    - develop
+
+#deploy_develop:
+#  <<: *vars_dev
+#  <<: *deploy_template
+#  only:
+#    - develop

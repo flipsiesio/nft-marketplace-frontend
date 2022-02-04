@@ -1,0 +1,24 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bgColor;
+  border-radius: 25px;
+}
+
+.btn {
+  min-width: 115px;
+  padding: 15px;
+  border-radius: 25px;
+  color: $grayColor;
+  transition: 0.4s background-color;
+
+  &.active {
+    background-color: white;
+    font-weight: bold;
+    color: black;
+  }
+}

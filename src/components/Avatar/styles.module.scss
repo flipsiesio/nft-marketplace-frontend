@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.square {
+  width: 58px;
+  height: 58px;
+
+  @include flexbox;
+}
+
+.image {
+  display: block;
+  pointer-events: none;
+  width: 100%;
+}

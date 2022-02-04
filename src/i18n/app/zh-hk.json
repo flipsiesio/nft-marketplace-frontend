@@ -1,0 +1,180 @@
+{
+    "header": {
+        "rewardSystem": "獎勵系統",
+        "faq": "常見問題",
+        "howToPlay": "遊戲方法",
+        "wallet": "錢包",
+        "tronlink": "TronLink",
+        "referral": "推薦",
+        "betsHistory": "我的投注記錄",
+        "logout": "登出",
+        "extensionInstallTitle": "請安裝擴充功能或登入",
+        "extensionInstall": "安裝擴充功能",
+        "extensionLogin": "好，我會經擴充功能登入"
+    },
+    "preview": {
+        "title": "請 <1>登入</1> TronLink 並連接錢包進行遊戲",
+        "playNow": "立即遊戲"
+    },
+    "betsHistory": {
+        "title": "我的投注記錄",
+        "bet": "下注",
+        "payout": "奬金",
+        "flip": "撲克",
+        "color": "顏色",
+        "date": "日期和時間"
+    },
+    "preloader": {
+        "alert": "請點擊 TronLink 擴充功能啟用應用程式，或者登入 TronLink！"
+    },
+    "combinations": {
+        "royalFlush": "同花大順",
+        "straightFlush": "同花順",
+        "quads": "四張",
+        "fullHouse": "葫蘆",
+        "flush": "同花",
+        "straight": "蛇",
+        "threeOfKind": "三條",
+        "twoPair": "兩對",
+        "pair": "一對",
+        "highCard": "高牌"
+    },
+    "game": {
+        "handleRankings": "用戶排名",
+        "showResults": "顯示結果",
+        "playAgain": "再次遊戲",
+        "home": "首頁",
+        "jackpot": "累積獎金",
+        "betOn": "你已投注",
+        "colorBet": "你的顏色注已",
+        "win": "勝出",
+        "lost": "落敗",
+        "red": "紅",
+        "black": "黑",
+        "youWon": "你贏了",
+        "youLost": "你輸了",
+        "youDraw": "平手",
+        "youWonJackpot": "你已贏取累積獎金",
+        "results": "結果",
+        "pokerHand": "扑克",
+        "flopColor": "颜色",
+        "start": "開始",
+        "sameBet": "相同賭注",
+        "bet": "下注",
+        "probablyFair": "Flipsies 是<1>可驗證公平的</1>遊戲."
+    },
+    "profile": {
+        "referral": "推薦",
+        "betsHistory": "我的投注記錄",
+        "invitedPlayers": "邀請的玩家",
+        "currentRank": "目前排名 ",
+        "ofHouseEdge": "賭場優勢獲勝",
+        "totalEarnings": "總收入",
+        "withdraw": "提款",
+        "note": "請注意：必須先繳付能量費，方可進行提款交易"
+    },
+    "ranks": {
+        "bronze": "銅",
+        "silver": "銀",
+        "gold": "金",
+        "platinum": "白金",
+        "diamond": "鑽石",
+        "emerald": "綠寶石",
+        "sapphire": "藍寶石"
+    },
+    "rating": {
+        "jackpotWinners": "累積獎金得主",
+        "jackpot": "累積獎金"
+    },
+    "referral": {
+        "title": "與朋友分享推薦連結，並於每次朋友獲勝時獲取獎勵。",
+        "provideEmail": "請提供你的電郵地址，以加入我們的推薦計劃！",
+        "enterEmail": "輸入你的電郵地址",
+        "join": "加入",
+        "copy": "複製",
+        "rankUp": "提升排名，獲取更高獎勵！",
+        "yourReferralLink": "你的推薦連結",
+        "completeRank": "完成程序，提升排名"
+    },
+    "notifications": {
+        "copy": "數值已複製"
+    },
+    "termsOfServices": {
+        "title": "服務條款",
+        "flipsies": "Flipsies",
+        "offers": "提供網上賭博體驗，你必須年滿所在國家/地區的博彩歲數方可參加。在你的所在地區，假如賭博、彩票或網上賭博屬非法行為，你就不得進入本網站。",
+        "provide": "Flipsies 網站（「我們」）在 Tron 區塊鏈上提供智能合約介面，能夠接受 Tron 代幣，並會根據外部因素轉換不同數量的 Tron 代幣。",
+        "verify": "我們無法在每個司法管轄區驗證服務是否合法，也無法為你提供任何法律建議。你須自行負責根據上述方式，遵從你的所在地區中有關使用 Tron 代幣的任何相關法律、政策及規例。",
+        "based": "Flipsies 遊戲以公開透明為基礎，玩家應意識到有關風險並作出相應管理。請以負責任的態度進行遊戲。祝你好運。"
+    },
+    "howToPlay": {
+        "title": "Flipsies 的遊戲方式",
+        "gameDerived": "Flipsies 遊戲源自撲克牌中的「擲硬幣」（英文稱為「coin flip」或「flip」）局面，在這種情況下，你與對手的勝出機會相等。我們已增加一項可選的邊注，讓你能夠投注翻牌花色的主要顏色（2 張或以上的紅色或黑色牌）。這種投注稱為邊注（side bet）或道具投注（prop bet），通常會在私人撲克遊戲中提供。",
+        "followStandart": "Flipsies 遵從標準的德州撲克（Texas Hold’em）牌型大小規則，你可在遊戲左上角的下拉選單中查閱牌型大小",
+        "thankYou": "謝謝。祝你成功！",
+        "step": "步驟",
+        "step1": "你和莊家將會各自獲派兩張撲克牌",
+        "step2": "選擇撲克手牌 (flip bet) 和翻牌顏色注的金額，沒有其他投注。",
+        "step3": "系統會發出翻牌（頭 3 張牌）、轉牌（第 4 張牌）及河牌（第 5 張牌）- 這些是公共牌。",
+        "step4": "最大的 5 張牌牌型將會勝出「擲硬幣」投注。如果是平局，底池將會平分。"
+    },
+    "faq": {
+        "title": "常見問題",
+        "question1": {
+            "title": "Flipsies 是否提供推薦計劃？",
+            "content": "是。我們的推薦計劃分為 7 級（銅、銀、金、白金、鑽石、綠寶石和藍寶石），每級均會根據接受推薦的玩家投注的金額解鎖。"
+        },
+        "question2": {
+            "title": "我是否需要註冊帳戶？",
+            "content": "不需要。我們不會強制玩家註冊，但我們的推薦計劃可提供豐厚獎賞，所以仍會建議你註冊帳戶。"
+        },
+        "question3": {
+            "title": "賭場優勢是甚麼？",
+            "content": "每次投注的1.5%（用於繳付運營遊戲的成本）。0.2% 會計入累積獎金。"
+        },
+        "question4": {
+            "title": "甚麼是可驗證公平 (provably fair)？",
+            "content": "大多數玩家都認為可能會落入網上賭場騙局，而大多數情況下確實如此。技術上，網上賭場能夠非常容易行騙。加密貨幣賭博世界有一種稱為「可驗證公平」的解決方案，以推行智能合約的方式達致完全公開透明。智能合約含有一組規則，無法予以篡改，而且會自動執行。任何一方都可審核這些智能合約，因為智能合約會向大眾公開。我們的隨機數產生器會在這些智能合約上執行，因此在技術上，這些合約無論如何都無法遭到操縱。"
+        },
+        "question5": {
+            "title": "Flipsies 是不是可驗證公平的遊戲？",
+            "content": "是。所有 Flipsies 投注都會經 TRON 網絡上的智能合約執行。此舉可向所有用家確保完全透明及公平。"
+        },
+        "question6": {
+            "title": "如果遇到問題，我可與誰人聯絡？",
+            "content": "support@flipsoes.io"
+        },
+        "question7": {
+            "title": "如何建立帳戶？",
+            "desktop": {
+                "1": "下載並安裝 <1>TronLink Chrome</1> 擴充功能",
+                "2": "按照 TronLink 內的指示建立或匯入帳戶。",
+                "3": "如果你有擴充功能及錢包，只需登入即可。",
+                "4": "確保有足夠的 TRX、頻寬及能量，即可開始遊戲。",
+                "5": "做得好！"
+            },
+            "mobile": {
+                "title": "使用流動裝置",
+                "1": "下載適用於 <1>IOS</1> 或 <3>Android</3> 裝置的 TronLink 流動應用程式。",
+                "2": "根據指示建立或匯入帳戶",
+                "3": "前往內置瀏覽器，然後貼上 https://flipsies.io/，開啟 Flipsies 分散式應用程式。",
+                "4": "確保有足夠的 TRX、頻寬及能量，即可開始遊戲。",
+                "5": "做得好！"
+            }
+        },
+        "question8": {
+            "title": "如果我的手機或電腦連線中斷或電池突然沒電了，將會怎樣？",
+            "content": "不用擔心，您可以在我的投注記錄中認領所有贏得的彩金。"
+        },
+        "question9": {
+            "title": "關於 TRON",
+            "content": "<b>Tron</b> 是去中心化的娛樂和內容共享平台，使用區塊鏈和點對點 (P2P) 技術。<br/><br/><b>頻寬</b>: 擁有 TRON 頻寬，就能夠在 TRON 主網絡上執行交易，無需繳付任何能量費。用於分散式應用程式（例如 Flipsies.io）時，擁有足夠的頻寬至關重要。你可在這裡執行數次金額較小的交易，無需擔心在過程中需要使用 TRX 代幣。頻寬還會用於確保你是 TRON 社區的活躍成員，讓你能夠投票選出超級代表。<br/><br/><b>能量</b>: 這是用於在 TRON 網絡上處理智能合約的特別資源。智能合約會消耗頻寬及能源，因此在轉移代幣時，請確保兩種資源都儲備充足。<br/><br/><b>凍結</b>是 Tron 區塊鏈的獨特機制。你可凍結 TRX 並藉此獲得某些利益。執行此項操作後，你的 Tron 仍然會屬於你，但你在 3 日之內無法將其傳送至任何地方。凍結類似於將現金存入儲蓄戶口：錢在那裡，但你無法使用。<br/>凍結 TRX 時，你會獲得數項利益。<br/> 首先，你可選擇以凍結 Tron 的方式獲取頻寬點 (BP) 或能量點 (EP)。此外，每凍結一個 TRX，無論你選擇上述哪種資源，你都會獲得 1 個 Tron Power。<br/> 首先，你可選擇以凍結 Tron 的方式獲取<i>頻寬點</i> (BP)or <i>能量點</i> (EP). 此外，每凍結一個 TRX，無論你選擇上述哪種資源，你都會獲得 1 個 <i>Tron Power</i>。"
+        }
+    },
+    "footer": {
+        "text": "Flipsies 提供網上賭博體驗，你必須年滿所在國家/地區的博彩歲數方可參加。在你的所在地區，假如賭博、彩票或網上賭博屬非法行為，你就不得進入本網站。 對於您所在地區執行的任何當地法律，Flipsies概不負責。 Flipsies遊戲基於公平，透明和有趣。 玩家應意識到這些風險，並據此進行管理。 請賭博並負責任地玩遊戲。",
+        "link": "flipsies.io",
+        "copyright": "版權",
+        "reserved": "保留所有權利"
+    }
+}

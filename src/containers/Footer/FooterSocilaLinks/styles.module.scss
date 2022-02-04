@@ -1,0 +1,65 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+
+.list {
+  @include flexbox(center, flex-start);
+
+  @include forDesktopSm {
+    margin-top: 10px;
+  }
+
+  @include forTablet {
+    align-items: flex-end;
+  }
+}
+
+.link {
+  @include flexbox;
+  width: 42px;
+  height: 42px;
+
+  margin-right: 45px;
+
+  background-color: $grayColor;
+  transition: 0.2s;
+  border-radius: 50%;
+
+  font-size: 18px;
+
+  &:hover {
+    background: $primaryColorGradient;
+    box-shadow: 1.44828px 1.44828px 21.7241px rgba(0, 0, 0, 0.25);
+  }
+
+  @include forTablet {
+    width: 24px;
+    height: 24px;
+
+    margin-right: 20px;
+
+    font-size: 9px;
+  }
+
+  &.github {
+    @include flexbox(flex-end, center);
+    font-size: 30px;
+    overflow: hidden;
+
+    @include forTablet {
+      font-size: 17px;
+    }
+
+    & > i {
+      display: inline-block;
+      margin-bottom: -2px;
+    }
+  }
+
+  &.discord {
+    & > i {
+      display: inline-block;
+      margin-left: -4px;
+    }
+  }
+}

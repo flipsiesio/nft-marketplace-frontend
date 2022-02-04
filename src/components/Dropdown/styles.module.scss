@@ -1,0 +1,26 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.label_wrap {
+  @include flexbox();
+}
+
+.label {
+  font-size: 18px;
+}
+
+.arrow {
+  font-size: 15px;
+  color: $grayColor;
+  margin-left: 15px;
+
+  &:before {
+    transition: 0.2s;
+  }
+}
+
+.activeArrow {
+  &:before {
+    transform: rotate(180deg);
+  }
+}

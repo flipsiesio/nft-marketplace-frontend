@@ -1,0 +1,64 @@
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/variables';
+
+.link {
+  @include flexbox;
+
+  font-size: 14px;
+  color: white;
+  transition: 0.2s color;
+
+  .linkText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+
+  &.disabled {
+    cursor: default;
+  }
+
+  &:not(.disabled):hover {
+    .linkText, .icon {
+      color: $primaryColor;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  @include forDesktopSm {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 0;
+    font-size: 18px;
+
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+
+    .linkText {
+      max-width: 100%;
+    }
+  }
+
+  :global(.rs__select) {
+    min-width: auto;
+  }
+
+  :global(.rs__value-container) {
+    padding: 0;
+  }
+}
+
+.linkActive {
+  color: $primaryColor;
+  transition: 0.2s color;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 28px;
+}

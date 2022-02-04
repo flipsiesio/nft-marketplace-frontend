@@ -1,0 +1,45 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.menu {
+  margin-right: 20px;
+
+  @include forDesktopSm {
+    width: 100%;
+    margin-right: auto;
+  }
+
+
+  .control {
+    background-color: transparent;
+
+    @include forDesktopSm {
+      padding-left: 2.5%;
+      padding-right: 2.5%;
+    }
+  }
+
+  .dropdown {
+    min-width: 120px;
+    margin-top: 20px;
+    right: 0;
+
+    @include forDesktopSm {
+      margin-top: 0;
+      margin-bottom: 0;
+      position: relative;
+      // rs__menu
+      & > div {
+        max-height: none;
+      }
+    }
+  }
+
+  .option {
+    @include forDesktopSm {
+      padding-left: 3.5%;
+      padding-right: 2.5%;
+      font-size: 18px;
+    }
+  }
+}

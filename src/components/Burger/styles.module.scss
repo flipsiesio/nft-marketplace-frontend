@@ -1,0 +1,69 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.btn {
+  position: relative;
+
+  width: 26px;
+  height: 22px;
+
+  @include flexbox;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btnActive {
+  .icon {
+    width: 0;
+
+    &:before {
+      width: 100%;
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      width: 100%;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+
+.icon {
+  display: block;
+
+  width: 66%;
+  height: 4px;
+
+  background-color: white;
+  transition: all ease 0.3s;
+  border-radius: 10px;
+
+  &:before, &:after {
+    position: absolute;
+    content: '';
+    left: 0;
+
+    height: inherit;
+
+    margin: auto;
+
+    border-radius: inherit;
+    background-color: inherit;
+
+    transition: all ease 0.5s;
+    transform-origin: left;
+  }
+
+  &:before {
+    width: 100%;
+    top: 0;
+  }
+
+  &:after {
+    width: 33%;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,7 @@
+[all:vars]
+ansible_user=root
+ansible_python_interpreter=/usr/bin/python3
+www_path=/var/www/html/poker-frontend
+
+[poker_front]
+167.99.12.0 ansible_user=root

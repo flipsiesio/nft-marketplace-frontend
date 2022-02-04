@@ -1,0 +1,50 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.modal {
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.content {
+  position: relative;
+  min-width: 220px;
+  padding: 40px 80px;
+  background-color: $blueColor;
+  max-height: 90vh;
+  box-shadow: 1.71848px 3.43696px 8.5924px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  overflow: auto;
+
+  @include forTablet {
+    padding: 30px 50px;
+  }
+
+  @include forPhone {
+    padding: 30px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.overlay {
+  @include flexbox;
+  @include modalOverlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+}

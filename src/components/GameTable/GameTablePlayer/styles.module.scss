@@ -1,0 +1,190 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/mixins.scss';
+
+
+.player {
+  width: 100%;
+  @include flexbox;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.wrap {
+  position: relative;
+
+  @include inlineFlexbox(center, flex-start);
+
+  padding: 10px;
+
+  background-color: #414A65;
+  border: 2px solid $blackColor;
+  border-radius: 37px;
+
+  transition: 0.2s border-color;
+
+  z-index: 5;
+
+  @include forDesktopSm {
+    padding: 3px;
+  }
+
+  &.winner {
+    border-color: $secondaryColor;
+  }
+}
+
+.deck {
+  width: 80px;
+  position: absolute;
+  top: -30%;
+  left: calc(50% - 40px);
+  z-index: 4;
+}
+
+.photo {
+  @include flexbox;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: black;
+
+  img {
+    width: 80%;
+    height: 80%;
+    pointer-events: none;
+  }
+}
+
+.name {
+  padding-right: 20px;
+  font-size: toRem(18px);
+}
+
+.balance {
+  font-size: 14px;
+
+  @include forPhone {
+    font-size: 12px;
+  }
+}
+
+.cards {
+  @include flexbox;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+
+.combinations {
+  $offset: 30px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+
+  &.combinationsDealer {
+    bottom: -$offset;
+  }
+
+  &.playerCombinations {
+    top: -$offset;
+  }
+
+  @include forPhone {
+    font-size: 14px;
+  }
+}
+
+.card {
+  position: relative;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.chips {
+  position: absolute;
+
+  right: 50%;
+  transform: translateX(50%);
+
+  &.dealerChips {
+    top: 25%;
+    right: 22%;
+  }
+  &.userChips {
+    bottom: 25%;
+    left: -30%;
+  }
+
+  @include forDesktopMinHeight {
+    &.dealerChips {
+      top: 25%;
+      right: 30%;
+    }
+    &.userChips {
+      bottom: 25%;
+      left: -10%;
+    }
+  }
+
+  @include forDesktopSm {
+    &.dealerChips {
+      top: 25%;
+      right: 30%;
+    }
+    &.userChips {
+      bottom: 25%;
+      left: -15%;
+    }
+  }
+
+  @include forPhone {
+    width: 100px;
+    &.userChips {
+      bottom: 25%;
+      left: 5%;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.dealer {
+  top: 0;
+
+  .cards {
+    top: 50%;
+  }
+}
+
+.user {
+  bottom: 0;
+
+  .cards {
+    bottom: 50%;
+  }
+}
+
+
+@include forTablet {
+  .photo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .name {
+    font-size: toRem(16px);
+  }
+
+  .card {
+    width: 40px;
+  }
+}
+
+@include forPhone {
+
+}

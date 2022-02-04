@@ -1,0 +1,31 @@
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/variables';
+
+.wrap {
+  @include flexbox(center, space-between);
+
+  flex-direction: column;
+  background-color: #191D2B;
+  padding: 10px 0;
+  width: 156px;
+  height: 115px;
+  border-radius: 6px;
+
+  @include forPhone {
+    background-color: $blueColor;
+  }
+}
+
+.head {
+  font-size: 14px;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.percent {
+  color: $grayColor;
+  font-size: 12px;
+}

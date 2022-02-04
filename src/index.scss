@@ -1,0 +1,98 @@
+@import 'assets/styles/variables';
+@import 'assets/styles/mixins';
+@import 'assets/styles/fonts';
+@import 'assets/styles/fontello';
+
+html {
+  background-color: $bgColor;
+}
+
+html,
+body,
+div[id="root"] {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: $defaultFont, Arial, Helvetica, sans-serif;
+  color: white;
+  border: 0;
+  min-width: 320px;
+}
+
+body.overflow {
+  overflow: hidden;
+}
+
+div[id="root"] {
+  @include flexbox(flex-start, flex-start);
+  flex-direction: column;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// react slidedown library styles
+.react-slidedown {
+  height: 0;
+  transition-property: none;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+
+.react-slidedown.transitioning {
+  overflow-y: hidden;
+}
+
+.react-slidedown.closed {
+  display: none;
+}

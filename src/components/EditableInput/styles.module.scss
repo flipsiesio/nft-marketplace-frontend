@@ -1,0 +1,86 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
+
+$editableInputSize: 50px;
+
+.wrap {
+  @include flexbox(center, space-between);
+  flex-wrap: wrap;
+}
+
+.inputWrap {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: calc(100% - #{$editableInputSize} - 5px);
+}
+
+.input {
+  width: 100%;
+  height: 55px;
+
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid $grayColor;
+  font-size: toRem(28px);
+  font-weight: bold;
+  color: white;
+  transition: 0.2s all;
+
+  &:disabled {
+    border-color: transparent;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  @include inputIcon;
+}
+
+.iconError {
+  @include inputIconError;
+}
+
+.iconCorrect {
+  @include inputIconCorrect;
+}
+
+.editableBtn {
+  width: $editableInputSize;
+  height: $editableInputSize;
+  text-align: center;
+
+  i {
+    font-size: toRem(24px);
+    transition: 0.2s color;
+    color: white;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    i {
+      color: $primaryColor;
+    }
+  }
+}
+
+.editableBtnActive {
+  i {
+    color: $primaryColor;
+  }
+}
+
+.textError {
+  display: block;
+  margin-top: 5px;
+  flex-basis: 100%;
+  color: $errorColor;
+  font-size: 10px;
+}

@@ -1,0 +1,9 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.logo {
+  pointer-events: none;
+
+  width: 194px;
+  height: 51px;
+}

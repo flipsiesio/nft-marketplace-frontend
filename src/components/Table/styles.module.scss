@@ -1,0 +1,179 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  overflow: auto;
+}
+
+.table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid transparent;
+}
+
+.th {
+  position: relative;
+  padding: 15px;
+  background-color: $primaryColor;
+  text-align: left;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+
+  &:first-child {
+    border-top-left-radius: 10px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 10px;
+  }
+
+  .sortWrap {
+    @include flexbox(center, flex-start);
+  }
+
+  .sortArrows {
+    position: relative;
+    margin-left: 15px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      border: 4px solid transparent;
+      content: '';
+      display: inline-block;
+      height: 0;
+      width: 0;
+    }
+
+    &::before {
+      border-bottom-color: white;
+      margin-top: -11px;
+    }
+
+    &::after {
+      border-top-color: white;
+      margin-top: 3px;
+    }
+
+    &.desc {
+      &::before {
+        border-bottom-color: $blueColor;
+      }
+    }
+
+    &.asc {
+      &::after {
+        border-top-color: $blueColor;
+      }
+    }
+  }
+
+
+
+
+  @include forPhone {
+    padding: 15px 5px;
+    font-size: 12px;
+  }
+}
+
+.row {
+  &:nth-child(odd) {
+    .cell {
+      background-color: black;
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: $blueColor;
+  }
+
+  &:last-child {
+    .cell {
+      &:first-child {
+        border-bottom-left-radius: 10px;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 10px;
+      }
+    }
+  }
+}
+
+.cell {
+  position: relative;
+  padding: 15px;
+  font-size: 14px;
+  color: white;
+
+  @include forPhone {
+    padding: 15px 5px;
+    font-size: 12px;
+  }
+}
+
+.pagination {
+  @include flexbox(center, flex-end);
+  margin: 20px 0 0 0;
+  padding: 0;
+
+  &>li {
+    list-style-type: none;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  @include forTablet {
+    justify-content: center;
+  }
+}
+
+// Pagination
+@mixin paginationLink {
+  @include flexbox(center, center);
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  font-size: 14px;
+  transition: 0.2s;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.paginationItem {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+
+  &>a {
+    border: 1px solid #C6CBD4;
+    @include paginationLink;
+  }
+}
+
+.paginationItemDisabled {
+  display: none;
+}
+
+.paginationLink {
+  border: 1px solid #C6CBD4;
+  @include paginationLink;
+}
+
+.paginationLinkActive {
+  background-color: $primaryColor;
+  border: 1px solid $primaryColor !important;
+  color: white;
+}
+
+.preloader {
+  padding: 15px 0;
+}

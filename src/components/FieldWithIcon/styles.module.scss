@@ -1,0 +1,39 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.fieldWithIcon {
+  @include flexbox(center, flex-start);
+
+  padding: 7px 20px 7px 7px;
+
+  border-radius: 7px;
+  border: 1px solid $blueColor;
+}
+
+$squareWidth: 32px;
+$squareMargin: 25px;
+
+.square {
+  width: $squareWidth;
+  height: $squareWidth;
+
+  @include flexbox;
+
+  margin-right: $squareMargin;
+
+  background-color: $blueColor;
+  border-radius: 8px;
+
+  @include forPhone {
+    margin-right: $squareMargin / 2;
+  }
+}
+
+.icon {
+  color: $whiteColor;
+}
+
+.text {
+  max-width: calc(100% - #{$squareWidth} - #{$squareMargin});
+  overflow: hidden;
+}

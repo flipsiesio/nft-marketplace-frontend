@@ -1,0 +1,180 @@
+{
+  "header": {
+    "rewardSystem": "Système de récompense",
+    "faq": "FAQ",
+    "howToPlay": "Comment jouer ?",
+    "wallet": "Portefeuille",
+    "tronlink": "TronLink",
+    "referral": "Parrainage",
+    "betsHistory": "Mon historique des mises",
+    "logout": "Déconnexion",
+    "extensionInstallTitle": "Veuillez installer l’extension ou vous connecter",
+    "extensionInstall": "Installer l’extension",
+    "extensionLogin": "D’accord, je vais me connecter via l’extension"
+  },
+  "preview": {
+    "title": "Pour jouer, veuillez <1>vous connecter</1> à TronLink et connecter le portefeuille",
+    "playNow": "Jouez dès maintenant"
+  },
+  "betsHistory": {
+    "title": "Mon historique des mises",
+    "bet": "Mise",
+    "payout": "Paiement",
+    "flip": "Poker",
+    "color": "Couleur",
+    "date": "Date & Heure"
+  },
+  "preloader": {
+    "alert": "Veuillez cliquer sur l’extension TronLink pour activer l’application ou vous connecter à TronLink !"
+  },
+  "combinations": {
+    "royalFlush": "Quinte flush royale",
+    "straightFlush": "Quinte flush",
+    "quads": "Carré",
+    "fullHouse": "Main pleine",
+    "flush": "Couleur",
+    "straight": "Suite",
+    "threeOfKind": "Brelan",
+    "twoPair": "Double paire",
+    "pair": "Paire",
+    "highCard": "Carte haute"
+  },
+  "game": {
+    "handleRankings": "Gestion de l'avatar",
+    "showResults": "Afficher les résultats",
+    "playAgain": "Rejouer",
+    "home": "Accueil",
+    "jackpot": "Jackpot",
+    "betOn": "Vous misez sur",
+    "colorBet": "Votre mise sur une couleur",
+    "win": "est gagnante",
+    "lost": "est perdante",
+    "red": "rouge",
+    "black": "noir",
+    "youWon": "Vous avez gagné",
+    "youLost": "Vous avez perdu",
+    "youDraw": "C’est un nul",
+    "youWonJackpot": "Vous avez remporté le jackpot",
+    "results": "Résultats",
+    "pokerHand": "Poker",
+    "flopColor": "Couleur",
+    "start": "Démarrer",
+    "sameBet": "Même mise",
+    "bet": "Mise",
+    "probablyFair": "Flipsies est un jeu <1>prouvablement équitable</1>."
+  },
+  "profile": {
+    "referral": "Parrainage",
+    "betsHistory": "Mon historique des mises",
+    "invitedPlayers": "Joueurs invités",
+    "currentRank": "Classement actuel",
+    "ofHouseEdge": "de victoires de l’avantage de la maison",
+    "totalEarnings": "Total des gains",
+    "withdraw": "Retrait",
+    "note": "Veuillez noter : vous devez payer des frais d’énergie pour les opérations de retrait"
+  },
+  "ranks": {
+    "bronze": "bronze",
+    "silver": "argent",
+    "gold": "or",
+    "platinum": "platine",
+    "diamond": "diamant",
+    "emerald": "émeraude",
+    "sapphire": "saphir"
+  },
+  "rating": {
+    "jackpotWinners": "Vainqueurs du jackpot",
+    "jackpot": "Jackpot"
+  },
+  "referral": {
+    "title": "Partagez le lien de parrainage avec vos amis et soyez récompensé chaque fois que votre ami remporte une victoire.",
+    "provideEmail": "Fournissez votre adresse e-mail pour rejoindre notre programme de parrainage !",
+    "enterEmail": "Saisissez votre adresse e-mail",
+    "join": "Rejoindre",
+    "copy": "Copier",
+    "rankUp": "Grimpez dans le classement pour obtenir des récompenses plus élevées !",
+    "yourReferralLink": "Votre lien de parrainage",
+    "completeRank": "Terminer pour grimper dans le classement"
+  },
+  "notifications": {
+    "copy": "Valeur copiée"
+  },
+  "termsOfServices": {
+    "title": "Conditions générales d’utilisation",
+    "flipsies": "Flipsies",
+    "offers": "offre une expérience de jeu en ligne pour laquelle vous devez avoir l’âge légal dans votre pays pour pouvoir parier et participer. Si le jeu, les loteries ou les paris en ligne sont illégaux dans votre lieu de résidence, vous ne devez pas accéder à ce site Web.",
+    "provide": "Le site Web de Flipsies, « nous », fournit une interface pour le contrat intelligent sur la chaîne de blocs Tron, qui accepte les jetons Tron et transfère des quantités variables de jetons Tron en retour, en fonction de facteurs externes.",
+    "verify": "Nous ne sommes pas en mesure de vérifier la légalité du service dans chaque juridiction ni de vous fournir des conseils juridiques. Il est de votre seule responsabilité de vous conformer à toutes les lois, politiques et réglementations applicables de votre juridiction concernant l’utilisation des jetons Tron de la manière décrite ci-dessus.",
+    "based": "Les jeux Flipsies reposent sur la transparence, les joueurs doivent être conscients des risques et se gérer eux-mêmes en conséquence. Veuillez jouer de manière responsable et bonne chance.."
+  },
+  "howToPlay": {
+    "title": "Comment jouer à Flipsies",
+    "gameDerived": "Flipsies est un jeu dérivé d’un « pile ou face » ou d’un « flip » du poker, où vous et votre adversaire avez une chance équitable de remporter la main. Nous avons ajouté une mise supplémentaire facultative où vous pouvez parier sur la couleur majoritaire des couleurs sur le flop (2 cartes ou plus de rouge ou noir), connu aussi sous le nom de pari latéral ou annexe que l’on retrouve souvent dans les parties de poker privées.",
+    "followStandart": "Flipsies suit le classement standard des mains du poker Texas Holdem, ces classements sont fournis dans le menu déroulant dans le coin supérieur à gauche du jeu.",
+    "thankYou": "Merci et bonne chance !",
+    "step": "Étape",
+    "step1": "Deux cartes vous sont distribuées et la maison reçoit également deux cartes",
+    "step2": "Sélectionnez la taille de votre mise flip (main de poker) et votre mise de couleur au flop. Plus aucune mise n’a lieu.",
+    "step3": "Le flop (les 3 premières cartes), le tournant (la 4e carte) et la rivière (la 5e carte) sont tirées : ce sont les cartes communes.",
+    "step4": "Celui qui possède la meilleure main de 5 cartes remporte le flip. Si c’est un match nul (égalité), le pot est partagé de manière équitable."
+  },
+  "faq": {
+    "title": "FAQ",
+    "question1": {
+      "title": "Un programme de parrainage est-il proposé sur Flipsies ?",
+      "content": "Oui, notre programme de parrainage comprend sept niveaux (bronze, argent, or, platine, diamant, émeraude et saphir), chaque niveau est débloqué en fonction du nombre de joueurs parrainés."
+    },
+    "question2": {
+      "title": "Faut-il créer un compte ?",
+      "content": "Non, bien que l’inscription soit recommandée en raison de notre programme de parrainage qui offre des avantages, l’inscription n’est pas obligatoire."
+    },
+    "question3": {
+      "title": "Qu’est-ce que l’avantage de la maison ?",
+      "content": "1,5 % par mise (cela permet de payer les factures pour le bon fonctionnement du jeu). 0,2 % vont dans le jackpot."
+    },
+    "question4": {
+      "title": "Qu’est-ce que le « prouvablement équitable » ?",
+      "content": "Une grande majorité de joueurs pensent que le casino en ligne est truqué, et ils ont raison dans la plupart des cas. Techniquement, il est très facile pour un casino en ligne d’abuser des joueurs. Dans le monde du jeu crypto, nous avons une solution appelée « prouvablement équitable », qui permet une transparence totale grâce à la mise en place de contrats intelligents. Les contrats intelligents contiennent un ensemble de règles ne pouvant être falsifiées et qui est appliqué automatiquement. Ces contrats intelligents sont publics, n’importe quelle partie peut donc les auditer. Nos générateurs de nombres aléatoires sont exécutés sur ces contrats intelligents, ce qui signifie qu’il est techniquement impossible de les fausser ou manipuler, de quelque manière que ce soit."
+    },
+    "question5": {
+      "title": "Est-ce que Flipsies est prouvablement équitable ?",
+      "content": "Oui, toutes les mises sur Flipsies sont exécutées via nos contrats intelligents sur le réseau TRON. Cela garantit une transparence et une équité totales pour l’ensemble des utilisateurs."
+    },
+    "question6": {
+      "title": "Qui dois-je contacter en cas de problème ?",
+      "content": "support@flipsies.io"
+    },
+    "question7": {
+      "title": "Comment créer un compte ?",
+      "desktop": {
+        "1": "Téléchargez et installez <>l’extension Chrome TronLink</>",
+        "2": "Suivez les instructions sur TronLink pour créer ou importer un compte.",
+        "3": "Si vous possédez une extension et un portefeuille, il suffit de vous connecter.",
+        "4": "Assurez-vous d’avoir suffisamment de TRX, de bande passante et d’énergie pour commencer à jouer.",
+        "5": "Bien joué !"
+      },
+      "mobile": {
+        "title": "Pour les appareils mobiles",
+        "1": "Téléchargez l’application mobile TronLink pour <1>IOS</1> ou appareils <3>Android</3>.",
+        "2": "Créez ou importez un compte en suivant les instructions.",
+        "3": "Accédez au navigateur intégré et collez https://flipsies.io/ pour ouvrir la dApp Flipsies.",
+        "4": "Assurez-vous d’avoir suffisamment de TRX, de bande passante et d’énergie pour commencer à jouer.",
+        "5": "Bien joué !"
+      }
+    },
+    "question8": {
+      "title": "Que se passe-t-il si mon téléphone ou mon ordinateur perd la connexion ou si la batterie est soudainement à plat?",
+      "content": "N’ayez aucune inquiétude, tous les gains des paris sont répertoriés dans l’historique des paris."
+    },
+    "question9": {
+      "title": "À propos de TRON",
+      "content": "<b>Tron</b> est une plate-forme de divertissement et de partage de contenu décentralisée qui utilise la technologie de chaîne de blocs et pair-à-pair (P2P). <br/><br/><b>Bande passante</b>: La bande passante TRON vous permet d’effectuer des transactions sur le réseau principal TRON sans payer de frais de transaction (gaz). Avoir une bande passante suffisante est crucial lors de l’utilisation d’applications décentralisées (dApps) tells que Flipsies.io, où vous voudrez peut-être effectuer plusieurs transactions de moindre importance sans avoir à vous soucier de l’utilisation de vos jetons TRX au cours du processus. La bande passante est également utilisée pour vous consolider en tant que membre actif de la communauté TRON, ce qui vous permet de voter pour les super représentants. <br/><br/><b>Énergie</b>: Il s’agit d’une ressource spéciale utilisée pour traiter les contrats intelligents sur le réseau TRON. Les contrats intelligents consomment de l’énergie en plus de la bande passante, alors assurez-vous d’en avoir lorsque vous effectuez des transactions de jetons.<br/><br/><b>Freezing</b> Le gel est un mécanisme unique pour la chaîne de blocs Tron. Vous pouvez geler votre TRX afin de bénéficier de certains avantages. Ainsi, votre Tron vous appartiendra toujours, mais il est impossible de le déplacer pendant 3 jours. Le gel est comparable à un dépôt d’argent sur un compte épargne : l’argent est présent, mais vous ne pouvez pas le dépenser.<br/Lorsque vous gelez votre TRX, vous pouvez acquérir plusieurs avantages.<br/> F En premier lieu, vous devez choisir si vous souhaitez geler votre Tron pour gagner des points de bande passante (BP - Bandwidth points) ou des points d’énergie (EP - Energy Points). En outre, pour chaque TRX gelé, vous obtiendrez 1 Tron Power et ce, peu importe l’option choisie."
+    }
+  },
+  "footer": {
+    "text": "Flipsies propose une expérience de jeu en ligne. Vous devez avoir plus de 18 ans pour cliquer sur toute activité liée au jeu sur Flipsies. Si vous résidez dans un endroit où les jeux de hasard, les loteries ou les paris sur internet sont illégaux, vous ne devez pas cliquer sur quoi que ce soit qui se trouve sur ce site. Flipsies- ne sera pas tenu responsable de toute violation des lois locales appliquées dans votre région. Les jeux Flipsies sont basés sur l'équité, la transparence et le plaisir. Les joueurs doivent être conscients des risques et se gérer en conséquence. Veuillez jouer de manière responsable.",
+    "terms": "Conditions générales d’utilisation",
+    "copyright": "Copyright",
+    "reserved": "Tous droits réservés"
+  }
+}

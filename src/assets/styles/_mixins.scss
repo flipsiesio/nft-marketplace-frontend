@@ -1,0 +1,191 @@
+@import '../../assets/styles/variables';
+
+$defaultFlexBoxAlign: center;
+$defaultFlexBoxJustify: center;
+
+@mixin flexbox($align: $defaultFlexBoxAlign, $justify: $defaultFlexBoxJustify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin inlineFlexbox($align: $defaultFlexBoxAlign, $justify: $defaultFlexBoxJustify) {
+  display: inline-flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@function toRem($size) {
+  $remSize: $size / $defaultFontSize;
+  @return #{$remSize}rem;
+}
+
+@mixin container() {
+  width: 95%;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include forTablet {
+    width: 90%;
+  }
+}
+
+// Media request mixins
+@mixin forDesktopMinHeight() {
+  @media (min-width: 980px) and (max-height: 940px) {
+    @content;
+  }
+}
+
+@mixin forDesktopBig() {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin forDesktopSm() {
+  @media (max-width: 980px) {
+    @content;
+  }
+}
+
+@mixin forTablet() {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin forTabletSm() {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin forPhone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+// mixins for mobile first
+@mixin for-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+$defaultWidthCircleIcon: 58px;
+$defaultHeightCircleIcon: 58px;
+$defaultIconColor: $primaryColorGradient;
+
+@mixin circleIcon($width: $defaultWidthCircleIcon, $height: $defaultHeightCircleIcon, $bgColor: $defaultIconColor) {
+  @include flexbox;
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  background: $bgColor;
+
+  @include forTablet {
+    width: calc(#{$width} / 1.2);
+    height: calc(#{$width} / 1.2);
+    left: calc(50% - #{$width / 1.2 / 2});
+  }
+}
+
+
+@mixin containerIcon($width: $defaultWidthCircleIcon, $height: $defaultHeightCircleIcon, $bgColor: $defaultIconColor) {
+  @include circleIcon($width, $height, $bgColor);
+  position: absolute;
+  left: calc(50% - #{$width / 2});
+  top: -45px;
+  color: white;
+  font-size: 32px;
+
+  @include forTablet {
+    font-size: 22px;
+    top: -25px;
+  }
+}
+
+// input mixins
+@mixin inputIcon {
+  position: absolute;
+}
+
+@mixin inputIconError {
+  content: '\e805';
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: $errorColor;
+}
+
+@mixin inputIconCorrect {
+  content: '\e804';
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  color: $successColor;
+  font-size: 16px;
+}
+
+$cardsSymbolsBgUrl: '../../assets/img/previewBg.svg';
+
+@mixin cardsSymbolsBg($url: $cardsSymbolsBgUrl) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+
+  background-image: url($url);
+  background-size: 110%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  @include forDesktopBig {
+    height: 120vh;
+    background-size: 130%;
+    background-position: bottom;
+  }
+
+  @include forDesktopSm() {
+    height: 105vh;
+    background-size: 170%;
+    background-position: bottom;
+  }
+
+  @include forTablet {
+    height: 100vh;
+    background-size: 250%;
+    background-position: center;
+  }
+}
+
+@mixin modalOverlay {
+  background-color: rgba(25, 29, 43, 0.2);
+  backdrop-filter: blur(50px);
+}
+
+@mixin blinkingAnimation {
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  animation: blinker 2s linear infinite;
+}
+
+@mixin mainMargins {
+  margin-top: 120px;
+  margin-bottom: 120px;
+
+  @include forTablet {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}

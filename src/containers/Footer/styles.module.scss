@@ -1,0 +1,84 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.footer {
+  width: 100%;
+  padding: 35px 0;
+  margin-top: auto;
+  background-color: #12151E;
+}
+
+.content {
+  @include container;
+}
+
+.text {
+  margin-bottom: 35px;
+
+  font-size: 16px;
+  color: $grayColor;
+
+  @include forTablet {
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+}
+
+.wrap {
+  @include flexbox(flex-end, space-between);
+
+  @include forDesktopSm {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.info {
+  @include flexbox(flex-end, flex-start);
+  flex-direction: column;
+
+  @include forDesktopSm {
+    width: 100%;
+    margin-top: 20px;
+    align-items: flex-start;
+  }
+}
+
+.link {
+  font-size: 14px;
+  color: $grayColor;
+  text-decoration: underline;
+
+  @include forTablet {
+    font-size: 10px;
+  }
+}
+
+.copyrightWrap {
+  @include flexbox(center, space-between);
+  margin-top: 15px;
+
+  @include forDesktopSm {
+    width: 100%;
+  }
+
+  @include forTablet {
+    margin-top: 20px;
+  }
+}
+
+.copyright {
+  display: inline-block;
+  text-align: right;
+  font-size: 12px;
+  margin-right: 8px;
+
+  @include forDesktopSm {
+    text-align: left;
+  }
+
+  @include forTablet {
+    font-size: 10px !important;
+  }
+}

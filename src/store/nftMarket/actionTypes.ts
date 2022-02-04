@@ -1,0 +1,34 @@
+import { Action, NftDto, NftMarketState } from 'types';
+
+export enum NftMarketActionTypes {
+  SET_STATE = 'NFT_MARKET.SET_STATE',
+  GET_MARKET_LIST = 'NFT_MARKET.GET_MARKET_LIST',
+  GET_GALLERY_LIST = 'NFT_MARKET.GET_GALLERY_LIST',
+  GET_MY_GALLERY_LIST = 'NFT_MARKET.GET_MY_GALLERY_LIST',
+  BUY_NOW = 'NFT_MARKET.BUY_NOW',
+  BID = 'NFT_MARKET.BID',
+  DELIST = 'NFT_MARKET.DELIST',
+  PUT_ON_SALE = 'NFT_MARKET.PUT_ON_SALE',
+  CANCEL_BID = 'NFT_MARKET.CANCEL_BID',
+  MAKE_OFFER = 'NFT_MARKET.MAKE_OFFER',
+  SOLD = 'NFT_MARKET.SOLD',
+  MINT_NOW = 'NFT_MARKET.MINT_NOW',
+  CLAIM_JACKPOT = 'NFT_MARKET.CLAIM_JACKPOT',
+
+  ACCEPT_BID = 'NFT_MARKET.ACCEPT_BID',
+  SIGN_IN = 'NFT_MARKET.SIGN_IN',
+  SIGN_OUT = 'NFT_MARKET.SIGN_OUT',
+  GET_PROFILE = 'NFT_MARKET.GET_PROFILE',
+
+  SELECT_PROFILE = 'NFT_MARKET.SELECT_PROFILE'
+}
+
+export type NftMarketAction =
+  Action<NftMarketActionTypes.SET_STATE, NftMarketState> |
+  Action<NftMarketActionTypes.GET_MARKET_LIST> |
+  Action<NftMarketActionTypes.GET_GALLERY_LIST> |
+  Action<NftMarketActionTypes.GET_MY_GALLERY_LIST> |
+  Action<NftMarketActionTypes.SIGN_IN> |
+  Action<NftMarketActionTypes.SELECT_PROFILE, NftDto> |
+  Action<NftMarketActionTypes.SIGN_OUT> |
+  Action<NftMarketActionTypes.BUY_NOW>;

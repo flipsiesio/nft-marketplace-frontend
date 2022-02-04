@@ -1,0 +1,28 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.tabList {
+  @include flexbox(center);
+
+  list-style-type: none;
+}
+
+.tab {
+  padding: 8px;
+  color: $grayColor;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:not(:first-child) {
+    margin-left: 30px;
+  }
+}
+
+.activeTab {
+  color: $whiteColor;
+  border-bottom: 2px solid $primaryColor;
+}

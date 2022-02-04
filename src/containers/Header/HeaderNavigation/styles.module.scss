@@ -1,0 +1,201 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.nav {
+  @include flexbox(center, flex-start);
+  margin-left: auto;
+
+  @include forDesktopSm {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $bgColor;
+
+    flex-direction: column;
+    z-index: 3;
+  }
+}
+
+.walletMenu {
+  margin-right: 20px;
+
+  &.walletMenuSelected {
+    max-width: 150px;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.userMenu {
+  .userControl {
+    background-color: transparent;
+    padding: 2px;
+
+    :global(.rs__value-container) {
+      height: 0;
+      padding: 0;
+    }
+  }
+
+  .userControlName {
+    display: none;
+  }
+
+  // rs__select
+  & > div {
+    min-width: 0;
+  }
+
+  .userDropdown {
+    z-index: 102;
+    min-width: 200px;
+    right: 0;
+  }
+
+  .userDropdownName {
+    padding: 10px 5px;
+    border-bottom: 1px solid #535252;
+  }
+
+  .userOption {
+    justify-content: flex-start;
+
+    &:first-child {
+      border-radius: 0;
+    }
+
+    .icon {
+      display: block;
+      margin-right: 5px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    &:after {
+      margin-left: auto;
+    }
+  }
+}
+
+.langMenu {
+  :global(.rs__select) {
+    min-width: 0;
+  }
+}
+
+@include forDesktopSm {
+  .userMenu,
+  .rewardSystem,
+  .faq,
+  .howToPlay,
+  .walletMenu,
+  .langMenu {
+    border-bottom: 1px solid #535252;
+  }
+
+  .walletMenu {
+    &.walletMenuSelected {
+      max-width: 100%;
+    }
+  }
+
+  .rewardSystem,
+  .faq,
+  .howToPlay,
+  .walletMenu {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+  }
+
+  .userMenu {
+    width: 100%;
+    margin-right: auto;
+  }
+
+  .userMenu {
+    margin-right: auto;
+    width: 100%;
+
+    .userDropdown {
+      margin-top: 0;
+      margin-bottom: 0;
+      position: relative;
+      border-radius: 0;
+
+      // rs__menu
+      & > div {
+        max-height: none;
+      }
+    }
+
+    .userOption {
+      border-radius: 0 !important;
+      padding-left: 3.5%;
+      padding-right: 2.5%;
+      font-size: 18px;
+    }
+  }
+
+  .userMenu {
+    order: 1;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+
+      margin-right: 8px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .userControl {
+      padding: 10px 2.5% 10px 3.5%;
+    }
+
+    .userControlName {
+      display: block;
+      font-size: 18px;
+    }
+
+    .userDropdown {
+      position: relative;
+    }
+
+    .userDropdownName {
+      display: none;
+    }
+  }
+
+  .rewardSystem {
+    order: 2;
+  }
+
+  .faq {
+    order: 3;
+  }
+
+  .howToPlay {
+    order: 4;
+  }
+
+  .walletMenu {
+    order: 5;
+  }
+
+  .langMenu {
+    &:not(.isShowMobile) {
+      display: none;
+    }
+    &.isShowMobile {
+      order: 6;
+    }
+  }
+}
+
+.blink {
+  @include blinkingAnimation;
+}

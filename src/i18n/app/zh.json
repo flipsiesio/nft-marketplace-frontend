@@ -1,0 +1,180 @@
+{
+  "header": {
+    "rewardSystem": "奖励系统",
+    "faq": "常见问题",
+    "howToPlay": "游戏方法?",
+    "wallet": "钱包",
+    "tronlink": "TronLink",
+    "referral": "推荐",
+    "betsHistory": "我的投注历史",
+    "logout": "退出",
+    "extensionInstallTitle": "请安装扩展程序或登录",
+    "extensionInstall": "安装扩展程序",
+    "extensionLogin": "好的，我将通过扩展程序登录"
+  },
+  "preview": {
+    "title": "请 <1>登录</1> TronLink 并连接钱包以玩游戏",
+    "playNow": "立即游戏"
+  },
+  "betsHistory": {
+    "title": "我的投注历史",
+    "bet": "投注",
+    "payout": "奖金",
+    "flip": "扑克",
+    "color": "颜色",
+    "date": "日期和时间"
+  },
+  "preloader": {
+    "alert": "请点击 TronLink 扩展程序以激活应用程序或登录 TronLink !"
+  },
+  "combinations": {
+    "royalFlush": "同花大顺",
+    "straightFlush": "同花顺",
+    "quads": "四条",
+    "fullHouse": "葫芦",
+    "flush": "同花",
+    "straight": "顺子",
+    "threeOfKind": "三条",
+    "twoPair": "两对",
+    "pair": "一对",
+    "highCard": "高牌"
+  },
+  "game": {
+    "handleRankings": "用户排名",
+    "showResults": "显示结果",
+    "playAgain": "再次游戏",
+    "home": "主页",
+    "jackpot": "累积奖金",
+    "betOn": "您投注",
+    "colorBet": "您的颜色注",
+    "win": "赢了",
+    "lost": "输了",
+    "red": "红",
+    "black": "黑",
+    "youWon": "您赢了",
+    "youLost": "您输了",
+    "youDraw": "平局",
+    "youWonJackpot": "您赢得了累积奖金",
+    "results": "结果",
+    "pokerHand": "扑克",
+    "flopColor": "颜色",
+    "start": "开始",
+    "sameBet": "相同赌注",
+    "bet": "投注",
+    "probablyFair": "Flipsies 是一款<1>可验证的公平</1> 游戏。"
+  },
+  "profile": {
+    "referral": "推荐",
+    "betsHistory": "我的投注历史",
+    "invitedPlayers": "邀请的玩家",
+    "currentRank": "当前排名",
+    "ofHouseEdge": "庄家优势",
+    "totalEarnings": "总收入",
+    "withdraw": "提款",
+    "note": "请注意：提款交易必须支付能量费."
+  },
+  "ranks": {
+    "bronze": "铜",
+    "silver": "银",
+    "gold": "金",
+    "platinum": "白金",
+    "diamond": "钻石",
+    "emerald": "绿宝石",
+    "sapphire": "蓝宝石"
+  },
+  "rating": {
+    "jackpotWinners": "累积奖金得主",
+    "jackpot": "累积奖金"
+  },
+  "referral": {
+    "title": "与朋友分享推荐链接，并在朋友获胜时获得奖励。",
+    "provideEmail": "提供您的电子邮件地址以加入我们的推荐计划！",
+    "enterEmail": "输入您的电子邮件地址",
+    "join": "加入",
+    "copy": "复制",
+    "rankUp": "提升排名以获得更高的奖励！",
+    "yourReferralLink": "您的推荐链接",
+    "completeRank": "完成以提升排名"
+  },
+  "notifications": {
+    "copy": "值已复制"
+  },
+  "termsOfServices": {
+    "title": "服务条款",
+    "flipsies": "Flipsies",
+    "offers": "提供在线博彩体验，您必须达到您所在国家/地区的博彩年龄才能参加。如果您所在地区认定赌博、彩票或在线博彩是非法的，则您不得进入本网站。",
+    "provide": "Flipsies 网站(\"我们\")在 Tron 区块链上提供了智能合约的接口，接受 Tron 代币并根据外部系数转回不同数量的 Tron 代币。",
+    "verify": "我们无法在每个司法管辖区验证服务的合法性，也无法为您提供任何法律建议。您有责任按照上述说明遵守您所在地区有关使用 Tron 代币的任何相关法律、政策和法规.",
+    "based": "Flipsies 游戏以透明为基础，玩家应意识到风险并据此进行管理。请负责任地游戏，祝您好运。"
+  },
+  "howToPlay": {
+    "title": "如何玩 Flipsies",
+    "gameDerived": "Flipsies 是一款源自扑克中“抛硬币”的游戏 (英文称为\"coin flip\"或 \"flip\")，您和对手有相等的机会获胜。我们增加了一个可选的边注，您可投注翻牌花色的主要颜色（2张或以上的红色或黑色牌 ）。这称为边注或附加赌注，通常在私人扑克游戏中提供。",
+    "followStandart": "Flipsies 遵循标准的德州扑克牌型大小规则，在游戏左上角的下拉菜单中可查阅牌型大小",
+    "thankYou": "谢谢，祝您成功 ！",
+    "step": "步骤",
+    "step1": "给您和庄家各发两张牌",
+    "step2": "选择扑克手牌(flip bet)和翻牌颜色注的金额，没有其他投注。.",
+    "step3": "发出翻牌（前 3 张牌）、转牌（第 4 张牌）和河牌（第 5 张牌）- 这些是公共牌。",
+    "step4": "最大的 5 张牌牌型赢得“抛硬币”投注。如果是平局，底池将被平分。"
+  },
+  "faq": {
+    "title": "常见问题",
+    "question1": {
+      "title": "Flipsies 是否提供推荐计划？",
+      "content": "是的，我们的推荐计划分为七级（铜、银、金、白金、钻石、绿宝石和蓝宝石），每级根据被推荐玩家的投注额解锁。"
+    },
+    "question2": {
+      "title": "我需要注册帐户吗？",
+      "content": "不需要。不强制注册，不过我们的推荐计划能给予丰厚奖励，所以建议您注册。"
+    },
+    "question3": {
+      "title": "庄家优势是什么？",
+      "content": "每次投注的 1.5%（用于支付运营游戏的成本）。0.2% 计入累积奖金。"
+    },
+    "question4": {
+      "title": "什么是可验证的公平 (provably fair)？",
+      "content": "大多数玩家认为他们会被在线娱乐场欺骗，大部分情况下的确如此。从技术上讲，在线娱乐场骗您非常容易。加密货币博彩世界提供了被称为可验证的公平的解决方案，它通过实施智能合约来实现完全透明。智能合约包含一组不能被篡改并自动执行的规则。任何一方都可以审核这些智能合约，因为它们是公开的。我们的随机数生成器在这些智能合约上执行，因此从技术上讲无论如何都无法操纵它们。"
+    },
+    "question5": {
+      "title": "Flipsies 是可验证公平的游戏吗？",
+      "content": "是的，所有 Flipsies 投注都通过 TRON 网络上的智能合约执行。这样可为所有用户确保完全透明和公平。"
+    },
+    "question6": {
+      "title": "遇到问题时该与谁联系？",
+      "content": "support@flipsies.io"
+    },
+    "question7": {
+      "title": "如何创建帐户？",
+      "desktop": {
+        "1": "下载并安装  <1>TronLink Chrome 扩展程序 </1>",
+        "2": "按照 TronLink 中的说明创建或导入帐户。",
+        "3": "如果您有扩展程序和钱包，只需登录。",
+        "4": "确保您有足够的 TRX、带宽和能量，然后就能开始游戏了。",
+        "5": "做得好！"
+      },
+      "mobile": {
+        "title": "对于移动设备s",
+        "1": "下载适用于  <1>IOS</1> 或 <3>Android</3> 设备的 TronLink 移动应用程序。",
+        "2": "按照说明创建或导入帐户",
+        "3": "转到内置浏览器并粘贴 https://flipsies.io/ 以打开 Flipsies 分布式应用。",
+        "4": "确保您有足够的 TRX、带宽和能量，然后就能开始游戏了。",
+        "5": "做得好！"
+      }
+    },
+    "question8": {
+      "title": "如果我的手机或电脑断开连接或电池突然没电了，该怎么办？",
+      "content": "不用担心，您可以在我的投注历史中认领所有赢得的彩金。"
+    },
+    "question9": {
+      "title": "关于 TRON",
+      "content": "<b>Tron</b> 是一个去中心化的娱乐和内容共享平台，使用区块链和点对点 (P2P) 技术。<br/><br/><b>带宽</b>: 拥有 TRON 带宽就可以在 TRON 主网上执行交易，无需支付任何能量费。用于分布式应用（如 Flipsies.io）时，拥有足够的带宽至关重要。您可在这里执行一些较小的交易，不必担心在此过程中使用 TRX 代币。带宽还用于确保您是 TRON 社区的活跃成员，使您可以为超级代表投票。<br/><br/><b>能量</b>: 这是用于在 TRON 网络上处理智能合约的特殊资源。智能合约消耗带宽和能源，因此在转移代币时，请确保您的这两种资源都很充足。<br/><br/><b>冻结</b> 是 Tron 区块链的独特机制。您可以冻结 TRX 以获得某些好处。执行此操作后，您的 Tron 仍属于您，但您在 3 天内无法将其发送到任何地方。冻结类似于将钱存入储蓄帐户：钱就在那里，但您不能花掉。<br/>冻结 TRX 时，您会获得一些好处。<br/> 首先，您可选择冻结 Tron 以获取带宽点 (BP) 或能量点 (EP)。此外，每冻结一个 TRX，无论您选择上述哪种资源，您都将获得 1 个 Tron Power。"
+    }
+  },
+  "footer": {
+    "text": "Flipsies提供在线赌博体验。您必须年满18岁，才能在Flipsies上单击任何与赌博相关的活动。如果您居住在赌博，彩票或互联网博彩为非法的地方，则不得单击此网站上的任何内容。 Flipsies-对您所在地区执行的任何当地法律的违反概不负责。 Flipsies游戏基于公平，透明和有趣。玩家应意识到这些风险，并据此进行管理。请赌博并负责任地玩游戏。",
+    "terms": "T服务条款",
+    "copyright": "版权",
+    "reserved": "保留所有权利"
+  }
+}

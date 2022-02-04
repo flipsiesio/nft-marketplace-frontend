@@ -1,0 +1,61 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.preview {
+  margin-bottom: 120px;
+
+  @include forTablet {
+    margin-bottom: 60px;
+  }
+}
+
+.disabledButton {
+  opacity: .5;
+}
+
+.navButton {
+  @include flexbox();
+
+  top: 40%;
+  z-index: 9999;
+  position: absolute;
+  border-radius: 100%;
+  background-color: $darkBlueColor;
+  width: 56px;
+  height: 56px;
+
+  i {
+    font-size: 16px;
+    color: $primaryColor;
+  }
+
+  @include forTablet {
+    width: 36px;
+    height: 36px;
+    top: 30%;
+
+    i {
+      font-size: 14px;
+    }
+  }
+}
+
+.prevButton {
+  left: 0;
+
+  i {
+    &:before {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.nextButton {
+  right: 0;
+
+  i {
+    &:before {
+      transform: rotate(-90deg);
+    }
+  }
+}
