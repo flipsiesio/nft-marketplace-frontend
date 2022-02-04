@@ -12,7 +12,6 @@ import {
   Main,
   NotFound,
   TermsOfServices,
-  Game,
   NftMarketPage,
   MarketCardProfilePage,
   GalleryCardProfilePage,
@@ -43,8 +42,6 @@ const Routes = () => {
             path={routes.nftMarket.root}
             component={NftMarketPage}
           />
-
-          <ProtectedRoute path={routes.game.root} component={Game} />
 
           <Route path={routes.notFound.root} component={NotFound} />
           <Route path={routes.termsOfServices.root} component={TermsOfServices} />

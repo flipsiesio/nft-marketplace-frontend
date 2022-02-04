@@ -7,7 +7,6 @@ import { referralJoinByAction } from 'store/referral/actions';
 import {
   FlipsiesNft,
   Preview,
-  Rating,
 } from 'containers';
 import { getUrlParameter } from 'utils';
 import {
@@ -81,7 +80,6 @@ const Main = () => {
 
       <SwiperSlide>
         <Preview className={styles.preview} />
-        <Rating />
       </SwiperSlide>
       <SwiperSlide>
         <FlipsiesNft />
