@@ -1,6 +1,37 @@
 stages:
    - build
    - deploy
+<<<<<<< HEAD
+
+build react-app:
+  image: node:14.19-alpine3.14 
+  stage: build 
+  only:    
+    - main
+    - develop
+  script:
+    - apk add --no-cache python2
+    - yarn
+    - yarn build
+  artifacts:
+    paths:
+      - ./build 
+    expire_in: 1 hour
+  tags:
+    - build
+
+deploy prod:
+  image: python:latest
+  stage: deploy
+  only:
+    - main
+    - develop
+  script:
+    - pip3 install awscli
+    - aws s3 sync ./build s3://pocker-frontend-develop
+  tags: 
+  - deploy
+=======
 build react-app:  
    image: node:17.4.0-alpine3.14
      
@@ -27,3 +58,5 @@ deploy prod:
    script:
       - pip3 install awscli
       - aws s3 sync ./build s3://pocker-frontend-develop
+>>>>>>> 06ba623a2f8b9349f8d9042bbe3f1e33e0e73943
+c
