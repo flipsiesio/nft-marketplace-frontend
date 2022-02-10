@@ -8,6 +8,7 @@ build react-app:
   only:    
     - main
     - develop
+    - stage
   script:
     - apk add --no-cache python2
     - yarn
@@ -25,8 +26,9 @@ deploy dev:
   only:
     - main
     - develop
+    - stage
   script:
     - pip3 install awscli
-    - aws s3 sync ./build s3://pocker-frontend-develop
+    - aws s3 sync ./build s3://pocker-frontend-stage
   tags: 
   - deploy
