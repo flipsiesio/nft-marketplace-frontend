@@ -33,5 +33,5 @@ deploy :
     - pip3 install awscli
     - aws s3 sync ./build s3://pocker-frontend-{{target}}
   tags: 
-  - deploy
+    - deploy
 
