@@ -2,9 +2,6 @@ stages:
    - build
    - deploy
 
-variables:
-  branch: "stage develop"
-
 build react-app:
   image: node:14.19-alpine3.14 
   stage: build 
@@ -23,15 +20,24 @@ build react-app:
   tags:
     - build
 
-deploy dev:
+deploy develop:
   image: python:latest
   stage: deploy
   only:
-    - main
     - develop
+  script:
+    - pip3 install awscli
+    - aws s3 sync ./build s3://pocker-frontend-develop
+  tags: 
+  - deploy
+
+  deploy stage:
+  image: python:latest
+  stage: deploy
+  only:
     - stage
   script:
     - pip3 install awscli
-    - aws s3 sync ./build s3://pocker-frontend-{{branch}}
+    - aws s3 sync ./build s3://pocker-frontend-stage
   tags: 
   - deploy
