@@ -2,12 +2,16 @@ stages:
    - build
    - deploy
 
+variables: 
+  target: $CI_COMMIT_REF_NAME
+
 build react-app:
   image: node:14.19-alpine3.14 
   stage: build 
   only:    
     - main
     - develop
+    - stage
   script:
     - apk add --no-cache python2
     - yarn
@@ -19,14 +23,15 @@ build react-app:
   tags:
     - build
 
-deploy dev:
+deploy :
   image: python:latest
   stage: deploy
   only:
     - main
     - develop
+    - stage
   script:
     - pip3 install awscli
-    - aws s3 sync ./build s3://pocker-frontend-develop
+    - aws s3 sync ./build s3://pocker-frontend-$target
   tags: 
-  - deploy
+    - deploy
