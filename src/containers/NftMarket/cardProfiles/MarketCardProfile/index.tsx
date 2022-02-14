@@ -6,55 +6,16 @@ import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { nftMarketBidAction, nftMarketBuyNowAction } from 'store/nftMarket/actions';
-import { nftMarketSelector } from 'store/selectors';
+import { nftMarketSelector, uiSelector } from 'store/selectors';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
-
-export const historyData = [
-  {
-    events: 'listed',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-    date: '3.12.20',
-  },
-  {
-    events: 'disabled',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-    date: '3.12.20',
-  },
-];
-
-export const historyCol = [
-  { Header: 'Event', accessor: 'events' },
-  { Header: 'Address', accessor: 'address' },
-  { Header: 'Price', accessor: 'price' },
-  { Header: 'Date', accessor: 'date' },
-];
-
-export const bidData = [
-  {
-    number: '1',
-    price: '10 TRX',
-    address: 'cn1847cn...c8n2',
-  },
-  {
-    number: '2',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-  },
-];
-
-export const bidCol = [
-  { Header: 'Number', accessor: 'number' },
-  { Header: 'Price', accessor: 'price' },
-  { Header: 'Address', accessor: 'address' },
-];
 
 const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
+  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
+  const getBuyStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.BUY_NOW'));
 
   const {
     isActive: bidIsActive,
@@ -68,7 +29,10 @@ const MarketCardProfile: FC = () => {
 
   const buyNowHandler = useCallback(() => {
     if (!selectedNft) return;
-    dispatch(nftMarketBuyNowAction(selectedNft.attribute));
+    dispatch(nftMarketBuyNowAction(
+      selectedNft.attribute,
+      () => toggleBuy(),
+    ));
   }, [dispatch, selectedNft]);
 
   const bidHandler = useCallback((amount: string) => {
@@ -100,8 +64,14 @@ const MarketCardProfile: FC = () => {
           )}
         />
       )}
-      <SetPriceModal onToggle={toggleBid} onSubmit={bidHandler} isOpen={bidIsActive} />
+      <SetPriceModal
+        isLoading={getPutOnSaleStatus === 'REQUEST'}
+        onToggle={toggleBid}
+        onSubmit={bidHandler}
+        isOpen={bidIsActive}
+      />
       <MarketNftInteractionModal
+        isLoading={getBuyStatus === 'REQUEST'}
         onToggle={toggleBuy}
         onSubmit={buyNowHandler}
         isOpen={buyIsActive}

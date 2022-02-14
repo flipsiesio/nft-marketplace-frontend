@@ -32,6 +32,12 @@ const MyGalleryTab: FC = () => {
     setInWallet(value);
   }, []);
 
+  const onCardClick = useCallback((selectedCardId: number) => {
+    const selectedCard = myGallery.find((item) => item.cardId === selectedCardId);
+    console.log(selectedCard);
+    // dispatch(nftMarketSetStateAction({ selectedNft: selectedCard }));
+  }, []);
+
   return (
     <div className={styles.wrap}>
       <div className={styles.checkboxWrap}>
@@ -60,6 +66,7 @@ const MyGalleryTab: FC = () => {
             img={img}
             type="King" // TODO get type and price
             price="10"
+            onCardClick={onCardClick}
           />
         ))}
       </div>

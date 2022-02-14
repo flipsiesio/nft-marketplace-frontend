@@ -7,6 +7,7 @@ import cx from 'classnames';
 import styles from './styles.module.scss';
 
 type Props = {
+  isLoading?: boolean,
   title?: string
   isOpen?: boolean
   onToggle: () => void
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const MarketNftInteractionModal: FC<Props> = ({
+  isLoading,
   isOpen = false,
   onSubmit,
   onToggle,
@@ -46,7 +48,9 @@ const MarketNftInteractionModal: FC<Props> = ({
           </Text>
         </div>
       </div>
-      <Button className={styles.button} onClick={onSubmit}>{t('nftMarket.confirm')}</Button>
+      <Button className={styles.button} onClick={onSubmit} disabled={isLoading}>
+        {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
+      </Button>
     </Modal>
   );
 };

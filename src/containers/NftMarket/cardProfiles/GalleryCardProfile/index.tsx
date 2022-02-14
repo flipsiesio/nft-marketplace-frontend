@@ -1,21 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import {
   Button, SetPriceModal, Text,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
-import { nftMarketSelector } from 'store/selectors';
+import { nftMarketBidAction } from 'store/nftMarket/actions';
+import { nftMarketSelector, uiSelector } from 'store/selectors';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 
 const GalleryCardProfile: FC = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
+  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
 
   const {
     isActive: bidIsActive,
     onToggle: toggleBid,
   } = useToggle();
+
+  const bidHandler = useCallback((amount: string) => {
+    dispatch(nftMarketBidAction(amount));
+  }, [dispatch]);
+
   return (
     <>
       {selectedNft && (
@@ -34,7 +43,12 @@ const GalleryCardProfile: FC = () => {
           )}
         />
       )}
-      <SetPriceModal onToggle={toggleBid} onSubmit={() => {}} isOpen={bidIsActive} />
+      <SetPriceModal
+        isLoading={getPutOnSaleStatus === 'REQUEST'}
+        onToggle={toggleBid}
+        onSubmit={bidHandler}
+        isOpen={bidIsActive}
+      />
     </>
   );
 };

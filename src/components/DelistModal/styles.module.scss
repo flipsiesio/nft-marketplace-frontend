@@ -1,0 +1,17 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 30px;
+}

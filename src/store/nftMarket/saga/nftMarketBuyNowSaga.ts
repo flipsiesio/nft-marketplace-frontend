@@ -1,25 +1,27 @@
 import {
-  call, put, takeLatest,
+  put, select, takeLatest,
 } from 'redux-saga/effects';
+import { getTronContract } from 'utils';
+import { tronSelector } from 'store/selectors';
 import apiActions from 'store/api/actions';
-import { marketApiSaga } from 'store/api';
-import { ApiResponse, NftDto } from 'types';
-import { marketURL } from 'appConstants';
 import { nftMarketBuyNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
 function* nftMarketBuyNowSaga(
-  { type, payload }: ReturnType<typeof nftMarketBuyNowAction>,
+  { type, payload, callback }: ReturnType<typeof nftMarketBuyNowAction>,
 ) {
   try {
     yield put(apiActions.request(type));
 
-    const res: ApiResponse<NftDto[]> = yield call(marketApiSaga, {
-      method: 'post',
-      url: marketURL.MARKETPLACE.BUY_NOW(payload),
+    const from: string = yield select(tronSelector.getProp('address'));
+    const contract =
+      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_SALE as string);
+    yield contract.buy(payload).send({
+      from,
     });
 
-    yield put(apiActions.success(type, res.data));
+    yield put(apiActions.success(type));
+    callback();
   } catch (err) {
     yield put(apiActions.error(type, err));
   }

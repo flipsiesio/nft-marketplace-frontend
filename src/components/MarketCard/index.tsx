@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import cx from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'components';
@@ -12,7 +12,7 @@ type Props = {
   price: string
   className?: string
   link: string
-  onClick?: () => void
+  onCardClick: (selectedCardId: number) => void
 };
 
 const MarketCard: FC<Props> = ({
@@ -22,9 +22,13 @@ const MarketCard: FC<Props> = ({
   price,
   className,
   link,
-  onClick,
+  onCardClick,
 }) => {
   const { t } = useTranslation();
+
+  const onClick = useCallback(() => {
+    onCardClick(id);
+  }, []);
 
   return (
     <Link onClick={onClick} to={link} className={cx(styles.wrap, className)}>

@@ -31,6 +31,7 @@ export * from './MarketCard';
 export * from './Dropdown';
 export * from './NavTabs';
 export * from './SetPriceModal';
+export * from './DelistModal';
 export * from './MarketNftInteractionModal';
 export * from './NftArtwork';
 export { default as NeedExtenstionModal } from './NeedExtenstionModal';

@@ -1,44 +1,38 @@
 import React, {
-  ChangeEventHandler, FC, useCallback, useState,
+  FC, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Modal, Text, Input, Button,
+  Modal, Text, Button,
 } from 'components';
 import styles from './styles.module.scss';
 
 type Props = {
-  isLoading: boolean
+  isLoading: boolean,
   isOpen?: boolean
   onToggle: () => void
-  onSubmit: (value: string) => void
+  onSubmit: () => void
 };
 
-const SetPriceModal: FC<Props> = ({
+const DelistModal: FC<Props> = ({
   isLoading,
   isOpen = false,
   onSubmit,
   onToggle,
 }) => {
   const { t } = useTranslation();
-  const [value, setValue] = useState<string>('');
 
   const submitHandler = useCallback(() => {
-    onSubmit(value);
-  }, [onSubmit, value]);
-
-  const changeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => {
-    setValue(e.target.value);
-  }, []);
+    onSubmit();
+  }, [onSubmit]);
 
   return (
     <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
-      <Text className={styles.title}>{t('nftMarket.setPrice')}</Text>
-      <Input placeholder={t('nftMarket.setPrice')} value={value} onChange={changeHandler} />
+      <Text className={styles.title}>{t('nftMarket.cancelSale')}</Text>
       <Button
         className={styles.button}
-        onClick={submitHandler}
         disabled={isLoading}
+        onClick={submitHandler}
       >
         {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
       </Button>
@@ -46,4 +40,4 @@ const SetPriceModal: FC<Props> = ({
   );
 };
 
-export { SetPriceModal };
+export { DelistModal };

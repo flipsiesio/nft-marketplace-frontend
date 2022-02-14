@@ -46,6 +46,12 @@ const TabWithFilter: FC<Props> = ({
     }));
   }, [dispatch]);
 
+  const onCardClick = useCallback((selectedCardId: number) => {
+    const selectedCard = items.find((item) => item.cardId === selectedCardId);
+    console.log(selectedCard);
+    // dispatch(nftMarketSetStateAction({ selectedNft: selectedCard }));
+  }, []);
+
   return (
     <div className={styles.wrap}>
       <div className={styles.searchWrap}>
@@ -72,6 +78,7 @@ const TabWithFilter: FC<Props> = ({
             img={img}
             type="King" // TODO get type and price
             price="10"
+            onCardClick={onCardClick}
           />
         ))}
       </div>
