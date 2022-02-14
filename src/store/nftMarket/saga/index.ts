@@ -14,6 +14,8 @@ import nftMarketCancelBidSaga from './nftMarketCancelBidSaga';
 import nftMarketAcceptBidSaga from './nftMarketAcceptBidSaga';
 import nftMarketDelistSaga from './nftMarketDelistSaga';
 import nftMarketPutOnSaleSaga from './nftMarketPutOnSaleSaga';
+import nftMarketApproveSaga from './nftMarketApproveSaga';
+import nftMarketPutOnAuctionSaga from './nftMarketPutOnAuctionSaga';
 
 export default function* nftMarketSaga() {
   yield fork(nftMarketSignInSaga);
@@ -31,4 +33,6 @@ export default function* nftMarketSaga() {
   yield fork(nftMarketAcceptBidSaga);
   yield fork(nftMarketDelistSaga);
   yield fork(nftMarketPutOnSaleSaga);
+  yield fork(nftMarketApproveSaga);
+  yield fork(nftMarketPutOnAuctionSaga);
 }

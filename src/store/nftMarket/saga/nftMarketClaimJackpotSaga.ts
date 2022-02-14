@@ -1,10 +1,9 @@
 import {
-  call, put, select, takeLatest,
+  put, select, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { marketApiSaga } from 'store/api';
-import { ApiResponse, NftDto } from 'types';
-import { marketURL } from 'appConstants';
+import { toast } from 'react-toastify';
+import { getTronContract } from 'utils';
 import { nftMarketClaimJackpotAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { tronSelector } from '../../selectors';
@@ -16,21 +15,22 @@ function* nftMarketClaimJackpotSaga(
   try {
     yield put(apiActions.request(type));
     const address: string = yield select(tronSelector.getProp('address'));
-    const res: ApiResponse<NftDto[]> = yield call(marketApiSaga, {
+    /* const res: ApiResponse<NftDto[]> = yield call(marketApiSaga, {
       method: 'post',
       url: marketURL.MARKETPLACE.CLAIM_JACKPOT,
       data: {
         userAddress: address,
       },
-    });
-    /* const contract =
-      yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
-    yield contract.mintRandomFree().send({
-      address,
     }); */
-    yield put(apiActions.success(type, res.data));
-    callback();
+    const contract =
+      yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
+    const trxHash: string = yield contract.mintRandomFree(0, address).send({
+      address,
+    });
+    yield put(apiActions.success(type));
+    callback(trxHash);
   } catch (err) {
+    yield toast.error(err.message);
     yield put(apiActions.error(type, err));
   }
 }

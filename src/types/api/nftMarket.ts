@@ -4,17 +4,17 @@ export type NftMarketCheckSignRes = {
 };
 
 export enum NftType {
-  King,
-  Queen,
-  Jack,
-  Rare, // Jokers or One-of-ones
+  KING,
+  QUEEN,
+  JACK,
+  RARE, // Jokers or One-of-ones
 }
 
 export enum NftSuit {
-  Hearts,
-  Clubs,
-  Diamonds,
-  Spades,
+  HEARTS,
+  CLUBS,
+  DIAMONDS,
+  SPADES,
 }
 
 export type NftReqDto = {
@@ -27,20 +27,27 @@ export type NftReqDto = {
   };
 };
 
-export type NftRes = {
-  cardId: number
-};
-
 export type NftDto = {
   id: number;
-  type: string;
   suit: NftSuit;
-  attribute: string;
+  suitRarity: string;
+  face: NftType;
+  faceRarity: string;
+  clothes: string;
+  clothesRarity: string;
+  background: string;
+  backgroundRarity: string;
+  hair: string;
+  hairRarity: string;
+  borderline: string;
+  borderlineRarity: string;
+  egg: string;
+  eggRarity: string;
+  teardrop: string;
+  teardropRarity: string;
   owner: string;
-  listingPrice: number;
-  highestPrice: number;
-  bgColor?: string;
-  cardColor?: string;
+  listingPrice: string;
+  highestPrice: string;
 };
 
 export type AcceptBid = {

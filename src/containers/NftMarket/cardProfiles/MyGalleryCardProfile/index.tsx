@@ -1,21 +1,29 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, MarketNftInteractionModal, SetPriceModal, Text, DelistModal,
+  Button, SetPriceModal, Text, DelistModal, ApproveModal,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useDispatch } from 'react-redux';
-import { nftMarketDelistAction, nftMarketPutOnSaleAction } from 'store/nftMarket/actions';
-import styles from '../styles.module.scss';
+import {
+  nftMarketApproveAction,
+  nftMarketDelistAction,
+  nftMarketPutOnAuctionAction,
+  nftMarketPutOnSaleAction,
+} from 'store/nftMarket/actions';
 import { CardProfile } from '../../CardProfile';
+import styles from '../styles.module.scss';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const [actionType, setActionType] = useState('');
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getDelistStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.DELIST'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
+  const getPutOnAuctionStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_AUCTION'));
+  const getApproveStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.APPROVE'));
 
   const {
     isActive: putOnSaleActive,
@@ -23,8 +31,13 @@ const MyGalleryCardProfile: FC = () => {
   } = useToggle();
 
   const {
-    isActive: sellActive,
-    onToggle: toggleSell,
+    isActive: putOnAuctionActive,
+    onToggle: togglePutOnAuction,
+  } = useToggle();
+
+  const {
+    isActive: approveActive,
+    onToggle: toggleApprove,
   } = useToggle();
 
   const {
@@ -39,6 +52,13 @@ const MyGalleryCardProfile: FC = () => {
     }, () => togglePutOnSale()));
   }, [dispatch]);
 
+  const putOnAuctionHandler = useCallback((amount: string) => {
+    dispatch(nftMarketPutOnAuctionAction({
+      price: Number(amount),
+      nftAddress: selectedNft!.id,
+    }, () => togglePutOnAuction()));
+  }, [dispatch]);
+
   const onAcceptBidClick = useCallback(() => {
     // TODO when will ready backend
   }, [dispatch]);
@@ -49,6 +69,27 @@ const MyGalleryCardProfile: FC = () => {
       () => toggleDelist(),
     ));
   }, []);
+
+  const approveHandler = useCallback(() => {
+    dispatch(nftMarketApproveAction({
+      actionType,
+      tokenId: selectedNft!.id,
+    }, () => {
+      toggleApprove();
+      if (actionType === 'sale') togglePutOnSale();
+      else togglePutOnAuction();
+    }));
+  }, [actionType]);
+
+  const onAuctionButtonClick = () => {
+    setActionType('auction');
+    toggleApprove();
+  };
+
+  const onSaleButtonClick = () => {
+    setActionType('sale');
+    toggleApprove();
+  };
 
   return (
     <>
@@ -61,10 +102,17 @@ const MyGalleryCardProfile: FC = () => {
             <div className={styles.buttonContainer}>
               <div className={styles.buttonWrap}>
                 <div>
+                  <Text className={styles.buttonLabel}>{t('nftMarket.listingPrice')}</Text>
+                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
+                </div>
+                <Button onClick={onSaleButtonClick} className={styles.button}>{t('nftMarket.putOnSale')}</Button>
+              </div>
+              <div className={styles.buttonWrap}>
+                <div>
                   <Text className={styles.buttonLabel}>{t('nftMarket.highestBid')}</Text>
                   <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
                 </div>
-                <Button onClick={togglePutOnSale} className={styles.button}>{t('nftMarket.putOnSale')}</Button>
+                <Button onClick={onAuctionButtonClick} className={styles.button}>{t('nftMarket.putOnAuction')}</Button>
               </div>
             </div>
           )}
@@ -76,19 +124,23 @@ const MyGalleryCardProfile: FC = () => {
         onSubmit={putOnSaleHandler}
         isOpen={putOnSaleActive}
       />
+      <SetPriceModal
+        isLoading={getPutOnAuctionStatus === 'REQUEST'}
+        onToggle={togglePutOnAuction}
+        onSubmit={putOnAuctionHandler}
+        isOpen={putOnAuctionActive}
+      />
       <DelistModal
         isLoading={getDelistStatus === 'REQUEST'}
         onToggle={toggleDelist}
         onSubmit={delistHandler}
         isOpen={delistActive}
       />
-      <MarketNftInteractionModal
-        onToggle={toggleSell}
-        onSubmit={() => {}}
-        title={t('nftMarket.sellTitle')}
-        price={selectedNft ? `${selectedNft.highestPrice}` : ''}
-        isOpen={sellActive}
-        id={selectedNft?.id}
+      <ApproveModal
+        isLoading={getApproveStatus === 'REQUEST'}
+        onToggle={toggleApprove}
+        onSubmit={approveHandler}
+        isOpen={approveActive}
       />
     </>
   );

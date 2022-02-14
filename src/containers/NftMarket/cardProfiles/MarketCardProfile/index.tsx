@@ -30,7 +30,7 @@ const MarketCardProfile: FC = () => {
   const buyNowHandler = useCallback(() => {
     if (!selectedNft) return;
     dispatch(nftMarketBuyNowAction(
-      selectedNft.attribute,
+      selectedNft.id,
       () => toggleBuy(),
     ));
   }, [dispatch, selectedNft]);
@@ -75,7 +75,7 @@ const MarketCardProfile: FC = () => {
         onToggle={toggleBuy}
         onSubmit={buyNowHandler}
         isOpen={buyIsActive}
-        id={selectedNft?.id}
+        id={selectedNft!.id}
         price={selectedNft ? `${selectedNft.highestPrice}` : ''}
         title={t('nftMarket.purchaseConfirmation')}
       />

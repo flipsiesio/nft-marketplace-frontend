@@ -1,10 +1,10 @@
-import { NftDto, NftRes } from '../api';
+import { NftDto } from '../api';
 
 export type NftMarketState = {
   isAuth: boolean
-  market: NftRes[]
-  gallery: NftRes[]
-  myGallery: NftRes[]
+  market: NftDto[]
+  gallery: NftDto[]
+  myGallery: NftDto[]
   accessToken?: string
   refreshToken?: string
   selectedNft?: NftDto

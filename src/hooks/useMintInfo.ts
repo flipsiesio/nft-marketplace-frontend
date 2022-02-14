@@ -2,7 +2,6 @@ import { TokenOptions } from 'appConstants';
 import { useEffect, useState } from 'react';
 import { getTronContract } from '../utils';
 
-// TODO: Here need NFT amount
 export const useMintInfo = () => {
   const [price, setPrice] = useState(0);
   const [avaliableNftAmount, setAvaliableNftAmount] = useState(0);

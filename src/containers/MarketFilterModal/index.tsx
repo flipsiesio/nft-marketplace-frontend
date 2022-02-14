@@ -27,8 +27,8 @@ const MarketFilterModal: FC<Props> = ({
       highestBid: false,
       highestPrice: false,
     },
-    type: NftType.King,
-    suit: NftSuit.Diamonds,
+    type: NftType.KING,
+    suit: NftSuit.DIAMONDS,
   });
   const { t } = useTranslation();
 
@@ -135,32 +135,32 @@ const MarketFilterModal: FC<Props> = ({
       >
         <div className={styles.checkboxWrap}>
           <Checkbox
-            checked={NftType.King === data.type}
-            onChange={typeHandler(NftType.King)}
+            checked={NftType.KING === data.type}
+            onChange={typeHandler(NftType.KING)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="King"
             label={t('marketFilterModal.type.king')}
           />
           <Checkbox
-            checked={NftType.Jack === data.type}
-            onChange={typeHandler(NftType.Jack)}
+            checked={NftType.JACK === data.type}
+            onChange={typeHandler(NftType.JACK)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Jack"
             label={t('marketFilterModal.type.jack')}
           />
           <Checkbox
-            checked={NftType.Queen === data.type}
-            onChange={typeHandler(NftType.Queen)}
+            checked={NftType.QUEEN === data.type}
+            onChange={typeHandler(NftType.QUEEN)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Queen"
             label={t('marketFilterModal.type.queen')}
           />
           <Checkbox
-            checked={NftType.Rare === data.type}
-            onChange={typeHandler(NftType.Rare)}
+            checked={NftType.RARE === data.type}
+            onChange={typeHandler(NftType.RARE)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Rare"
@@ -178,32 +178,32 @@ const MarketFilterModal: FC<Props> = ({
       >
         <div className={styles.checkboxWrap}>
           <Checkbox
-            checked={NftSuit.Hearts === data.suit}
-            onChange={suitHandler(NftSuit.Hearts)}
+            checked={NftSuit.HEARTS === data.suit}
+            onChange={suitHandler(NftSuit.HEARTS)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Hearts"
             label={t('marketFilterModal.suit.hearts')}
           />
           <Checkbox
-            checked={NftSuit.Clubs === data.suit}
-            onChange={suitHandler(NftSuit.Clubs)}
+            checked={NftSuit.CLUBS === data.suit}
+            onChange={suitHandler(NftSuit.CLUBS)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Clubs"
             label={t('marketFilterModal.suit.clubs')}
           />
           <Checkbox
-            checked={NftSuit.Diamonds === data.suit}
-            onChange={suitHandler(NftSuit.Diamonds)}
+            checked={NftSuit.DIAMONDS === data.suit}
+            onChange={suitHandler(NftSuit.DIAMONDS)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Diamonds"
             label={t('marketFilterModal.suit.diamonds')}
           />
           <Checkbox
-            checked={NftSuit.Spades === data.suit}
-            onChange={suitHandler(NftSuit.Spades)}
+            checked={NftSuit.SPADES === data.suit}
+            onChange={suitHandler(NftSuit.SPADES)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Spades"

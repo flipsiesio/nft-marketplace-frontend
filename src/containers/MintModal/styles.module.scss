@@ -30,3 +30,12 @@
 .selector {
   width: 374px;
 }
+
+.link {
+  color: $whiteColor;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primaryColor;
+  }
+}

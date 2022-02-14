@@ -54,8 +54,8 @@ export const bidCol = [
 type Props = {
   onAcceptBidClick?: () => void,
   isMyGallery?: boolean,
-  buttons: JSX.Element
-  selectedNft: NftDto
+  buttons: JSX.Element,
+  selectedNft: NftDto,
 };
 
 const CardProfile: FC<Props> = ({
@@ -116,7 +116,7 @@ const CardProfile: FC<Props> = ({
       <div className={styles.body}>
         <div className={styles.bodyLabels}>
           <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>
-          <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>0x...12exOs</Text></Text>
+          <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
@@ -124,19 +124,59 @@ const CardProfile: FC<Props> = ({
 
           <div className={styles.mobileBodyLabels}>
             <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>
-            <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>0x...12exOs</Text></Text>
+            <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
           </div>
 
           <div className={styles.content}>
             <div className={styles.rowWrap}>
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
-              <ProfileAttribute className={styles.profileAttribute} head="Suit" value="Hearts" percent="25%" />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Suit"
+                value={String(selectedNft.suit)}
+                percent={selectedNft.suitRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Face"
+                value={String(selectedNft.face)}
+                percent={selectedNft.faceRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Teardrop"
+                value={selectedNft.teardrop}
+                percent={selectedNft.teardropRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Egg"
+                value={selectedNft.egg}
+                percent={selectedNft.eggRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Hair"
+                value={selectedNft.hair}
+                percent={selectedNft.hairRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Clothes"
+                value={selectedNft.clothes}
+                percent={selectedNft.clothesRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Border line"
+                value={String(selectedNft.borderline)}
+                percent={selectedNft.borderlineRarity}
+              />
+              <ProfileAttribute
+                className={styles.profileAttribute}
+                head="Background"
+                value={selectedNft.background}
+                percent={selectedNft.backgroundRarity}
+              />
             </div>
             {buttons}
           </div>

@@ -7,8 +7,10 @@ import {
 import { SelectOption } from 'types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { routes, TRONSCAN_URL } from 'appConstants';
 import { useShallowSelector } from 'hooks';
-import { uiSelector } from 'store/selectors';
+import { tronSelector, uiSelector } from 'store/selectors';
 import { nftMarketMintNowAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
 import styles from './styles.module.scss';
@@ -30,10 +32,13 @@ const MintModal: FC<Props> = ({
 }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const history = useHistory();
+  const { price, avaliableNftAmount } = useMintInfo();
   const [selectedOption, setSelectedOption] = useState<SelectOption>();
   const getMintStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.MINT_NOW'));
-
-  const { price, avaliableNftAmount } = useMintInfo();
+  const address = useShallowSelector(tronSelector.getProp('address'));
+  const [trxHash, setTrxHash] = useState('');
+  const [isSent, setSent] = useState(false);
 
   const selectHandler = useCallback((option) => {
     setSelectedOption(option as SelectOption);
@@ -43,47 +48,71 @@ const MintModal: FC<Props> = ({
     if (!selectedOption) return;
     dispatch(nftMarketMintNowAction(
       parseInt(selectedOption.value, 36),
-      () => {
-        onToggle();
+      (res: string) => {
+        setTrxHash(res);
+        setSent(true);
       },
     ));
-  }, [selectedOption, dispatch, onToggle]);
+  }, [selectedOption, dispatch, onToggle, setSent]);
+
+  const seeGalleryHandler = useCallback(() => {
+    onToggle();
+    history.push(routes.nftMarket.myGalleryProfile.root);
+  }, [history]);
 
   return (
     <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
-      <Text className={styles.title}>
-        {t('explore.mintModalTitle1')}
-        &nbsp;
-        {`${
-          selectedOption ?
-            price * Number(selectedOption?.value) : price
-        } TRX`}
-        &nbsp;
-        {t('explore.mintModalTitle2')}
-      </Text>
-      <Select
-        value={selectedOption}
-        onChange={selectHandler}
-        className={styles.selector}
-        options={options}
-      />
-      <Button
-        disabled={!selectedOption || getMintStatus === 'REQUEST'}
-        onClick={mintHandler}
-        className={styles.button}
-      >
-        {getMintStatus === 'REQUEST' ? t('explore.loading') : t('explore.mint')}
-      </Button>
-      <Text className={styles.label}>
-        {t('explore.mintModalLabel1')}
-        &nbsp;
-        {/* TODO get amount from backend */}
-        <Text className={styles.green} tag="span">
-          {avaliableNftAmount}
-        </Text>
-        &nbsp;
-        {t('explore.mintModalLabel2')}
-      </Text>
+      {!isSent && (
+        <>
+          <Text className={styles.title}>
+            {t('explore.mintModalTitle1')}
+            &nbsp;
+            {`${
+              selectedOption ?
+                price * Number(selectedOption?.value) : price
+            } TRX`}
+            &nbsp;
+            {t('explore.mintModalTitle2')}
+          </Text>
+          <Select
+            value={selectedOption}
+            onChange={selectHandler}
+            className={styles.selector}
+            options={options}
+          />
+          <Button
+            disabled={!selectedOption || getMintStatus === 'REQUEST'}
+            onClick={mintHandler}
+            className={styles.button}
+          >
+            {getMintStatus === 'REQUEST' ? t('explore.loading') : t('explore.mint')}
+          </Button>
+          <Text className={styles.label}>
+            {t('explore.mintModalLabel1')}
+            &nbsp;
+            <Text className={styles.green} tag="span">
+              {avaliableNftAmount}
+            </Text>
+            &nbsp;
+            {t('explore.mintModalLabel2')}
+          </Text>
+        </>
+      )}
+      {isSent && (
+        <>
+          <Text>{t('claimModalJackpot.nftSentLabel')}</Text>
+          <Text>{address}</Text>
+          <Button
+            className={styles.button}
+            onClick={seeGalleryHandler}
+          >
+            {t('claimModalJackpot.seeInGallery')}
+          </Button>
+          <a className={styles.link} href={`${TRONSCAN_URL}${trxHash}`} target="_blank" rel="noopener noreferrer">
+            {t('claimModalJackpot.seeOnTronscan')}
+          </a>
+        </>
+      )}
     </Modal>
   );
 };

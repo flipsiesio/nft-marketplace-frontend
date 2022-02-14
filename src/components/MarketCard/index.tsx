@@ -1,37 +1,37 @@
 import React, { FC, useCallback } from 'react';
 import cx from 'classnames';
+import { NftDto } from 'types';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'components';
 import styles from './styles.module.scss';
 import { Text } from '../Typography';
 
 type Props = {
+  item: NftDto,
   id: number
   img: string
   type: string
   price: string
   className?: string
-  link: string
-  onCardClick: (selectedCardId: number) => void
+  onCardClick: (selectedItem: NftDto) => void
 };
 
 const MarketCard: FC<Props> = ({
+  item,
   id,
   img,
   type,
   price,
   className,
-  link,
   onCardClick,
 }) => {
   const { t } = useTranslation();
 
   const onClick = useCallback(() => {
-    onCardClick(id);
+    onCardClick(item);
   }, []);
 
   return (
-    <Link onClick={onClick} to={link} className={cx(styles.wrap, className)}>
+    <div onClick={onClick} className={cx(styles.wrap, className)}>
       <Text className={styles.title}>
         {t('nftMarket.id')}
         &nbsp;
@@ -52,7 +52,7 @@ const MarketCard: FC<Props> = ({
           </Text>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

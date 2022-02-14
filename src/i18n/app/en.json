@@ -192,6 +192,7 @@
     "cancelSale": "Are you sure that you want to cancel the sale?",
     "purchaseConfirmation": "Purchase confirmation",
     "putOnSale": "Put on sale",
+    "putOnAuction": "Put on auction",
     "sellTitle": "Are you sure that you want to sell NFT",
     "tableCols": {
       "event": "Event",
@@ -201,6 +202,8 @@
       "number": "Number"
     },
     "owner": "Owner",
+    "approve": "Approve",
+    "approveText": "Please approve your action",
     "listingPrice": "Listing Price",
     "highestBid": "Highest Bid",
     "attributes": "Attributes"
@@ -277,6 +280,7 @@
   "claimModalJackpot": {
     "address1": "Your wallet address",
     "address2": "is eligible for",
+    "jackpotNft": "Jackpot NFT!",
     "claim": "Claim",
     "nftSentLabel": "You NFT has been successfully sent to your wallet address",
     "claimLabel": "You have to claim your NFT by confirming the transaction in your TronLink wallet",

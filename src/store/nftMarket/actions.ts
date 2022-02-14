@@ -38,7 +38,7 @@ export const nftMarketSelectProfileAction = (payload?: NftDto) => ({
   payload,
 });
 
-export const nftMarketBuyNowAction = (payload: string, callback: () => void) => ({
+export const nftMarketBuyNowAction = (payload: number, callback: () => void) => ({
   type: NftMarketActionTypes.BUY_NOW,
   payload,
   callback,
@@ -63,14 +63,23 @@ export const nftMarketSoldAction = (payload: SoldReq) => ({
   payload,
 });
 
-export const nftMarketMintNowAction = (payload: number, callback: () => void) => ({
+export const nftMarketMintNowAction = (payload: number, callback: (trxHash: string) => void) => ({
   type: NftMarketActionTypes.MINT_NOW,
   payload,
   callback,
 });
 
-export const nftMarketClaimJackpotAction = (callback: () => void) => ({
+export const nftMarketClaimJackpotAction = (callback: (trxHash: string) => void) => ({
   type: NftMarketActionTypes.CLAIM_JACKPOT,
+  callback,
+});
+
+export const nftMarketApproveAction = (payload: {
+  actionType: string,
+  tokenId: number,
+}, callback: (actionType: string) => void) => ({
+  type: NftMarketActionTypes.APPROVE,
+  payload,
   callback,
 });
 
@@ -94,6 +103,15 @@ export const nftMarketPutOnSaleAction = (payload: {
   nftAddress: number,
 }, callback: () => void) => ({
   type: NftMarketActionTypes.PUT_ON_SALE,
+  payload,
+  callback,
+});
+
+export const nftMarketPutOnAuctionAction = (payload: {
+  price: number,
+  nftAddress: number,
+}, callback: () => void) => ({
+  type: NftMarketActionTypes.PUT_ON_AUCTION,
   payload,
   callback,
 });

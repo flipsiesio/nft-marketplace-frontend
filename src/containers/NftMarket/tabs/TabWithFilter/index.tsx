@@ -1,17 +1,18 @@
 import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useToggle } from 'hooks';
 import { Icon, Input, MarketCard } from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
-import { NftReqDto, NftRes } from 'types';
+import { NftReqDto, NftDto } from 'types';
 import { FilterData } from 'types/containers';
-import { useDispatch } from 'react-redux';
-import { nftMarketGetGalleryAction } from 'store/nftMarket/actions';
+import { nftMarketGetGalleryAction, nftMarketSetStateAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
-  items: NftRes[]
+  items: NftDto[]
   link: string
 };
 
@@ -20,6 +21,7 @@ const TabWithFilter: FC<Props> = ({
   link,
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { t } = useTranslation();
 
   const { isActive: modalActive, onToggle: toggleModal } = useToggle();
@@ -46,10 +48,9 @@ const TabWithFilter: FC<Props> = ({
     }));
   }, [dispatch]);
 
-  const onCardClick = useCallback((selectedCardId: number) => {
-    const selectedCard = items.find((item) => item.cardId === selectedCardId);
-    console.log(selectedCard);
-    // dispatch(nftMarketSetStateAction({ selectedNft: selectedCard }));
+  const onCardClick = useCallback((selectedItem: NftDto) => {
+    dispatch(nftMarketSetStateAction({ selectedNft: selectedItem }));
+    history.push(link);
   }, []);
 
   return (
@@ -69,15 +70,15 @@ const TabWithFilter: FC<Props> = ({
       </div>
 
       <div className={styles.cardContainer}>
-        {items.map(({ cardId }) => (
+        {items.map((item) => (
           <MarketCard
+            item={item}
             className={styles.card}
-            key={cardId}
-            link={link}
-            id={cardId}
+            key={item.id}
+            id={item.id}
             img={img}
-            type="King" // TODO get type and price
-            price="10"
+            type={String(item.face)}
+            price={item.highestPrice}
             onCardClick={onCardClick}
           />
         ))}
