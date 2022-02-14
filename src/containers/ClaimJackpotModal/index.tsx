@@ -1,11 +1,13 @@
 import React, { FC, useCallback, useState } from 'react';
 import { Button, Modal, Text } from 'components';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import { routes } from 'appConstants';
 import { useDispatch } from 'react-redux';
-import styles from './styles.module.scss';
 import { useShallowSelector } from '../../hooks';
 import { tronSelector } from '../../store/selectors';
 import { nftMarketClaimJackpotAction } from '../../store/nftMarket/actions';
+import styles from './styles.module.scss';
 
 type Props = {
   isOpen: boolean
@@ -18,6 +20,7 @@ const ClaimJackpotModal: FC<Props> = ({
 }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const history = useHistory();
 
   const [isSent, setSent] = useState(false);
 
@@ -28,6 +31,10 @@ const ClaimJackpotModal: FC<Props> = ({
       setSent(true);
     }));
   }, [dispatch, setSent]);
+
+  const seeGalleryHandler = useCallback(() => {
+    history.push(routes.nftMarket.myGalleryProfile.root);
+  }, [history]);
 
   return (
     <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
@@ -48,7 +55,12 @@ const ClaimJackpotModal: FC<Props> = ({
         <>
           <Text>{t('claimModalJackpot.nftSentLabel')}</Text>
           <Text>{address}</Text>
-          <Button className={styles.button}>{t('claimModalJackpot.seeInGallery')}</Button>
+          <Button
+            className={styles.button}
+            onClick={seeGalleryHandler}
+          >
+            {t('claimModalJackpot.seeInGallery')}
+          </Button>
           <button className={styles.linkButton} type="button">{t('claimModalJackpot.seeOnTronscan')}</button>
         </>
       )}

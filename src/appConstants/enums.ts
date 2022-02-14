@@ -44,3 +44,11 @@ export enum WSType {
   ERROR = 'error',
   CLAIMED = 'emitClaimed',
 }
+
+export enum TokenOptions {
+  COLORIZED_OPTION = 0,
+  CARDS_WITH_EGGS_OPTION = 1,
+  CARDS_WITH_TEARS_OPTION = 2,
+  JOKERS_OPTION = 3,
+  RARE_OPTION = 4,
+}

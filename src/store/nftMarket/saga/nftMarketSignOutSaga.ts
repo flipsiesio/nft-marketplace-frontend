@@ -6,7 +6,7 @@ import { NftMarketActionTypes } from '../actionTypes';
 import { history } from '../../../utils';
 import { routes } from '../../../appConstants';
 
-function* nftMarketSighOutSaga() {
+function* nftMarketSignOutSaga() {
   yield put(nftMarketSetStateAction({
     isAuth: false,
     refreshToken: undefined,
@@ -18,5 +18,5 @@ function* nftMarketSighOutSaga() {
 }
 
 export default function* listener() {
-  yield takeLatest(NftMarketActionTypes.SIGN_OUT, nftMarketSighOutSaga);
+  yield takeLatest(NftMarketActionTypes.SIGN_OUT, nftMarketSignOutSaga);
 }

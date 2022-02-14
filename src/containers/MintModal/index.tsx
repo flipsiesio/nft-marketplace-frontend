@@ -1,13 +1,17 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, {
+  FC, useCallback, useState,
+} from 'react';
 import {
   Button, Modal, Select, Text,
 } from 'components';
 import { SelectOption } from 'types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import styles from './styles.module.scss';
+import { useShallowSelector } from 'hooks';
+import { uiSelector } from 'store/selectors';
 import { nftMarketMintNowAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
+import styles from './styles.module.scss';
 
 type Props = {
   isOpen: boolean
@@ -27,7 +31,9 @@ const MintModal: FC<Props> = ({
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [selectedOption, setSelectedOption] = useState<SelectOption>();
-  const { price } = useMintInfo();
+  const getMintStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.MINT_NOW'));
+
+  const { price, avaliableNftAmount } = useMintInfo();
 
   const selectHandler = useCallback((option) => {
     setSelectedOption(option as SelectOption);
@@ -48,7 +54,10 @@ const MintModal: FC<Props> = ({
       <Text className={styles.title}>
         {t('explore.mintModalTitle1')}
         &nbsp;
-        {`${price} TRX`}
+        {`${
+          selectedOption ?
+            price * Number(selectedOption?.value) : price
+        } TRX`}
         &nbsp;
         {t('explore.mintModalTitle2')}
       </Text>
@@ -58,12 +67,20 @@ const MintModal: FC<Props> = ({
         className={styles.selector}
         options={options}
       />
-      <Button disabled={!selectedOption} onClick={mintHandler} className={styles.button}>{t('explore.mint')}</Button>
+      <Button
+        disabled={!selectedOption || getMintStatus === 'REQUEST'}
+        onClick={mintHandler}
+        className={styles.button}
+      >
+        {getMintStatus === 'REQUEST' ? t('explore.loading') : t('explore.mint')}
+      </Button>
       <Text className={styles.label}>
         {t('explore.mintModalLabel1')}
         &nbsp;
         {/* TODO get amount from backend */}
-        <Text className={styles.green} tag="span">361</Text>
+        <Text className={styles.green} tag="span">
+          {avaliableNftAmount}
+        </Text>
         &nbsp;
         {t('explore.mintModalLabel2')}
       </Text>

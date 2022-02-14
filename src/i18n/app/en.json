@@ -183,10 +183,13 @@
     "tradingHistory": "Trading History",
     "bids": "Bids",
     "bid": "Bid",
+    "delist": "Delist",
+    "accept": "Accept",
     "buyNow": "Buy now",
     "price": "Price",
     "setPrice": "Set price",
     "confirm": "Confirm",
+    "cancelSale": "Are you sure that you want to cancel the sale?",
     "purchaseConfirmation": "Purchase confirmation",
     "putOnSale": "Put on sale",
     "sellTitle": "Are you sure that you want to sell NFT",
@@ -235,6 +238,7 @@
   },
   "explore": {
     "title": "Explore Flipsies NFT",
+    "loading": "Loading",
     "mintModalTitle1": "You need to pay",
     "mintModalTitle2": "for",
     "mintModalLabel1": "Hurry, only",
@@ -271,7 +275,7 @@
     }
   },
   "claimModalJackpot": {
-    "address1": "You wallet address",
+    "address1": "Your wallet address",
     "address2": "is eligible for",
     "claim": "Claim",
     "nftSentLabel": "You NFT has been successfully sent to your wallet address",

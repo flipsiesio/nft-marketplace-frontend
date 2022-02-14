@@ -1,9 +1,9 @@
 export enum Network {
   mainnet = 'Mainnet',
-  shasta = 'Shasta',
+  shasta = 'Nile',
 }
 
 export const NETWORK_URL: Record<Network, string> = {
   [Network.mainnet]: 'https://api.trongrid.io',
-  [Network.shasta]: 'https://api.shasta.trongrid.io',
+  [Network.shasta]: 'https://nile.trongrid.io',
 };

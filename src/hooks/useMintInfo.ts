@@ -1,9 +1,11 @@
+import { TokenOptions } from 'appConstants';
 import { useEffect, useState } from 'react';
 import { getTronContract } from '../utils';
 
 // TODO: Here need NFT amount
 export const useMintInfo = () => {
   const [price, setPrice] = useState(0);
+  const [avaliableNftAmount, setAvaliableNftAmount] = useState(0);
 
   useEffect(() => {
     const init = async () => {
@@ -12,12 +14,28 @@ export const useMintInfo = () => {
 
       const nftPrice = await contract.price().call();
       setPrice(nftPrice);
+
+      const factoryContract =
+        await getTronContract(process.env.REACT_APP_CONTRACT_CARD_FACTORY as string);
+      const colorizedNftAmount =
+        await factoryContract.availableTokens(TokenOptions.COLORIZED_OPTION).call();
+      const eggsNftAmount =
+        await factoryContract.availableTokens(TokenOptions.CARDS_WITH_EGGS_OPTION).call();
+      const tearsNftAmount =
+        await factoryContract.availableTokens(TokenOptions.CARDS_WITH_TEARS_OPTION).call();
+      const jokersNftAmount =
+        await factoryContract.availableTokens(TokenOptions.JOKERS_OPTION).call();
+      const rareNftAmount = await factoryContract.availableTokens(TokenOptions.RARE_OPTION).call();
+      const amount = colorizedNftAmount.toNumber() + eggsNftAmount.toNumber() +
+      tearsNftAmount.toNumber() + jokersNftAmount.toNumber() + rareNftAmount.toNumber();
+      setAvaliableNftAmount(amount);
     };
 
     init();
-  }, []);
+  }, [price, avaliableNftAmount]);
 
   return {
     price,
+    avaliableNftAmount,
   };
 };

@@ -1,5 +1,5 @@
 import { fork } from 'redux-saga/effects';
-import nftMarketSignInSaga from './nftMarketSighInSaga';
+import nftMarketSignInSaga from './nftMarketSignInSaga';
 import nftMarketGetProfileSaga from './nftMarketGetProfileSaga';
 import nftMarketGetMarketSaga from './nftMarketGetMarketSaga';
 import nftMarketGetGallerySaga from './nftMarketGetGallerySaga';

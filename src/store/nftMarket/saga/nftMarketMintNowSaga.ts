@@ -16,6 +16,7 @@ function* nftMarketMintNowSaga(
     const from: string = yield select(tronSelector.getProp('address'));
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
+    // const nftPrice: number = yield contract.price().call();
     yield contract.mintRandom(payload).send({
       from,
     });

@@ -38,9 +38,10 @@ export const nftMarketSelectProfileAction = (payload?: NftDto) => ({
   payload,
 });
 
-export const nftMarketBuyNowAction = (payload: string) => ({
+export const nftMarketBuyNowAction = (payload: string, callback: () => void) => ({
   type: NftMarketActionTypes.BUY_NOW,
   payload,
+  callback,
 });
 
 export const nftMarketBidAction = (payload: string) => ({
@@ -82,11 +83,17 @@ export const nftMarketAcceptBidAction = (payload: AcceptBid) => ({
   payload,
 });
 
-export const nftMarketDelistAction = () => ({
+export const nftMarketDelistAction = (payload: number, callback: () => void) => ({
   type: NftMarketActionTypes.DELIST,
+  payload,
+  callback,
 });
 
-export const nftMarketPutOnSaleAction = (payload: string) => ({
+export const nftMarketPutOnSaleAction = (payload: {
+  price: number,
+  nftAddress: number,
+}, callback: () => void) => ({
   type: NftMarketActionTypes.PUT_ON_SALE,
   payload,
+  callback,
 });

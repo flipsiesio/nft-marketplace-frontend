@@ -22,7 +22,7 @@ function* checkSign(msg: string, address: string) {
   return res;
 }
 
-function* nftMarketSighInSaga({ type, callback }: ReturnType<typeof nftMarketSignInAction>) {
+function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSignInAction>) {
   try {
     yield put(apiActions.request(type));
     const address: string = yield select(tronSelector.getProp('address'));
@@ -63,5 +63,5 @@ function* nftMarketSighInSaga({ type, callback }: ReturnType<typeof nftMarketSig
 }
 
 export default function* listener() {
-  yield takeLatest(NftMarketActionTypes.SIGN_IN, nftMarketSighInSaga);
+  yield takeLatest(NftMarketActionTypes.SIGN_IN, nftMarketSignInSaga);
 }

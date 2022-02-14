@@ -9,6 +9,7 @@ import { nftMarketClaimJackpotAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { tronSelector } from '../../selectors';
 
+// TODO get permission and amount of nft to claim
 function* nftMarketClaimJackpotSaga(
   { type, callback }: ReturnType<typeof nftMarketClaimJackpotAction>,
 ) {
@@ -22,7 +23,11 @@ function* nftMarketClaimJackpotSaga(
         userAddress: address,
       },
     });
-
+    /* const contract =
+      yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
+    yield contract.mintRandomFree().send({
+      address,
+    }); */
     yield put(apiActions.success(type, res.data));
     callback();
   } catch (err) {
