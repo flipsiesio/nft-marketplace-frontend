@@ -15,7 +15,7 @@ import {
   NftMarketPage,
   MarketCardProfilePage,
   GalleryCardProfilePage,
-  MyGalleryCardProfilePage, Explore,
+  MyGalleryCardProfilePage, ExplorePage,
 } from 'pages';
 import styles from './styles.module.scss';
 
@@ -52,7 +52,7 @@ const Routes = () => {
             path={routes.nftMarket.myGalleryProfile.root}
             component={MyGalleryCardProfilePage}
           />
-          <Route path={routes.explore.root} component={Explore} />
+          <Route path={routes.explore.root} component={ExplorePage} />
           <Redirect from="*" to={routes.notFound.root} />
         </Switch>
       </CSSTransition>

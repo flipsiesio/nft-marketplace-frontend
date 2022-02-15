@@ -27,3 +27,5 @@ export const marketURL = {
     OFFER: (address: string) => `/marketplace/nft/offer/${address}`,
   },
 };
+
+export const flipsiesGameUrl = `${process.env.REACT_APP_URL}game`;

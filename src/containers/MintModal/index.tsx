@@ -11,7 +11,7 @@ import { useHistory } from 'react-router';
 import { routes, TRONSCAN_URL } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { tronSelector, uiSelector } from 'store/selectors';
-import { nftMarketMintNowAction } from '../../store/nftMarket/actions';
+import { nftMarketGetMyGalleryAction, nftMarketMintNowAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
 import styles from './styles.module.scss';
 
@@ -57,6 +57,7 @@ const MintModal: FC<Props> = ({
 
   const seeGalleryHandler = useCallback(() => {
     onToggle();
+    dispatch(nftMarketGetMyGalleryAction());
     history.push(routes.nftMarket.myGalleryProfile.root);
   }, [history]);
 

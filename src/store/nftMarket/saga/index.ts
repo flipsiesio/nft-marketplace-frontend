@@ -3,7 +3,7 @@ import nftMarketSignInSaga from './nftMarketSignInSaga';
 import nftMarketGetProfileSaga from './nftMarketGetProfileSaga';
 import nftMarketGetMarketSaga from './nftMarketGetMarketSaga';
 import nftMarketGetGallerySaga from './nftMarketGetGallerySaga';
-import nftMarketGetMyGallerySaga from './nftMakretGetMyGallerySaga';
+import nftMarketGetMyGallerySaga from './nftMarketGetMyGallerySaga';
 import nftMarketBuyNowSaga from './nftMarketBuyNowSaga';
 import nftMarketBidSaga from './nftMarketBidSaga';
 import nftMarketSoldSaga from './nftMarketSoldSaga';

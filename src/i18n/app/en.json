@@ -249,7 +249,9 @@
     "mint": "Mint",
     "mintNow": "Mint Now!",
     "claimNft": "Claim Jackpot NFT",
-    "tryLuck": "Try your luck, buy a random NFT now and see which one you'll get!"
+    "tryLuck": "Try your luck, buy a random NFT now and see which one you'll get!",
+    "notEligible": "is not eligible for any Jackpot NFTs",
+    "playWin": "Play and win"
   },
   "exploreNft": {
     "kingOfHearts": {

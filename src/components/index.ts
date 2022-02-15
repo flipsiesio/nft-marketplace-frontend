@@ -35,4 +35,5 @@ export * from './DelistModal';
 export * from './MarketNftInteractionModal';
 export * from './NftArtwork';
 export * from './ApproveModal';
+export * from './InfoModal';
 export { default as NeedExtenstionModal } from './NeedExtenstionModal';

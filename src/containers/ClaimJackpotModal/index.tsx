@@ -6,7 +6,7 @@ import { routes, TRONSCAN_URL } from 'appConstants';
 import { useDispatch } from 'react-redux';
 import { useJackpotInfo, useShallowSelector } from 'hooks';
 import { tronSelector } from '../../store/selectors';
-import { nftMarketClaimJackpotAction } from '../../store/nftMarket/actions';
+import { nftMarketClaimJackpotAction, nftMarketGetMyGalleryAction } from '../../store/nftMarket/actions';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -37,6 +37,7 @@ const ClaimJackpotModal: FC<Props> = ({
 
   const seeGalleryHandler = useCallback(() => {
     onToggle();
+    dispatch(nftMarketGetMyGalleryAction());
     history.push(routes.nftMarket.myGalleryProfile.root);
   }, [history]);
 

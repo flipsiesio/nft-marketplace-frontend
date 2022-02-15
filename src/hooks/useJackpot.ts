@@ -1,7 +1,11 @@
+import { TronStatus } from 'appConstants';
+import { useShallowSelector } from 'hooks';
 import { useEffect, useState } from 'react';
+import { tronSelector } from 'store/selectors';
 
 export const useJackpotInfo = () => {
   const [avaliableNftAmount, setAvaliableNftAmount] = useState(0);
+  const { status, address } = useShallowSelector(tronSelector.getState);
 
   useEffect(() => {
     const init = async () => {
@@ -16,9 +20,10 @@ export const useJackpotInfo = () => {
       const amount = 0;
       setAvaliableNftAmount(amount);
     };
-
-    init();
-  }, [avaliableNftAmount]);
+    if (status === TronStatus.ADDRESS_SELECTED) {
+      init();
+    }
+  }, [status, address]);
 
   return {
     avaliableNftAmount,

@@ -1,10 +1,13 @@
-import { TokenOptions } from 'appConstants';
+import { TokenOptions, TronStatus } from 'appConstants';
+import { useShallowSelector } from 'hooks';
 import { useEffect, useState } from 'react';
-import { getTronContract } from '../utils';
+import { tronSelector } from 'store/selectors';
+import { getTronContract } from 'utils';
 
 export const useMintInfo = () => {
   const [price, setPrice] = useState(0);
   const [avaliableNftAmount, setAvaliableNftAmount] = useState(0);
+  const { status, address } = useShallowSelector(tronSelector.getState);
 
   useEffect(() => {
     const init = async () => {
@@ -30,8 +33,10 @@ export const useMintInfo = () => {
       setAvaliableNftAmount(amount);
     };
 
-    init();
-  }, [price, avaliableNftAmount]);
+    if (status === TronStatus.ADDRESS_SELECTED) {
+      init();
+    }
+  }, [status, address]);
 
   return {
     price,

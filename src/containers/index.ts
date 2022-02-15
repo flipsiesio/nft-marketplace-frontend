@@ -18,3 +18,4 @@ export * from './FlipsiesNft';
 export * from './MintModal';
 export * from './ClaimJackpotModal';
 export * from './Game/GameCombinations/context';
+export * from './Explore';

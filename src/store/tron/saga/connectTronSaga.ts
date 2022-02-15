@@ -38,6 +38,9 @@ function* getBalance(address: string) {
 
       return 0;
     } catch (err) {
+      yield put(tronSetStateAction({
+        status: window.tronWeb ? TronStatus.AVAILABLE : TronStatus.NOT_AVAILABLE,
+      }));
       if (i < MAX_ATTEMPT_GET_BALANCE - 1) {
         if (err.message === 'Network Error') {
           yield delay(MS_RETRY_GET_BALANCE);
@@ -59,7 +62,7 @@ function getPlayerName(address: string) {
   return '';
 }
 
-function* setConnect() {
+function* setConnect(type: string) {
   if (window.tronWeb) {
     const address = window.tronWeb.defaultAddress?.base58 || '';
     const networkUrl = window.tronWeb.fullNode.host;
@@ -73,26 +76,30 @@ function* setConnect() {
       if (!needNetworkName) {
         throw new Error(ERRORS.notSupportNetwork);
       }
-      throw new Error(ERRORS.wrongNetwork(needNetworkName));
-    }
-
-    const payload: TronState = {
-      address,
-      name: yield getPlayerName(address),
-      status: address ? TronStatus.ADDRESS_SELECTED : TronStatus.AVAILABLE,
-      balance: yield getBalance(address),
-      network,
-    };
-
-    yield put({
-      type: TronActionTypes.CONNECT_SUCCESS,
-      payload,
-    });
-
-    if (address) {
-      yield createUser({ address: window.tronWeb.address.toHex(address) });
+      yield put(apiActions.error(type, ERRORS.wrongNetwork(needNetworkName)));
+      yield put(tronSetStateAction({
+        status: window.tronWeb ? TronStatus.AVAILABLE : TronStatus.NOT_AVAILABLE,
+      }));
+      toast.warn(ERRORS.wrongNetwork(needNetworkName));
     } else {
-      throw new Error(ERRORS.signInToTroLink);
+      const payload: TronState = {
+        address,
+        name: yield getPlayerName(address),
+        status: address ? TronStatus.ADDRESS_SELECTED : TronStatus.AVAILABLE,
+        balance: yield getBalance(address),
+        network,
+      };
+
+      yield put({
+        type: TronActionTypes.CONNECT_SUCCESS,
+        payload,
+      });
+
+      if (address) {
+        yield createUser({ address: window.tronWeb.address.toHex(address) });
+      } else {
+        throw new Error(ERRORS.signInToTroLink);
+      }
     }
   } else {
     yield put({
@@ -101,16 +108,30 @@ function* setConnect() {
   }
 }
 
-function* handleTronListener() {
+function* handleChangeAccount(address: string, name: string) {
+  const payload: Partial<TronState> = {
+    address,
+    name,
+    balance: yield getBalance(address),
+  };
+  yield put({
+    type: TronActionTypes.SET_STATE,
+    payload,
+  });
+}
+
+function* handleTronListener(type: string) {
   const tronChannel = yield call(createWindowMessageChannel);
   while (true) {
     const e = yield take(tronChannel);
-    if (['setAccount', 'setNode'].includes(e.data.message?.action)) {
-      if (!e.data.message.data.address) {
-        yield put(logoutTronAction());
-      } else {
-        yield setConnect();
-      }
+    if (['setNode'].includes(e.data.message?.action)) {
+      yield setConnect(type);
+    }
+    if (['setAccount'].includes(e.data.message?.action)) {
+      yield handleChangeAccount(e.data.message.data.address, e.data.message.data.name);
+    }
+    if (['disconnectWeb', 'disconnect'].includes(e.data.message?.action)) {
+      yield put(logoutTronAction());
     }
   }
 }
@@ -120,9 +141,9 @@ function* connectTronSaga({ type, meta }: ReturnType<typeof connectTronAction>) 
     yield put(apiActions.request(type));
 
     if (!window.tronWeb?.defaultAddress?.base58) yield delay(MS_RETRY_TRON);
-    yield setConnect();
+    yield setConnect(type);
 
-    yield handleTronListener();
+    yield handleTronListener(type);
 
     if (meta) history.push(meta);
   } catch (err) {
