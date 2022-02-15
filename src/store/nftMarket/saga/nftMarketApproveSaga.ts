@@ -24,7 +24,6 @@ function* nftMarketApproveSaga(
     yield contract.approve(contractName, payload.tokenId).send({
       from,
     });
-    console.log(payload.actionType);
     yield put(apiActions.success(type));
     callback(payload.actionType);
     yield toast.success('Approve successful!');
