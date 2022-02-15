@@ -17,6 +17,10 @@ $width: 232px;
   margin-top: 30px;
 }
 
+.img {
+  width: 232px;
+}
+
 .text {
   font-size: 14px;
   line-height: 26px;
@@ -24,7 +28,7 @@ $width: 232px;
 
 .cards {
   @include flexbox();
-
+  width: 100%;
   & > img:first-child {
     margin-right: 10px;
   }
