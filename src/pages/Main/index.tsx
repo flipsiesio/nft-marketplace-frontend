@@ -6,7 +6,6 @@ import { meConfirmEmailAction } from 'store/me/actions';
 import { referralJoinByAction } from 'store/referral/actions';
 import {
   FlipsiesNft,
-  Preview,
 } from 'containers';
 import { getUrlParameter } from 'utils';
 import {
@@ -15,24 +14,6 @@ import {
   QUERY_CONFIRMATION_CODE,
   TronStatus,
 } from 'appConstants';
-import { Icon } from 'components';
-import SwiperCore, {
-  Navigation,
-} from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
-import { NavigationOptions } from 'swiper/types/modules/navigation';
-import cx from 'classnames';
-import styles from './styles.module.scss';
-import 'swiper/swiper.scss';
-import 'swiper/modules/navigation/navigation.scss';
-
-SwiperCore.use([Navigation]);
-
-const navigation: NavigationOptions = {
-  prevEl: '.prev-btn',
-  nextEl: '.next-btn',
-  disabledClass: styles.disabledButton,
-};
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -70,21 +51,7 @@ const Main = () => {
   }, [confirmationCode]);
 
   return (
-    <Swiper navigation={navigation}>
-      <button type="button" className={cx('prev-btn', styles.prevButton, styles.navButton)}>
-        <Icon icon="chevron" />
-      </button>
-      <button type="button" className={cx('next-btn', styles.nextButton, styles.navButton)}>
-        <Icon icon="chevron" />
-      </button>
-
-      <SwiperSlide>
-        <Preview className={styles.preview} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <FlipsiesNft />
-      </SwiperSlide>
-    </Swiper>
+    <FlipsiesNft />
   );
 };
 

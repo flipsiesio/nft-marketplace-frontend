@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cx from 'classnames';
-import previewLogo from 'assets/img/previewLogo.png';
-import cardsChips from 'assets/img/cardsChips.png';
+import previewLogo from 'assets/img/previewLogo.svg';
+import cardsChips from 'assets/img/cardsChips.svg';
 import styles from './styles.module.scss';
 
 type Props = {
