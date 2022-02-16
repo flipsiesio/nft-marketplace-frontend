@@ -41,16 +41,26 @@ const Routes = () => {
             exact
             path={routes.nftMarket.root}
             component={NftMarketPage}
+            checkAccess
           />
 
           <Route path={routes.notFound.root} component={NotFound} />
           <Route path={routes.termsOfServices.root} component={TermsOfServices} />
 
-          <Route path={routes.nftMarket.marketProfile.root} component={MarketCardProfilePage} />
-          <Route path={routes.nftMarket.galleryProfile.root} component={GalleryCardProfilePage} />
-          <Route
+          <ProtectedRoute
+            path={routes.nftMarket.marketProfile.root}
+            component={MarketCardProfilePage}
+            checkAccess
+          />
+          <ProtectedRoute
+            path={routes.nftMarket.galleryProfile.root}
+            component={GalleryCardProfilePage}
+            checkAccess
+          />
+          <ProtectedRoute
             path={routes.nftMarket.myGalleryProfile.root}
             component={MyGalleryCardProfilePage}
+            checkAccess
           />
           <Route path={routes.explore.root} component={ExplorePage} />
           <Redirect from="*" to={routes.notFound.root} />

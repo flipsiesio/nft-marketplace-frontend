@@ -33,6 +33,7 @@ function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSig
 
       if (checkRes) {
         if (callback) callback();
+        yield put(apiActions.success(type, checkRes.data));
         return;
       }
     }
