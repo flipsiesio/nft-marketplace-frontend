@@ -255,27 +255,27 @@
   },
   "exploreNft": {
     "kingOfHearts": {
-      "title": "The Suicide King",
+      "title": "Suicide King",
       "label": "The King of Hearts is usually depicted with a sword, although earlier decks often featured him with a battle axe. He is typically referred to as the \"suicide king\" because on a traditional deck he is pictured as stabbing himself with a sword, or at least holding a sword behind his head."
     },
     "kingOfDiamonds": {
-      "title": "The Man With The Axe",
+      "title": "Man With The Axe",
       "label": "This designation for the King of Diamonds reflects the fact that this is the only king not carrying a sword. That is why he is often referred to as The Man With The Axe."
     },
     "queenOfSpades": {
-      "title": "The Black Widow",
+      "title": "Black Widow",
       "label": "The nickname \"Black Widow\" for the Queen of Spades is closely connected with the game of Hearts, which is often referred to with alternative names like Black Lady, Black Maria, and Black Widow. In this trick-taking game, the idea is to avoid collecting points, with Hearts cards all worth one point each, while the Queen of Spades (sometimes dubbed \"Calamity Jane\" in this context) costs a massive 13 penalty points."
     },
     "queenOfClubs": {
-      "title": "The Flower Queen",
+      "title": "Flower Queen",
       "label": "The Queen of Clubs is known as the \"Flower Queen\" for an obvious reason - she is usually depicted holding a Flower. Some decks picture all the Queens with flowers, with the style adjusted according to their suit."
     },
     "jackOfDiamonds": {
-      "title": "The Laughing Boy",
+      "title": "Laughing Boy",
       "label": "Jacks are also called Knaves, and are inferior to the more regal Kings and Queens, making them more playful. The Jack of Diamonds is known as the Laughing Boy, and in some variations of Poker and Black Jack, players are expected to chuckle every time this card is played or drawn."
     },
     "jackOfSpadesAndJackOfHearts": {
-      "title": "Tho One Eyed Jacks",
+      "title": "One Eyed Jacks",
       "label": "Unlike most of the other court cards, the Jack of Spades and the Jack of Hearts both have a side profile, hence their designation as \"one-eyed Jacks\". The only King facing sideways is the King of Diamonds, and together with the Jack of Spades and the Jack of Hearts, these three cards are sometimes referred to as the one-eyed royals."
     }
   },
