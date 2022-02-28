@@ -12,7 +12,7 @@ import KingOfDiamonds from 'assets/img/nft/KingOfDiamonds.svg';
 import QueenOfSpades from 'assets/img/nft/QueenOfSpades.svg';
 import QueenOfClubs from 'assets/img/nft/QueenOfClubs.svg';
 import { flipsiesGameUrl } from 'appConstants/url';
-import JackOfDiamonds from 'assets/img/nft/JackOfDiamonds.svg';
+import JackOfDiamonds from 'assets/img/nft/JackOfDiamonds.png';
 import JackOfSpades from 'assets/img/nft/JackOfSpades.svg';
 import JackOfHearts from 'assets/img/nft/JackOfHearts.svg';
 import { TronStatus } from 'appConstants';
