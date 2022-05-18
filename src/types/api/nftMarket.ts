@@ -27,27 +27,22 @@ export type NftReqDto = {
   };
 };
 
+export type NftProperty = {
+  label: string
+  rarity: string
+  name: string
+};
+
 export type NftDto = {
   id: number;
   suit: NftSuit;
   suitRarity: string;
   face: NftType;
   faceRarity: string;
-  clothes: string;
-  clothesRarity: string;
-  background: string;
-  backgroundRarity: string;
-  hair: string;
-  hairRarity: string;
-  borderline: string;
-  borderlineRarity: string;
-  egg: string;
-  eggRarity: string;
-  teardrop: string;
-  teardropRarity: string;
   owner: string;
   listingPrice: string;
   highestPrice: string;
+  properties: NftProperty[]
 };
 
 export type AcceptBid = {
@@ -60,7 +55,23 @@ export type SoldReq = {
   nftId: string,
 };
 
+type Traits = {
+  [key: string]: {
+    rarity: string,
+    main: {
+      name: string
+      color: {
+        color: string
+        name: string
+      }
+    }
+  }
+};
+
 export type CardMetadata = {
-  face: string
-  suit: string
+  face: NftType
+  suit: NftSuit
+  metadata: {
+    traits: Traits
+  }
 };
