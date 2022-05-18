@@ -5,7 +5,6 @@ export { default as ProtectedRoute } from './ProtectedRoute';
 export { default as Routes } from './Routes';
 export { default as TronProvider } from './TronProvider';
 export { default as FullPreloader } from './FullPreloader';
-export { default as TrxUsdConverter } from './TrxUsdConverter';
 export * from './NftMarket';
 export * from './MarketFilterModal';
 export * from './FlipsiesNft';
