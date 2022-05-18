@@ -6,21 +6,6 @@ import { nftMarketSelector } from '../selectors';
 import { marketURL } from '../../appConstants';
 import { nftMarketSignOutAction } from '../nftMarket/actions';
 
-const client = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
-
-export default function* apiSaga(
-  requestConfig: AxiosRequestConfig,
-): Generator<CallEffect | PutEffect> {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    return yield call<(config: AxiosRequestConfig) => void>(client, requestConfig);
-  } catch(err) {
-    throw err;
-  }
-}
-
 const authClient = axios.create({
   baseURL: process.env.REACT_APP_AUTH_API_URL,
   validateStatus: (status) => {
@@ -72,6 +57,19 @@ export function* marketApiSaga(requestConfig: AxiosRequestConfig) {
   // eslint-disable-next-line no-useless-catch
   try {
     return yield call<(config: AxiosRequestConfig) => void>(marketClient, requestConfig);
+  } catch(err) {
+    throw err;
+  }
+}
+
+export const cardsCliClient = axios.create({
+  baseURL: process.env.REACT_APP_CARDS_CLI_API_URL,
+});
+
+export function* cardsCliApiSaga(requestConfig: AxiosRequestConfig) {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    return yield call<(config: AxiosRequestConfig) => void>(cardsCliClient, requestConfig);
   } catch(err) {
     throw err;
   }
