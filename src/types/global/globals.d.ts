@@ -44,7 +44,6 @@ interface Window {
   },
 }
 
-declare module 'react-jdenticon';
 declare module '*.mp3' {
   const src: string;
   export default src;

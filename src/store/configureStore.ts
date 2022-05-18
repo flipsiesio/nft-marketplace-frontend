@@ -8,7 +8,6 @@ import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import createExpirationTransform from 'redux-persist-transform-expire';
 import storage from 'redux-persist/lib/storage';
-import { wsGameMiddleware, wsRateMiddleware } from './middlewares';
 
 import reducer from './rootReducer';
 import rootSaga from './rootSaga';
@@ -53,8 +52,6 @@ export default (initialState: { [key: string]: never } = {}) => {
     composeEnhancers(
       applyMiddleware(
         sagaMiddleware,
-        wsGameMiddleware(),
-        wsRateMiddleware(),
       ),
     ),
   );

@@ -10,7 +10,7 @@ import {
 import apiActions from 'store/api/actions';
 import { TronState } from 'types';
 import { TronStatus, ERRORS } from 'appConstants';
-import { createUser, history, getNetworkName } from 'utils';
+import { history, getNetworkName } from 'utils';
 import { toast } from 'react-toastify';
 import { connectTronAction, logoutTronAction, tronSetStateAction } from '../actions';
 import { TronActionTypes } from '../actionTypes';
@@ -94,12 +94,6 @@ function* setConnect(type: string) {
         type: TronActionTypes.CONNECT_SUCCESS,
         payload,
       });
-
-      if (address) {
-        yield createUser({ address: window.tronWeb.address.toHex(address) });
-      } else {
-        throw new Error(ERRORS.signInToTroLink);
-      }
     }
   } else {
     yield put({
