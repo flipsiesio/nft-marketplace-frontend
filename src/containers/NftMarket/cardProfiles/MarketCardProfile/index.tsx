@@ -1,21 +1,38 @@
-import React, { FC, useCallback } from 'react';
+import React, {
+  FC, useCallback, useEffect, useState,
+} from 'react';
 import {
   Button, MarketNftInteractionModal, SetPriceModal, Text,
 } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
-import { nftMarketBidAction, nftMarketBuyNowAction } from 'store/nftMarket/actions';
+import { nftMarketBidAction, nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
+import { useLocation } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
+import { cardsCliClient } from '../../../../store/api';
+import { marketURL } from '../../../../appConstants';
 
 const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const location = useLocation();
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
   const getBuyStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.BUY_NOW'));
+  const [svg, setSvg] = useState<string>();
+
+  useEffect(() => {
+    const search = new URLSearchParams(location.search);
+    const id = search.get('id');
+    if (id) dispatch(nftMarketGetProfileAction(id));
+
+    cardsCliClient.get(marketURL.MARKETPLACE.CARD_SVG, { params: { id } }).then((res) => {
+      setSvg(res.data.content);
+    });
+  }, []);
 
   const {
     isActive: bidIsActive,
@@ -43,6 +60,7 @@ const MarketCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          svg={svg}
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>

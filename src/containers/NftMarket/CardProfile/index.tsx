@@ -1,9 +1,10 @@
-import React, { FC, useCallback, useMemo } from 'react';
+import React, {
+  FC, useCallback, useEffect, useMemo, useRef,
+} from 'react';
 import {
   Button,
   Icon, NavTabs, Table, Text,
 } from 'components';
-import img from 'assets/img/card.png';
 import { useHistory } from 'react-router-dom';
 import { NftDto, TabItem } from 'types';
 import { useTranslation } from 'react-i18next';
@@ -56,6 +57,7 @@ type Props = {
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,
+  svg?: string
 };
 
 const CardProfile: FC<Props> = ({
@@ -63,9 +65,22 @@ const CardProfile: FC<Props> = ({
   isMyGallery,
   buttons,
   selectedNft,
+  svg,
 }) => {
+  const svgRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
   const history = useHistory();
+
+  useEffect(() => {
+    if (svgRef.current && svg) {
+      const blob = new Blob([svg], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const image = document.createElement('img');
+      image.style.minWidth = '241px';
+      image.src = url;
+      svgRef.current.appendChild(image);
+    }
+  });
 
   const goBack = useCallback(() => {
     history.goBack();
@@ -120,7 +135,7 @@ const CardProfile: FC<Props> = ({
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
-          <img className={styles.img} src={img} alt="img" />
+          <div ref={svgRef} />
 
           <div className={styles.mobileBodyLabels}>
             <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>

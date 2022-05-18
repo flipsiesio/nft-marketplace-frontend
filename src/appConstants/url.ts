@@ -25,6 +25,8 @@ export const marketURL = {
     BUY_OFFER: (address: string) => `/marketplace/nft/buy-offer/${address}`,
     SOLD: (address: string) => `/marketplace/nft/sold/${address}`,
     OFFER: (address: string) => `/marketplace/nft/offer/${address}`,
+    CARD: '/cards/get',
+    CARD_SVG: '/cards/svg',
   },
 };
 

@@ -50,7 +50,10 @@ const TabWithFilter: FC<Props> = ({
 
   const onCardClick = useCallback((selectedItem: NftDto) => {
     dispatch(nftMarketSetStateAction({ selectedNft: selectedItem }));
-    history.push(link);
+    history.push({
+      pathname: link,
+      search: `?id=${selectedItem.id}`,
+    });
   }, []);
 
   return (

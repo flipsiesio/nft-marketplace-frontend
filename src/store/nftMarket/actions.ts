@@ -29,8 +29,11 @@ export const nftMarketSignInAction = (callback?: () => void) => ({
   callback,
 });
 
-export const nftMarketGetProfileAction = () => ({
+export const nftMarketGetProfileAction = (id: string) => ({
   type: NftMarketActionTypes.GET_PROFILE,
+  payload: {
+    id,
+  },
 });
 
 export const nftMarketSelectProfileAction = (payload?: NftDto) => ({

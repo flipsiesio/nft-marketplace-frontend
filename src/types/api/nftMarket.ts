@@ -59,3 +59,8 @@ export type SoldReq = {
   buyerAddress: string,
   nftId: string,
 };
+
+export type CardMetadata = {
+  face: string
+  suit: string
+};
