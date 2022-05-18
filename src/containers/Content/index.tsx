@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
-import { Header, Footer, GameCombinationsProvider } from 'containers';
+import { Header, Footer } from 'containers';
 import { routes } from 'appConstants';
 import styles from './styles.module.scss';
 
@@ -18,7 +18,7 @@ const Content: FC<PropsWithChildren<Props>> = ({
   const { pathname } = useLocation();
 
   return (
-    <GameCombinationsProvider>
+    <>
       <Header
         withLogo={withHeaderLogo}
         pathname={pathname}
@@ -28,7 +28,7 @@ const Content: FC<PropsWithChildren<Props>> = ({
         <div className={styles.bg} />
       </main>
       {![routes.notFound.root, routes.game.root].includes(pathname) && <Footer />}
-    </GameCombinationsProvider>
+    </>
   );
 };
 
