@@ -8,7 +8,7 @@ import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
 import { NftReqDto, NftDto } from 'types';
 import { FilterData } from 'types/containers';
-import { nftMarketGetGalleryAction, nftMarketSetStateAction } from 'store/nftMarket/actions';
+import { nftMarketGetGalleryAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
@@ -49,7 +49,6 @@ const TabWithFilter: FC<Props> = ({
   }, [dispatch]);
 
   const onCardClick = useCallback((selectedItem: NftDto) => {
-    dispatch(nftMarketSetStateAction({ selectedNft: selectedItem }));
     history.push({
       pathname: link,
       search: `?id=${selectedItem.id}`,

@@ -19,7 +19,6 @@ const initialState: NftMarketState = {
   market: [NftExample],
   myGallery: [NftExample],
   isAuth: false,
-  selectedNft: NftExample,
 };
 
 export default (state = initialState, action: NftMarketAction): NftMarketState => {

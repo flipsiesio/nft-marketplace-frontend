@@ -26,7 +26,7 @@ const mePersistConfig = {
 const nftMarketConfig = {
   key: 'nftMarket',
   storage,
-  whitelist: ['refreshToken', 'accessToken', 'isAuth', 'signedMsg', 'selectedNft'] as Array<keyof NftMarketState>,
+  whitelist: ['refreshToken', 'accessToken', 'isAuth', 'signedMsg'] as Array<keyof NftMarketState>,
 };
 
 const reducers = {

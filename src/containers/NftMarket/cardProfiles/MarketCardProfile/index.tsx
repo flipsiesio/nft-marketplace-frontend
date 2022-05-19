@@ -93,7 +93,7 @@ const MarketCardProfile: FC = () => {
         onToggle={toggleBuy}
         onSubmit={buyNowHandler}
         isOpen={buyIsActive}
-        id={selectedNft!.id}
+        id={selectedNft?.id || 0}
         price={selectedNft ? `${selectedNft.highestPrice}` : ''}
         title={t('nftMarket.purchaseConfirmation')}
       />

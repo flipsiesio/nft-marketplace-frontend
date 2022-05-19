@@ -57,7 +57,8 @@ export type SoldReq = {
 
 type Traits = {
   [key: string]: {
-    rarity: string,
+    frequency: number,
+    rarity: number,
     main: {
       name: string
       color: {
@@ -72,6 +73,8 @@ export type CardMetadata = {
   face: NftType
   suit: NftSuit
   metadata: {
-    traits: Traits
+    traits: Traits,
+    faceFrequency: number,
+    suitFrequency: number
   }
 };

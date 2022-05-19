@@ -8,6 +8,18 @@ import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
+const percent = (value?: number) => {
+  if (value === undefined) return '';
+
+  if (Number.isInteger(value)) {
+    return `${value}%`;
+  }
+
+  return `${value.toFixed((3))}%`;
+};
+
+const exceptionsProperty = ['CardSuit'];
+
 function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarketGetProfileAction>) {
   try {
     yield put(apiActions.request(type));
@@ -21,10 +33,10 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
     });
 
     const properties: NftProperty[] = Object.values(res.data.metadata.traits).map((trait) => ({
-      rarity: trait.rarity ? `${parseFloat(trait.rarity).toFixed(2)}%` : '',
-      name: trait.main.name,
+      rarity: trait.frequency ? percent(trait.frequency) : '',
+      name: trait.main.name[0].toUpperCase() + trait.main.name.slice(1),
       label: `${trait.main.color.name} (#${trait.main.color.color})`,
-    }));
+    })).filter((trait) => !exceptionsProperty.includes(trait.name));
 
     yield put(nftMarketSelectProfileAction({
       id: Number(payload.id),
@@ -34,8 +46,8 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       properties,
       owner: '',
       highestPrice: '10',
-      faceRarity: '25%',
-      suitRarity: '25%',
+      faceRarity: percent(res.data.metadata.faceFrequency),
+      suitRarity: percent(res.data.metadata.suitFrequency),
     }));
     console.log(res);
     yield put(apiActions.success(type, res.data));
