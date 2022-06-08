@@ -32,13 +32,10 @@ export default (state = initialState, action: NftMarketAction): NftMarketState =
       };
     case NftMarketActionTypes.SELECT_PROFILE: {
       const { payload } = action;
-      if (payload) {
-        return {
-          ...state,
-          selectedNft: payload,
-        };
-      }
-      return state;
+      return {
+        ...state,
+        selectedNft: payload,
+      };
     }
     default:
       return state;

@@ -4,27 +4,25 @@ export type NftMarketCheckSignRes = {
 };
 
 export enum NftType {
-  KING,
-  QUEEN,
-  JACK,
-  RARE, // Jokers or One-of-ones
+  KING= 'King',
+  QUEEN = 'Queen',
+  JACK = 'Jack',
+  RARE = 'Rare', // Jokers or One-of-ones
 }
 
 export enum NftSuit {
-  HEARTS,
-  CLUBS,
-  DIAMONDS,
-  SPADES,
+  HEARTS= 'Hearts',
+  CLUBS = 'Clubs',
+  DIAMONDS = 'Diamonds',
+  SPADES = 'Spades',
 }
 
 export type NftReqDto = {
   limit: number;
   skip: number;
   sort?: { price: boolean } | { bid: boolean };
-  filter?: {
-    type?: NftType;
-    suit?: NftSuit;
-  };
+  face?: NftType;
+  suit?: NftSuit;
 };
 
 export type NftProperty = {

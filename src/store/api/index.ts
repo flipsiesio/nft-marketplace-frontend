@@ -61,16 +61,3 @@ export function* marketApiSaga(requestConfig: AxiosRequestConfig) {
     throw err;
   }
 }
-
-export const cardsCliClient = axios.create({
-  baseURL: process.env.REACT_APP_CARDS_CLI_API_URL,
-});
-
-export function* cardsCliApiSaga(requestConfig: AxiosRequestConfig) {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    return yield call<(config: AxiosRequestConfig) => void>(cardsCliClient, requestConfig);
-  } catch(err) {
-    throw err;
-  }
-}

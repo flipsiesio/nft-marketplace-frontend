@@ -47,9 +47,12 @@ export const nftMarketBuyNowAction = (payload: number, callback: () => void) => 
   callback,
 });
 
-export const nftMarketBidAction = (payload: string) => ({
+export const nftMarketBidAction = (price: string, id: number) => ({
   type: NftMarketActionTypes.BID,
-  payload,
+  payload: {
+    price,
+    id,
+  },
 });
 
 export const nftMarketCancelBidAction = () => ({

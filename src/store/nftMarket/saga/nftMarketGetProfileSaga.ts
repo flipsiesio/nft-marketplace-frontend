@@ -2,7 +2,7 @@ import {
   call, put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { cardsCliApiSaga } from 'store/api';
+import { marketApiSaga } from 'store/api';
 import { ApiResponse, CardMetadata, NftProperty } from 'types';
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
@@ -24,12 +24,9 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
   try {
     yield put(apiActions.request(type));
 
-    const res: ApiResponse<CardMetadata> = yield call(cardsCliApiSaga, {
+    const res: ApiResponse<CardMetadata> = yield call(marketApiSaga, {
       method: 'get',
-      url: marketURL.MARKETPLACE.CARD,
-      params: {
-        cardId: payload.id,
-      },
+      url: `${marketURL.MARKETPLACE.CARD}/${payload.id}`,
     });
 
     const properties: NftProperty[] = Object.values(res.data.metadata.traits).map((trait) => ({

@@ -6,9 +6,9 @@ import { useToggle } from 'hooks';
 import { Icon, Input, MarketCard } from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
-import { NftReqDto, CardMetadata } from 'types';
+import { CardMetadata } from 'types';
 import { FilterData } from 'types/containers';
-import { nftMarketGetGalleryAction } from 'store/nftMarket/actions';
+import { nftMarketGetMarketAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
@@ -27,33 +27,33 @@ const TabWithFilter: FC<Props> = ({
   const { isActive: modalActive, onToggle: toggleModal } = useToggle();
 
   const applyFilters = useCallback((data: FilterData) => {
-    let sort: NftReqDto['sort'] = { price: false };
+    console.log(data);
+    // let sort: NftReqDto['sort'] = { price: false };
+    //
+    // if (data.price.highestPrice) {
+    //   sort = { price: true };
+    // }
+    //
+    // if (data.price.highestBid) {
+    //   sort = { bid: true };
+    // }
 
-    if (data.price.highestPrice) {
-      sort = { price: true };
-    }
-
-    if (data.price.highestBid) {
-      sort = { bid: true };
-    }
-
-    dispatch(nftMarketGetGalleryAction({
-      sort,
-      filter: {
-        suit: data.suit,
-        type: data.type,
-      },
+    dispatch(nftMarketGetMarketAction({
+      // sort,
+      face: data.type,
+      suit: data.suit,
       limit: 10,
       skip: 0,
     }));
   }, [dispatch]);
 
   const onCardClick = useCallback((id: number) => {
+    dispatch(nftMarketSelectProfileAction(undefined));
     history.push({
       pathname: link,
       search: `?id=${id}`,
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.wrap}>

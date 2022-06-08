@@ -35,6 +35,8 @@ interface Window {
       callback?: () => void
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ) => Promise<any[]>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    BigNumber: any
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Hand: any,
