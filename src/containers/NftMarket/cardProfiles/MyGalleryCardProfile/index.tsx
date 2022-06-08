@@ -48,14 +48,14 @@ const MyGalleryCardProfile: FC = () => {
   const putOnSaleHandler = useCallback((amount: string) => {
     dispatch(nftMarketPutOnSaleAction({
       price: Number(amount),
-      nftAddress: selectedNft!.id,
+      nftAddress: selectedNft!.cardId,
     }, () => togglePutOnSale()));
   }, [dispatch]);
 
   const putOnAuctionHandler = useCallback((amount: string) => {
     dispatch(nftMarketPutOnAuctionAction({
       price: Number(amount),
-      nftAddress: selectedNft!.id,
+      nftAddress: selectedNft!.cardId,
     }, () => togglePutOnAuction()));
   }, [dispatch]);
 
@@ -65,7 +65,7 @@ const MyGalleryCardProfile: FC = () => {
 
   const delistHandler = useCallback(() => {
     dispatch(nftMarketDelistAction(
-      selectedNft!.id,
+      selectedNft!.cardId,
       () => toggleDelist(),
     ));
   }, []);
@@ -73,7 +73,7 @@ const MyGalleryCardProfile: FC = () => {
   const approveHandler = useCallback(() => {
     dispatch(nftMarketApproveAction({
       actionType,
-      tokenId: selectedNft!.id,
+      tokenId: selectedNft!.cardId,
     }, () => {
       toggleApprove();
       if (actionType === 'sale') togglePutOnSale();

@@ -11,7 +11,7 @@ const MarketTab: FC = () => {
   const { market } = useShallowSelector(nftMarketSelector.getState);
 
   useEffect(() => {
-    if (!market) dispatch(nftMarketGetMarketAction());
+    dispatch(nftMarketGetMarketAction({ limit: 10, skip: 0 }));
   }, [dispatch]);
 
   return (

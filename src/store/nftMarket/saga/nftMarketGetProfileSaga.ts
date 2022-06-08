@@ -28,7 +28,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       method: 'get',
       url: marketURL.MARKETPLACE.CARD,
       params: {
-        id: payload.id,
+        cardId: payload.id,
       },
     });
 
@@ -39,7 +39,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
     })).filter((trait) => !exceptionsProperty.includes(trait.name));
 
     yield put(nftMarketSelectProfileAction({
-      id: Number(payload.id),
+      cardId: Number(payload.id),
       suit: res.data.suit,
       face: res.data.face,
       listingPrice: '10',
@@ -48,6 +48,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       highestPrice: '10',
       faceRarity: percent(res.data.metadata.faceFrequency),
       suitRarity: percent(res.data.metadata.suitFrequency),
+      url: res.data.metadata.url,
     }));
     console.log(res);
     yield put(apiActions.success(type, res.data));

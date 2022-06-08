@@ -1,9 +1,10 @@
 import { NftDto, NftSuit, NftType } from 'types';
 import { NftMarketState } from 'types/store';
+import img from 'assets/img/card.png';
 import { NftMarketAction, NftMarketActionTypes } from './actionTypes';
 
 export const NftExample: NftDto = {
-  id: 8,
+  cardId: 8,
   owner: '11',
   suit: NftSuit.CLUBS,
   suitRarity: '21.57',
@@ -12,12 +13,13 @@ export const NftExample: NftDto = {
   listingPrice: '0',
   highestPrice: '0',
   properties: [],
+  url: img,
 };
 
 const initialState: NftMarketState = {
   gallery: [],
-  market: [NftExample],
-  myGallery: [NftExample],
+  market: [],
+  myGallery: [],
   isAuth: false,
 };
 

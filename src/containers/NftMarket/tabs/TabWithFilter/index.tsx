@@ -6,13 +6,13 @@ import { useToggle } from 'hooks';
 import { Icon, Input, MarketCard } from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
-import { NftReqDto, NftDto } from 'types';
+import { NftReqDto, CardMetadata } from 'types';
 import { FilterData } from 'types/containers';
 import { nftMarketGetGalleryAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
-  items: NftDto[]
+  items: CardMetadata[]
   link: string
 };
 
@@ -48,10 +48,10 @@ const TabWithFilter: FC<Props> = ({
     }));
   }, [dispatch]);
 
-  const onCardClick = useCallback((selectedItem: NftDto) => {
+  const onCardClick = useCallback((id: number) => {
     history.push({
       pathname: link,
-      search: `?id=${selectedItem.id}`,
+      search: `?id=${id}`,
     });
   }, []);
 
@@ -74,13 +74,12 @@ const TabWithFilter: FC<Props> = ({
       <div className={styles.cardContainer}>
         {items.map((item) => (
           <MarketCard
-            item={item}
             className={styles.card}
-            key={item.id}
-            id={item.id}
-            img={img}
-            type={String(item.face)}
-            price={item.highestPrice}
+            key={item.cardId}
+            id={item.cardId}
+            img={item.metadata.url || img}
+            type={item.face}
+            price="123"
             onCardClick={onCardClick}
           />
         ))}

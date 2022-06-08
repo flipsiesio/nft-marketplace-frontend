@@ -20,8 +20,8 @@ export enum NftSuit {
 export type NftReqDto = {
   limit: number;
   skip: number;
-  sort: { price: boolean } | { bid: boolean };
-  filter: {
+  sort?: { price: boolean } | { bid: boolean };
+  filter?: {
     type?: NftType;
     suit?: NftSuit;
   };
@@ -34,7 +34,7 @@ export type NftProperty = {
 };
 
 export type NftDto = {
-  id: number;
+  cardId: number;
   suit: NftSuit;
   suitRarity: string;
   face: NftType;
@@ -43,6 +43,7 @@ export type NftDto = {
   listingPrice: string;
   highestPrice: string;
   properties: NftProperty[]
+  url: string
 };
 
 export type AcceptBid = {
@@ -70,11 +71,13 @@ type Traits = {
 };
 
 export type CardMetadata = {
+  cardId: number
   face: NftType
   suit: NftSuit
   metadata: {
     traits: Traits,
     faceFrequency: number,
     suitFrequency: number
+    url: string,
   }
 };

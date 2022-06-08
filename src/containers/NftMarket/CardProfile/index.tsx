@@ -57,7 +57,6 @@ type Props = {
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,
-  svg?: string
 };
 
 const CardProfile: FC<Props> = ({
@@ -65,18 +64,9 @@ const CardProfile: FC<Props> = ({
   isMyGallery,
   buttons,
   selectedNft,
-  svg,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
-
-  const img = useMemo(() => {
-    if (!svg) return null;
-
-    const blob = new Blob([svg], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(blob);
-    return <img alt="card" src={url} className={styles.img} />;
-  }, [svg]);
 
   const goBack = useCallback(() => {
     history.goBack();
@@ -121,20 +111,20 @@ const CardProfile: FC<Props> = ({
         <button className={styles.backButton} onClick={goBack} type="button">
           <Icon className={styles.backButtonArrow} icon="chevron" />
         </button>
-        <Text className={styles.title}>{`ID #${selectedNft.id}`}</Text>
+        <Text className={styles.title}>{`ID #${selectedNft.cardId}`}</Text>
       </div>
 
       <div className={styles.body}>
         <div className={styles.bodyLabels}>
-          <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>
+          <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
           <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
-          {img}
+          <img alt="card" src={selectedNft.url} className={styles.img} />
 
           <div className={styles.mobileBodyLabels}>
-            <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>
+            <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
             <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
           </div>
 

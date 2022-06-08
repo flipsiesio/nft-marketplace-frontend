@@ -16,8 +16,8 @@ export const marketURL = {
     REFRESH: '/auth/refresh',
   },
   MARKETPLACE: {
-    MARKET_LIST: '/marketplace/market-list',
-    GALLERY_LIST: '/marketplace/gallery-list',
+    MARKET_LIST: '/marketplace/sale-list',
+    GALLERY_LIST: '/marketplace/offer-list',
     PERSONAL_LIST: '/marketplace/presonal-list',
     MINT_NOW: '/marketplace/mint-now',
     CLAIM_JACKPOT: '/marketplace/claim-jackpot-card',
