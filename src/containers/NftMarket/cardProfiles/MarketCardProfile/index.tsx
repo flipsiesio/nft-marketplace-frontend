@@ -40,13 +40,15 @@ const MarketCardProfile: FC = () => {
   const buyNowHandler = useCallback(() => {
     if (!selectedNft) return;
     dispatch(nftMarketBuyNowAction(
-      selectedNft.cardId,
+      { id: selectedNft.cardId, price: '0' },
       () => toggleBuy(),
     ));
   }, [dispatch, selectedNft]);
 
   const bidHandler = useCallback((amount: string) => {
-    if (selectedNft) dispatch(nftMarketBidAction(amount, selectedNft.cardId));
+    if (selectedNft) {
+      dispatch(nftMarketBidAction({ price: amount, id: selectedNft.cardId }, toggleBid));
+    }
   }, [dispatch, selectedNft]);
 
   return (

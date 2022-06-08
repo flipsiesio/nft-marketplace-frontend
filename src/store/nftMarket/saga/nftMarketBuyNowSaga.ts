@@ -1,9 +1,9 @@
 import {
-  put, select, takeLatest,
+  put, takeLatest,
 } from 'redux-saga/effects';
-import { getTronContract } from 'utils';
-import { tronSelector } from 'store/selectors';
+import { getFeeString, getTronContract } from 'utils';
 import apiActions from 'store/api/actions';
+import BigNumber from 'bignumber.js';
 import { nftMarketBuyNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
@@ -13,11 +13,15 @@ function* nftMarketBuyNowSaga(
   try {
     yield put(apiActions.request(type));
 
-    const from: string = yield select(tronSelector.getProp('address'));
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_SALE as string);
-    yield contract.buy(payload).send({
-      from,
+    const price: BigNumber = new window.tronWeb.BigNumber(payload.price);
+    const feeInBps = yield contract.feeInBps().call();
+    const maxFee = yield contract.MAX_FEE().call();
+    const amountString = getFeeString(feeInBps, maxFee, price);
+
+    yield contract.buy(payload.id).send({
+      callValue: amountString,
     });
 
     yield put(apiActions.success(type));

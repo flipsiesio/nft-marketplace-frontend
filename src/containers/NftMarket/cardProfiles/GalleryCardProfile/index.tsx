@@ -22,7 +22,9 @@ const GalleryCardProfile: FC = () => {
   } = useToggle();
 
   const bidHandler = useCallback((amount: string) => {
-    if (selectedNft) dispatch(nftMarketBidAction(amount, selectedNft.cardId));
+    if (selectedNft) {
+      dispatch(nftMarketBidAction({ price: amount, id: selectedNft.cardId }, toggleBid));
+    }
   }, [dispatch, selectedNft]);
 
   return (
@@ -52,5 +54,4 @@ const GalleryCardProfile: FC = () => {
     </>
   );
 };
-
 export { GalleryCardProfile };
