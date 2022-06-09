@@ -56,18 +56,22 @@ const MyGalleryCardProfile: FC = () => {
   } = useToggle();
 
   const putOnSaleHandler = useCallback((amount: string) => {
-    dispatch(nftMarketPutOnSaleAction({
-      price: Number(amount),
-      nftAddress: selectedNft!.cardId,
-    }, () => togglePutOnSale()));
-  }, [dispatch]);
+    if (selectedNft) {
+      dispatch(nftMarketPutOnSaleAction({
+        price: parseFloat(amount),
+        nftAddress: selectedNft.cardId,
+      }, () => togglePutOnSale()));
+    }
+  }, [dispatch, selectedNft]);
 
   const putOnAuctionHandler = useCallback((amount: string) => {
-    dispatch(nftMarketPutOnAuctionAction({
-      price: Number(amount),
-      nftAddress: selectedNft!.cardId,
-    }, () => togglePutOnAuction()));
-  }, [dispatch]);
+    if (selectedNft) {
+      dispatch(nftMarketPutOnAuctionAction({
+        price: parseFloat(amount),
+        nftAddress: selectedNft.cardId,
+      }, () => togglePutOnAuction()));
+    }
+  }, [dispatch, selectedNft]);
 
   const onAcceptBidClick = useCallback(() => {
     // TODO when will ready backend

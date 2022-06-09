@@ -1,9 +1,8 @@
 import { toast } from 'react-toastify';
 import {
-  put, select, takeLatest,
+  put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { tronSelector } from 'store/selectors';
 import { getTronContract } from 'utils';
 import { nftMarketPutOnAuctionAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
@@ -13,14 +12,12 @@ function* nftMarketPutOnAuctionSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const from: string = yield select(tronSelector.getProp('address'));
     const contract =
-      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_AUCTION as string);
+      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
     const maxExpirationDuration: string = yield contract.maxExpirationDuration().call();
     const maxDuration = Number(maxExpirationDuration);
-    yield contract.createAuction(payload.nftAddress, maxDuration, payload.price).send({
-      from,
-    });
+    const price = window.tronWeb.toSun(payload.price);
+    yield contract.acceptTokenToSell(payload.nftAddress, price, maxDuration).send();
     yield put(apiActions.success(type));
     callback();
     yield toast.success('Put on auction successful!');
