@@ -22,7 +22,7 @@ function* nftMarketBidSaga(
 
     const amountString = getFeeString(feeInBps, maxFee, price);
     // TODO: Id is orderID
-    yield contract.bid(`${payload.id}weyweyh`, payload.price).send({
+    yield contract.bid(`${payload.id}`, payload.price).send({
       callValue: amountString,
     });
     successCallback();
