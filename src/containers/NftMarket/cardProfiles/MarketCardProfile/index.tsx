@@ -12,14 +12,15 @@ import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
+import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
 
 const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
-  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
-  const getBuyStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.BUY_NOW'));
+  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BID));
+  const getBuyStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
 
   useEffect(() => {
     const search = new URLSearchParams(location.search);

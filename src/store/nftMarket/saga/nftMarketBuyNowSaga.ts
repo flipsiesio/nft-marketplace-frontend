@@ -4,6 +4,7 @@ import {
 import { getFeeString, getTronContract } from 'utils';
 import apiActions from 'store/api/actions';
 import BigNumber from 'bignumber.js';
+import { toast } from 'react-toastify';
 import { nftMarketBuyNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
@@ -25,8 +26,10 @@ function* nftMarketBuyNowSaga(
     });
 
     yield put(apiActions.success(type));
+    yield toast.success('Buy successful!');
     callback();
   } catch (err) {
+    yield toast.success('Error Buy');
     yield put(apiActions.error(type, err));
   }
 }

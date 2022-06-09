@@ -4,6 +4,7 @@ import {
 import apiActions from 'store/api/actions';
 import { getFeeString, getTronContract } from 'utils';
 import BigNumber from 'bignumber.js';
+import { toast } from 'react-toastify';
 import { nftMarketBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
@@ -12,9 +13,7 @@ function* nftMarketBidSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    // TODO: TO SUN
-    // console.log(window.tronWeb.toSun(0.1));
-    const price: BigNumber = new window.tronWeb.BigNumber(payload.price);
+    const price: BigNumber = new window.tronWeb.BigNumber(window.tronWeb.toSun(0.1));
 
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
@@ -23,12 +22,14 @@ function* nftMarketBidSaga(
 
     const amountString = getFeeString(feeInBps, maxFee, price);
     // TODO: Id is orderID
-    yield contract.bid(`${payload.id}`, payload.price).send({
+    yield contract.bid(`${payload.id}weyweyh`, payload.price).send({
       callValue: amountString,
     });
     successCallback();
     yield put(apiActions.success(type));
+    yield toast.success('Bid successful!');
   } catch (err) {
+    yield toast.error('Error Bid');
     yield put(apiActions.error(type, err));
   }
 }
