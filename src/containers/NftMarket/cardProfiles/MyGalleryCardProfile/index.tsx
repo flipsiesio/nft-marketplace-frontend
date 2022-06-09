@@ -12,11 +12,11 @@ import {
   nftMarketApproveAction,
   nftMarketDelistAction,
   nftMarketGetProfileAction,
-  nftMarketPutOnAuctionAction,
-  nftMarketPutOnSaleAction,
+  nftMarketPutOnAction,
 } from 'store/nftMarket/actions';
 import { useLocation } from 'react-router-dom';
 import { MarketType } from 'types';
+import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
 
@@ -26,10 +26,9 @@ const MyGalleryCardProfile: FC = () => {
   const location = useLocation();
   const [actionType, setActionType] = useState<MarketType>(MarketType.Auction);
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
-  const getDelistStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.DELIST'));
-  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
-  const getPutOnAuctionStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_AUCTION'));
-  const getApproveStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.APPROVE'));
+  const getDelistStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.DELIST));
+  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.PUT_ON));
+  const getApproveStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.APPROVE));
 
   useEffect(() => {
     const search = new URLSearchParams(location.search);
@@ -38,13 +37,8 @@ const MyGalleryCardProfile: FC = () => {
   }, []);
 
   const {
-    isActive: putOnSaleActive,
-    onToggle: togglePutOnSale,
-  } = useToggle();
-
-  const {
-    isActive: putOnAuctionActive,
-    onToggle: togglePutOnAuction,
+    isActive: putOnActive,
+    onToggle: togglePutOn,
   } = useToggle();
 
   const {
@@ -57,23 +51,15 @@ const MyGalleryCardProfile: FC = () => {
     onToggle: toggleDelist,
   } = useToggle();
 
-  const putOnSaleHandler = useCallback((amount: string) => {
+  const putOnHandler = useCallback((amount: string) => {
     if (selectedNft) {
-      dispatch(nftMarketPutOnSaleAction({
+      dispatch(nftMarketPutOnAction({
+        marketType: actionType,
         price: parseFloat(amount),
         nftAddress: selectedNft.cardId,
-      }, () => togglePutOnSale()));
+      }, () => togglePutOn()));
     }
-  }, [dispatch, selectedNft]);
-
-  const putOnAuctionHandler = useCallback((amount: string) => {
-    if (selectedNft) {
-      dispatch(nftMarketPutOnAuctionAction({
-        price: parseFloat(amount),
-        nftAddress: selectedNft.cardId,
-      }, () => togglePutOnAuction()));
-    }
-  }, [dispatch, selectedNft]);
+  }, [dispatch, selectedNft, actionType, togglePutOn]);
 
   const onAcceptBidClick = useCallback(() => {
     // TODO when will ready backend
@@ -86,7 +72,7 @@ const MyGalleryCardProfile: FC = () => {
         () => toggleDelist(),
       ));
     }
-  }, []);
+  }, [selectedNft, toggleDelist, dispatch]);
 
   const approveHandler = useCallback(() => {
     dispatch(nftMarketApproveAction({
@@ -94,10 +80,9 @@ const MyGalleryCardProfile: FC = () => {
       tokenId: selectedNft!.cardId,
     }, () => {
       toggleApprove();
-      if (actionType === MarketType.Sale) togglePutOnSale();
-      else togglePutOnAuction();
+      togglePutOn();
     }));
-  }, [actionType]);
+  }, [actionType, selectedNft, toggleApprove, togglePutOn]);
 
   const onAuctionButtonClick = () => {
     setActionType(MarketType.Auction);
@@ -138,15 +123,9 @@ const MyGalleryCardProfile: FC = () => {
       )}
       <SetPriceModal
         isLoading={getPutOnSaleStatus === 'REQUEST'}
-        onToggle={togglePutOnSale}
-        onSubmit={putOnSaleHandler}
-        isOpen={putOnSaleActive}
-      />
-      <SetPriceModal
-        isLoading={getPutOnAuctionStatus === 'REQUEST'}
-        onToggle={togglePutOnAuction}
-        onSubmit={putOnAuctionHandler}
-        isOpen={putOnAuctionActive}
+        onToggle={togglePutOn}
+        onSubmit={putOnHandler}
+        isOpen={putOnActive}
       />
       <DelistModal
         isLoading={getDelistStatus === 'REQUEST'}

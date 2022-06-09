@@ -114,20 +114,12 @@ export const nftMarketDelistAction = (payload: {
   callback,
 });
 
-export const nftMarketPutOnSaleAction = (payload: {
+export const nftMarketPutOnAction = (payload: {
+  marketType: MarketType,
   price: number,
   nftAddress: number,
 }, callback: () => void) => ({
-  type: NftMarketActionTypes.PUT_ON_SALE,
-  payload,
-  callback,
-});
-
-export const nftMarketPutOnAuctionAction = (payload: {
-  price: number,
-  nftAddress: number,
-}, callback: () => void) => ({
-  type: NftMarketActionTypes.PUT_ON_AUCTION,
+  type: NftMarketActionTypes.PUT_ON,
   payload,
   callback,
 });

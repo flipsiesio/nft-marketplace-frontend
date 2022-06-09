@@ -81,6 +81,6 @@ export type CardMetadata = {
 };
 
 export enum MarketType {
-  Auction,
-  Sale
+  Auction = 'Auction',
+  Sale = 'Sale'
 }

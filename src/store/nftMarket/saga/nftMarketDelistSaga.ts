@@ -19,7 +19,8 @@ function* nftMarketDelistSaga(
     yield contract.getBackFromSale(payload.orderId).send();
     yield put(apiActions.success(type));
     callback(payload.marketType);
-    yield toast.success('Cancel the sale successful!');
+    const label = MarketType.Sale ? 'sale' : 'auction';
+    yield toast.success(`Cancel the ${label} successful!`);
   } catch (err) {
     yield put(apiActions.error(type, err));
   }
