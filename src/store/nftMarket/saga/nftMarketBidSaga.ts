@@ -13,7 +13,8 @@ function* nftMarketBidSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const price: BigNumber = new window.tronWeb.BigNumber(window.tronWeb.toSun(0.1));
+    const price: BigNumber =
+      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(payload.price)));
 
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
@@ -22,7 +23,7 @@ function* nftMarketBidSaga(
 
     const amountString = getFeeString(feeInBps, maxFee, price);
     // TODO: Id is orderID
-    yield contract.bid(`${payload.id}`, payload.price).send({
+    yield contract.bid(`${payload.id}`, price.toString()).send({
       callValue: amountString,
     });
     successCallback();
