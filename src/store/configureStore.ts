@@ -12,6 +12,7 @@ import storage from 'redux-persist/lib/storage';
 import reducer from './rootReducer';
 import rootSaga from './rootSaga';
 import { NftMarketState } from '../types';
+import { useAPIInterceptors } from '../utils';
 
 export const expireTransform = createExpirationTransform({
   expireKey: 'persistExpiresAt', // default
@@ -58,6 +59,7 @@ export default (initialState: { [key: string]: never } = {}) => {
 
   sagaMiddleware.run(rootSaga);
   const persistor = persistStore(store);
+  useAPIInterceptors(store);
 
   return { store, persistor };
 };
