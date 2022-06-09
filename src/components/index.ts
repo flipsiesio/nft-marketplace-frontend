@@ -23,4 +23,5 @@ export * from './MarketNftInteractionModal';
 export * from './NftArtwork';
 export * from './ApproveModal';
 export * from './InfoModal';
+export * from './Pagination';
 export { default as NeedExtenstionModal } from './NeedExtenstionModal';

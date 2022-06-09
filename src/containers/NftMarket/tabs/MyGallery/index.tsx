@@ -2,7 +2,7 @@ import React, {
   FC, useCallback, useEffect, useState,
 } from 'react';
 import { MarketCard } from 'components/MarketCard';
-import { Checkbox } from 'components';
+import { Checkbox, Pagination } from 'components';
 import { useDispatch } from 'react-redux';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
@@ -15,10 +15,11 @@ const MyGalleryTab: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    dispatch(nftMarketGetMyGalleryAction({ limit: 10, skip: 0 }));
-  }, [dispatch]);
+    dispatch(nftMarketGetMyGalleryAction({ limit: 10, skip: page * 10 }));
+  }, [dispatch, page]);
 
   const [listed, setListed] = useState(false);
   const [inWallet, setInWallet] = useState(false);
@@ -70,6 +71,7 @@ const MyGalleryTab: FC = () => {
           />
         ))}
       </div>
+      <Pagination page={page} onChange={setPage} />
     </div>
   );
 };
