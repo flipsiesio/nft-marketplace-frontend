@@ -1,11 +1,10 @@
 import { toast } from 'react-toastify';
-import {
-  put, takeLatest,
-} from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { getTronContract } from 'utils';
 import { nftMarketApproveAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { MarketType } from '../../../types';
 
 function* nftMarketApproveSaga(
   {
@@ -14,7 +13,7 @@ function* nftMarketApproveSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const contractName = payload.actionType === 'sale' ?
+    const contractName = payload.actionType === MarketType.Sale ?
       process.env.REACT_APP_CONTRACT_NFT_SALE as string
       : process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string;
     const contract =

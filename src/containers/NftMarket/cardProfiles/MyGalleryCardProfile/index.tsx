@@ -3,18 +3,20 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, SetPriceModal, Text, DelistModal, ApproveModal,
+  ApproveModal, Button, DelistModal, SetPriceModal, Text,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useDispatch } from 'react-redux';
 import {
   nftMarketApproveAction,
-  nftMarketDelistAction, nftMarketGetProfileAction,
+  nftMarketDelistAction,
+  nftMarketGetProfileAction,
   nftMarketPutOnAuctionAction,
   nftMarketPutOnSaleAction,
 } from 'store/nftMarket/actions';
 import { useLocation } from 'react-router-dom';
+import { MarketType } from 'types';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
 
@@ -22,7 +24,7 @@ const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
-  const [actionType, setActionType] = useState('');
+  const [actionType, setActionType] = useState<MarketType>(MarketType.Auction);
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getDelistStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.DELIST'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
@@ -78,10 +80,12 @@ const MyGalleryCardProfile: FC = () => {
   }, [dispatch]);
 
   const delistHandler = useCallback(() => {
-    dispatch(nftMarketDelistAction(
-      selectedNft!.cardId,
-      () => toggleDelist(),
-    ));
+    if (selectedNft) {
+      dispatch(nftMarketDelistAction(
+        { orderId: selectedNft.cardId, marketType: MarketType.Auction },
+        () => toggleDelist(),
+      ));
+    }
   }, []);
 
   const approveHandler = useCallback(() => {
@@ -90,18 +94,18 @@ const MyGalleryCardProfile: FC = () => {
       tokenId: selectedNft!.cardId,
     }, () => {
       toggleApprove();
-      if (actionType === 'sale') togglePutOnSale();
+      if (actionType === MarketType.Sale) togglePutOnSale();
       else togglePutOnAuction();
     }));
   }, [actionType]);
 
   const onAuctionButtonClick = () => {
-    setActionType('auction');
+    setActionType(MarketType.Auction);
     toggleApprove();
   };
 
   const onSaleButtonClick = () => {
-    setActionType('sale');
+    setActionType(MarketType.Sale);
     toggleApprove();
   };
 

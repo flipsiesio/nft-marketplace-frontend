@@ -79,3 +79,8 @@ export type CardMetadata = {
     url: string,
   }
 };
+
+export enum MarketType {
+  Auction,
+  Sale
+}

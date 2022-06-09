@@ -1,7 +1,7 @@
 import { NftMarketState } from 'types/store';
 import { NftMarketActionTypes } from './actionTypes';
 import {
-  AcceptBid, NftDto, NftReqDto, SoldReq,
+  AcceptBid, MarketType, NftDto, NftReqDto, SoldReq,
 } from '../../types';
 
 export const nftMarketSetStateAction = (payload: Partial<NftMarketState>) => ({
@@ -88,9 +88,9 @@ export const nftMarketClaimJackpotAction = (callback: (trxHash: string) => void)
 });
 
 export const nftMarketApproveAction = (payload: {
-  actionType: string,
+  actionType: MarketType,
   tokenId: number,
-}, callback: (actionType: string) => void) => ({
+}, callback: (actionType: MarketType) => void) => ({
   type: NftMarketActionTypes.APPROVE,
   payload,
   callback,
@@ -105,7 +105,10 @@ export const nftMarketAcceptBidAction = (payload: AcceptBid) => ({
   payload,
 });
 
-export const nftMarketDelistAction = (payload: number, callback: () => void) => ({
+export const nftMarketDelistAction = (payload: {
+  orderId: number,
+  marketType: MarketType,
+}, callback: (marketType: MarketType) => void) => ({
   type: NftMarketActionTypes.DELIST,
   payload,
   callback,
