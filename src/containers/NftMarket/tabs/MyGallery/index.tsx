@@ -2,20 +2,22 @@ import React, {
   FC, useCallback, useEffect, useState,
 } from 'react';
 import { MarketCard } from 'components/MarketCard';
-import img from 'assets/img/card.png';
 import { Checkbox } from 'components';
 import { useDispatch } from 'react-redux';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
-import { nftMarketGetMyGalleryAction } from 'store/nftMarket/actions';
+import { nftMarketGetMyGalleryAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
+import { routes } from 'appConstants';
+import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
 
 const MyGalleryTab: FC = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
 
   useEffect(() => {
-    if (!myGallery) dispatch(nftMarketGetMyGalleryAction());
+    dispatch(nftMarketGetMyGalleryAction({ limit: 10, skip: 0 }));
   }, [dispatch]);
 
   const [listed, setListed] = useState(false);
@@ -30,10 +32,12 @@ const MyGalleryTab: FC = () => {
   }, []);
 
   const onCardClick = useCallback((id: number) => {
-    console.log(id);
-    // dispatch(nftMarketSetStateAction({ selectedNft: selectedItem }));
-    // history.push(routes.nftMarket.myGalleryProfile.root);
-  }, []);
+    dispatch(nftMarketSelectProfileAction(undefined));
+    history.push({
+      pathname: routes.nftMarket.myGalleryProfile.root,
+      search: `?id=${id}`,
+    });
+  }, [dispatch]);
 
   return (
     <div className={styles.wrap}>
@@ -59,7 +63,7 @@ const MyGalleryTab: FC = () => {
             className={styles.card}
             key={item.cardId}
             id={item.cardId}
-            img={img}
+            img={item.metadata.url}
             type={item.face}
             price="123"
             onCardClick={onCardClick}

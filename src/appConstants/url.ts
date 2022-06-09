@@ -16,9 +16,9 @@ export const marketURL = {
     REFRESH: '/auth/refresh',
   },
   MARKETPLACE: {
-    MARKET_LIST: '/marketplace/sale-list',
-    GALLERY_LIST: '/marketplace/offer-list',
-    PERSONAL_LIST: '/marketplace/presonal-list',
+    MARKET_LIST: '/marketplace/offer-list',
+    GALLERY_LIST: '/marketplace/sale-list',
+    PERSONAL_LIST: '/marketplace/personal-list',
     MINT_NOW: '/marketplace/mint-now',
     CLAIM_JACKPOT: '/marketplace/claim-jackpot-card',
     BUY_NOW: (address: string) => `/marketplace/nft/buy-now/${address}`,

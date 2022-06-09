@@ -11,7 +11,7 @@ const GalleryTab: FC = () => {
   const { gallery } = useShallowSelector(nftMarketSelector.getState);
 
   useEffect(() => {
-    dispatch(nftMarketGetGalleryAction());
+    dispatch(nftMarketGetGalleryAction({ limit: 10, skip: 0 }));
   }, [dispatch]);
 
   return (

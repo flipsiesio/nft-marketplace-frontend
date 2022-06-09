@@ -9,6 +9,12 @@ interface Window {
       base58: string,
       name: string,
     },
+    utils: {
+      code: {
+        hexStr2byteArray: (msg: string) => string[]
+      }
+    }
+    sha3: (msg: string[]) => string
     contract: () => {
       at: (value: string) => Promise<void>,
     },
@@ -23,7 +29,7 @@ interface Window {
     },
     trx: {
       getBalance: (address: string) => number,
-      sign: (value: string) => Promise<void>,
+      sign: (value: string) => Promise<string>,
     },
     getEventResult: (
       address: string,

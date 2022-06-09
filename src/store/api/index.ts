@@ -6,30 +6,28 @@ import { nftMarketSelector } from '../selectors';
 import { marketURL } from '../../appConstants';
 import { nftMarketSignOutAction } from '../nftMarket/actions';
 
-const authClient = axios.create({
-  baseURL: process.env.REACT_APP_AUTH_API_URL,
-  validateStatus: (status) => {
-    return (status === 401 || status === 201);
-  },
+const marketClient = axios.create({
+  baseURL: process.env.REACT_APP_MARKET_API_URL,
 });
-export function* authSaga(
+
+export function* marketApiSaga(
   requestConfig: AxiosRequestConfig,
 ): Generator<CallEffect | PutEffect | SelectEffect> {
   const accessToken = yield select(nftMarketSelector.getProp('accessToken'));
 
   if (accessToken) {
-    authClient.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    marketClient.defaults.headers.Authorization = `Bearer ${accessToken}`;
   }
   // @ts-ignore
   const response:AxiosResponse<unknown> =
-      yield call<(config: AxiosRequestConfig) => void>(authClient, requestConfig);
+    yield call<(config: AxiosRequestConfig) => void>(marketClient, requestConfig);
 
   if (response.status === 401) {
     const refreshToken = yield select(nftMarketSelector.getProp('refreshToken'));
     const signedMsg = yield select(nftMarketSelector.getProp('signedMsg'));
 
     try {
-      yield call(authSaga, {
+      yield call(marketApiSaga, {
         method: 'post',
         url: marketURL.AUTH.REFRESH,
         headers: {
@@ -47,17 +45,4 @@ export function* authSaga(
   }
 
   return response;
-}
-
-const marketClient = axios.create({
-  baseURL: process.env.REACT_APP_MARKET_API_URL,
-});
-
-export function* marketApiSaga(requestConfig: AxiosRequestConfig) {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    return yield call<(config: AxiosRequestConfig) => void>(marketClient, requestConfig);
-  } catch(err) {
-    throw err;
-  }
 }

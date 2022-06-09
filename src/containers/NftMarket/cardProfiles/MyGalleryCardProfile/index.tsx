@@ -1,4 +1,6 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, {
+  FC, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Button, SetPriceModal, Text, DelistModal, ApproveModal,
@@ -8,22 +10,30 @@ import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useDispatch } from 'react-redux';
 import {
   nftMarketApproveAction,
-  nftMarketDelistAction,
+  nftMarketDelistAction, nftMarketGetProfileAction,
   nftMarketPutOnAuctionAction,
   nftMarketPutOnSaleAction,
 } from 'store/nftMarket/actions';
+import { useLocation } from 'react-router-dom';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const location = useLocation();
   const [actionType, setActionType] = useState('');
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getDelistStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.DELIST'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
   const getPutOnAuctionStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_AUCTION'));
   const getApproveStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.APPROVE'));
+
+  useEffect(() => {
+    const search = new URLSearchParams(location.search);
+    const id = search.get('id');
+    if (id) dispatch(nftMarketGetProfileAction(id));
+  }, []);
 
   const {
     isActive: putOnSaleActive,
