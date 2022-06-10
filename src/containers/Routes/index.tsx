@@ -35,7 +35,7 @@ const Routes = () => {
           enter: 250,
         }}
       >
-        <Switch>
+        <Switch location={location}>
           <Route path={routes.main.root} exact component={Main} />
           <ProtectedRoute
             exact

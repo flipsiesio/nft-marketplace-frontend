@@ -10,19 +10,21 @@ import {
 } from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
-import { CardMetadata } from 'types';
+import { CardMetadata, NftReqDto } from 'types';
 import { FilterData } from 'types/containers';
-import { nftMarketGetMarketAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
+import { nftMarketSelectProfileAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
   items: CardMetadata[]
   link: string
+  onUpdate: (filters: NftReqDto) => void
 };
 
 const TabWithFilter: FC<Props> = ({
   items,
   link,
+  onUpdate,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,13 +35,19 @@ const TabWithFilter: FC<Props> = ({
   const { isActive: modalActive, onToggle: toggleModal } = useToggle();
 
   useEffect(() => {
-    dispatch(nftMarketGetMarketAction({
-      // sort,
+    onUpdate({
       face: filters?.type,
       suit: filters?.suit,
       limit: 10,
       skip: page * 10,
-    }));
+    });
+    // dispatch(nftMarketGetMarketAction({
+    //   // sort,
+    //   face: filters?.type,
+    //   suit: filters?.suit,
+    //   limit: 10,
+    //   skip: page * 10,
+    // }));
   }, [filters, dispatch, page]);
 
   const onCardClick = useCallback((id: number) => {
