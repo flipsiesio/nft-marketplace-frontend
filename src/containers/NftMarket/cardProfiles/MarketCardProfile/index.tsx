@@ -59,13 +59,20 @@ const MarketCardProfile: FC = () => {
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>
-              <div className={styles.buttonWrap}>
-                <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.highestBid')}</Text>
-                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
-                </div>
-                <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
-              </div>
+              {/* <div className={styles.buttonWrap}> */}
+              {/*  <div> */}
+              {/*    <Text className={styles.buttonLabel}>{t('nftMarket.highestBid')}</Text> */}
+              {/*    <Text className={styles.buttonValue}> */}
+              {/*      20,000 */}
+              {/*      <Text className={styles.primary} tag="span">TRX</Text> */}
+              {/*    </Text> */}
+              {/*  </div> */}
+              {/*  <Button */}
+              {/*    onClick={toggleBid} */}
+              {/*    className={styles.button} */}
+              {/*  >{t('nftMarket.bid')} */}
+              {/*  </Button> */}
+              {/* </div> */}
               <div className={styles.buttonWrap}>
                 <div>
                   <Text className={styles.buttonLabel}>{t('nftMarket.listingPrice')}</Text>
