@@ -1,0 +1,32 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.pagination {
+  @include flexbox();
+  list-style: none;
+}
+
+.page {
+  border-radius: 2px;
+  border: 2px solid $blueColor;
+  padding: 8px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pageActive {
+  border-color: $primaryColor;
+}
+
+.prevArrow {
+  &:before {
+    transform: rotateZ(90deg);
+  }
+}
+
+.nextArrow {
+  &:before {
+    transform: rotateZ(-90deg);
+  }
+}

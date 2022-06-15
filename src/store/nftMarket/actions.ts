@@ -1,7 +1,7 @@
 import { NftMarketState } from 'types/store';
 import { NftMarketActionTypes } from './actionTypes';
 import {
-  AcceptBid, NftDto, NftReqDto, SoldReq,
+  AcceptBid, MarketType, NftDto, NftReqDto, SoldReq,
 } from '../../types';
 
 export const nftMarketSetStateAction = (payload: Partial<NftMarketState>) => ({
@@ -29,8 +29,11 @@ export const nftMarketSignInAction = (callback?: () => void) => ({
   callback,
 });
 
-export const nftMarketGetProfileAction = () => ({
+export const nftMarketGetProfileAction = (id: string) => ({
   type: NftMarketActionTypes.GET_PROFILE,
+  payload: {
+    id,
+  },
 });
 
 export const nftMarketSelectProfileAction = (payload?: NftDto) => ({
@@ -38,15 +41,25 @@ export const nftMarketSelectProfileAction = (payload?: NftDto) => ({
   payload,
 });
 
-export const nftMarketBuyNowAction = (payload: number, callback: () => void) => ({
+export const nftMarketBuyNowAction = (
+  payload: {
+    price: string
+    id: number
+  },
+  callback: () => void,
+) => ({
   type: NftMarketActionTypes.BUY_NOW,
   payload,
   callback,
 });
 
-export const nftMarketBidAction = (payload: string) => ({
+export const nftMarketBidAction = (
+  payload: {price: string, id: number},
+  successCallback: () => void,
+) => ({
   type: NftMarketActionTypes.BID,
   payload,
+  successCallback,
 });
 
 export const nftMarketCancelBidAction = () => ({
@@ -75,9 +88,9 @@ export const nftMarketClaimJackpotAction = (callback: (trxHash: string) => void)
 });
 
 export const nftMarketApproveAction = (payload: {
-  actionType: string,
+  actionType: MarketType,
   tokenId: number,
-}, callback: (actionType: string) => void) => ({
+}, callback: (actionType: MarketType) => void) => ({
   type: NftMarketActionTypes.APPROVE,
   payload,
   callback,
@@ -92,26 +105,21 @@ export const nftMarketAcceptBidAction = (payload: AcceptBid) => ({
   payload,
 });
 
-export const nftMarketDelistAction = (payload: number, callback: () => void) => ({
+export const nftMarketDelistAction = (payload: {
+  orderId: number,
+  marketType: MarketType,
+}, callback: (marketType: MarketType) => void) => ({
   type: NftMarketActionTypes.DELIST,
   payload,
   callback,
 });
 
-export const nftMarketPutOnSaleAction = (payload: {
+export const nftMarketPutOnAction = (payload: {
+  marketType: MarketType,
   price: number,
   nftAddress: number,
 }, callback: () => void) => ({
-  type: NftMarketActionTypes.PUT_ON_SALE,
-  payload,
-  callback,
-});
-
-export const nftMarketPutOnAuctionAction = (payload: {
-  price: number,
-  nftAddress: number,
-}, callback: () => void) => ({
-  type: NftMarketActionTypes.PUT_ON_AUCTION,
+  type: NftMarketActionTypes.PUT_ON,
   payload,
   callback,
 });

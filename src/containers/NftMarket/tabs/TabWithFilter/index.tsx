@@ -1,57 +1,62 @@
-import React, { FC, useCallback } from 'react';
+import React, {
+  FC, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useToggle } from 'hooks';
-import { Icon, Input, MarketCard } from 'components';
+import {
+  Icon, Input, MarketCard, Pagination,
+} from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
-import { NftReqDto, NftDto } from 'types';
+import { CardMetadata, NftReqDto } from 'types';
 import { FilterData } from 'types/containers';
-import { nftMarketGetGalleryAction, nftMarketSetStateAction } from 'store/nftMarket/actions';
+import { nftMarketSelectProfileAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
-  items: NftDto[]
+  items: CardMetadata[]
   link: string
+  onUpdate: (filters: NftReqDto) => void
 };
 
 const TabWithFilter: FC<Props> = ({
   items,
   link,
+  onUpdate,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
+  const [filters, setFilters] = useState<FilterData>();
+  const [page, setPage] = useState(0);
 
   const { isActive: modalActive, onToggle: toggleModal } = useToggle();
 
-  const applyFilters = useCallback((data: FilterData) => {
-    let sort: NftReqDto['sort'] = { price: false };
-
-    if (data.price.highestPrice) {
-      sort = { price: true };
-    }
-
-    if (data.price.highestBid) {
-      sort = { bid: true };
-    }
-
-    dispatch(nftMarketGetGalleryAction({
-      sort,
-      filter: {
-        suit: data.suit,
-        type: data.type,
-      },
+  useEffect(() => {
+    onUpdate({
+      face: filters?.type,
+      suit: filters?.suit,
       limit: 10,
-      skip: 0,
-    }));
-  }, [dispatch]);
+      skip: page * 10,
+    });
+    // dispatch(nftMarketGetMarketAction({
+    //   // sort,
+    //   face: filters?.type,
+    //   suit: filters?.suit,
+    //   limit: 10,
+    //   skip: page * 10,
+    // }));
+  }, [filters, dispatch, page]);
 
-  const onCardClick = useCallback((selectedItem: NftDto) => {
-    dispatch(nftMarketSetStateAction({ selectedNft: selectedItem }));
-    history.push(link);
-  }, []);
+  const onCardClick = useCallback((id: number) => {
+    dispatch(nftMarketSelectProfileAction(undefined));
+    history.push({
+      pathname: link,
+      search: `?id=${id}`,
+    });
+  }, [dispatch]);
 
   return (
     <div className={styles.wrap}>
@@ -72,20 +77,21 @@ const TabWithFilter: FC<Props> = ({
       <div className={styles.cardContainer}>
         {items.map((item) => (
           <MarketCard
-            item={item}
             className={styles.card}
-            key={item.id}
-            id={item.id}
-            img={img}
-            type={String(item.face)}
-            price={item.highestPrice}
+            key={item.cardId}
+            id={item.cardId}
+            img={item.metadata.url || img}
+            type={item.face}
+            price="123"
             onCardClick={onCardClick}
           />
         ))}
       </div>
 
+      <Pagination page={page} onChange={setPage} />
+
       <MarketFilterModal
-        onApply={applyFilters}
+        onApply={setFilters}
         onToggle={toggleModal}
         isOpen={modalActive}
       />

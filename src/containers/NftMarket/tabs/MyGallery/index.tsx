@@ -2,25 +2,24 @@ import React, {
   FC, useCallback, useEffect, useState,
 } from 'react';
 import { MarketCard } from 'components/MarketCard';
-import { useHistory } from 'react-router-dom';
-import { routes } from 'appConstants';
-import img from 'assets/img/card.png';
-import { Checkbox } from 'components';
-import { NftDto } from 'types';
+import { Checkbox, Pagination } from 'components';
 import { useDispatch } from 'react-redux';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
-import { nftMarketGetMyGalleryAction, nftMarketSetStateAction } from 'store/nftMarket/actions';
+import { nftMarketGetMyGalleryAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
+import { routes } from 'appConstants';
+import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
 
 const MyGalleryTab: FC = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
+  const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    if (!myGallery) dispatch(nftMarketGetMyGalleryAction());
-  }, [dispatch]);
+    dispatch(nftMarketGetMyGalleryAction({ limit: 10, skip: page * 10 }));
+  }, [dispatch, page]);
 
   const [listed, setListed] = useState(false);
   const [inWallet, setInWallet] = useState(false);
@@ -33,10 +32,13 @@ const MyGalleryTab: FC = () => {
     setInWallet(value);
   }, []);
 
-  const onCardClick = useCallback((selectedItem: NftDto) => {
-    dispatch(nftMarketSetStateAction({ selectedNft: selectedItem }));
-    history.push(routes.nftMarket.myGalleryProfile.root);
-  }, []);
+  const onCardClick = useCallback((id: number) => {
+    dispatch(nftMarketSelectProfileAction(undefined));
+    history.push({
+      pathname: routes.nftMarket.myGalleryProfile.root,
+      search: `?id=${id}`,
+    });
+  }, [dispatch]);
 
   return (
     <div className={styles.wrap}>
@@ -59,17 +61,17 @@ const MyGalleryTab: FC = () => {
       <div className={styles.cardContainer}>
         {myGallery.map((item) => (
           <MarketCard
-            item={item}
             className={styles.card}
-            key={item.id}
-            id={item.id}
-            img={img}
-            type={String(item.face)}
-            price={item.highestPrice}
+            key={item.cardId}
+            id={item.cardId}
+            img={item.metadata.url}
+            type={item.face}
+            price="123"
             onCardClick={onCardClick}
           />
         ))}
       </div>
+      <Pagination page={page} onChange={setPage} />
     </div>
   );
 };

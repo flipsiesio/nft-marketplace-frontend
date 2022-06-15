@@ -4,7 +4,7 @@ import { Icon } from 'components';
 import styles from './styles.module.scss';
 
 type Props = {
-  type?: 'text' | 'email',
+  type?: string,
   name?: string,
   value?: string,
   label?: string,

@@ -4,50 +4,44 @@ export type NftMarketCheckSignRes = {
 };
 
 export enum NftType {
-  KING,
-  QUEEN,
-  JACK,
-  RARE, // Jokers or One-of-ones
+  KING= 'King',
+  QUEEN = 'Queen',
+  JACK = 'Jack',
+  RARE = 'Rare', // Jokers or One-of-ones
 }
 
 export enum NftSuit {
-  HEARTS,
-  CLUBS,
-  DIAMONDS,
-  SPADES,
+  HEARTS= 'Hearts',
+  CLUBS = 'Clubs',
+  DIAMONDS = 'Diamonds',
+  SPADES = 'Spades',
 }
 
 export type NftReqDto = {
   limit: number;
   skip: number;
-  sort: { price: boolean } | { bid: boolean };
-  filter: {
-    type?: NftType;
-    suit?: NftSuit;
-  };
+  sort?: { price: boolean } | { bid: boolean };
+  face?: NftType;
+  suit?: NftSuit;
+};
+
+export type NftProperty = {
+  label: string
+  rarity: string
+  name: string
 };
 
 export type NftDto = {
-  id: number;
+  cardId: number;
   suit: NftSuit;
   suitRarity: string;
   face: NftType;
   faceRarity: string;
-  clothes: string;
-  clothesRarity: string;
-  background: string;
-  backgroundRarity: string;
-  hair: string;
-  hairRarity: string;
-  borderline: string;
-  borderlineRarity: string;
-  egg: string;
-  eggRarity: string;
-  teardrop: string;
-  teardropRarity: string;
   owner: string;
   listingPrice: string;
   highestPrice: string;
+  properties: NftProperty[]
+  url: string
 };
 
 export type AcceptBid = {
@@ -59,3 +53,34 @@ export type SoldReq = {
   buyerAddress: string,
   nftId: string,
 };
+
+type Traits = {
+  [key: string]: {
+    frequency: number,
+    rarity: number,
+    main: {
+      name: string
+      color: {
+        color: string
+        name: string
+      }
+    }
+  }
+};
+
+export type CardMetadata = {
+  cardId: number
+  face: NftType
+  suit: NftSuit
+  metadata: {
+    traits: Traits,
+    faceFrequency: number,
+    suitFrequency: number
+    url: string,
+  }
+};
+
+export enum MarketType {
+  Auction = 'Auction',
+  Sale = 'Sale'
+}

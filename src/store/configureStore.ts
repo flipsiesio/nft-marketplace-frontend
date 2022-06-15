@@ -8,11 +8,11 @@ import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import createExpirationTransform from 'redux-persist-transform-expire';
 import storage from 'redux-persist/lib/storage';
-import { wsGameMiddleware, wsRateMiddleware } from './middlewares';
 
 import reducer from './rootReducer';
 import rootSaga from './rootSaga';
 import { NftMarketState } from '../types';
+import { useAPIInterceptors } from '../utils';
 
 export const expireTransform = createExpirationTransform({
   expireKey: 'persistExpiresAt', // default
@@ -27,7 +27,7 @@ const mePersistConfig = {
 const nftMarketConfig = {
   key: 'nftMarket',
   storage,
-  whitelist: ['refreshToken', 'accessToken', 'isAuth', 'signedMsg', 'selectedNft'] as Array<keyof NftMarketState>,
+  whitelist: ['refreshToken', 'accessToken', 'isAuth', 'signedMsg'] as Array<keyof NftMarketState>,
 };
 
 const reducers = {
@@ -53,14 +53,13 @@ export default (initialState: { [key: string]: never } = {}) => {
     composeEnhancers(
       applyMiddleware(
         sagaMiddleware,
-        wsGameMiddleware(),
-        wsRateMiddleware(),
       ),
     ),
   );
 
   sagaMiddleware.run(rootSaga);
   const persistor = persistStore(store);
+  useAPIInterceptors(store);
 
   return { store, persistor };
 };
