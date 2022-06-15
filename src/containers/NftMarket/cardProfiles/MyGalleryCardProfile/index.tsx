@@ -1,7 +1,9 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, {
+  FC, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, SetPriceModal, Text, DelistModal, ApproveModal,
+  ApproveModal, Button, DelistModal, SetPriceModal, Text,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
@@ -9,30 +11,34 @@ import { useDispatch } from 'react-redux';
 import {
   nftMarketApproveAction,
   nftMarketDelistAction,
-  nftMarketPutOnAuctionAction,
-  nftMarketPutOnSaleAction,
+  nftMarketGetProfileAction,
+  nftMarketPutOnAction,
 } from 'store/nftMarket/actions';
+import { useLocation } from 'react-router-dom';
+import { MarketType } from 'types';
+import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const [actionType, setActionType] = useState('');
+  const location = useLocation();
+  const [actionType, setActionType] = useState<MarketType>(MarketType.Auction);
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
-  const getDelistStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.DELIST'));
-  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
-  const getPutOnAuctionStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_AUCTION'));
-  const getApproveStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.APPROVE'));
+  const getDelistStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.DELIST));
+  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.PUT_ON));
+  const getApproveStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.APPROVE));
+
+  useEffect(() => {
+    const search = new URLSearchParams(location.search);
+    const id = search.get('id');
+    if (id) dispatch(nftMarketGetProfileAction(id));
+  }, []);
 
   const {
-    isActive: putOnSaleActive,
-    onToggle: togglePutOnSale,
-  } = useToggle();
-
-  const {
-    isActive: putOnAuctionActive,
-    onToggle: togglePutOnAuction,
+    isActive: putOnActive,
+    onToggle: togglePutOn,
   } = useToggle();
 
   const {
@@ -45,49 +51,46 @@ const MyGalleryCardProfile: FC = () => {
     onToggle: toggleDelist,
   } = useToggle();
 
-  const putOnSaleHandler = useCallback((amount: string) => {
-    dispatch(nftMarketPutOnSaleAction({
-      price: Number(amount),
-      nftAddress: selectedNft!.id,
-    }, () => togglePutOnSale()));
-  }, [dispatch]);
-
-  const putOnAuctionHandler = useCallback((amount: string) => {
-    dispatch(nftMarketPutOnAuctionAction({
-      price: Number(amount),
-      nftAddress: selectedNft!.id,
-    }, () => togglePutOnAuction()));
-  }, [dispatch]);
+  const putOnHandler = useCallback((amount: string) => {
+    if (selectedNft) {
+      dispatch(nftMarketPutOnAction({
+        marketType: actionType,
+        price: parseFloat(amount),
+        nftAddress: selectedNft.cardId,
+      }, () => togglePutOn()));
+    }
+  }, [dispatch, selectedNft, actionType, togglePutOn]);
 
   const onAcceptBidClick = useCallback(() => {
     // TODO when will ready backend
   }, [dispatch]);
 
   const delistHandler = useCallback(() => {
-    dispatch(nftMarketDelistAction(
-      selectedNft!.id,
-      () => toggleDelist(),
-    ));
-  }, []);
+    if (selectedNft) {
+      dispatch(nftMarketDelistAction(
+        { orderId: selectedNft.cardId, marketType: MarketType.Auction },
+        () => toggleDelist(),
+      ));
+    }
+  }, [selectedNft, toggleDelist, dispatch]);
 
   const approveHandler = useCallback(() => {
     dispatch(nftMarketApproveAction({
       actionType,
-      tokenId: selectedNft!.id,
+      tokenId: selectedNft!.cardId,
     }, () => {
       toggleApprove();
-      if (actionType === 'sale') togglePutOnSale();
-      else togglePutOnAuction();
+      togglePutOn();
     }));
-  }, [actionType]);
+  }, [actionType, selectedNft, toggleApprove, togglePutOn]);
 
   const onAuctionButtonClick = () => {
-    setActionType('auction');
+    setActionType(MarketType.Auction);
     toggleApprove();
   };
 
   const onSaleButtonClick = () => {
-    setActionType('sale');
+    setActionType(MarketType.Sale);
     toggleApprove();
   };
 
@@ -120,15 +123,9 @@ const MyGalleryCardProfile: FC = () => {
       )}
       <SetPriceModal
         isLoading={getPutOnSaleStatus === 'REQUEST'}
-        onToggle={togglePutOnSale}
-        onSubmit={putOnSaleHandler}
-        isOpen={putOnSaleActive}
-      />
-      <SetPriceModal
-        isLoading={getPutOnAuctionStatus === 'REQUEST'}
-        onToggle={togglePutOnAuction}
-        onSubmit={putOnAuctionHandler}
-        isOpen={putOnAuctionActive}
+        onToggle={togglePutOn}
+        onSubmit={putOnHandler}
+        isOpen={putOnActive}
       />
       <DelistModal
         isLoading={getDelistStatus === 'REQUEST'}

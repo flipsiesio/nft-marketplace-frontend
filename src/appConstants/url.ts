@@ -16,15 +16,17 @@ export const marketURL = {
     REFRESH: '/auth/refresh',
   },
   MARKETPLACE: {
-    MARKET_LIST: '/marketplace/market-list',
-    GALLERY_LIST: '/marketplace/gallery-list',
-    PERSONAL_LIST: '/marketplace/presonal-list',
+    MARKET_LIST: '/marketplace/offer-list',
+    GALLERY_LIST: '/marketplace/sale-list',
+    PERSONAL_LIST: '/marketplace/personal-list',
     MINT_NOW: '/marketplace/mint-now',
     CLAIM_JACKPOT: '/marketplace/claim-jackpot-card',
     BUY_NOW: (address: string) => `/marketplace/nft/buy-now/${address}`,
     BUY_OFFER: (address: string) => `/marketplace/nft/buy-offer/${address}`,
     SOLD: (address: string) => `/marketplace/nft/sold/${address}`,
     OFFER: (address: string) => `/marketplace/nft/offer/${address}`,
+    CARD: 'marketplace/cards',
+    CARD_SVG: '/cards/svg',
   },
 };
 

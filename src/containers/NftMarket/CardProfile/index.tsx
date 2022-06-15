@@ -1,9 +1,10 @@
-import React, { FC, useCallback, useMemo } from 'react';
+import React, {
+  FC, useCallback, useMemo,
+} from 'react';
 import {
   Button,
   Icon, NavTabs, Table, Text,
 } from 'components';
-import img from 'assets/img/card.png';
 import { useHistory } from 'react-router-dom';
 import { NftDto, TabItem } from 'types';
 import { useTranslation } from 'react-i18next';
@@ -110,20 +111,20 @@ const CardProfile: FC<Props> = ({
         <button className={styles.backButton} onClick={goBack} type="button">
           <Icon className={styles.backButtonArrow} icon="chevron" />
         </button>
-        <Text className={styles.title}>{`ID ${selectedNft.id}`}</Text>
+        <Text className={styles.title}>{`ID #${selectedNft.cardId}`}</Text>
       </div>
 
       <div className={styles.body}>
         <div className={styles.bodyLabels}>
-          <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>
+          <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
           <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
-          <img className={styles.img} src={img} alt="img" />
+          <img alt="card" src={selectedNft.url} className={styles.img} />
 
           <div className={styles.mobileBodyLabels}>
-            <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.id}`}</Text></Text>
+            <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
             <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
           </div>
 
@@ -141,42 +142,15 @@ const CardProfile: FC<Props> = ({
                 value={String(selectedNft.face)}
                 percent={selectedNft.faceRarity}
               />
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Teardrop"
-                value={selectedNft.teardrop}
-                percent={selectedNft.teardropRarity}
-              />
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Egg"
-                value={selectedNft.egg}
-                percent={selectedNft.eggRarity}
-              />
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Hair"
-                value={selectedNft.hair}
-                percent={selectedNft.hairRarity}
-              />
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Clothes"
-                value={selectedNft.clothes}
-                percent={selectedNft.clothesRarity}
-              />
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Border line"
-                value={String(selectedNft.borderline)}
-                percent={selectedNft.borderlineRarity}
-              />
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Background"
-                value={selectedNft.background}
-                percent={selectedNft.backgroundRarity}
-              />
+              {selectedNft.properties.map(({ label, rarity, name }) => (
+                <ProfileAttribute
+                  key={name}
+                  className={styles.profileAttribute}
+                  head={name}
+                  value={label}
+                  percent={rarity}
+                />
+              ))}
             </div>
             {buttons}
           </div>
