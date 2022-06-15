@@ -47,7 +47,6 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       suitRarity: percent(res.data.metadata.suitFrequency),
       url: res.data.metadata.url,
     }));
-    console.log(res);
     yield put(apiActions.success(type, res.data));
   } catch (err) {
     yield put(apiActions.error(type, err));
