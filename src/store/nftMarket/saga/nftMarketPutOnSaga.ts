@@ -13,7 +13,7 @@ function* nftMarketPutOnSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const contractName = payload.marketType === MarketType.Sale
+    const contractName = payload.marketType === MarketType.Auction
       ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
       : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
     const contract =

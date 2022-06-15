@@ -38,7 +38,7 @@ const ClaimJackpotModal: FC<Props> = ({
   const seeGalleryHandler = useCallback(() => {
     onToggle();
     dispatch(nftMarketGetMyGalleryAction());
-    history.push(routes.nftMarket.myGalleryProfile.root);
+    history.push(`${routes.nftMarket}?tab=My+Gallery`);
   }, [history]);
 
   return (

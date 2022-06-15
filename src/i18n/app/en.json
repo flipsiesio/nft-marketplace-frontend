@@ -192,7 +192,7 @@
     "cancelSale": "Are you sure that you want to cancel the sale?",
     "purchaseConfirmation": "Purchase confirmation",
     "putOnSale": "Put on sale",
-    "putOnAuction": "Put on auction",
+    "putOnAuction": "Put on bids",
     "sellTitle": "Are you sure that you want to sell NFT",
     "tableCols": {
       "event": "Event",
