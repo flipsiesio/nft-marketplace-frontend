@@ -10,11 +10,13 @@ import { history } from '../../utils';
 type Props = {
   tabItems: TabItem[]
   className?: string
+  shouldSearch?: boolean
 };
 
 const NavTabs: FC<Props> = ({
   tabItems,
   className,
+  shouldSearch = true,
 }) => {
   const location = useLocation();
   const onSelect = (activeTab: number) => {
@@ -32,7 +34,11 @@ const NavTabs: FC<Props> = ({
   }, [location, tabItems]);
 
   return (
-    <Tabs selectedIndex={selectedIndex} onSelect={onSelect} className={className}>
+    <Tabs
+      selectedIndex={shouldSearch ? selectedIndex : undefined}
+      onSelect={shouldSearch ? onSelect : undefined}
+      className={className}
+    >
       <TabList className={styles.tabList}>
         {tabItems.map(({ title }) => (
           <Tab key={title} selectedClassName={styles.activeTab} className={styles.tab}>{title}</Tab>

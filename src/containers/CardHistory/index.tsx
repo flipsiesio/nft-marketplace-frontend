@@ -1,0 +1,182 @@
+import React, {
+  FC, useEffect, useMemo, useState,
+} from 'react';
+import { useTranslation } from 'react-i18next';
+import { format } from 'date-fns';
+import {
+  NavTabs, Pagination, Table, Text,
+} from '../../components';
+import styles from './styles.module.scss';
+import { HistoryData, TabItem, TableRowProps } from '../../types';
+import { marketClient } from '../../store/api';
+import { marketURL } from '../../appConstants';
+
+type Props = {
+  isMyGallery?: boolean
+  onAcceptBidClick?: () => void
+  cardId: number
+};
+
+const PAGINATION_LIMIT = 3;
+
+// TODO: Доделать EVENT
+const tradingCol = [
+  { Header: 'Event', accessor: 'events' },
+  { Header: 'Address', accessor: 'seller' },
+  {
+    Header: 'Price',
+    accessor: 'amount',
+    Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
+      <Text>
+        {amount || 0}
+        &nbsp;
+        <span className={styles.pink}>TRX</span>
+      </Text>
+    ),
+  },
+  {
+    Header: 'Date',
+    accessor: 'timestamp',
+    Cell: ({ row: { original: { timestamp } } }: TableRowProps<HistoryData>) => (
+      <Text>
+        {format(new Date(Number(timestamp)), 'dd.MM.yyyy')}
+      </Text>
+    ),
+  },
+];
+
+const bidCol = [
+  {
+    Header: 'Number',
+    accessor: 'id',
+    Cell: ({ row: { index } }: TableRowProps<HistoryData>) => (
+      <Text>{index + 1}</Text>
+    ),
+  },
+  {
+    Header: 'Bid',
+    accessor: 'amount',
+    Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
+      <Text>
+        {amount}
+        &nbsp;
+        <span className={styles.pink}>TRX</span>
+      </Text>
+    ),
+  },
+  { Header: 'Address', accessor: 'buyer' },
+];
+
+export const CardHistory: FC<Props> = ({
+  // isMyGallery,
+  // onAcceptBidClick,
+  cardId,
+}) => {
+  const [bidData, setBidData] = useState<HistoryData[]>([]);
+  const [tradingData, setTradingData] = useState<HistoryData[]>([]);
+  const [bidCount, setBidCount] = useState(0);
+  const [tradingCount, setTradingCount] = useState(0);
+  const [bidPage, setBidPage] = useState(0);
+  const [tradingPage, setTradingPage] = useState(0);
+  const { t } = useTranslation();
+
+  // const myGalleryBidCol = [
+  //   { Header: 'Number', accessor: 'number' },
+  //   { Header: 'Bid', accessor: 'bid' },
+  //   { Header: 'Address', accessor: 'address' },
+  //   {
+  //     Header: '',
+  //     accessor: 'button',
+  //     Cell: () => (
+  //       <Button onClick={onAcceptBidClick}>
+  //         {t('nftMarket.accept')}
+  //       </Button>
+  //     ),
+  //   },
+  // ];
+
+  const tabItems = useMemo<TabItem[]>(() => (
+    [
+      {
+        title: t('nftMarket.tradingHistory'),
+        content: (
+          <div>
+            <Table
+              className={styles.table}
+              columns={tradingCol}
+              data={tradingData}
+            />
+            <Pagination
+              page={tradingPage}
+              onChange={setTradingPage}
+              pageCount={Math.ceil(tradingCount / PAGINATION_LIMIT)}
+            />
+          </div>
+        ),
+      },
+      {
+        title: t('nftMarket.bids'),
+        content: (
+          <div>
+            <Table
+              className={styles.table}
+              columns={bidCol}
+              data={bidData}
+            />
+            <Pagination
+              page={bidPage}
+              onChange={setBidPage}
+              pageCount={Math.ceil(bidCount / PAGINATION_LIMIT)}
+            />
+          </div>
+        ),
+      },
+    ]
+  ), [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage]);
+
+  useEffect(() => {
+    marketClient.get<HistoryData[]>(marketURL.MARKETPLACE.GET_BID_HISTORY, {
+      params: {
+        tokenId: cardId,
+        offset: bidPage * PAGINATION_LIMIT,
+        count: PAGINATION_LIMIT,
+      },
+    }).then((res) => {
+      setBidData(res.data);
+    });
+  }, [cardId, bidPage]);
+
+  useEffect(() => {
+    marketClient.get<HistoryData[]>(marketURL.MARKETPLACE.GET_TRADE_HISTORY, {
+      params: {
+        tokenId: cardId,
+        offset: tradingPage * PAGINATION_LIMIT,
+        count: PAGINATION_LIMIT,
+      },
+    }).then((res) => {
+      setTradingData(res.data);
+    });
+  }, [cardId, tradingPage]);
+
+  useEffect(() => {
+    marketClient.get<number>(marketURL.MARKETPLACE.GET_BID_HISTORY_COUNT, {
+      params: {
+        tokenId: cardId,
+      },
+    }).then((res) => {
+      setBidCount(res.data);
+    });
+
+    marketClient.get<number>(marketURL.MARKETPLACE.GET_TRADE_HISTORY_COUNT, {
+      params: {
+        tokenId: cardId,
+      },
+    }).then((res) => {
+      setTradingCount(res.data);
+    });
+  }, [cardId]);
+
+  return (
+    <NavTabs shouldSearch={false} className={styles.tables} tabItems={tabItems} />
+  );
+};

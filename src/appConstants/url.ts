@@ -21,12 +21,14 @@ export const marketURL = {
     PERSONAL_LIST: '/marketplace/personal-list',
     MINT_NOW: '/marketplace/mint-now',
     CLAIM_JACKPOT: '/marketplace/claim-jackpot-card',
-    BUY_NOW: (address: string) => `/marketplace/nft/buy-now/${address}`,
-    BUY_OFFER: (address: string) => `/marketplace/nft/buy-offer/${address}`,
     SOLD: (address: string) => `/marketplace/nft/sold/${address}`,
     OFFER: (address: string) => `/marketplace/nft/offer/${address}`,
-    CARD: 'marketplace/cards',
+    CARD: '/marketplace/cards',
     CARD_SVG: '/cards/svg',
+    GET_BID_HISTORY: '/marketplace/getBidHistory',
+    GET_TRADE_HISTORY: '/marketplace/getTradeHistory',
+    GET_BID_HISTORY_COUNT: '/marketplace/getBidHistoryCount',
+    GET_TRADE_HISTORY_COUNT: '/marketplace/getTradeHistoryCount',
   },
 };
 

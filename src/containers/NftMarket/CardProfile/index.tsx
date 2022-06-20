@@ -1,15 +1,15 @@
 import React, {
-  FC, useCallback, useMemo,
+  FC, useCallback,
 } from 'react';
 import {
-  Button,
-  Icon, NavTabs, Table, Text,
+  Icon, Text,
 } from 'components';
 import { useHistory } from 'react-router-dom';
-import { NftDto, TabItem } from 'types';
+import { NftDto } from 'types';
 import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
+import { CardHistory } from '../../CardHistory';
 
 export const historyData = [
   {
@@ -72,39 +72,6 @@ const CardProfile: FC<Props> = ({
     history.goBack();
   }, [history]);
 
-  const myGalleryBidCol = [
-    { Header: 'Number', accessor: 'number' },
-    { Header: 'Bid', accessor: 'bid' },
-    { Header: 'Address', accessor: 'address' },
-    {
-      Header: '',
-      accessor: 'button',
-      Cell: () => (
-        <Button onClick={onAcceptBidClick}>
-          {t('nftMarket.accept')}
-        </Button>
-      ),
-    },
-  ];
-
-  const tabItems = useMemo<TabItem[]>(() => (
-    [
-      {
-        title: t('nftMarket.tradingHistory'),
-        content: <Table className={styles.table} columns={historyCol} data={historyData} />,
-      },
-      {
-        title: t('nftMarket.bids'),
-        content:
-  <Table
-    className={styles.table}
-    columns={isMyGallery ? myGalleryBidCol : bidCol}
-    data={bidData}
-  />,
-      },
-    ]
-  ), [t]);
-
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
@@ -156,7 +123,11 @@ const CardProfile: FC<Props> = ({
           </div>
         </div>
 
-        <NavTabs className={styles.tables} tabItems={tabItems} />
+        <CardHistory
+          onAcceptBidClick={onAcceptBidClick}
+          cardId={selectedNft.cardId}
+          isMyGallery={isMyGallery}
+        />
       </div>
     </div>
   );

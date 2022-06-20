@@ -84,3 +84,20 @@ export enum MarketType {
   Auction = 'Auction',
   Sale = 'Sale'
 }
+
+export type HistoryData = {
+  amount: number | null
+  block: number
+  buyer: string
+  contract: string
+  createdAt: string
+  expirationTime: number | null
+  id: number
+  name: string
+  orderIndex: number
+  seller: string | null
+  timestamp: string
+  tokenId: number
+  transaction: string
+  updatedAt: string
+};

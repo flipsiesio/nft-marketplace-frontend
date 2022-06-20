@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+
+.tables {
+  margin: 40px auto 0;
+  max-width: 800px;
+}
+
+.table {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.pink {
+  color: $primaryColor
+}
