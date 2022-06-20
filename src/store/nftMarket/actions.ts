@@ -100,9 +100,10 @@ export const nftMarketSignOutAction = () => ({
   type: NftMarketActionTypes.SIGN_OUT,
 });
 
-export const nftMarketAcceptBidAction = (payload: AcceptBid) => ({
+export const nftMarketAcceptBidAction = (payload: AcceptBid, callback?: () => void) => ({
   type: NftMarketActionTypes.ACCEPT_BID,
   payload,
+  callback,
 });
 
 export const nftMarketDelistAction = (payload: {

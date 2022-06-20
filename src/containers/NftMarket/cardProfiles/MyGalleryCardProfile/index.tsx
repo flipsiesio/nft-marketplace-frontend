@@ -9,6 +9,7 @@ import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useDispatch } from 'react-redux';
 import {
+  nftMarketAcceptBidAction,
   nftMarketApproveAction,
   nftMarketDelistAction,
   nftMarketGetProfileAction,
@@ -19,6 +20,7 @@ import { MarketType } from 'types';
 import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
+import { history } from '../../../../utils';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
@@ -61,8 +63,11 @@ const MyGalleryCardProfile: FC = () => {
     }
   }, [dispatch, selectedNft, actionType, togglePutOn]);
 
-  const onAcceptBidClick = useCallback(() => {
-    // TODO when will ready backend
+  const onAcceptBidClick = useCallback((payerAddress: string, nftId: string) => {
+    dispatch(nftMarketAcceptBidAction({
+      payerAddress,
+      nftId,
+    }, () => history.goBack()));
   }, [dispatch]);
 
   const delistHandler = useCallback(() => {

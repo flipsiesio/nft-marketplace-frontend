@@ -4,11 +4,12 @@ import {
 import apiActions from 'store/api/actions';
 import { tronSelector } from 'store/selectors';
 import { getTronContract } from 'utils';
+import { toast } from 'react-toastify';
 import { nftMarketAcceptBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
 function* nftMarketAcceptBidSaga(
-  { type, payload: { payerAddress, nftId } }: ReturnType<typeof nftMarketAcceptBidAction>,
+  { type, payload: { payerAddress, nftId }, callback }: ReturnType<typeof nftMarketAcceptBidAction>,
 ) {
   try {
     yield put(apiActions.request(type));
@@ -19,6 +20,8 @@ function* nftMarketAcceptBidSaga(
       from,
     });
     yield put(apiActions.success(type));
+    yield toast.success('Bid accept successful!');
+    if (callback) callback();
   } catch (err) {
     yield put(apiActions.error(type, err));
   }

@@ -11,49 +11,8 @@ import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
 import { CardHistory } from '../../CardHistory';
 
-export const historyData = [
-  {
-    events: 'listed',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-    date: '3.12.20',
-  },
-  {
-    events: 'disabled',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-    date: '3.12.20',
-  },
-];
-
-export const historyCol = [
-  { Header: 'Event', accessor: 'events' },
-  { Header: 'Address', accessor: 'address' },
-  { Header: 'Price', accessor: 'price' },
-  { Header: 'Date', accessor: 'date' },
-];
-
-export const bidData = [
-  {
-    number: '1',
-    bid: '10 TRX',
-    address: 'cn1847cn...c8n2',
-  },
-  {
-    number: '2',
-    address: 'cn1847cn...c8n2',
-    bid: '10 TRX',
-  },
-];
-
-export const bidCol = [
-  { Header: 'Number', accessor: 'number' },
-  { Header: 'Bid', accessor: 'bid' },
-  { Header: 'Address', accessor: 'address' },
-];
-
 type Props = {
-  onAcceptBidClick?: () => void,
+  onAcceptBidClick?: (payerAddress: string, nftId: string) => void
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,

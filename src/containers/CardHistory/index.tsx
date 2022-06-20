@@ -4,31 +4,32 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import {
-  NavTabs, Pagination, Table, Text,
+  NavTabs, Pagination, Table, Text, Button,
 } from '../../components';
 import styles from './styles.module.scss';
 import { HistoryData, TabItem, TableRowProps } from '../../types';
 import { marketClient } from '../../store/api';
 import { marketURL } from '../../appConstants';
+import { fromSunToNumber } from '../../utils';
 
 type Props = {
   isMyGallery?: boolean
-  onAcceptBidClick?: () => void
+  onAcceptBidClick?: (payerAddress: string, nftId: string) => void
   cardId: number
 };
 
-const PAGINATION_LIMIT = 3;
+const PAGINATION_LIMIT = 10;
 
 // TODO: Доделать EVENT
 const tradingCol = [
-  { Header: 'Event', accessor: 'events' },
+  { Header: 'Event', accessor: 'name' },
   { Header: 'Address', accessor: 'seller' },
   {
     Header: 'Price',
     accessor: 'amount',
     Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
       <Text>
-        {amount || 0}
+        {amount === null ? 0 : fromSunToNumber(`${amount}`)}
         &nbsp;
         <span className={styles.pink}>TRX</span>
       </Text>
@@ -45,31 +46,9 @@ const tradingCol = [
   },
 ];
 
-const bidCol = [
-  {
-    Header: 'Number',
-    accessor: 'id',
-    Cell: ({ row: { index } }: TableRowProps<HistoryData>) => (
-      <Text>{index + 1}</Text>
-    ),
-  },
-  {
-    Header: 'Bid',
-    accessor: 'amount',
-    Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
-      <Text>
-        {amount}
-        &nbsp;
-        <span className={styles.pink}>TRX</span>
-      </Text>
-    ),
-  },
-  { Header: 'Address', accessor: 'buyer' },
-];
-
 export const CardHistory: FC<Props> = ({
-  // isMyGallery,
-  // onAcceptBidClick,
+  isMyGallery,
+  onAcceptBidClick,
   cardId,
 }) => {
   const [bidData, setBidData] = useState<HistoryData[]>([]);
@@ -80,20 +59,47 @@ export const CardHistory: FC<Props> = ({
   const [tradingPage, setTradingPage] = useState(0);
   const { t } = useTranslation();
 
-  // const myGalleryBidCol = [
-  //   { Header: 'Number', accessor: 'number' },
-  //   { Header: 'Bid', accessor: 'bid' },
-  //   { Header: 'Address', accessor: 'address' },
-  //   {
-  //     Header: '',
-  //     accessor: 'button',
-  //     Cell: () => (
-  //       <Button onClick={onAcceptBidClick}>
-  //         {t('nftMarket.accept')}
-  //       </Button>
-  //     ),
-  //   },
-  // ];
+  const bidCol = useMemo(() => ([
+    {
+      Header: 'Number',
+      accessor: 'id',
+      Cell: ({ row: { index } }: TableRowProps<HistoryData>) => (
+        <Text>{index + 1}</Text>
+      ),
+    },
+    {
+      Header: 'Bid',
+      accessor: 'amount',
+      Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
+        <Text>
+          {amount === null ? 0 : fromSunToNumber(`${amount}`)}
+          &nbsp;
+          <span className={styles.pink}>TRX</span>
+        </Text>
+      ),
+    },
+    {
+      Header: 'Address',
+      accessor: 'buyer',
+      Cell: ({ row: { original: { buyer, orderIndex } } }: TableRowProps<HistoryData>) => (
+        !isMyGallery
+          ? <Text>{buyer}</Text>
+          : (
+            <div className={styles.flex}>
+              <Text>{buyer}</Text>
+              <Button
+                className={styles.acceptButton}
+                onClick={onAcceptBidClick
+                  ? () => onAcceptBidClick(buyer, `${orderIndex}`)
+                  : undefined}
+              >
+                {t('nftMarket.accept')}
+              </Button>
+            </div>
+          )
+      ),
+    },
+  ]), [onAcceptBidClick, isMyGallery]);
 
   const tabItems = useMemo<TabItem[]>(() => (
     [
@@ -132,7 +138,7 @@ export const CardHistory: FC<Props> = ({
         ),
       },
     ]
-  ), [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage]);
+  ), [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage, bidCol]);
 
   useEffect(() => {
     marketClient.get<HistoryData[]>(marketURL.MARKETPLACE.GET_BID_HISTORY, {
