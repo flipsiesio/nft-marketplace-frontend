@@ -17,7 +17,7 @@ export function roundUpNumber(value: string | number, decimals = 2) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getFeeString = async (feeInBps: any, maxFee: any, price: BigNumber) => {
+export const getFeeString = (feeInBps: any, maxFee: any, price: BigNumber) => {
   const calcFee = price.multipliedBy(feeInBps.toBigInt()).div(maxFee.toBigInt());
   const amount = price.plus(calcFee);
   return amount.integerValue(BigNumber.ROUND_CEIL).toString();
