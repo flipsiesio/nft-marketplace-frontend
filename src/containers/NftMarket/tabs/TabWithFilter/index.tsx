@@ -19,12 +19,14 @@ type Props = {
   items: CardDataForList[]
   link: string
   onUpdate: (filters: NftReqDto) => void
+  getPrice: (item: CardDataForList) => string
 };
 
 const TabWithFilter: FC<Props> = ({
   items,
   link,
   onUpdate,
+  getPrice,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -82,7 +84,7 @@ const TabWithFilter: FC<Props> = ({
             id={item.cardId}
             img={item.url || img}
             type={item.face}
-            price="123"
+            price={getPrice(item)}
             onCardClick={onCardClick}
           />
         ))}

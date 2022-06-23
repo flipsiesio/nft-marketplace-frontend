@@ -42,6 +42,11 @@
 .buttonValue {
   font-size: 16px;
   font-weight: 600;
+  margin-right: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 95px;
 }
 
 .table {
@@ -58,4 +63,8 @@
 
 .button {
   max-width: 155px;
+}
+
+.price {
+  @include flexbox()
 }

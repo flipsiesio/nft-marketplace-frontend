@@ -3,10 +3,13 @@ import {
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { marketApiSaga } from 'store/api';
-import { ApiResponse, CardData, NftProperty } from 'types';
+import {
+  ApiResponse, CardData, NftProperty,
+} from 'types';
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { getBidPrice } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
@@ -28,6 +31,8 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       method: 'get',
       url: marketURL.MARKETPLACE.CARD,
       params: {
+        stateSale: true,
+        stateBids: true,
         cardsId: [payload.id],
         traits: true,
       },
@@ -46,13 +51,13 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       cardId: Number(payload.id),
       suit: res.data.suit,
       face: res.data.face,
-      listingPrice: '10',
       properties,
       owner: '',
-      highestPrice: '10',
       faceRarity: percent(res.data.faceFrequency),
       suitRarity: percent(res.data.suitFrequency),
       url: res.data.url,
+      bidPrice: getBidPrice(res.data.state_bids),
+      salePrice: res.data.state_sale?.price || '0',
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {

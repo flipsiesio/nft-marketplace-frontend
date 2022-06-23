@@ -59,24 +59,13 @@ const MarketCardProfile: FC = () => {
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>
-              {/* <div className={styles.buttonWrap}> */}
-              {/*  <div> */}
-              {/*    <Text className={styles.buttonLabel}>{t('nftMarket.highestBid')}</Text> */}
-              {/*    <Text className={styles.buttonValue}> */}
-              {/*      20,000 */}
-              {/*      <Text className={styles.primary} tag="span">TRX</Text> */}
-              {/*    </Text> */}
-              {/*  </div> */}
-              {/*  <Button */}
-              {/*    onClick={toggleBid} */}
-              {/*    className={styles.button} */}
-              {/*  >{t('nftMarket.bid')} */}
-              {/*  </Button> */}
-              {/* </div> */}
               <div className={styles.buttonWrap}>
                 <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.listingPrice')}</Text>
-                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
+                  <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
+                  <div className={styles.price}>
+                    <Text className={styles.buttonValue}>{selectedNft.bidPrice}</Text>
+                    <Text className={styles.primary} tag="span">TRX</Text>
+                  </div>
                 </div>
                 <Button onClick={toggleBuy} theme="success" className={styles.button}>{t('nftMarket.buyNow')}</Button>
               </div>
@@ -96,7 +85,7 @@ const MarketCardProfile: FC = () => {
         onSubmit={buyNowHandler}
         isOpen={buyIsActive}
         id={selectedNft?.cardId || 0}
-        price={selectedNft ? `${selectedNft.highestPrice}` : ''}
+        price={selectedNft ? `${selectedNft.bidPrice}` : ''}
         title={t('nftMarket.purchaseConfirmation')}
       />
     </>

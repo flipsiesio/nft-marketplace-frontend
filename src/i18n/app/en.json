@@ -176,8 +176,8 @@
   },
   "nftMarket": {
     "title": "NFT Market",
-    "marketTab": "Fix Sale",
-    "galleryTab": "Bids",
+    "marketTab": "Bids",
+    "galleryTab": "Fix Sale",
     "myGalleryTab": "My Gallery",
     "id": "ID",
     "tradingHistory": "Trading History",
@@ -204,8 +204,8 @@
     "owner": "Owner",
     "approve": "Approve",
     "approveText": "Please approve your action",
-    "listingPrice": "Listing Price",
-    "highestBid": "Highest Bid",
+    "bidPrice": "Bid Price",
+    "salePrice": "Sale Price",
     "attributes": "Attributes"
   },
   "marketFilterModal": {

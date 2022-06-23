@@ -110,14 +110,14 @@ const MyGalleryCardProfile: FC = () => {
             <div className={styles.buttonContainer}>
               <div className={styles.buttonWrap}>
                 <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.listingPrice')}</Text>
+                  <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
                   <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
                 </div>
                 <Button onClick={onSaleButtonClick} className={styles.button}>{t('nftMarket.putOnSale')}</Button>
               </div>
               <div className={styles.buttonWrap}>
                 <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.highestBid')}</Text>
+                  <Text className={styles.buttonLabel}>{t('nftMarket.salePrice')}</Text>
                   <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
                 </div>
                 <Button onClick={onAuctionButtonClick} className={styles.button}>{t('nftMarket.putOnAuction')}</Button>

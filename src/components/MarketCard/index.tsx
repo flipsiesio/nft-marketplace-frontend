@@ -43,11 +43,10 @@ const MarketCard: FC<Props> = ({
         </div>
         <div className={styles.infoBlock}>
           <Text className={styles.infoBlockLabel}>Price</Text>
-          <Text className={styles.infoBlockValue}>
-            {`${price}`}
-            &nbsp;
-            <Text className={styles.primary} tag="span">TRX</Text>
-          </Text>
+          <div className={styles.price}>
+            <Text className={styles.infoBlockValue}>{`${price}`}</Text>
+            <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+          </div>
         </div>
       </div>
     </div>

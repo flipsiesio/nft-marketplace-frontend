@@ -15,7 +15,10 @@ function* nftMarketGetMarketSaga({ type, payload }: ReturnType<typeof nftMarketG
     const res: ApiResponse<CardDataForList[]> = yield call(marketApiSaga, {
       method: 'get',
       url: marketURL.MARKETPLACE.MARKET_LIST,
-      params: payload,
+      params: {
+        ...payload,
+        stateBids: true,
+      },
     });
 
     yield put(nftMarketSetStateAction({ market: res.data }));

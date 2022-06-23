@@ -38,10 +38,10 @@ export type NftDto = {
   face: NftType;
   faceRarity: string;
   owner: string;
-  listingPrice: string;
-  highestPrice: string;
   properties: NftProperty[]
   url: string
+  bidPrice: string
+  salePrice: string
 };
 
 export type AcceptBid = {
@@ -68,11 +68,35 @@ type Traits = {
   }
 };
 
+export interface CardState {
+  active: boolean
+  id: number
+  orderIndex: number
+  seller: string
+  tokenId: number
+}
+
+export interface SaleCardState extends CardState {
+  price: string
+}
+
+export interface BidCardState extends CardState {
+  bids: {
+    [key: string]: {
+      buyer: string
+      price: number
+      transaction: string
+    }
+  }
+}
+
 export type CardDataForList = {
   cardId: number
   face: NftType
   suit: NftSuit
   url: string
+  state_sale?: SaleCardState | null
+  state_bids?: BidCardState | null
 };
 
 export type CardData = {
@@ -82,7 +106,9 @@ export type CardData = {
   url: string
   traits: Traits,
   faceFrequency: number,
-  suitFrequency: number
+  suitFrequency: number,
+  state_sale?: SaleCardState | null
+  state_bids?: BidCardState | null
 };
 
 export enum MarketType {
