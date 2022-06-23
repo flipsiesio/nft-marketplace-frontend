@@ -7,19 +7,30 @@ import { useDispatch } from 'react-redux';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
 import { nftMarketGetMyGalleryAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
-import { routes } from 'appConstants';
+import { marketURL, PAGE_ITEM_LIMIT, routes } from 'appConstants';
 import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
+import { marketClient } from '../../../../store/api';
 
 const MyGalleryTab: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
   const [page, setPage] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
-    dispatch(nftMarketGetMyGalleryAction({ limit: 10, skip: page * 10 }));
+    dispatch(nftMarketGetMyGalleryAction({ limit: PAGE_ITEM_LIMIT, skip: page * PAGE_ITEM_LIMIT }));
   }, [dispatch, page]);
+
+  useEffect(() => {
+    marketClient.get<number>(marketURL.MARKETPLACE.PERSONAL_LIST, {
+      params: {
+        count: true,
+      },
+    })
+      .then((res) => setPageCount(Math.ceil(res.data / PAGE_ITEM_LIMIT)));
+  }, []);
 
   const [listed, setListed] = useState(false);
   const [inWallet, setInWallet] = useState(false);
@@ -71,7 +82,7 @@ const MyGalleryTab: FC = () => {
           />
         ))}
       </div>
-      <Pagination page={page} onChange={setPage} />
+      <Pagination page={page} onChange={setPage} pageCount={pageCount} />
     </div>
   );
 };

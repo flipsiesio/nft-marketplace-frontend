@@ -1,12 +1,9 @@
 import { NftSuit, NftType } from '../api';
 
 export type FilterData = {
-  price: {
-    highestPrice: boolean
-    highestBid: boolean
-  },
-  type?: NftType
-  suit?: NftSuit
+  price: 'ASC' | 'DESC',
+  type: Set<NftType>
+  suit: Set<NftSuit>
 };
 
 export type CardProfileCell = {

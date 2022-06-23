@@ -7,7 +7,7 @@ export enum NftType {
   KING= 'King',
   QUEEN = 'Queen',
   JACK = 'Jack',
-  RARE = 'Rare', // Jokers or One-of-ones
+  JOKER = 'Joker', // Jokers or One-of-ones
 }
 
 export enum NftSuit {
@@ -15,14 +15,16 @@ export enum NftSuit {
   CLUBS = 'Clubs',
   DIAMONDS = 'Diamonds',
   SPADES = 'Spades',
+  RED = 'Red',
+  BLACK = 'Black',
 }
 
 export type NftReqDto = {
   limit: number;
   skip: number;
-  sort?: { price: boolean } | { bid: boolean };
-  face?: NftType;
-  suit?: NftSuit;
+  order?: 'ASC' | 'DESC';
+  faces?: NftType[];
+  suits?: NftSuit[];
 };
 
 export type NftProperty = {

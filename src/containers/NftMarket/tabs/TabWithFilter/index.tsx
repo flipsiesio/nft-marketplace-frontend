@@ -13,13 +13,15 @@ import img from 'assets/img/card.png';
 import { CardDataForList, NftReqDto } from 'types';
 import { FilterData } from 'types/containers';
 import { nftMarketSelectProfileAction } from 'store/nftMarket/actions';
+import { PAGE_ITEM_LIMIT } from 'appConstants';
 import styles from '../styles.module.scss';
 
 type Props = {
   items: CardDataForList[]
   link: string
   onUpdate: (filters: NftReqDto) => void
-  getPrice: (item: CardDataForList) => string
+  getPrice: (item: CardDataForList) => string,
+  pageCount: number
 };
 
 const TabWithFilter: FC<Props> = ({
@@ -27,6 +29,7 @@ const TabWithFilter: FC<Props> = ({
   link,
   onUpdate,
   getPrice,
+  pageCount,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,18 +41,12 @@ const TabWithFilter: FC<Props> = ({
 
   useEffect(() => {
     onUpdate({
-      face: filters?.type,
-      suit: filters?.suit,
-      limit: 10,
-      skip: page * 10,
+      order: filters?.price,
+      faces: filters?.type ? Array.from(filters.type) : undefined,
+      suits: filters?.suit ? Array.from(filters.suit) : undefined,
+      limit: PAGE_ITEM_LIMIT,
+      skip: page * PAGE_ITEM_LIMIT,
     });
-    // dispatch(nftMarketGetMarketAction({
-    //   // sort,
-    //   face: filters?.type,
-    //   suit: filters?.suit,
-    //   limit: 10,
-    //   skip: page * 10,
-    // }));
   }, [filters, dispatch, page]);
 
   const onCardClick = useCallback((id: number) => {
@@ -90,7 +87,7 @@ const TabWithFilter: FC<Props> = ({
         ))}
       </div>
 
-      <Pagination page={page} onChange={setPage} />
+      <Pagination pageCount={pageCount} page={page} onChange={setPage} />
 
       <MarketFilterModal
         onApply={setFilters}

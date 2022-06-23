@@ -9,7 +9,7 @@ import {
 import styles from './styles.module.scss';
 import { HistoryData, TabItem, TableRowProps } from '../../types';
 import { marketClient } from '../../store/api';
-import { marketURL } from '../../appConstants';
+import { marketURL, PAGE_ITEM_LIMIT } from '../../appConstants';
 import { fromSunToNumber } from '../../utils';
 
 type Props = {
@@ -18,14 +18,12 @@ type Props = {
   cardId: number
 };
 
-const PAGINATION_LIMIT = 10;
-
 const getHistory = (url: string, id: number, page: number) => {
   return marketClient.get<HistoryData[]>(url, {
     params: {
       ids: [id],
-      skip: page * PAGINATION_LIMIT,
-      take: PAGINATION_LIMIT,
+      skip: page * PAGE_ITEM_LIMIT,
+      take: PAGE_ITEM_LIMIT,
     },
   });
 };
@@ -134,7 +132,7 @@ export const CardHistory: FC<Props> = ({
             <Pagination
               page={tradingPage}
               onChange={setTradingPage}
-              pageCount={Math.ceil(tradingCount / PAGINATION_LIMIT)}
+              pageCount={Math.ceil(tradingCount / PAGE_ITEM_LIMIT)}
             />
           </div>
         ),
@@ -151,7 +149,7 @@ export const CardHistory: FC<Props> = ({
             <Pagination
               page={bidPage}
               onChange={setBidPage}
-              pageCount={Math.ceil(bidCount / PAGINATION_LIMIT)}
+              pageCount={Math.ceil(bidCount / PAGE_ITEM_LIMIT)}
             />
           </div>
         ),

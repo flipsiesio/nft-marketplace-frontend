@@ -212,8 +212,8 @@
     "title": "Filters",
     "price": {
       "title": "Price",
-      "highestPrice": "Highest price",
-      "highestBid": "Highest bid"
+      "asc": "ASC",
+      "desc": "DESC"
     },
     "type": {
       "title": "Type",
