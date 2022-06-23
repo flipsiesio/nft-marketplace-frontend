@@ -1,22 +1,23 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import {
-  Button, SetPriceModal, Text,
-} from 'components';
+import { Button, MarketNftInteractionModal, Text } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
-import { nftMarketBidAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
+import { nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
+import { RequestStatus } from '../../../../appConstants';
+import { history } from '../../../../utils';
+import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
 
 const GalleryCardProfile: FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const dispatch = useDispatch();
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
-  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
+  const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
 
   useEffect(() => {
     const search = new URLSearchParams(location.search);
@@ -25,15 +26,20 @@ const GalleryCardProfile: FC = () => {
   }, []);
 
   const {
-    isActive: bidIsActive,
-    onToggle: toggleBid,
+    isActive: buyIsActive,
+    onToggle: toggleBuy,
   } = useToggle();
 
-  const bidHandler = useCallback((amount: string) => {
+  const successHandler = useCallback(() => {
+    toggleBuy();
+    history.goBack();
+  }, [toggleBuy]);
+
+  const buyHandler = useCallback(() => {
     if (selectedNft) {
-      dispatch(nftMarketBidAction({ price: amount, id: selectedNft.cardId }, toggleBid));
+      dispatch(nftMarketBuyNowAction(successHandler));
     }
-  }, [dispatch, selectedNft]);
+  }, [dispatch, selectedNft, successHandler]);
 
   return (
     <>
@@ -50,17 +56,20 @@ const GalleryCardProfile: FC = () => {
                     <Text className={styles.primary} tag="span">TRX</Text>
                   </div>
                 </div>
-                <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
+                <Button onClick={toggleBuy} className={styles.button}>{t('nftMarket.buyNow')}</Button>
               </div>
             </div>
           )}
         />
       )}
-      <SetPriceModal
-        isLoading={getPutOnSaleStatus === 'REQUEST'}
-        onToggle={toggleBid}
-        onSubmit={bidHandler}
-        isOpen={bidIsActive}
+      <MarketNftInteractionModal
+        id={selectedNft?.cardId || 0}
+        price={selectedNft?.salePrice}
+        isOpen={buyIsActive}
+        isLoading={buyNowStatus === RequestStatus.REQUEST}
+        onToggle={toggleBuy}
+        onSubmit={buyHandler}
+        title={t('nftMarket.purchaseConfirmation')}
       />
     </>
   );

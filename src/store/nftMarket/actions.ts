@@ -42,14 +42,9 @@ export const nftMarketSelectProfileAction = (payload?: NftDto) => ({
 });
 
 export const nftMarketBuyNowAction = (
-  payload: {
-    price: string
-    id: number
-  },
   callback: () => void,
 ) => ({
   type: NftMarketActionTypes.BUY_NOW,
-  payload,
   callback,
 });
 
