@@ -20,6 +20,25 @@ type Props = {
 
 const PAGINATION_LIMIT = 10;
 
+const getHistory = (url: string, id: number, page: number) => {
+  return marketClient.get<HistoryData[]>(url, {
+    params: {
+      ids: [id],
+      skip: page * PAGINATION_LIMIT,
+      take: PAGINATION_LIMIT,
+    },
+  });
+};
+
+const getHistoryCount = (url: string, id: number) => {
+  return marketClient.get<number>(url, {
+    params: {
+      ids: [id],
+      count: true,
+    },
+  });
+};
+
 // TODO: Доделать EVENT
 const tradingCol = [
   { Header: 'Event', accessor: 'name' },
@@ -141,43 +160,25 @@ export const CardHistory: FC<Props> = ({
   ), [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage, bidCol]);
 
   useEffect(() => {
-    marketClient.get<HistoryData[]>(marketURL.MARKETPLACE.GET_BID_HISTORY, {
-      params: {
-        tokenId: cardId,
-        offset: bidPage * PAGINATION_LIMIT,
-        count: PAGINATION_LIMIT,
-      },
-    }).then((res) => {
-      setBidData(res.data);
-    });
+    getHistory(marketURL.MARKETPLACE.GET_BID_HISTORY, cardId, bidPage)
+      .then((res) => {
+        setBidData(res.data);
+      });
   }, [cardId, bidPage]);
 
   useEffect(() => {
-    marketClient.get<HistoryData[]>(marketURL.MARKETPLACE.GET_TRADE_HISTORY, {
-      params: {
-        tokenId: cardId,
-        offset: tradingPage * PAGINATION_LIMIT,
-        count: PAGINATION_LIMIT,
-      },
-    }).then((res) => {
-      setTradingData(res.data);
-    });
+    getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId, tradingPage)
+      .then((res) => {
+        setTradingData(res.data);
+      });
   }, [cardId, tradingPage]);
 
   useEffect(() => {
-    marketClient.get<number>(marketURL.MARKETPLACE.GET_BID_HISTORY_COUNT, {
-      params: {
-        tokenId: cardId,
-      },
-    }).then((res) => {
+    getHistoryCount(marketURL.MARKETPLACE.GET_BID_HISTORY, cardId).then((res) => {
       setBidCount(res.data);
     });
 
-    marketClient.get<number>(marketURL.MARKETPLACE.GET_TRADE_HISTORY_COUNT, {
-      params: {
-        tokenId: cardId,
-      },
-    }).then((res) => {
+    getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
       setTradingCount(res.data);
     });
   }, [cardId]);
