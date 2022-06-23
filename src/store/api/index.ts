@@ -13,3 +13,14 @@ export function* marketApiSaga(
   // @ts-ignore
   return yield call<(config: AxiosRequestConfig) => void>(marketClient, requestConfig);
 }
+
+export const authApi = axios.create({
+  baseURL: process.env.REACT_APP_AUTH_API_URL,
+});
+
+export function* authApiSaga(
+  requestConfig: AxiosRequestConfig,
+): Generator<CallEffect | PutEffect | SelectEffect> {
+  // @ts-ignore
+  return yield call<(config: AxiosRequestConfig) => void>(authApi, requestConfig);
+}
