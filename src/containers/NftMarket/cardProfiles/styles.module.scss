@@ -34,6 +34,20 @@
   }
 }
 
+.buttonWrapInfo {
+  @include flexbox(center, center);
+
+  flex-direction: column;
+  height: 105px;
+  padding: 24px;
+  background: #191D2B;
+  border-radius: 6px;
+
+  @include forPhone {
+    background-color: #313850;
+  }
+}
+
 .buttonLabel {
   margin-bottom: 10px;
   font-size: 14px;
@@ -67,4 +81,21 @@
 
 .price {
   @include flexbox()
+}
+
+.infoBlockValue {
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+
+.trx {
+  margin-left: 6px;
+}
+
+.flexCenter {
+  @include flexbox(center, center)
 }

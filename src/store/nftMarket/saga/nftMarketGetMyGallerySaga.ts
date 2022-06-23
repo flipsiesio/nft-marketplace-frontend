@@ -18,7 +18,11 @@ function* nftMarketGetMyGallerySaga(
     const res: ApiResponse<CardDataForList[]> = yield call(marketApiSaga, {
       method: 'get',
       url: marketURL.MARKETPLACE.PERSONAL_LIST,
-      params: payload,
+      params: {
+        ...payload,
+        stateSale: true,
+        stateBids: true,
+      },
     });
     // const newItem = res.data.filter((i) => !myGalleryList.includes(i));
     // if (newItem.length > 0) yield put(nftMarketSetStateAction({ selectedNft: newItem[0] }));

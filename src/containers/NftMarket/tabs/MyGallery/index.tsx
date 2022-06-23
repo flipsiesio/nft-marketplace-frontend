@@ -11,6 +11,8 @@ import { marketURL, PAGE_ITEM_LIMIT, routes } from 'appConstants';
 import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import { marketClient } from '../../../../store/api';
+import { CardDataForList } from '../../../../types';
+import { fromSunToNumber, getBidPrice } from '../../../../utils';
 
 const MyGalleryTab: FC = () => {
   const history = useHistory();
@@ -51,6 +53,18 @@ const MyGalleryTab: FC = () => {
     });
   }, [dispatch]);
 
+  const getPrice = useCallback((item: CardDataForList) => {
+    if (item.state_sale) {
+      return `${fromSunToNumber(item.state_sale.price)}`;
+    }
+
+    if (item.state_bids) {
+      return getBidPrice(item.state_bids);
+    }
+
+    return '0';
+  }, []);
+
   return (
     <div className={styles.wrap}>
       <div className={styles.checkboxWrap}>
@@ -77,7 +91,7 @@ const MyGalleryTab: FC = () => {
             id={item.cardId}
             img={item.url}
             type={item.face}
-            price="123"
+            price={getPrice(item)}
             onCardClick={onCardClick}
           />
         ))}

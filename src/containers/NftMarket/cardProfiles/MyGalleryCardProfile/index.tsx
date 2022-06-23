@@ -15,28 +15,33 @@ import {
   nftMarketGetProfileAction,
   nftMarketPutOnAction,
 } from 'store/nftMarket/actions';
-import { useLocation } from 'react-router-dom';
 import { MarketType } from 'types';
 import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
+import cx from 'classnames';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
 import { history } from '../../../../utils';
+import { useMyGalleryHandlers } from '../../../../hooks/useMyGalleryHandlers';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const location = useLocation();
   const [actionType, setActionType] = useState<MarketType>(MarketType.Auction);
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getDelistStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.DELIST));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.PUT_ON));
   const getApproveStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.APPROVE));
+  const {
+    id,
+    isBid,
+    isSale,
+    salePrice,
+    bidPrice,
+  } = useMyGalleryHandlers();
 
   useEffect(() => {
-    const search = new URLSearchParams(location.search);
-    const id = search.get('id');
     if (id) dispatch(nftMarketGetProfileAction(id));
-  }, []);
+  }, [id]);
 
   const {
     isActive: putOnActive,
@@ -108,20 +113,35 @@ const MyGalleryCardProfile: FC = () => {
           isMyGallery
           buttons={(
             <div className={styles.buttonContainer}>
-              <div className={styles.buttonWrap}>
-                <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
-                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
+              {!isSale && !isBid && (
+                <>
+                  <div className={styles.buttonWrapInfo}>
+                    <Button onClick={onSaleButtonClick} className={styles.button}>{t('nftMarket.putOnSale')}</Button>
+                  </div>
+                  <div className={styles.buttonWrapInfo}>
+                    <Button onClick={onAuctionButtonClick} className={styles.button}>{t('nftMarket.putOnAuction')}</Button>
+                  </div>
+                </>
+              )}
+
+              {isSale && (
+                <div className={styles.buttonWrapInfo}>
+                  <Text className={styles.buttonLabel}>Price</Text>
+                  <div className={styles.price}>
+                    <Text className={styles.infoBlockValue}>{`${salePrice}`}</Text>
+                    <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                  </div>
                 </div>
-                <Button onClick={onSaleButtonClick} className={styles.button}>{t('nftMarket.putOnSale')}</Button>
-              </div>
-              <div className={styles.buttonWrap}>
-                <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.salePrice')}</Text>
-                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
+              )}
+              {isBid && (
+                <div className={styles.buttonWrapInfo}>
+                  <Text className={styles.buttonLabel}>Price</Text>
+                  <div className={styles.price}>
+                    <Text className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
+                    <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                  </div>
                 </div>
-                <Button onClick={onAuctionButtonClick} className={styles.button}>{t('nftMarket.putOnAuction')}</Button>
-              </div>
+              )}
             </div>
           )}
         />
