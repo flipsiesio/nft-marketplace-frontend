@@ -9,7 +9,7 @@ import {
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { getBidPrice } from '../../../utils';
+import { fromSunToNumber, getBidPrice } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
@@ -57,7 +57,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       suitRarity: percent(res.data.suitFrequency),
       url: res.data.url,
       bidPrice: getBidPrice(res.data.state_bids),
-      salePrice: res.data.state_sale?.price || '0',
+      salePrice: res.data.state_sale?.price ? `${fromSunToNumber(res.data.state_sale.price)}` : '0',
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {
