@@ -10,13 +10,13 @@ import {
 } from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
-import { CardMetadata, NftReqDto } from 'types';
+import { CardDataForList, NftReqDto } from 'types';
 import { FilterData } from 'types/containers';
 import { nftMarketSelectProfileAction } from 'store/nftMarket/actions';
 import styles from '../styles.module.scss';
 
 type Props = {
-  items: CardMetadata[]
+  items: CardDataForList[]
   link: string
   onUpdate: (filters: NftReqDto) => void
 };
@@ -80,7 +80,7 @@ const TabWithFilter: FC<Props> = ({
             className={styles.card}
             key={item.cardId}
             id={item.cardId}
-            img={item.metadata.url || img}
+            img={item.url || img}
             type={item.face}
             price="123"
             onCardClick={onCardClick}

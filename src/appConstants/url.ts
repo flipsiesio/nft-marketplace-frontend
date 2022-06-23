@@ -23,7 +23,7 @@ export const marketURL = {
     CLAIM_JACKPOT: '/marketplace/claim-jackpot-card',
     SOLD: (address: string) => `/marketplace/nft/sold/${address}`,
     OFFER: (address: string) => `/marketplace/nft/offer/${address}`,
-    CARD: '/marketplace/cards',
+    CARD: '/marketplace/getCards',
     CARD_SVG: '/cards/svg',
     GET_BID_HISTORY: '/marketplace/getBidHistory',
     GET_TRADE_HISTORY: '/marketplace/getTradeHistory',

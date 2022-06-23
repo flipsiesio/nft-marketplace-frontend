@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { marketApiSaga } from 'store/api';
-import { ApiResponse, CardMetadata } from 'types';
+import { ApiResponse, CardDataForList } from 'types';
 import { marketURL } from 'appConstants';
 import { nftMarketGetGalleryAction, nftMarketSetStateAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
@@ -12,7 +12,7 @@ function* nftMarketGetGallerySaga({ type, payload }: ReturnType<typeof nftMarket
   try {
     yield put(apiActions.request(type));
 
-    const res: ApiResponse<CardMetadata[]> = yield call(marketApiSaga, {
+    const res: ApiResponse<CardDataForList[]> = yield call(marketApiSaga, {
       method: 'get',
       url: marketURL.MARKETPLACE.GALLERY_LIST,
       params: payload,

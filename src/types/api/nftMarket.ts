@@ -68,16 +68,21 @@ type Traits = {
   }
 };
 
-export type CardMetadata = {
+export type CardDataForList = {
   cardId: number
   face: NftType
   suit: NftSuit
-  metadata: {
-    traits: Traits,
-    faceFrequency: number,
-    suitFrequency: number
-    url: string,
-  }
+  url: string
+};
+
+export type CardData = {
+  cardId: number
+  face: NftType
+  suit: NftSuit
+  url: string
+  traits: Traits,
+  faceFrequency: number,
+  suitFrequency: number
 };
 
 export enum MarketType {

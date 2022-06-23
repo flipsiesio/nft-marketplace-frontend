@@ -64,7 +64,7 @@ const MyGalleryTab: FC = () => {
             className={styles.card}
             key={item.cardId}
             id={item.cardId}
-            img={item.metadata.url}
+            img={item.url}
             type={item.face}
             price="123"
             onCardClick={onCardClick}
