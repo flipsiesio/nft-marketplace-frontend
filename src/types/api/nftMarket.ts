@@ -35,6 +35,7 @@ export type NftProperty = {
 
 export type NftDto = {
   cardId: number;
+  orderId?: number
   suit: NftSuit;
   suitRarity: string;
   face: NftType;

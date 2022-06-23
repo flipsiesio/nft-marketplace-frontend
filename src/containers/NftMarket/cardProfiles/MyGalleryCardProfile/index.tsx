@@ -94,15 +94,15 @@ const MyGalleryCardProfile: FC = () => {
     }));
   }, [actionType, selectedNft, toggleApprove, togglePutOn]);
 
-  const onAuctionButtonClick = () => {
+  const onAuctionButtonClick = useCallback(() => {
     setActionType(MarketType.Auction);
     toggleApprove();
-  };
+  }, [dispatch, toggleApprove]);
 
-  const onSaleButtonClick = () => {
+  const onSaleButtonClick = useCallback(() => {
     setActionType(MarketType.Sale);
     toggleApprove();
-  };
+  }, [dispatch, toggleApprove]);
 
   return (
     <>

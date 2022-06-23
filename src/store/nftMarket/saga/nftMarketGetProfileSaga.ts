@@ -49,6 +49,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
 
     yield put(nftMarketSelectProfileAction({
       cardId: Number(payload.id),
+      orderId: res.data.state_bids?.orderIndex || res.data.state_sale?.orderIndex,
       suit: res.data.suit,
       face: res.data.face,
       properties,

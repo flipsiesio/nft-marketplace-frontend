@@ -1,13 +1,13 @@
 import React, {
-  FC, useCallback, useEffect,
+  FC, useCallback, useEffect, useMemo,
 } from 'react';
 import {
-  Button, MarketNftInteractionModal, SetPriceModal, Text,
+  Button, SetPriceModal, Text,
 } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
-import { nftMarketBidAction, nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
+import { nftMarketBidAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import styles from '../styles.module.scss';
@@ -20,37 +20,30 @@ const MarketCardProfile: FC = () => {
   const location = useLocation();
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BID));
-  const getBuyStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
+  const id = useMemo(() => {
+    const search = new URLSearchParams(location.search);
+    return search.get('id');
+  }, [location]);
 
   useEffect(() => {
-    const search = new URLSearchParams(location.search);
-    const id = search.get('id');
     if (id) dispatch(nftMarketGetProfileAction(id));
-  }, []);
+  }, [id]);
 
   const {
     isActive: bidIsActive,
     onToggle: toggleBid,
   } = useToggle();
 
-  const {
-    isActive: buyIsActive,
-    onToggle: toggleBuy,
-  } = useToggle();
-
-  const buyNowHandler = useCallback(() => {
-    if (!selectedNft) return;
-    dispatch(nftMarketBuyNowAction(
-      { id: selectedNft.cardId, price: '0' },
-      () => toggleBuy(),
-    ));
-  }, [dispatch, selectedNft]);
+  const successCallback = useCallback(() => {
+    toggleBid();
+    if (id) dispatch(nftMarketGetProfileAction(id));
+  }, [toggleBid, id, dispatch]);
 
   const bidHandler = useCallback((amount: string) => {
-    if (selectedNft) {
-      dispatch(nftMarketBidAction({ price: amount, id: selectedNft.cardId }, toggleBid));
+    if (selectedNft && selectedNft.orderId) {
+      dispatch(nftMarketBidAction({ price: amount, id: selectedNft.orderId }, successCallback));
     }
-  }, [dispatch, selectedNft]);
+  }, [dispatch, selectedNft, successCallback]);
 
   return (
     <>
@@ -67,7 +60,7 @@ const MarketCardProfile: FC = () => {
                     <Text className={styles.primary} tag="span">TRX</Text>
                   </div>
                 </div>
-                <Button onClick={toggleBuy} theme="success" className={styles.button}>{t('nftMarket.buyNow')}</Button>
+                <Button onClick={toggleBid} theme="success" className={styles.button}>{t('nftMarket.bid')}</Button>
               </div>
             </div>
           )}
@@ -78,15 +71,6 @@ const MarketCardProfile: FC = () => {
         onToggle={toggleBid}
         onSubmit={bidHandler}
         isOpen={bidIsActive}
-      />
-      <MarketNftInteractionModal
-        isLoading={getBuyStatus === 'REQUEST'}
-        onToggle={toggleBuy}
-        onSubmit={buyNowHandler}
-        isOpen={buyIsActive}
-        id={selectedNft?.cardId || 0}
-        price={selectedNft ? `${selectedNft.bidPrice}` : ''}
-        title={t('nftMarket.purchaseConfirmation')}
       />
     </>
   );
