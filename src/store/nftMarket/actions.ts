@@ -19,6 +19,11 @@ export const nftMarketGetGalleryAction = (payload?: NftReqDto) => ({
   payload,
 });
 
+export const nftMarketGetMyBidsAction = (payload?: NftReqDto) => ({
+  type: NftMarketActionTypes.GET_MY_BIDS_LIST,
+  payload,
+});
+
 export const nftMarketGetMyGalleryAction = (payload?: NftReqDto) => ({
   type: NftMarketActionTypes.GET_MY_GALLERY_LIST,
   payload,

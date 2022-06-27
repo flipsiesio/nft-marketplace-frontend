@@ -5,6 +5,7 @@ export type NftMarketState = {
   market: CardDataForList[]
   gallery: CardDataForList[]
   myGallery: CardDataForList[]
+  myBids: CardDataForList[]
   accessToken?: string
   refreshToken?: string
   selectedNft?: NftDto

@@ -2,6 +2,7 @@ import { NftMarketState } from 'types/store';
 import { NftMarketAction, NftMarketActionTypes } from './actionTypes';
 
 const initialState: NftMarketState = {
+  myBids: [],
   gallery: [],
   market: [],
   myGallery: [],

@@ -27,7 +27,7 @@ export const Pagination: FC<Props> = ({
       className={styles.pagination}
       nextLinkClassName={styles.page}
       previousLinkClassName={styles.page}
-      pageCount={pageCount}
+      pageCount={pageCount || 1}
       nextLabel={
         <Icon className={styles.nextArrow} icon="chevron" />
       }

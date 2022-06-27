@@ -5,6 +5,7 @@ export enum NftMarketActionTypes {
   GET_MARKET_LIST = 'NFT_MARKET.GET_MARKET_LIST',
   GET_GALLERY_LIST = 'NFT_MARKET.GET_GALLERY_LIST',
   GET_MY_GALLERY_LIST = 'NFT_MARKET.GET_MY_GALLERY_LIST',
+  GET_MY_BIDS_LIST = 'NFT_MARKET.GET_MY_BIDS_LIST',
   BUY_NOW = 'NFT_MARKET.BUY_NOW',
   BID = 'NFT_MARKET.BID',
   DELIST = 'NFT_MARKET.DELIST',
@@ -28,6 +29,7 @@ export type NftMarketAction =
   Action<NftMarketActionTypes.GET_MARKET_LIST> |
   Action<NftMarketActionTypes.GET_GALLERY_LIST> |
   Action<NftMarketActionTypes.GET_MY_GALLERY_LIST> |
+  Action<NftMarketActionTypes.GET_MY_BIDS_LIST> |
   Action<NftMarketActionTypes.SIGN_IN> |
   Action<NftMarketActionTypes.SELECT_PROFILE, NftDto> |
   Action<NftMarketActionTypes.SIGN_OUT> |

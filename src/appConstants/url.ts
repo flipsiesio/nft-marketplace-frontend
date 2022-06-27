@@ -19,6 +19,7 @@ export const marketURL = {
     MARKET_LIST: '/marketplace/offer-list',
     GALLERY_LIST: '/marketplace/sale-list',
     PERSONAL_LIST: '/marketplace/personal-list',
+    MY_BIDS_LIST: '/marketplace/personalBids',
     MINT_NOW: '/marketplace/mint-now',
     CLAIM_JACKPOT: '/marketplace/claim-jackpot-card',
     SOLD: (address: string) => `/marketplace/nft/sold/${address}`,

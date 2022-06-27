@@ -142,6 +142,7 @@ function* connectTronSaga({ type, meta }: ReturnType<typeof connectTronAction>) 
 
     if (!window.tronWeb?.defaultAddress?.base58) {
       toast.warn(ERRORS.signInToTroLink);
+      yield put(logoutTronAction());
     }
 
     yield handleTronListener(type);

@@ -4,35 +4,31 @@ import React, {
 import { MarketCard } from 'components/MarketCard';
 import { Checkbox, Pagination } from 'components';
 import { useDispatch } from 'react-redux';
-import { useShallowSelector } from 'hooks';
+import { useShallowSelector, useTabHandlers } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
-import { nftMarketGetMyGalleryAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
+import {
+  nftMarketGetMyGalleryAction,
+  nftMarketSelectProfileAction,
+} from 'store/nftMarket/actions';
 import { marketURL, PAGE_ITEM_LIMIT, routes } from 'appConstants';
 import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
-import { marketClient } from '../../../../store/api';
-import { CardDataForList } from '../../../../types';
-import { fromSunToNumber, getBidPrice } from '../../../../utils';
 
 const MyGalleryTab: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
-  const [page, setPage] = useState(0);
-  const [pageCount, setPageCount] = useState(0);
+
+  const {
+    pageCount,
+    page,
+    setPage,
+    getBidsOrSalePrice,
+  } = useTabHandlers(marketURL.MARKETPLACE.PERSONAL_LIST);
 
   useEffect(() => {
     dispatch(nftMarketGetMyGalleryAction({ limit: PAGE_ITEM_LIMIT, skip: page * PAGE_ITEM_LIMIT }));
   }, [dispatch, page]);
-
-  useEffect(() => {
-    marketClient.get<number>(marketURL.MARKETPLACE.PERSONAL_LIST, {
-      params: {
-        count: true,
-      },
-    })
-      .then((res) => setPageCount(Math.ceil(res.data / PAGE_ITEM_LIMIT)));
-  }, []);
 
   const [listed, setListed] = useState(false);
   const [inWallet, setInWallet] = useState(false);
@@ -52,18 +48,6 @@ const MyGalleryTab: FC = () => {
       search: `?id=${id}`,
     });
   }, [dispatch]);
-
-  const getPrice = useCallback((item: CardDataForList) => {
-    if (item.state_sale) {
-      return `${fromSunToNumber(item.state_sale.price)}`;
-    }
-
-    if (item.state_bids) {
-      return getBidPrice(item.state_bids);
-    }
-
-    return '0';
-  }, []);
 
   return (
     <div className={styles.wrap}>
@@ -91,7 +75,7 @@ const MyGalleryTab: FC = () => {
             id={item.cardId}
             img={item.url}
             type={item.face}
-            price={getPrice(item)}
+            price={getBidsOrSalePrice(item)}
             onCardClick={onCardClick}
           />
         ))}
