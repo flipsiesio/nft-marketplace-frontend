@@ -10,6 +10,7 @@ import {
   nftMarketGetMyGalleryAction,
   nftMarketSelectProfileAction,
 } from 'store/nftMarket/actions';
+import { NftReqDto } from 'types';
 import { marketURL, PAGE_ITEM_LIMIT, routes } from 'appConstants';
 import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
@@ -26,19 +27,30 @@ const MyGalleryTab: FC = () => {
     getBidsOrSalePrice,
   } = useTabHandlers(marketURL.MARKETPLACE.PERSONAL_LIST);
 
-  useEffect(() => {
-    dispatch(nftMarketGetMyGalleryAction({ limit: PAGE_ITEM_LIMIT, skip: page * PAGE_ITEM_LIMIT }));
-  }, [dispatch, page]);
-
   const [listed, setListed] = useState(false);
   const [inWallet, setInWallet] = useState(false);
 
+  useEffect(() => {
+    let inWalletListed: NftReqDto['inWalletListed'] = 'All';
+
+    if (listed) inWalletListed = 'Listed';
+    if (inWallet) inWalletListed = 'InWallet';
+
+    dispatch(nftMarketGetMyGalleryAction({
+      limit: PAGE_ITEM_LIMIT,
+      skip: page * PAGE_ITEM_LIMIT,
+      inWalletListed,
+    }));
+  }, [dispatch, page, listed, inWallet]);
+
   const listedHandler = useCallback((e, value: boolean) => {
     setListed(value);
+    setInWallet(false);
   }, []);
 
   const walletHandler = useCallback((e, value: boolean) => {
     setInWallet(value);
+    setListed(false);
   }, []);
 
   const onCardClick = useCallback((id: number) => {

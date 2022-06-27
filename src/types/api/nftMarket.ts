@@ -25,6 +25,7 @@ export type NftReqDto = {
   order?: 'ASC' | 'DESC';
   faces?: NftType[];
   suits?: NftSuit[];
+  inWalletListed?: 'All'| 'InWallet' | 'Listed'
 };
 
 export type NftProperty = {
