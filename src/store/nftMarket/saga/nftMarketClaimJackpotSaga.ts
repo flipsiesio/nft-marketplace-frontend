@@ -26,6 +26,7 @@ function* nftMarketClaimJackpotSaga(
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
     const trxHash: string = yield contract.mintRandomFree(0, address).send({
       address,
+      shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
     callback(trxHash);

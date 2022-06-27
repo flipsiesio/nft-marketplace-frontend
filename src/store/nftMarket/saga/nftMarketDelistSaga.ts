@@ -16,7 +16,9 @@ function* nftMarketDelistSaga(
       : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
     const contract =
       yield getTronContract(contractName);
-    yield contract.getBackFromSale(payload.orderId).send();
+    yield contract.getBackFromSale(payload.orderId).send({
+      shouldPollResponse: true,
+    });
     yield put(apiActions.success(type));
     callback(payload.marketType);
     const label = MarketType.Sale ? 'sale' : 'auction';

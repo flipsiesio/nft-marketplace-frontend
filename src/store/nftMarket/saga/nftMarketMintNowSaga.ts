@@ -20,6 +20,7 @@ function* nftMarketMintNowSaga(
     const trxHash = yield contract.mintRandom(payload).send({
       from,
       callValue: nftPrice.toString(),
+      shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
     callback(trxHash);

@@ -1,6 +1,5 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { tronSelector } from 'store/selectors';
 import { getTronContract } from 'utils';
 import { toast } from 'react-toastify';
 import { getBackFromSaleAction } from '../actions';
@@ -12,14 +11,13 @@ function* nftMarketGetBackFromSaleSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const from: string = yield select(tronSelector.getProp('address'));
     const contractName = marketType === MarketType.Auction
       ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
       : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
     const contract =
       yield getTronContract(contractName);
     yield contract.getBackFromSale(orderId).send({
-      from,
+      shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
     yield toast.success('Card back successes!');

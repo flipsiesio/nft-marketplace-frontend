@@ -24,7 +24,9 @@ function* nftMarketBidSaga(
     const amountString: string = getFeeString(feeInBps, maxFee, price);
     yield contract.bid(`${payload.id}`, price.toString()).send({
       callValue: amountString,
+      shouldPollResponse: true,
     });
+
     successCallback();
     yield put(apiActions.success(type));
     yield toast.success('Bid successful!');

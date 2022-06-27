@@ -21,7 +21,9 @@ function* nftMarketPutOnSaga(
     const maxExpirationDuration: string = yield contract.maxExpirationDuration().call();
     const maxDuration = Number(maxExpirationDuration);
     const price = window.tronWeb.toSun(payload.price);
-    yield contract.acceptTokenToSell(payload.nftAddress, price, maxDuration).send();
+    yield contract.acceptTokenToSell(payload.nftAddress, price, maxDuration).send({
+      shouldPollResponse: true,
+    });
     yield put(apiActions.success(type));
     callback();
     const label = MarketType.Sale === payload.marketType ? 'sale' : 'auction';

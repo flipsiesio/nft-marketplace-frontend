@@ -97,17 +97,17 @@ export const CardHistory: FC<Props> = ({
     },
     {
       Header: 'Address',
-      accessor: 'buyer',
-      Cell: ({ row: { original: { buyer, orderIndex } } }: TableRowProps<HistoryData>) => (
+      accessor: 'seller',
+      Cell: ({ row: { original: { seller, orderIndex } } }: TableRowProps<HistoryData>) => (
         !isMyGallery
-          ? <Text>{buyer}</Text>
+          ? <Text>{seller}</Text>
           : (
             <div className={styles.flex}>
-              <Text>{buyer}</Text>
+              <Text>{seller}</Text>
               <Button
                 className={styles.acceptButton}
                 onClick={onAcceptBidClick
-                  ? () => onAcceptBidClick(buyer, `${orderIndex}`)
+                  ? () => onAcceptBidClick(seller || '', `${orderIndex}`)
                   : undefined}
               >
                 {t('nftMarket.accept')}

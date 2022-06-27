@@ -31,6 +31,7 @@ function* nftMarketBuyNowSaga(
 
     yield contract.buy(selectedNft.orderId).send({
       callValue: amountString,
+      shouldPollResponse: true,
     });
 
     yield put(apiActions.success(type));

@@ -41,8 +41,6 @@ const MyGalleryCardProfile: FC = () => {
     salePrice,
     bidPrice,
     isActive,
-    notActualBid,
-    notActualSale,
   } = useMyGalleryHandlers();
 
   useEffect(() => {
@@ -118,7 +116,7 @@ const MyGalleryCardProfile: FC = () => {
         orderId: selectedNft.orderId,
       }));
     };
-  }, [dispatch]);
+  }, [dispatch, selectedNft]);
 
   return (
     <>
@@ -149,41 +147,37 @@ const MyGalleryCardProfile: FC = () => {
                 </>
               )}
 
-              {isSale && !notActualSale && (
-                <div className={styles.buttonWrapInfo}>
-                  <Text className={styles.buttonLabel}>Sale Price</Text>
-                  <div className={styles.price}>
-                    <Text className={styles.infoBlockValue}>{`${salePrice}`}</Text>
-                    <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+              {isSale && (
+                <div className={styles.buttonWrap}>
+                  <div>
+                    <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
+                    <div className={styles.price}>
+                      <Text className={styles.infoBlockValue}>{`${salePrice}`}</Text>
+                      <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                    </div>
                   </div>
-                </div>
-              )}
-              {isBid && !notActualBid && (
-                <div className={styles.buttonWrapInfo}>
-                  <Text className={styles.buttonLabel}>Bid Price</Text>
-                  <div className={styles.price}>
-                    <Text className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
-                    <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
-                  </div>
-                </div>
-              )}
-              {notActualBid && (
-                <div className={styles.buttonWrapInfo}>
-                  <Button
-                    disabled={getBackFromSaleStatus === 'REQUEST'}
-                    onClick={getBackClick(MarketType.Auction)}
-                    className={styles.button}
-                  >{t('nftMarket.getBackFromBid')}
-                  </Button>
-                </div>
-              )}
-              {notActualSale && (
-                <div className={styles.buttonWrapInfo}>
                   <Button
                     disabled={getBackFromSaleStatus === 'REQUEST'}
                     onClick={getBackClick(MarketType.Sale)}
                     className={styles.button}
                   >{t('nftMarket.getBackFromSale')}
+                  </Button>
+                </div>
+              )}
+              {isBid && (
+                <div className={styles.buttonWrap}>
+                  <div>
+                    <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
+                    <div className={styles.price}>
+                      <Text className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
+                      <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                    </div>
+                  </div>
+                  <Button
+                    disabled={getBackFromSaleStatus === 'REQUEST'}
+                    onClick={getBackClick(MarketType.Auction)}
+                    className={styles.button}
+                  >{t('nftMarket.getBackFromBids')}
                   </Button>
                 </div>
               )}

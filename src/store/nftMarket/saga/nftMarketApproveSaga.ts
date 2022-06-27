@@ -18,7 +18,9 @@ function* nftMarketApproveSaga(
       : process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string;
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD as string);
-    yield contract.approve(contractName, payload.tokenId).send();
+    yield contract.approve(contractName, payload.tokenId).send({
+      shouldPollResponse: true,
+    });
     yield put(apiActions.success(type));
     callback(payload.actionType);
     yield toast.success('Approve successful!');
