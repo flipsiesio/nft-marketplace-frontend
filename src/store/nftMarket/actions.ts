@@ -97,15 +97,6 @@ export const nftMarketAcceptBidAction = (payload: AcceptBid, callback?: () => vo
   callback,
 });
 
-export const nftMarketDelistAction = (payload: {
-  orderId: number,
-  marketType: MarketType,
-}, callback: (marketType: MarketType) => void) => ({
-  type: NftMarketActionTypes.DELIST,
-  payload,
-  callback,
-});
-
 export const nftMarketPutOnAction = (payload: {
   marketType: MarketType,
   price: number,

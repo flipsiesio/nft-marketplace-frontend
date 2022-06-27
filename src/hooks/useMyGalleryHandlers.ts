@@ -25,6 +25,7 @@ export const useMyGalleryHandlers = () => {
   const [salePrice, setSalePrice] = useState('0');
   const [bidPrice, setBidPrice] = useState('0');
   const [isActive, setIsActive] = useState(false);
+  const [actualBidOrderId, setActualOrderId] = useState<number>();
 
   const id = useMemo(() => {
     const search = new URLSearchParams(location.search);
@@ -53,6 +54,7 @@ export const useMyGalleryHandlers = () => {
         setIsBid(true);
         setBidPrice(getBidPrice(res.data));
         setIsActive(res.data.active);
+        setActualOrderId(res.data.orderIndex);
       }
     });
   }, [address, id]);
@@ -64,5 +66,6 @@ export const useMyGalleryHandlers = () => {
     salePrice,
     bidPrice,
     isActive,
+    actualBidOrderId,
   };
 };

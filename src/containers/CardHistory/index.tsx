@@ -16,6 +16,8 @@ type Props = {
   isMyGallery?: boolean
   onAcceptBidClick?: (payerAddress: string, nftId: string) => void
   cardId: number
+  actualOrderId?: number
+  disabled?: boolean
 };
 
 const getHistory = (url: string, id: number, page: number) => {
@@ -67,6 +69,8 @@ export const CardHistory: FC<Props> = ({
   isMyGallery,
   onAcceptBidClick,
   cardId,
+  actualOrderId,
+  disabled,
 }) => {
   const [bidData, setBidData] = useState<HistoryData[]>([]);
   const [tradingData, setTradingData] = useState<HistoryData[]>([]);
@@ -104,19 +108,22 @@ export const CardHistory: FC<Props> = ({
           : (
             <div className={styles.flex}>
               <Text>{seller}</Text>
-              <Button
-                className={styles.acceptButton}
-                onClick={onAcceptBidClick
-                  ? () => onAcceptBidClick(seller || '', `${orderIndex}`)
-                  : undefined}
-              >
-                {t('nftMarket.accept')}
-              </Button>
+              {actualOrderId === orderIndex && (
+                <Button
+                  disabled={disabled}
+                  className={styles.acceptButton}
+                  onClick={onAcceptBidClick
+                    ? () => onAcceptBidClick(seller || '', `${orderIndex}`)
+                    : undefined}
+                >
+                  {t('nftMarket.accept')}
+                </Button>
+              )}
             </div>
           )
       ),
     },
-  ]), [onAcceptBidClick, isMyGallery]);
+  ]), [onAcceptBidClick, isMyGallery, actualOrderId, disabled]);
 
   const tabItems = useMemo<TabItem[]>(() => (
     [

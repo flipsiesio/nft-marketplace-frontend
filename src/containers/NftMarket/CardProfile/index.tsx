@@ -17,6 +17,8 @@ type Props = {
   buttons: JSX.Element,
   selectedNft: NftDto,
   active?: boolean
+  actualOrderId?: number
+  disabled?: boolean
 };
 
 const CardProfile: FC<Props> = ({
@@ -25,6 +27,8 @@ const CardProfile: FC<Props> = ({
   buttons,
   selectedNft,
   active,
+  actualOrderId,
+  disabled,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -85,9 +89,11 @@ const CardProfile: FC<Props> = ({
         </div>
 
         <CardHistory
+          disabled={disabled}
           onAcceptBidClick={onAcceptBidClick}
           cardId={selectedNft.cardId}
           isMyGallery={isMyGallery}
+          actualOrderId={actualOrderId}
         />
       </div>
     </div>
