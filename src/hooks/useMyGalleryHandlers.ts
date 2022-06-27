@@ -25,6 +25,8 @@ export const useMyGalleryHandlers = () => {
   const [salePrice, setSalePrice] = useState('0');
   const [bidPrice, setBidPrice] = useState('0');
   const [isActive, setIsActive] = useState(false);
+  const [notActualSale, setNotActualSale] = useState(false);
+  const [notActualBid, setNotActualBid] = useState(false);
 
   const id = useMemo(() => {
     const search = new URLSearchParams(location.search);
@@ -40,6 +42,7 @@ export const useMyGalleryHandlers = () => {
         setIsSale(true);
         setSalePrice(`${fromSunToNumber(res.data.price)}`);
         setIsActive(res.data.active);
+        setNotActualSale(!res.data.active);
       }
     });
   }, [address, id]);
@@ -53,6 +56,7 @@ export const useMyGalleryHandlers = () => {
         setIsBid(true);
         setBidPrice(getBidPrice(res.data));
         setIsActive(res.data.active);
+        setNotActualBid(!res.data.active);
       }
     });
   }, [address, id]);
@@ -64,5 +68,7 @@ export const useMyGalleryHandlers = () => {
     salePrice,
     bidPrice,
     isActive,
+    notActualBid,
+    notActualSale,
   };
 };

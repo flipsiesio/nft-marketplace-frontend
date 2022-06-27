@@ -194,6 +194,8 @@
     "purchaseConfirmation": "Purchase confirmation",
     "putOnSale": "Put on sale",
     "putOnAuction": "Put on bids",
+    "getBackFromBids": "Get back from bids",
+    "getBackFromSale": "Get back from sale",
     "sellTitle": "Are you sure that you want to sell NFT",
     "tableCols": {
       "event": "Event",
