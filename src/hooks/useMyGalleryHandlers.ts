@@ -11,7 +11,6 @@ const getState = <T>(url:string, id: string) => {
   return marketClient.get<T>(url, {
     params: {
       byOrder: false,
-      addressSeller: '',
       ids: [id],
     },
   });
