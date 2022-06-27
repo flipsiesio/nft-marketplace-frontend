@@ -34,6 +34,7 @@ export type NftProperty = {
 };
 
 export type NftDto = {
+  active?: boolean
   cardId: number;
   orderId?: number
   suit: NftSuit;

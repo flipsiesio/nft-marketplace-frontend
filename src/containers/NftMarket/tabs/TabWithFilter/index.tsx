@@ -76,6 +76,7 @@ const TabWithFilter: FC<Props> = ({
       <div className={styles.cardContainer}>
         {items.map((item) => (
           <MarketCard
+            active={item.state_sale?.active || item.state_bids?.active || false}
             className={styles.card}
             key={item.cardId}
             id={item.cardId}

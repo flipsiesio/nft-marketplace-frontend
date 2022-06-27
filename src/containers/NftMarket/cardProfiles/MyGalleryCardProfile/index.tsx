@@ -37,6 +37,7 @@ const MyGalleryCardProfile: FC = () => {
     isSale,
     salePrice,
     bidPrice,
+    isActive,
   } = useMyGalleryHandlers();
 
   useEffect(() => {
@@ -108,6 +109,7 @@ const MyGalleryCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          active={isActive}
           onAcceptBidClick={onAcceptBidClick}
           selectedNft={selectedNft}
           isMyGallery
@@ -126,7 +128,7 @@ const MyGalleryCardProfile: FC = () => {
 
               {isSale && (
                 <div className={styles.buttonWrapInfo}>
-                  <Text className={styles.buttonLabel}>Price</Text>
+                  <Text className={styles.buttonLabel}>Sale Price</Text>
                   <div className={styles.price}>
                     <Text className={styles.infoBlockValue}>{`${salePrice}`}</Text>
                     <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
@@ -135,7 +137,7 @@ const MyGalleryCardProfile: FC = () => {
               )}
               {isBid && (
                 <div className={styles.buttonWrapInfo}>
-                  <Text className={styles.buttonLabel}>Price</Text>
+                  <Text className={styles.buttonLabel}>Bid Price</Text>
                   <div className={styles.price}>
                     <Text className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
                     <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>

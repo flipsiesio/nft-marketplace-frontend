@@ -48,6 +48,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       .filter((trait) => !exceptionsProperty.includes(trait.name));
 
     yield put(nftMarketSelectProfileAction({
+      active: res.data.state_bids?.active || res.data.state_sale?.active || false,
       cardId: Number(payload.id),
       orderId: res.data.state_bids?.orderIndex || res.data.state_sale?.orderIndex,
       suit: res.data.suit,

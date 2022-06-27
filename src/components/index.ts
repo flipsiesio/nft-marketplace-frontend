@@ -24,4 +24,5 @@ export * from './NftArtwork';
 export * from './ApproveModal';
 export * from './InfoModal';
 export * from './Pagination';
+export * from './NotActiveCardIcon';
 export { default as NeedExtenstionModal } from './NeedExtenstionModal';

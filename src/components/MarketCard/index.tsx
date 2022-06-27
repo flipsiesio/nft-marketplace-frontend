@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 import { Text } from '../Typography';
 import { NftType } from '../../types';
+import { NotActiveCardIcon } from '../NotActiveCardIcon';
 
 type Props = {
   id: number
@@ -12,6 +13,7 @@ type Props = {
   price: string
   className?: string
   onCardClick: (id: number) => void
+  active?: boolean
 };
 
 const MarketCard: FC<Props> = ({
@@ -21,6 +23,7 @@ const MarketCard: FC<Props> = ({
   price,
   className,
   onCardClick,
+  active,
 }) => {
   const { t } = useTranslation();
 
@@ -35,7 +38,7 @@ const MarketCard: FC<Props> = ({
         &nbsp;
         <Text className={styles.bold} tag="span">{`#${id}`}</Text>
       </Text>
-      <img className={styles.img} src={img} alt="" />
+      <NotActiveCardIcon active={active} url={img} className={styles.img} />
       <div className={styles.info}>
         <div className={styles.infoBlock}>
           <Text className={styles.infoBlockLabel}>Type</Text>

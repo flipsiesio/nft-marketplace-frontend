@@ -24,6 +24,7 @@ const getHistory = (url: string, id: number, page: number) => {
       ids: [id],
       skip: page * PAGE_ITEM_LIMIT,
       take: PAGE_ITEM_LIMIT,
+      byOrder: false,
     },
   });
 };
@@ -37,7 +38,6 @@ const getHistoryCount = (url: string, id: number) => {
   });
 };
 
-// TODO: Доделать EVENT
 const tradingCol = [
   { Header: 'Event', accessor: 'name' },
   { Header: 'Address', accessor: 'seller' },

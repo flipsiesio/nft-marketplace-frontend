@@ -2,7 +2,7 @@ import React, {
   FC, useCallback,
 } from 'react';
 import {
-  Icon, Text,
+  Icon, NotActiveCardIcon, Text,
 } from 'components';
 import { useHistory } from 'react-router-dom';
 import { NftDto } from 'types';
@@ -16,6 +16,7 @@ type Props = {
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,
+  active?: boolean
 };
 
 const CardProfile: FC<Props> = ({
@@ -23,6 +24,7 @@ const CardProfile: FC<Props> = ({
   isMyGallery,
   buttons,
   selectedNft,
+  active,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -47,7 +49,7 @@ const CardProfile: FC<Props> = ({
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
-          <img alt="card" src={selectedNft.url} className={styles.img} />
+          <NotActiveCardIcon url={selectedNft.url} active={active} className={styles.img} />
 
           <div className={styles.mobileBodyLabels}>
             <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>

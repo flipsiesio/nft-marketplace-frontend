@@ -24,7 +24,7 @@ function* nftMarketPutOnSaga(
     yield contract.acceptTokenToSell(payload.nftAddress, price, maxDuration).send();
     yield put(apiActions.success(type));
     callback();
-    const label = MarketType.Sale ? 'sale' : 'auction';
+    const label = MarketType.Sale === payload.marketType ? 'sale' : 'auction';
     yield toast.success(`Put on ${label} successful!`);
   } catch (err) {
     yield put(apiActions.error(type, err));

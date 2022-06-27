@@ -49,6 +49,7 @@ const MarketCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          active={selectedNft.active}
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>
