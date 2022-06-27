@@ -1,8 +1,9 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import styles from '../styles.module.scss';
-import { MarketCard, Pagination } from '../../../../components';
+import { MarketCard, Pagination, Text } from '../../../../components';
 import { useShallowSelector, useTabHandlers } from '../../../../hooks';
 import { nftMarketSelector } from '../../../../store/selectors';
 import {
@@ -12,6 +13,7 @@ import {
 import { marketURL, PAGE_ITEM_LIMIT, routes } from '../../../../appConstants';
 
 export const MyBidsTab: FC = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const dispatch = useDispatch();
   const { myBids } = useShallowSelector(nftMarketSelector.getState);
@@ -37,6 +39,9 @@ export const MyBidsTab: FC = () => {
   return (
     <div className={styles.wrap}>
       <div className={styles.cardContainer}>
+        {myBids.length === 0 && (
+          <Text className={styles.emptyLabel}>{t('nftMarket.empty')}</Text>
+        )}
         {myBids.map((item) => (
           <MarketCard
             className={styles.card}

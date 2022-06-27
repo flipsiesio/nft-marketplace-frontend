@@ -2,7 +2,7 @@ import React, {
   FC, useCallback, useEffect, useState,
 } from 'react';
 import { MarketCard } from 'components/MarketCard';
-import { Checkbox, Pagination } from 'components';
+import { Checkbox, Pagination, Text } from 'components';
 import { useDispatch } from 'react-redux';
 import { useShallowSelector, useTabHandlers } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
@@ -13,9 +13,11 @@ import {
 import { NftReqDto } from 'types';
 import { marketURL, PAGE_ITEM_LIMIT, routes } from 'appConstants';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from '../styles.module.scss';
 
 const MyGalleryTab: FC = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
@@ -80,6 +82,9 @@ const MyGalleryTab: FC = () => {
         />
       </div>
       <div className={styles.cardContainer}>
+        {myGallery.length === 0 && (
+          <Text className={styles.emptyLabel}>{t('nftMarket.empty')}</Text>
+        )}
         {myGallery.map((item) => (
           <MarketCard
             className={styles.card}

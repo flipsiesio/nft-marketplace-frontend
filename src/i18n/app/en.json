@@ -175,6 +175,7 @@
     }
   },
   "nftMarket": {
+    "empty": "Empty...",
     "title": "NFT Market",
     "marketTab": "Bids",
     "galleryTab": "Fix Sale",

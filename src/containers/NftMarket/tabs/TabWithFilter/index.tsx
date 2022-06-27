@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useToggle } from 'hooks';
 import {
-  Icon, Input, MarketCard, Pagination,
+  Icon, Input, MarketCard, Pagination, Text,
 } from 'components';
 import { MarketFilterModal } from 'containers/MarketFilterModal';
 import img from 'assets/img/card.png';
@@ -74,6 +74,9 @@ const TabWithFilter: FC<Props> = ({
       </div>
 
       <div className={styles.cardContainer}>
+        {items.length === 0 && (
+          <Text className={styles.emptyLabel}>{t('nftMarket.empty')}</Text>
+        )}
         {items.map((item) => (
           <MarketCard
             active={item.state_sale?.active || item.state_bids?.active || false}
