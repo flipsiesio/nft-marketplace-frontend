@@ -31,7 +31,7 @@ export const MyBidsTab: FC = () => {
   const onCardClick = useCallback((id: number) => {
     dispatch(nftMarketSelectProfileAction(undefined));
     history.push({
-      pathname: routes.nftMarket.myGalleryProfile.root,
+      pathname: routes.nftMarket.myBidsProfile.root,
       search: `?id=${id}`,
     });
   }, [dispatch]);
