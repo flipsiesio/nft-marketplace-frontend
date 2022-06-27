@@ -1,7 +1,7 @@
 import { NftMarketState } from 'types/store';
 import { NftMarketActionTypes } from './actionTypes';
 import {
-  AcceptBid, MarketType, NftDto, NftReqDto, SoldReq,
+  AcceptBid, MarketType, NftDto, NftReqDto,
 } from '../../types';
 
 export const nftMarketSetStateAction = (payload: Partial<NftMarketState>) => ({
@@ -62,17 +62,8 @@ export const nftMarketBidAction = (
   successCallback,
 });
 
-export const nftMarketCancelBidAction = () => ({
-  type: NftMarketActionTypes.CANCEL_BID,
-});
-
 export const nftMarketMakeOfferAction = (payload: string) => ({
   type: NftMarketActionTypes.MAKE_OFFER,
-  payload,
-});
-
-export const nftMarketSoldAction = (payload: SoldReq) => ({
-  type: NftMarketActionTypes.SOLD,
   payload,
 });
 
@@ -121,6 +112,18 @@ export const nftMarketPutOnAction = (payload: {
   nftAddress: number,
 }, callback: () => void) => ({
   type: NftMarketActionTypes.PUT_ON,
+  payload,
+  callback,
+});
+
+export const getBackFromSaleAction = (
+  payload: {
+    marketType: MarketType
+    orderId: number
+  },
+  callback?: () => void,
+) => ({
+  type: NftMarketActionTypes.GET_BACK_FROM_SALE,
   payload,
   callback,
 });
