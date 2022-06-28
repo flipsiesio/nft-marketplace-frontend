@@ -20,7 +20,7 @@ export const MyBidsTab: FC = () => {
   const {
     page,
     setPage,
-    getBidsPrice,
+    getMyBidsPrice,
     pageCount,
   } = useTabHandlers(marketURL.MARKETPLACE.MY_BIDS_LIST);
 
@@ -50,7 +50,7 @@ export const MyBidsTab: FC = () => {
             id={item.cardId}
             img={item.url}
             type={item.face}
-            price={getBidsPrice(item)}
+            price={getMyBidsPrice(item)}
             onCardClick={onCardClick}
           />
         ))}

@@ -5,7 +5,7 @@ import { marketURL } from '../appConstants';
 import { marketClient } from '../store/api';
 import { tronSelector } from '../store/selectors';
 import { BidCardState, SaleCardState } from '../types';
-import { fromSunToNumber, getBidPrice } from '../utils';
+import { fromSunToNumber, getBidPrice, getMyBidPrice } from '../utils';
 
 const getState = <T>(url:string, id: string) => {
   return marketClient.get<T>(url, {
@@ -23,6 +23,7 @@ export const useMyProfileHandlers = () => {
   const [isBid, setIsBid] = useState(false);
   const [salePrice, setSalePrice] = useState('0');
   const [bidPrice, setBidPrice] = useState('0');
+  const [myBidPrice, setMyBidPrice] = useState('0');
   const [isActive, setIsActive] = useState(false);
   const [actualBidOrderId, setActualOrderId] = useState<number>();
 
@@ -51,6 +52,7 @@ export const useMyProfileHandlers = () => {
     getState<BidCardState>(marketURL.MARKETPLACE.GET_ACTUAL_BIDS, id).then((res) => {
       if (res.data) {
         setIsBid(true);
+        setMyBidPrice(getMyBidPrice(address, res.data));
         setBidPrice(getBidPrice(res.data));
         setIsActive(res.data.active);
         setActualOrderId(res.data.orderIndex);
@@ -66,5 +68,6 @@ export const useMyProfileHandlers = () => {
     bidPrice,
     isActive,
     actualBidOrderId,
+    myBidPrice,
   };
 };

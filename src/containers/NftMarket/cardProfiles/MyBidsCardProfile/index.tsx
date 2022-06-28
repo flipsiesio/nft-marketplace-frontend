@@ -20,7 +20,7 @@ export const MyBidsCardProfile: FC = () => {
   const getCancelBidStatus =
     useShallowSelector(uiSelector.getProp(NftMarketActionTypes.Cancel_BID));
   const {
-    bidPrice,
+    myBidPrice,
     id,
     isActive,
     actualBidOrderId,
@@ -55,16 +55,18 @@ export const MyBidsCardProfile: FC = () => {
                 <div>
                   <Text className={styles.buttonLabel}>{t('nftMarket.myBid')}</Text>
                   <div className={styles.price}>
-                    <Text className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
+                    <Text className={styles.infoBlockValue}>{`${myBidPrice}`}</Text>
                     <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
                   </div>
                 </div>
-                <Button
-                  disabled={getCancelBidStatus === RequestStatus.REQUEST}
-                  onClick={cancelBidClick}
-                  className={styles.button}
-                >{t('nftMarket.cancelBid')}
-                </Button>
+                {!isActive && (
+                  <Button
+                    disabled={getCancelBidStatus === RequestStatus.REQUEST}
+                    onClick={cancelBidClick}
+                    className={styles.button}
+                  >{t('nftMarket.cancelBid')}
+                  </Button>
+                )}
               </div>
             </div>
           )}

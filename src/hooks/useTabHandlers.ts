@@ -3,11 +3,16 @@ import axios from 'axios';
 import { marketClient } from '../store/api';
 import { PAGE_ITEM_LIMIT } from '../appConstants';
 import { CardDataForList, NftReqDto } from '../types';
-import { fromSunToNumber, getBidPrice, getTrxFromSun } from '../utils';
+import {
+  fromSunToNumber, getBidPrice, getMyBidPrice, getTrxFromSun,
+} from '../utils';
+import { useShallowSelector } from './index';
+import { tronSelector } from '../store/selectors';
 
 export const useTabHandlers = (url: string) => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
+  const address = useShallowSelector(tronSelector.getProp('address'));
 
   const updatePage = useCallback((dto: NftReqDto) => {
     marketClient.get<number>(url, {
@@ -46,6 +51,13 @@ export const useTabHandlers = (url: string) => {
     return '0';
   }, []);
 
+  const getMyBidsPrice = useCallback((item: CardDataForList) => {
+    if (item.state_bids) {
+      return getMyBidPrice(address, item.state_bids);
+    }
+    return '0';
+  }, [address]);
+
   const getBidsOrSalePrice = useCallback((item: CardDataForList) => {
     if (item.state_sale) {
       return `${fromSunToNumber(item.state_sale.price)}`;
@@ -66,5 +78,6 @@ export const useTabHandlers = (url: string) => {
     updatePage,
     page,
     setPage,
+    getMyBidsPrice,
   };
 };
