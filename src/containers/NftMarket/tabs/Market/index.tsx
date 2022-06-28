@@ -7,9 +7,11 @@ import { useDispatch } from 'react-redux';
 import { nftMarketGetMarketAction } from 'store/nftMarket/actions';
 import { routes, marketURL } from 'appConstants';
 import { NftReqDto } from 'types';
+import { useTranslation } from 'react-i18next';
 import { TabWithFilter } from '../TabWithFilter';
 
 const MarketTab: FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { market } = useShallowSelector(nftMarketSelector.getState);
   const {
@@ -23,6 +25,7 @@ const MarketTab: FC = () => {
 
   return (
     <TabWithFilter
+      priceLabel={t('nftMarket.highestBid')}
       onUpdate={onUpdate}
       link={routes.nftMarket.marketProfile.root}
       items={market}

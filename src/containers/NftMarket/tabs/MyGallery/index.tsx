@@ -87,6 +87,7 @@ const MyGalleryTab: FC = () => {
         )}
         {myGallery.map((item) => (
           <MarketCard
+            showPriceLabel={false}
             className={styles.card}
             key={item.cardId}
             id={item.cardId}

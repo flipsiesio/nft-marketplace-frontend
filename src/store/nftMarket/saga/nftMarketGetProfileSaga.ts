@@ -27,7 +27,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
   try {
     yield put(apiActions.request(type));
 
-    const res: ApiResponse<CardData> = yield call(marketApiSaga, {
+    const res: ApiResponse<CardData[]> = yield call(marketApiSaga, {
       method: 'get',
       url: marketURL.MARKETPLACE.CARD,
       params: {
@@ -38,8 +38,10 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       },
     });
 
+    const currentCard = res.data[0];
+
     const properties: NftProperty[] = Object
-      .values(res.data.traits)
+      .values(currentCard.traits)
       .map((trait) => ({
         rarity: trait.frequency ? percent(trait.frequency) : '',
         name: trait.main.name[0].toUpperCase() + trait.main.name.slice(1),
@@ -48,18 +50,18 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       .filter((trait) => !exceptionsProperty.includes(trait.name));
 
     yield put(nftMarketSelectProfileAction({
-      active: res.data.state_bids?.active || res.data.state_sale?.active || false,
+      active: currentCard.state_bids?.active || currentCard.state_sale?.active || false,
       cardId: Number(payload.id),
-      orderId: res.data.state_bids?.orderIndex || res.data.state_sale?.orderIndex,
-      suit: res.data.suit,
-      face: res.data.face,
+      orderId: currentCard.state_bids?.orderIndex || currentCard.state_sale?.orderIndex,
+      suit: currentCard.suit,
+      face: currentCard.face,
       properties,
       owner: '',
-      faceRarity: percent(res.data.faceFrequency),
-      suitRarity: percent(res.data.suitFrequency),
-      url: res.data.url,
-      bidPrice: getBidPrice(res.data.state_bids),
-      salePrice: res.data.state_sale?.price ? `${fromSunToNumber(res.data.state_sale.price)}` : '0',
+      faceRarity: percent(currentCard.faceFrequency),
+      suitRarity: percent(currentCard.suitFrequency),
+      url: currentCard.url,
+      bidPrice: getBidPrice(currentCard.state_bids),
+      salePrice: currentCard.state_sale?.price ? `${fromSunToNumber(currentCard.state_sale.price)}` : '0',
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {

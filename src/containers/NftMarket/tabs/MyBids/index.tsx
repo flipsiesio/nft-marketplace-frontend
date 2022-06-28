@@ -44,6 +44,7 @@ export const MyBidsTab: FC = () => {
         )}
         {myBids.map((item) => (
           <MarketCard
+            priceLabel={t('nftMarket.myBid')}
             className={styles.card}
             key={item.cardId}
             id={item.cardId}

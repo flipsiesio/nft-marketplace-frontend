@@ -209,8 +209,11 @@
     "approve": "Approve",
     "approveText": "Please approve your action",
     "bidPrice": "Bid Price",
+    "myBid": "My Bid",
+    "highestBid": "Highest Bid",
     "salePrice": "Sale Price",
-    "attributes": "Attributes"
+    "attributes": "Attributes",
+    "type": "Type"
   },
   "marketFilterModal": {
     "title": "Filters",

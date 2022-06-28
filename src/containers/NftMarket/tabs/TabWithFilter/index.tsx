@@ -21,7 +21,8 @@ type Props = {
   link: string
   onUpdate: (filters: NftReqDto) => void
   getPrice: (item: CardDataForList) => string,
-  pageCount: number
+  pageCount: number,
+  priceLabel?: string
 };
 
 const TabWithFilter: FC<Props> = ({
@@ -30,6 +31,7 @@ const TabWithFilter: FC<Props> = ({
   onUpdate,
   getPrice,
   pageCount,
+  priceLabel,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -79,6 +81,7 @@ const TabWithFilter: FC<Props> = ({
         )}
         {items.map((item) => (
           <MarketCard
+            priceLabel={priceLabel}
             active={item.state_sale?.active || item.state_bids?.active || false}
             className={styles.card}
             key={item.cardId}

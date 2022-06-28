@@ -14,6 +14,8 @@ type Props = {
   className?: string
   onCardClick: (id: number) => void
   active?: boolean
+  priceLabel?:string
+  showPriceLabel?: boolean
 };
 
 const MarketCard: FC<Props> = ({
@@ -24,6 +26,8 @@ const MarketCard: FC<Props> = ({
   className,
   onCardClick,
   active,
+  priceLabel,
+  showPriceLabel = true,
 }) => {
   const { t } = useTranslation();
 
@@ -41,16 +45,18 @@ const MarketCard: FC<Props> = ({
       <NotActiveCardIcon active={active} url={img} className={styles.img} />
       <div className={styles.info}>
         <div className={styles.infoBlock}>
-          <Text className={styles.infoBlockLabel}>Type</Text>
+          <Text className={styles.infoBlockLabel}>{t('nftMarket.type')}</Text>
           <Text className={styles.infoBlockValue}>{type}</Text>
         </div>
-        <div className={styles.infoBlock}>
-          <Text className={styles.infoBlockLabel}>Price</Text>
-          <div className={styles.price}>
-            <Text className={styles.infoBlockValue}>{`${price}`}</Text>
-            <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+        {showPriceLabel && (
+          <div className={styles.infoBlock}>
+            <Text className={styles.infoBlockLabel}>{priceLabel || t('nftMarket.price')}</Text>
+            <div className={styles.price}>
+              <Text className={styles.infoBlockValue}>{`${price}`}</Text>
+              <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
