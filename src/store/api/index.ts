@@ -24,3 +24,7 @@ export function* authApiSaga(
   // @ts-ignore
   return yield call<(config: AxiosRequestConfig) => void>(authApi, requestConfig);
 }
+
+export const jackpotApi = axios.create({
+  baseURL: process.env.REACT_APP_JACKPOT_API_URL,
+});

@@ -31,6 +31,10 @@ export const marketURL = {
     GET_ACTUAL_BIDS: '/marketplace/getActualOrderBids',
     GET_ACTUAL_SALE: '/marketplace/getActualOrderSale',
   },
+  JACKPOT: {
+    ISSUED: '/jackpot/issued',
+    SET_VIEWED: '/jackpot/setViewed',
+  },
 };
 
 export const flipsiesGameUrl = `${process.env.REACT_APP_URL}game`;

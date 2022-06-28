@@ -137,3 +137,18 @@ export type HistoryData = {
   transaction: string
   updatedAt: string
 };
+
+export type Jackpot = {
+  requestId: string,
+  userAddress: string,
+  status: number,
+  viewed: boolean,
+  tokenId: number,
+  mintTimestamp: number,
+  amount: number
+};
+
+export type JackpotIssue = {
+  count: number,
+  jackpots: Jackpot[]
+};
