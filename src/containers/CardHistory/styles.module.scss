@@ -24,3 +24,15 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+
+.transactionIcon {
+  color: $primaryColor;
+  font-size: 16px;
+}
+
+.transactionBtn {
+  margin-left: 6px;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+}

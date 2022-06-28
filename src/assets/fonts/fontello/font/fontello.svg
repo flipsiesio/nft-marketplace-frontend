@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2021 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
 <defs>
 <font id="fontello" horiz-adv-x="1000" >
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -69,6 +69,8 @@
 <glyph glyph-name="market" unicode="&#xe81e;" d="M979 290v-329h49v-97h-972v97h48v329c-30 20-54 47-71 78-17 32-26 68-26 104 0 40 11 79 31 112l132 228c4 7 10 13 17 18 8 4 16 6 25 6h660c8 0 17-2 24-6 7-5 14-11 18-18l131-228c29-48 39-105 26-160-12-55-45-103-92-134z m-97-36c-33-4-67 0-99 12-32 11-60 30-83 54-21-21-45-38-72-50-28-11-57-17-86-17-30 0-59 6-86 17-27 12-52 29-72 50-24-24-52-43-84-54-31-12-65-16-99-12v-293h681v293 0z m-642 485l-118-205c-12-28-12-60-1-89 10-28 32-52 59-65 28-14 59-17 89-8 29 9 54 28 70 54 16 41 74 41 90 0 9-22 24-42 45-55 20-14 43-21 68-21 24 0 48 7 68 21 20 13 36 33 45 55 16 41 73 41 90 0 6-15 16-29 28-41 12-12 26-21 42-27 15-5 32-8 49-7 16 1 33 5 48 12 15 8 28 19 39 31 11 13 18 28 23 44 5 16 6 33 4 50-2 17-8 33-17 47l-117 204h-604 0z" horiz-adv-x="1083" />
 
 <glyph glyph-name="filter" unicode="&#xe81f;" d="M1000 850v-111h-56l-277-417v-472h-334v472l-277 417h-56v111h1000z m-811-111l255-383v-395h112v395l255 383h-622z" horiz-adv-x="1000" />
+
+<glyph glyph-name="transactionlink" unicode="&#xe820;" d="M393 832v-107h-268v-750h750v268h107v-322c0-14-5-27-15-38-11-10-24-15-38-15h-858c-14 0-27 5-37 15-10 11-16 24-16 38v858c0 14 6 27 16 38 10 10 23 15 37 15h322z m406-107h-245v107h428v-428h-107v245l-375-375-76 76 375 375z" horiz-adv-x="1000" />
 </font>
 </defs>
 </svg>

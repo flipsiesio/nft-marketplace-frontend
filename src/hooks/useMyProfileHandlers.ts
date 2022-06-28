@@ -16,7 +16,7 @@ const getState = <T>(url:string, id: string) => {
   });
 };
 
-export const useMyGalleryHandlers = () => {
+export const useMyProfileHandlers = () => {
   const location = useLocation();
   const address = useSelector(tronSelector.getProp('address'));
   const [isSale, setIsSale] = useState(false);

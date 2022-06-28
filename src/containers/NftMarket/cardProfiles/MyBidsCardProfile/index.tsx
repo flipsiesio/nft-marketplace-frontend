@@ -9,7 +9,7 @@ import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
 import cx from 'classnames';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
-import { useMyGalleryHandlers } from '../../../../hooks/useMyGalleryHandlers';
+import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 
 export const MyBidsCardProfile: FC = () => {
@@ -24,7 +24,7 @@ export const MyBidsCardProfile: FC = () => {
     id,
     isActive,
     actualBidOrderId,
-  } = useMyGalleryHandlers();
+  } = useMyProfileHandlers();
 
   useEffect(() => {
     if (id) dispatch(nftMarketGetProfileAction(id));

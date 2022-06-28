@@ -21,7 +21,7 @@ import cx from 'classnames';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
 import { history } from '../../../../utils';
-import { useMyGalleryHandlers } from '../../../../hooks/useMyGalleryHandlers';
+import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 
 const MyGalleryCardProfile: FC = () => {
@@ -43,7 +43,7 @@ const MyGalleryCardProfile: FC = () => {
     bidPrice,
     isActive,
     actualBidOrderId,
-  } = useMyGalleryHandlers();
+  } = useMyProfileHandlers();
 
   const isWait = useMemo(() => {
     return getAcceptBidState === RequestStatus.REQUEST ||

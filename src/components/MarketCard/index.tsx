@@ -14,7 +14,7 @@ type Props = {
   className?: string
   onCardClick: (id: number) => void
   active?: boolean
-  priceLabel?:string
+  priceLabel?: string
   showPriceLabel?: boolean
 };
 

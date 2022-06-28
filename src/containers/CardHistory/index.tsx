@@ -4,12 +4,12 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import {
-  NavTabs, Pagination, Table, Text, Button,
+  NavTabs, Pagination, Table, Text, Button, Icon,
 } from '../../components';
 import styles from './styles.module.scss';
 import { HistoryData, TabItem, TableRowProps } from '../../types';
 import { marketClient } from '../../store/api';
-import { marketURL, PAGE_ITEM_LIMIT } from '../../appConstants';
+import { marketURL, PAGE_ITEM_LIMIT, scanTransactionUrl } from '../../appConstants';
 import { fromSunToNumber } from '../../utils';
 
 type Props = {
@@ -57,10 +57,20 @@ const tradingCol = [
   {
     Header: 'Date',
     accessor: 'timestamp',
-    Cell: ({ row: { original: { timestamp } } }: TableRowProps<HistoryData>) => (
-      <Text>
-        {format(new Date(Number(timestamp)), 'dd.MM.yyyy')}
-      </Text>
+    Cell: ({ row: { original: { timestamp, transaction } } }: TableRowProps<HistoryData>) => (
+      <div className={styles.flex}>
+        <Text>
+          {format(new Date(Number(timestamp)), 'dd.MM.yyyy')}
+        </Text>
+        {transaction && (
+          <Button
+            className={styles.transactionBtn}
+            onClick={() => window.open(`${scanTransactionUrl}${transaction}`)}
+          >
+            <Icon className={styles.transactionIcon} icon="transactionlink" />
+          </Button>
+        )}
+      </div>
     ),
   },
 ];
