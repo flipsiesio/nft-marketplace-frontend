@@ -3,11 +3,13 @@ import { useShallowSelector } from 'hooks';
 import React, { useEffect, useState } from 'react';
 import { nftMarketSelector, tronSelector } from 'store/selectors';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { Link, Text } from '../components';
 import { jackpotApi } from '../store/api';
 import { JackpotIssue } from '../types';
 
 export const useJackpot = () => {
+  const { t } = useTranslation();
   const accessToken = useShallowSelector(nftMarketSelector.getProp('accessToken'));
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
   const { status } = useShallowSelector(tronSelector.getState);
@@ -29,7 +31,7 @@ export const useJackpot = () => {
         },
       );
     });
-  }, [requestIds, accessToken]);
+  }, [requestIds, accessToken, t]);
 
   useEffect(() => {
     jackpotApi.defaults.headers.Authorization = `Bearer ${accessToken}`;
@@ -40,7 +42,7 @@ export const useJackpot = () => {
         if (jackpots.length === 0) return;
 
         if (jackpots.some((j) => j.status === 1)) {
-          toast.warn('You have won the jackpot. The jackpot is pending...');
+          toast.warn(t('jackpot.pendingJackpot'));
           return;
         }
 
@@ -51,13 +53,13 @@ export const useJackpot = () => {
             ids.push(j.requestId);
             toast.success(
               <Text>
-                You have won the jackpot ID #41. It can be viewed
+                {t('jackpot.wonJackpot{{id}}', { id: j.tokenId })}
                 &nbsp;
                 <Link
                   style={{ color: '#f15566', fontWeight: 'bold' }}
                   to={`${routes.nftMarket.myGalleryProfile.root}?=id${j.tokenId}`}
                 >
-                  here
+                  {t('jackpot.here')}
                 </Link>
               </Text>,
             );
@@ -66,5 +68,5 @@ export const useJackpot = () => {
         setRequestIds(ids);
       });
     }
-  }, [status, isAuth, accessToken]);
+  }, [status, isAuth, accessToken, t]);
 };
