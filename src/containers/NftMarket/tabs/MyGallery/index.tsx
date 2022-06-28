@@ -27,6 +27,7 @@ const MyGalleryTab: FC = () => {
     page,
     setPage,
     getBidsOrSalePrice,
+    updatePage,
   } = useTabHandlers(marketURL.MARKETPLACE.PERSONAL_LIST);
 
   const [listed, setListed] = useState(false);
@@ -38,12 +39,14 @@ const MyGalleryTab: FC = () => {
     if (listed) inWalletListed = 'Listed';
     if (inWallet) inWalletListed = 'InWallet';
 
-    dispatch(nftMarketGetMyGalleryAction({
+    const dto: NftReqDto = {
       limit: PAGE_ITEM_LIMIT,
       skip: page * PAGE_ITEM_LIMIT,
       inWalletListed,
-    }));
-  }, [dispatch, page, listed, inWallet]);
+    };
+    updatePage(dto);
+    dispatch(nftMarketGetMyGalleryAction(dto));
+  }, [dispatch, page, listed, inWallet, updatePage]);
 
   const listedHandler = useCallback((e, value: boolean) => {
     setListed(value);

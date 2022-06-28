@@ -4,7 +4,7 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useToggle } from 'hooks';
+import { useDebounce, useToggle } from 'hooks';
 import {
   Icon, Input, MarketCard, Pagination, Text,
 } from 'components';
@@ -38,6 +38,8 @@ const TabWithFilter: FC<Props> = ({
   const { t } = useTranslation();
   const [filters, setFilters] = useState<FilterData>();
   const [page, setPage] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const debounceSearchTerm = useDebounce(searchTerm);
 
   const { isActive: modalActive, onToggle: toggleModal } = useToggle();
 
@@ -48,8 +50,9 @@ const TabWithFilter: FC<Props> = ({
       suits: filters?.suit ? Array.from(filters.suit) : undefined,
       limit: PAGE_ITEM_LIMIT,
       skip: page * PAGE_ITEM_LIMIT,
+      cardsId: debounceSearchTerm.length > 0 ? [debounceSearchTerm] : undefined,
     });
-  }, [filters, dispatch, page]);
+  }, [filters, dispatch, page, debounceSearchTerm]);
 
   const onCardClick = useCallback((id: number) => {
     dispatch(nftMarketSelectProfileAction(undefined));
@@ -58,6 +61,10 @@ const TabWithFilter: FC<Props> = ({
       search: `?id=${id}`,
     });
   }, [dispatch]);
+
+  const searchHandler = useCallback<React.ChangeEventHandler<HTMLInputElement>>((e) => {
+    setSearchTerm(e.currentTarget.value.replace(/[^0-9.]/g, ''));
+  }, []);
 
   return (
     <div className={styles.wrap}>
@@ -68,6 +75,8 @@ const TabWithFilter: FC<Props> = ({
             classNameWrap={styles.searchInputWrap}
             className={styles.searchInput}
             placeholder={t('nftMarket.id')}
+            value={searchTerm}
+            onChange={searchHandler}
           />
         </div>
         <button className={styles.filterButton} type="button" onClick={toggleModal}>

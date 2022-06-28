@@ -17,11 +17,13 @@ const MarketTab: FC = () => {
   const {
     getBidsPrice,
     pageCount,
+    updatePage,
   } = useTabHandlers(marketURL.MARKETPLACE.MARKET_LIST);
 
   const onUpdate = useCallback((data: NftReqDto) => {
     dispatch(nftMarketGetMarketAction(data));
-  }, [dispatch]);
+    updatePage(data);
+  }, [dispatch, updatePage]);
 
   return (
     <TabWithFilter

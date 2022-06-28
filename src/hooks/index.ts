@@ -5,3 +5,4 @@ export { default as useConnectWallet } from './useConnectWallet';
 export * from './useToggle';
 export * from './useJackpot';
 export * from './useTabHandlers';
+export * from './useDebounce';

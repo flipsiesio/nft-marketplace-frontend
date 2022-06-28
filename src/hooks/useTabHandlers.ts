@@ -2,12 +2,21 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { marketClient } from '../store/api';
 import { PAGE_ITEM_LIMIT } from '../appConstants';
-import { CardDataForList } from '../types';
+import { CardDataForList, NftReqDto } from '../types';
 import { fromSunToNumber, getBidPrice, getTrxFromSun } from '../utils';
 
 export const useTabHandlers = (url: string) => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
+
+  const updatePage = useCallback((dto: NftReqDto) => {
+    marketClient.get<number>(url, {
+      params: {
+        ...dto,
+        count: true,
+      },
+    }).then((res) => setPageCount(Math.ceil(res.data / PAGE_ITEM_LIMIT)));
+  }, [url]);
 
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
@@ -54,6 +63,7 @@ export const useTabHandlers = (url: string) => {
     getSalePrice,
     getBidsPrice,
     getBidsOrSalePrice,
+    updatePage,
     page,
     setPage,
   };

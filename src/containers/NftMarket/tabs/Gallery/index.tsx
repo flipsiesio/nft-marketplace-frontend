@@ -16,11 +16,13 @@ const GalleryTab: FC = () => {
   const {
     pageCount,
     getSalePrice,
+    updatePage,
   } = useTabHandlers(marketURL.MARKETPLACE.GALLERY_LIST);
 
   const onUpdate = useCallback((data: NftReqDto) => {
     dispatch(nftMarketGetGalleryAction(data));
-  }, [dispatch]);
+    updatePage(data);
+  }, [dispatch, updatePage]);
 
   return (
     <TabWithFilter
