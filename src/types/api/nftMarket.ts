@@ -124,6 +124,7 @@ export enum MarketType {
 }
 
 export type HistoryData = {
+  price: number | null
   amount: number | null
   block: number
   buyer: string

@@ -5,7 +5,7 @@ import {
   put,
   take,
   takeLatest,
-  delay,
+  delay, select,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { TronState } from 'types';
@@ -14,6 +14,8 @@ import { history, getNetworkName } from 'utils';
 import { toast } from 'react-toastify';
 import { connectTronAction, logoutTronAction, tronSetStateAction } from '../actions';
 import { TronActionTypes } from '../actionTypes';
+import { tronSelector } from '../../selectors';
+import { nftMarketSignOutAction } from '../../nftMarket/actions';
 
 const MS_RETRY_TRON = 2000;
 const MAX_ATTEMPT_GET_BALANCE = 5;
@@ -64,6 +66,7 @@ function getPlayerName(address: string) {
 
 function* setConnect(type: string) {
   if (window.tronWeb) {
+    yield delay(30);
     const address = window.tronWeb.defaultAddress?.base58 || '';
     const networkUrl = window.tronWeb.fullNode.host;
     const network = getNetworkName(networkUrl);
@@ -104,6 +107,7 @@ function* setConnect(type: string) {
 }
 
 function* handleChangeAccount(address: string, name: string) {
+  const prevAddress = yield select(tronSelector.getProp('address'));
   const payload: Partial<TronState> = {
     address,
     name,
@@ -113,6 +117,9 @@ function* handleChangeAccount(address: string, name: string) {
     type: TronActionTypes.SET_STATE,
     payload,
   });
+  if (prevAddress !== address) {
+    yield put(nftMarketSignOutAction());
+  }
 }
 
 function* handleTronListener(type: string) {
@@ -123,7 +130,11 @@ function* handleTronListener(type: string) {
       yield setConnect(type);
     }
     if (['setAccount'].includes(e.data.message?.action)) {
-      yield handleChangeAccount(e.data.message.data.address, e.data.message.data.name);
+      if (!e.data.message.data.address) {
+        yield put(logoutTronAction());
+        return;
+      }
+      yield handleChangeAccount(e.data.message.data.address || '', e.data.message.data.name);
     }
     if (['disconnectWeb', 'disconnect'].includes(e.data.message?.action)) {
       yield put(logoutTronAction());

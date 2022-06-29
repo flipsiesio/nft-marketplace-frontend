@@ -18,6 +18,7 @@ type Props = {
   color?: Color,
   align?: Align;
   bold?: boolean,
+  title?: string | number
 };
 
 const Text: FC<PropsWithChildren<Props>> = ({
@@ -30,10 +31,12 @@ const Text: FC<PropsWithChildren<Props>> = ({
   align = 'left',
   underline = false,
   bold = false,
+  title,
 }) => (
   createElement(
     tag,
     {
+      title,
       style,
       className: cx(
         styles.p,

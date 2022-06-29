@@ -42,7 +42,7 @@ const MarketCard: FC<Props> = ({
         &nbsp;
         <Text className={styles.bold} tag="span">{`#${id}`}</Text>
       </Text>
-      <NotActiveCardIcon active={active} url={img} className={styles.img} />
+      <NotActiveCardIcon showShadows active={active} url={img} className={styles.img} />
       <div className={styles.info}>
         <div className={styles.infoBlock}>
           <Text className={styles.infoBlockLabel}>{t('nftMarket.type')}</Text>
@@ -52,7 +52,7 @@ const MarketCard: FC<Props> = ({
           <div className={styles.infoBlock}>
             <Text className={styles.infoBlockLabel}>{priceLabel || t('nftMarket.price')}</Text>
             <div className={styles.price}>
-              <Text className={styles.infoBlockValue}>{`${price}`}</Text>
+              <Text title={price} className={styles.infoBlockValue}>{`${price}`}</Text>
               <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
             </div>
           </div>

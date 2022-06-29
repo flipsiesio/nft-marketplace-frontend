@@ -4,6 +4,7 @@ import {
 } from 'react-tabs';
 import { TabItem } from 'types';
 import { useLocation } from 'react-router-dom';
+import cx from 'classnames';
 import styles from './styles.module.scss';
 import { history } from '../../utils';
 
@@ -11,12 +12,14 @@ type Props = {
   tabItems: TabItem[]
   className?: string
   shouldSearch?: boolean
+  tabClassName?: string
 };
 
 const NavTabs: FC<Props> = ({
   tabItems,
   className,
   shouldSearch = true,
+  tabClassName,
 }) => {
   const location = useLocation();
   const onSelect = (activeTab: number) => {
@@ -41,7 +44,12 @@ const NavTabs: FC<Props> = ({
     >
       <TabList className={styles.tabList}>
         {tabItems.map(({ title }) => (
-          <Tab key={title} selectedClassName={styles.activeTab} className={styles.tab}>{title}</Tab>
+          <Tab
+            key={title}
+            selectedClassName={styles.activeTab}
+            className={cx(styles.tab, tabClassName)}
+          >{title}
+          </Tab>
         ))}
       </TabList>
 

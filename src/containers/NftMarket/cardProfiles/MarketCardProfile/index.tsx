@@ -57,7 +57,12 @@ const MarketCardProfile: FC = () => {
                 <div>
                   <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
                   <div className={styles.price}>
-                    <Text className={styles.buttonValue}>{selectedNft.bidPrice}</Text>
+                    <Text
+                      title={selectedNft.bidPrice}
+                      className={styles.buttonValue}
+                    >
+                      {selectedNft.bidPrice}
+                    </Text>
                     <Text className={styles.primary} tag="span">TRX</Text>
                   </div>
                 </div>
