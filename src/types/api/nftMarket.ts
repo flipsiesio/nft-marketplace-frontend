@@ -27,6 +27,7 @@ export type NftReqDto = {
   suits?: NftSuit[];
   inWalletListed?: 'All'| 'InWallet' | 'Listed'
   cardsId?: string[]
+  active?: boolean
 };
 
 export type NftProperty = {

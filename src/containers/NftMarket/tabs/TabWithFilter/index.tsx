@@ -51,6 +51,7 @@ const TabWithFilter: FC<Props> = ({
       limit: PAGE_ITEM_LIMIT,
       skip: page * PAGE_ITEM_LIMIT,
       cardsId: debounceSearchTerm.length > 0 ? [debounceSearchTerm] : undefined,
+      active: true,
     });
   }, [filters, dispatch, page, debounceSearchTerm]);
 
