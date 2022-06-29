@@ -3,10 +3,13 @@ import {
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { marketApiSaga } from 'store/api';
-import { ApiResponse, CardMetadata, NftProperty } from 'types';
+import {
+  ApiResponse, CardData, NftProperty,
+} from 'types';
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { fromSunToNumber, getBidPrice } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
@@ -24,30 +27,42 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
   try {
     yield put(apiActions.request(type));
 
-    const res: ApiResponse<CardMetadata> = yield call(marketApiSaga, {
+    const res: ApiResponse<CardData[]> = yield call(marketApiSaga, {
       method: 'get',
-      url: `${marketURL.MARKETPLACE.CARD}/${payload.id}`,
+      url: marketURL.MARKETPLACE.CARD,
+      params: {
+        stateSale: true,
+        stateBids: true,
+        cardsId: [payload.id],
+        traits: true,
+      },
     });
 
-    const properties: NftProperty[] = Object.values(res.data.metadata.traits).map((trait) => ({
-      rarity: trait.frequency ? percent(trait.frequency) : '',
-      name: trait.main.name[0].toUpperCase() + trait.main.name.slice(1),
-      label: `${trait.main.color.name} (#${trait.main.color.color})`,
-    })).filter((trait) => !exceptionsProperty.includes(trait.name));
+    const currentCard = res.data[0];
+
+    const properties: NftProperty[] = Object
+      .values(currentCard.traits)
+      .map((trait) => ({
+        rarity: trait.frequency ? percent(trait.frequency) : '',
+        name: trait.main.name[0].toUpperCase() + trait.main.name.slice(1),
+        label: `${trait.main.color.name} (#${trait.main.color.color})`,
+      }))
+      .filter((trait) => !exceptionsProperty.includes(trait.name));
 
     yield put(nftMarketSelectProfileAction({
+      active: currentCard.state_bids?.active || currentCard.state_sale?.active || false,
       cardId: Number(payload.id),
-      suit: res.data.suit,
-      face: res.data.face,
-      listingPrice: '10',
+      orderId: currentCard.state_bids?.orderIndex || currentCard.state_sale?.orderIndex,
+      suit: currentCard.suit,
+      face: currentCard.face,
       properties,
       owner: '',
-      highestPrice: '10',
-      faceRarity: percent(res.data.metadata.faceFrequency),
-      suitRarity: percent(res.data.metadata.suitFrequency),
-      url: res.data.metadata.url,
+      faceRarity: percent(currentCard.faceFrequency),
+      suitRarity: percent(currentCard.suitFrequency),
+      url: currentCard.url,
+      bidPrice: getBidPrice(currentCard.state_bids),
+      salePrice: currentCard.state_sale?.price ? `${fromSunToNumber(currentCard.state_sale.price)}` : '0',
     }));
-    console.log(res);
     yield put(apiActions.success(type, res.data));
   } catch (err) {
     yield put(apiActions.error(type, err));

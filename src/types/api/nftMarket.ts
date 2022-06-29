@@ -7,7 +7,7 @@ export enum NftType {
   KING= 'King',
   QUEEN = 'Queen',
   JACK = 'Jack',
-  RARE = 'Rare', // Jokers or One-of-ones
+  JOKER = 'Joker', // Jokers or One-of-ones
 }
 
 export enum NftSuit {
@@ -15,14 +15,19 @@ export enum NftSuit {
   CLUBS = 'Clubs',
   DIAMONDS = 'Diamonds',
   SPADES = 'Spades',
+  RED = 'Red',
+  BLACK = 'Black',
 }
 
 export type NftReqDto = {
   limit: number;
   skip: number;
-  sort?: { price: boolean } | { bid: boolean };
-  face?: NftType;
-  suit?: NftSuit;
+  order?: 'ASC' | 'DESC';
+  faces?: NftType[];
+  suits?: NftSuit[];
+  inWalletListed?: 'All'| 'InWallet' | 'Listed'
+  cardsId?: string[]
+  active?: boolean
 };
 
 export type NftProperty = {
@@ -32,16 +37,18 @@ export type NftProperty = {
 };
 
 export type NftDto = {
+  active?: boolean
   cardId: number;
+  orderId?: number
   suit: NftSuit;
   suitRarity: string;
   face: NftType;
   faceRarity: string;
   owner: string;
-  listingPrice: string;
-  highestPrice: string;
   properties: NftProperty[]
   url: string
+  bidPrice: string
+  salePrice: string
 };
 
 export type AcceptBid = {
@@ -68,19 +75,82 @@ type Traits = {
   }
 };
 
-export type CardMetadata = {
+export interface CardState {
+  active: boolean
+  id: number
+  orderIndex: number
+  seller: string
+  tokenId: number
+}
+
+export interface SaleCardState extends CardState {
+  price: string
+}
+
+export interface BidCardState extends CardState {
+  bids: {
+    [key: string]: {
+      buyer: string
+      price: number
+      transaction: string
+    }
+  }
+}
+
+export type CardDataForList = {
   cardId: number
   face: NftType
   suit: NftSuit
-  metadata: {
-    traits: Traits,
-    faceFrequency: number,
-    suitFrequency: number
-    url: string,
-  }
+  url: string
+  state_sale?: SaleCardState | null
+  state_bids?: BidCardState | null
+};
+
+export type CardData = {
+  cardId: number
+  face: NftType
+  suit: NftSuit
+  url: string
+  traits: Traits,
+  faceFrequency: number,
+  suitFrequency: number,
+  state_sale?: SaleCardState | null
+  state_bids?: BidCardState | null
 };
 
 export enum MarketType {
   Auction = 'Auction',
   Sale = 'Sale'
 }
+
+export type HistoryData = {
+  amount: number | null
+  block: number
+  buyer: string
+  contract: string
+  createdAt: string
+  expirationTime: number | null
+  id: number
+  name: string
+  orderIndex: number
+  seller: string | null
+  timestamp: string
+  tokenId: number
+  transaction: string
+  updatedAt: string
+};
+
+export type Jackpot = {
+  requestId: string,
+  userAddress: string,
+  status: number,
+  viewed: boolean,
+  tokenId: number,
+  mintTimestamp: number,
+  amount: number
+};
+
+export type JackpotIssue = {
+  count: number,
+  jackpots: Jackpot[]
+};

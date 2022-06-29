@@ -67,6 +67,7 @@ function* setConnect(type: string) {
     const address = window.tronWeb.defaultAddress?.base58 || '';
     const networkUrl = window.tronWeb.fullNode.host;
     const network = getNetworkName(networkUrl);
+    yield window.tronWeb.request({ method: 'tron_requestAccounts' });
 
     /**
      * Check that for user is on the correct network
@@ -132,10 +133,17 @@ function* handleTronListener(type: string) {
 
 function* connectTronSaga({ type, meta }: ReturnType<typeof connectTronAction>) {
   try {
+    // // eslint-disable-next-line no-debugger
+    // debugger;
     yield put(apiActions.request(type));
 
     if (!window.tronWeb?.defaultAddress?.base58) yield delay(MS_RETRY_TRON);
     yield setConnect(type);
+
+    if (!window.tronWeb?.defaultAddress?.base58) {
+      toast.warn(ERRORS.signInToTroLink);
+      yield put(logoutTronAction());
+    }
 
     yield handleTronListener(type);
 

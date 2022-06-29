@@ -6,6 +6,7 @@ import { TronStatus } from 'appConstants';
 import { getNetworkName } from 'utils';
 import { logoutTronAction } from '../actions';
 import { TronActionTypes } from '../actionTypes';
+import { nftMarketSignOutAction } from '../../nftMarket/actions';
 
 function* logoutTronSaga({ type }: ReturnType<typeof logoutTronAction>) {
   try {
@@ -19,6 +20,8 @@ function* logoutTronSaga({ type }: ReturnType<typeof logoutTronAction>) {
       status: window.tronWeb ? TronStatus.AVAILABLE : TronStatus.NOT_AVAILABLE,
       network,
     };
+
+    yield put(nftMarketSignOutAction());
 
     yield put(apiActions.success(type, payload));
   } catch (err) {

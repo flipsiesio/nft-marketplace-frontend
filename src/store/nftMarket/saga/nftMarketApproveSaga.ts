@@ -13,12 +13,14 @@ function* nftMarketApproveSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const contractName = payload.actionType === MarketType.Sale ?
-      process.env.REACT_APP_CONTRACT_NFT_SALE as string
+    const contractName = payload.actionType === MarketType.Sale
+      ? process.env.REACT_APP_CONTRACT_NFT_SALE as string
       : process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string;
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD as string);
-    yield contract.approve(contractName, payload.tokenId).send();
+    yield contract.approve(contractName, payload.tokenId).send({
+      shouldPollResponse: true,
+    });
     yield put(apiActions.success(type));
     callback(payload.actionType);
     yield toast.success('Approve successful!');

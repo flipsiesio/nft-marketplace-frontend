@@ -2,6 +2,8 @@ type PokerContract = {};
 
 interface Window {
   tronWeb: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    request: (obj: any) => Promise<void>
     fullNode: {
       host: string,
     },

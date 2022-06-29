@@ -1,62 +1,24 @@
 import React, {
-  FC, useCallback, useMemo,
+  FC, useCallback,
 } from 'react';
 import {
-  Button,
-  Icon, NavTabs, Table, Text,
+  Icon, NotActiveCardIcon, Text,
 } from 'components';
 import { useHistory } from 'react-router-dom';
-import { NftDto, TabItem } from 'types';
+import { NftDto } from 'types';
 import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
-
-export const historyData = [
-  {
-    events: 'listed',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-    date: '3.12.20',
-  },
-  {
-    events: 'disabled',
-    address: 'cn1847cn...c8n2',
-    price: '10 TRX',
-    date: '3.12.20',
-  },
-];
-
-export const historyCol = [
-  { Header: 'Event', accessor: 'events' },
-  { Header: 'Address', accessor: 'address' },
-  { Header: 'Price', accessor: 'price' },
-  { Header: 'Date', accessor: 'date' },
-];
-
-export const bidData = [
-  {
-    number: '1',
-    bid: '10 TRX',
-    address: 'cn1847cn...c8n2',
-  },
-  {
-    number: '2',
-    address: 'cn1847cn...c8n2',
-    bid: '10 TRX',
-  },
-];
-
-export const bidCol = [
-  { Header: 'Number', accessor: 'number' },
-  { Header: 'Bid', accessor: 'bid' },
-  { Header: 'Address', accessor: 'address' },
-];
+import { CardHistory } from '../../CardHistory';
 
 type Props = {
-  onAcceptBidClick?: () => void,
+  onAcceptBidClick?: (payerAddress: string, nftId: string) => void
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,
+  active?: boolean
+  actualOrderId?: number
+  disabled?: boolean
 };
 
 const CardProfile: FC<Props> = ({
@@ -64,6 +26,9 @@ const CardProfile: FC<Props> = ({
   isMyGallery,
   buttons,
   selectedNft,
+  active,
+  actualOrderId,
+  disabled,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -71,39 +36,6 @@ const CardProfile: FC<Props> = ({
   const goBack = useCallback(() => {
     history.goBack();
   }, [history]);
-
-  const myGalleryBidCol = [
-    { Header: 'Number', accessor: 'number' },
-    { Header: 'Bid', accessor: 'bid' },
-    { Header: 'Address', accessor: 'address' },
-    {
-      Header: '',
-      accessor: 'button',
-      Cell: () => (
-        <Button onClick={onAcceptBidClick}>
-          {t('nftMarket.accept')}
-        </Button>
-      ),
-    },
-  ];
-
-  const tabItems = useMemo<TabItem[]>(() => (
-    [
-      {
-        title: t('nftMarket.tradingHistory'),
-        content: <Table className={styles.table} columns={historyCol} data={historyData} />,
-      },
-      {
-        title: t('nftMarket.bids'),
-        content:
-  <Table
-    className={styles.table}
-    columns={isMyGallery ? myGalleryBidCol : bidCol}
-    data={bidData}
-  />,
-      },
-    ]
-  ), [t]);
 
   return (
     <div className={styles.wrap}>
@@ -121,7 +53,7 @@ const CardProfile: FC<Props> = ({
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
-          <img alt="card" src={selectedNft.url} className={styles.img} />
+          <NotActiveCardIcon url={selectedNft.url} active={active} className={styles.img} />
 
           <div className={styles.mobileBodyLabels}>
             <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
@@ -156,7 +88,13 @@ const CardProfile: FC<Props> = ({
           </div>
         </div>
 
-        <NavTabs className={styles.tables} tabItems={tabItems} />
+        <CardHistory
+          disabled={disabled}
+          onAcceptBidClick={onAcceptBidClick}
+          cardId={selectedNft.cardId}
+          isMyGallery={isMyGallery}
+          actualOrderId={actualOrderId}
+        />
       </div>
     </div>
   );

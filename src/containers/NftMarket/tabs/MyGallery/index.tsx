@@ -2,34 +2,60 @@ import React, {
   FC, useCallback, useEffect, useState,
 } from 'react';
 import { MarketCard } from 'components/MarketCard';
-import { Checkbox, Pagination } from 'components';
+import { Checkbox, Pagination, Text } from 'components';
 import { useDispatch } from 'react-redux';
-import { useShallowSelector } from 'hooks';
+import { useShallowSelector, useTabHandlers } from 'hooks';
 import { nftMarketSelector } from 'store/selectors';
-import { nftMarketGetMyGalleryAction, nftMarketSelectProfileAction } from 'store/nftMarket/actions';
-import { routes } from 'appConstants';
+import {
+  nftMarketGetMyGalleryAction,
+  nftMarketSelectProfileAction,
+} from 'store/nftMarket/actions';
+import { NftReqDto } from 'types';
+import { marketURL, PAGE_ITEM_LIMIT, routes } from 'appConstants';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from '../styles.module.scss';
 
 const MyGalleryTab: FC = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const dispatch = useDispatch();
   const { myGallery } = useShallowSelector(nftMarketSelector.getState);
-  const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    dispatch(nftMarketGetMyGalleryAction({ limit: 10, skip: page * 10 }));
-  }, [dispatch, page]);
+  const {
+    pageCount,
+    page,
+    setPage,
+    getBidsOrSalePrice,
+    updatePage,
+  } = useTabHandlers(marketURL.MARKETPLACE.PERSONAL_LIST);
 
   const [listed, setListed] = useState(false);
   const [inWallet, setInWallet] = useState(false);
 
+  useEffect(() => {
+    let inWalletListed: NftReqDto['inWalletListed'] = 'All';
+
+    if (listed) inWalletListed = 'Listed';
+    if (inWallet) inWalletListed = 'InWallet';
+
+    const dto: NftReqDto = {
+      limit: PAGE_ITEM_LIMIT,
+      skip: page * PAGE_ITEM_LIMIT,
+      inWalletListed,
+    };
+    updatePage(dto);
+    dispatch(nftMarketGetMyGalleryAction(dto));
+  }, [dispatch, page, listed, inWallet, updatePage]);
+
   const listedHandler = useCallback((e, value: boolean) => {
     setListed(value);
+    setInWallet(false);
   }, []);
 
   const walletHandler = useCallback((e, value: boolean) => {
     setInWallet(value);
+    setListed(false);
   }, []);
 
   const onCardClick = useCallback((id: number) => {
@@ -59,19 +85,23 @@ const MyGalleryTab: FC = () => {
         />
       </div>
       <div className={styles.cardContainer}>
+        {myGallery.length === 0 && (
+          <Text className={styles.emptyLabel}>{t('nftMarket.empty')}</Text>
+        )}
         {myGallery.map((item) => (
           <MarketCard
+            showPriceLabel={false}
             className={styles.card}
             key={item.cardId}
             id={item.cardId}
-            img={item.metadata.url}
+            img={item.url}
             type={item.face}
-            price="123"
+            price={getBidsOrSalePrice(item)}
             onCardClick={onCardClick}
           />
         ))}
       </div>
-      <Pagination page={page} onChange={setPage} />
+      <Pagination page={page} onChange={setPage} pageCount={pageCount} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { marketApiSaga } from 'store/api';
+import { authApiSaga } from 'store/api';
 import { ApiResponse, NftMarketCheckSignRes } from 'types';
 import { marketURL } from 'appConstants';
 import { nftMarketSetStateAction, nftMarketSignInAction } from '../actions';
@@ -10,7 +10,7 @@ import { NftMarketActionTypes } from '../actionTypes';
 import { nftMarketSelector, tronSelector } from '../../selectors';
 
 function* checkSign(msg: string, address: string) {
-  const res: ApiResponse<NftMarketCheckSignRes> = yield call(marketApiSaga, {
+  const res: ApiResponse<NftMarketCheckSignRes> = yield call(authApiSaga, {
     method: 'post',
     url: marketURL.AUTH.CHECK_SIGN,
     data: {
@@ -59,7 +59,7 @@ function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSig
       }
     }
 
-    const res: ApiResponse<string> = yield call(marketApiSaga, {
+    const res: ApiResponse<string> = yield call(authApiSaga, {
       method: 'post',
       url: marketURL.AUTH.SIGN_IN,
       data: {
