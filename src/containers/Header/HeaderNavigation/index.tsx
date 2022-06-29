@@ -65,6 +65,7 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
         text={t(tronStatus === TronStatus.ADDRESS_SELECTED ? address : 'header.wallet')}
         onClick={(e) => {
           e.preventDefault();
+          e.stopPropagation();
           handleConnect();
         }}
       />

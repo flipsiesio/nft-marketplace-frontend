@@ -57,6 +57,9 @@ export default {
     myGalleryProfile: {
       root: '/nftMarket/myGalleryProfile',
     },
+    myBidsProfile: {
+      root: '/nftMarket/myBidsProfile',
+    },
   },
   explore: {
     root: '/explore',

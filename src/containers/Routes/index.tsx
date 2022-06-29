@@ -14,7 +14,9 @@ import {
   NftMarketPage,
   MarketCardProfilePage,
   GalleryCardProfilePage,
-  MyGalleryCardProfilePage, ExplorePage,
+  MyGalleryCardProfilePage,
+  ExplorePage,
+  MyBidsCardProfilePage,
 } from 'pages';
 
 const Routes = () => {
@@ -46,6 +48,11 @@ const Routes = () => {
       <ProtectedRoute
         path={routes.nftMarket.myGalleryProfile.root}
         component={MyGalleryCardProfilePage}
+        checkAccess
+      />
+      <ProtectedRoute
+        path={routes.nftMarket.myBidsProfile.root}
+        component={MyBidsCardProfilePage}
         checkAccess
       />
       <Route path={routes.explore.root} component={ExplorePage} />

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { MiddlewareAPI } from 'redux';
-import { marketClient } from '../store/api';
+import { authApi, marketClient } from '../store/api';
 import { NftMarketCheckSignRes, State } from '../types';
 import { marketURL } from '../appConstants';
 import { nftMarketSetStateAction, nftMarketSignOutAction } from '../store/nftMarket/actions';
@@ -14,7 +14,7 @@ const refreshTokens = async (store: MiddlewareAPI<any, State>) => {
 
   const { address } = store.getState().tron;
 
-  const res = await marketClient.post<NftMarketCheckSignRes>(marketURL.AUTH.REFRESH, {
+  const res = await authApi.post<NftMarketCheckSignRes>(marketURL.AUTH.REFRESH, {
     tronWalletAddress: address,
     signedMsg,
   });

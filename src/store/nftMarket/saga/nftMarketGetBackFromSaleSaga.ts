@@ -1,31 +1,32 @@
-import { toast } from 'react-toastify';
 import { put, takeLatest } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { getTronContract } from 'utils';
-import { nftMarketDelistAction } from '../actions';
+import { toast } from 'react-toastify';
+import { getBackFromSaleAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { MarketType } from '../../../types';
 
-function* nftMarketDelistSaga(
-  { type, payload, callback }: ReturnType<typeof nftMarketDelistAction>,
+function* nftMarketGetBackFromSaleSaga(
+  { type, payload: { marketType, orderId }, callback }: ReturnType<typeof getBackFromSaleAction>,
 ) {
   try {
     yield put(apiActions.request(type));
-    const contractName = payload.marketType === MarketType.Sale
+    const contractName = marketType === MarketType.Auction
       ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
       : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
     const contract =
       yield getTronContract(contractName);
-    yield contract.getBackFromSale(payload.orderId).send();
+    yield contract.getBackFromSale(orderId).send({
+      shouldPollResponse: true,
+    });
     yield put(apiActions.success(type));
-    callback(payload.marketType);
-    const label = MarketType.Sale ? 'sale' : 'auction';
-    yield toast.success(`Cancel the ${label} successful!`);
+    yield toast.success('Card back successes!');
+    if (callback) callback();
   } catch (err) {
     yield put(apiActions.error(type, err));
   }
 }
 
 export default function* listener() {
-  yield takeLatest(NftMarketActionTypes.DELIST, nftMarketDelistSaga);
+  yield takeLatest(NftMarketActionTypes.GET_BACK_FROM_SALE, nftMarketGetBackFromSaleSaga);
 }

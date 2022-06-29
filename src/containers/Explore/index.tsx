@@ -3,7 +3,7 @@ import {
   Button, InfoModal, NftArtwork, Text,
 } from 'components';
 import {
-  useConnectWallet, useJackpotInfo, useShallowSelector, useToggle,
+  useConnectWallet, useShallowSelector, useToggle,
 } from 'hooks';
 import { MintModal } from 'containers/MintModal';
 import { useTranslation } from 'react-i18next';
@@ -28,15 +28,6 @@ const Explore: FC = () => {
   const { handleConnect } = useConnectWallet();
   const { status } = useShallowSelector(tronSelector.getState);
   const address = useShallowSelector(tronSelector.getProp('address'));
-  const { avaliableNftAmount } = useJackpotInfo();
-
-  const onClaimClick = () => {
-    if (status !== TronStatus.ADDRESS_SELECTED) {
-      handleConnect();
-    } else if (avaliableNftAmount) {
-      toggleClaim();
-    } else toggleInfo();
-  };
 
   const onMintClick = () => {
     if (status !== TronStatus.ADDRESS_SELECTED) {
@@ -56,7 +47,6 @@ const Explore: FC = () => {
       <Text className={styles.title}>{t('explore.title')}</Text>
       <Text className={styles.subTitle}>{t('explore.tryLuck')}</Text>
       <Button onClick={onMintClick} className={styles.button}>{t('explore.mintNow')}</Button>
-      <button onClick={onClaimClick} className={styles.claimButton} type="button">{t('explore.claimNft')}</button>
 
       <div className={styles.cardContainer}>
         <NftArtwork

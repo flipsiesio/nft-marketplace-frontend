@@ -1,0 +1,38 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.tables {
+  margin: 40px auto 0;
+  max-width: 800px;
+}
+
+.table {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.pink {
+  color: $primaryColor
+}
+
+.flex {
+  @include flexbox(center, flex-start)
+}
+
+.acceptButton {
+  margin-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.transactionIcon {
+  color: $primaryColor;
+  font-size: 16px;
+}
+
+.transactionBtn {
+  margin-left: 6px;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+}

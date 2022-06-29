@@ -8,11 +8,13 @@ const Link: FC<LinkProps> = ({
   children,
   className,
   onClick,
+  style,
 }) => (
   <ReactRouterDomLink
     to={to}
     className={cx(styles.link, className)}
     onClick={onClick}
+    style={style}
   >
     {children}
   </ReactRouterDomLink>

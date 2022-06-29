@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 import { Text } from '../Typography';
 import { NftType } from '../../types';
+import { NotActiveCardIcon } from '../NotActiveCardIcon';
 
 type Props = {
   id: number
@@ -12,6 +13,9 @@ type Props = {
   price: string
   className?: string
   onCardClick: (id: number) => void
+  active?: boolean
+  priceLabel?: string
+  showPriceLabel?: boolean
 };
 
 const MarketCard: FC<Props> = ({
@@ -21,6 +25,9 @@ const MarketCard: FC<Props> = ({
   price,
   className,
   onCardClick,
+  active,
+  priceLabel,
+  showPriceLabel = true,
 }) => {
   const { t } = useTranslation();
 
@@ -35,20 +42,21 @@ const MarketCard: FC<Props> = ({
         &nbsp;
         <Text className={styles.bold} tag="span">{`#${id}`}</Text>
       </Text>
-      <img className={styles.img} src={img} alt="" />
+      <NotActiveCardIcon active={active} url={img} className={styles.img} />
       <div className={styles.info}>
         <div className={styles.infoBlock}>
-          <Text className={styles.infoBlockLabel}>Type</Text>
+          <Text className={styles.infoBlockLabel}>{t('nftMarket.type')}</Text>
           <Text className={styles.infoBlockValue}>{type}</Text>
         </div>
-        <div className={styles.infoBlock}>
-          <Text className={styles.infoBlockLabel}>Price</Text>
-          <Text className={styles.infoBlockValue}>
-            {`${price}`}
-            &nbsp;
-            <Text className={styles.primary} tag="span">TRX</Text>
-          </Text>
-        </div>
+        {showPriceLabel && (
+          <div className={styles.infoBlock}>
+            <Text className={styles.infoBlockLabel}>{priceLabel || t('nftMarket.price')}</Text>
+            <div className={styles.price}>
+              <Text className={styles.infoBlockValue}>{`${price}`}</Text>
+              <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
