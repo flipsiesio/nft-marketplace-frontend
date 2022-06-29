@@ -5,7 +5,7 @@ import {
   put,
   take,
   takeLatest,
-  delay,
+  delay, select,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { TronState } from 'types';
@@ -14,6 +14,8 @@ import { history, getNetworkName } from 'utils';
 import { toast } from 'react-toastify';
 import { connectTronAction, logoutTronAction, tronSetStateAction } from '../actions';
 import { TronActionTypes } from '../actionTypes';
+import { tronSelector } from '../../selectors';
+import { nftMarketSignOutAction } from '../../nftMarket/actions';
 
 const MS_RETRY_TRON = 2000;
 const MAX_ATTEMPT_GET_BALANCE = 5;
@@ -105,6 +107,7 @@ function* setConnect(type: string) {
 }
 
 function* handleChangeAccount(address: string, name: string) {
+  const prevAddress = yield select(tronSelector.getProp('address'));
   const payload: Partial<TronState> = {
     address,
     name,
@@ -114,6 +117,9 @@ function* handleChangeAccount(address: string, name: string) {
     type: TronActionTypes.SET_STATE,
     payload,
   });
+  if (prevAddress !== address) {
+    yield put(nftMarketSignOutAction());
+  }
 }
 
 function* handleTronListener(type: string) {
