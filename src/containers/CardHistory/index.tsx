@@ -71,7 +71,7 @@ const tradingCol = [
     accessor: 'amount',
     Cell: ({ row: { original: { price } } }: TableRowProps<HistoryData>) => (
       <div className={styles.flex}>
-        <Text className={styles.priceCol}>
+        <Text title={price === null ? 0 : fromSunToNumber(`${price}`)} className={styles.priceCol}>
           {price === null ? 0 : fromSunToNumber(`${price}`)}
         </Text>
         &nbsp;
@@ -128,7 +128,7 @@ export const CardHistory: FC<Props> = ({
       accessor: 'amount',
       Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
         <div className={styles.flex}>
-          <Text className={styles.priceCol}>
+          <Text title={amount === null ? 0 : fromSunToNumber(`${amount}`)} className={styles.priceCol}>
             {amount === null ? 0 : fromSunToNumber(`${amount}`)}
           </Text>
           &nbsp;
