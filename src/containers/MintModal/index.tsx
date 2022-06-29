@@ -39,7 +39,7 @@ const MintModal: FC<Props> = ({
   const address = useShallowSelector(tronSelector.getProp('address'));
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
   const [trxHash, setTrxHash] = useState('');
-  const [isSent, setSent] = useState(true);
+  const [isSent, setSent] = useState(false);
 
   const selectHandler = useCallback((option) => {
     setSelectedOption(option as SelectOption);

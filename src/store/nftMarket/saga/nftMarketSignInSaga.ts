@@ -4,12 +4,13 @@ import {
 import apiActions from 'store/api/actions';
 import { authApiSaga } from 'store/api';
 import { ApiResponse, NftMarketCheckSignRes } from 'types';
-import { marketURL } from 'appConstants';
+import { marketURL, routes } from 'appConstants';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import { nftMarketSetStateAction, nftMarketSignInAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { nftMarketSelector, tronSelector } from '../../selectors';
+import { history } from '../../../utils';
 
 function* checkSign(msg: string, address: string) {
   const res: ApiResponse<NftMarketCheckSignRes> = yield call(authApiSaga, {
@@ -84,6 +85,7 @@ function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSig
   } catch (err) {
     if ((err as AxiosError).response?.data.message) {
       toast.error((err as AxiosError).response?.data.message);
+      history.push(routes.explore.root);
     }
     yield put(apiActions.error(type, err));
   }
