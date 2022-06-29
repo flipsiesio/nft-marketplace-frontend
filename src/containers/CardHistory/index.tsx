@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
+import { AxiosRequestConfig } from 'axios';
 import {
   NavTabs, Pagination, Table, Text, Button, Icon,
 } from '../../components';
@@ -20,38 +21,62 @@ type Props = {
   disabled?: boolean
 };
 
-const getHistory = (url: string, id: number, page: number) => {
+type EventNames = {
+  [key: string]: string
+};
+
+const eventNames: EventNames = {
+  OrderCreated: 'list',
+  OrderRejected: 'de-list',
+  Bid: 'bid',
+  OrderFilled: 'sold',
+};
+
+const getHistory = (url: string, id: number, page: number, param?: AxiosRequestConfig['params']) => {
   return marketClient.get<HistoryData[]>(url, {
     params: {
       ids: [id],
       skip: page * PAGE_ITEM_LIMIT,
       take: PAGE_ITEM_LIMIT,
       byOrder: false,
+      ...param,
     },
   });
 };
 
-const getHistoryCount = (url: string, id: number) => {
+const getHistoryCount = (url: string, id: number, param?: AxiosRequestConfig['params']) => {
   return marketClient.get<number>(url, {
     params: {
       ids: [id],
       count: true,
+      byOrder: false,
+      ...param,
     },
   });
 };
 
 const tradingCol = [
-  { Header: 'Event', accessor: 'name' },
+  {
+    Header: 'Event',
+    accessor: 'name',
+    Cell: ({ row: { original: { name } } }: TableRowProps<HistoryData>) => (
+      <Text>
+        {eventNames[name] || name}
+      </Text>
+    ),
+  },
   { Header: 'Address', accessor: 'seller' },
   {
     Header: 'Price',
     accessor: 'amount',
-    Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
-      <Text>
-        {amount === null ? 0 : fromSunToNumber(`${amount}`)}
+    Cell: ({ row: { original: { price } } }: TableRowProps<HistoryData>) => (
+      <div className={styles.flex}>
+        <Text className={styles.priceCol}>
+          {price === null ? 0 : fromSunToNumber(`${price}`)}
+        </Text>
         &nbsp;
-        <span className={styles.pink}>TRX</span>
-      </Text>
+        <Text className={styles.pink}>TRX</Text>
+      </div>
     ),
   },
   {
@@ -102,11 +127,13 @@ export const CardHistory: FC<Props> = ({
       Header: 'Bid',
       accessor: 'amount',
       Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
-        <Text>
-          {amount === null ? 0 : fromSunToNumber(`${amount}`)}
+        <div className={styles.flex}>
+          <Text className={styles.priceCol}>
+            {amount === null ? 0 : fromSunToNumber(`${amount}`)}
+          </Text>
           &nbsp;
-          <span className={styles.pink}>TRX</span>
-        </Text>
+          <Text className={styles.pink}>TRX</Text>
+        </div>
       ),
     },
     {
@@ -175,7 +202,12 @@ export const CardHistory: FC<Props> = ({
   ), [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage, bidCol]);
 
   useEffect(() => {
-    getHistory(marketURL.MARKETPLACE.GET_BID_HISTORY, cardId, bidPage)
+    getHistory(
+      marketURL.MARKETPLACE.GET_BID_HISTORY,
+      cardId,
+      bidPage,
+      { name: ['Bid'] },
+    )
       .then((res) => {
         setBidData(res.data);
       });
@@ -189,7 +221,11 @@ export const CardHistory: FC<Props> = ({
   }, [cardId, tradingPage]);
 
   useEffect(() => {
-    getHistoryCount(marketURL.MARKETPLACE.GET_BID_HISTORY, cardId).then((res) => {
+    getHistoryCount(
+      marketURL.MARKETPLACE.GET_BID_HISTORY,
+      cardId,
+      { name: ['Bid'] },
+    ).then((res) => {
       setBidCount(res.data);
     });
 

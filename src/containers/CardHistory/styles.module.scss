@@ -11,6 +11,13 @@
   margin-bottom: 10px;
 }
 
+.priceCol {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 175px;
+}
+
 .pink {
   color: $primaryColor
 }
