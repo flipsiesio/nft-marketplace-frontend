@@ -10,8 +10,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { routes, TRONSCAN_URL } from 'appConstants';
 import { useShallowSelector } from 'hooks';
-import { tronSelector, uiSelector } from 'store/selectors';
-import { nftMarketGetMyGalleryAction, nftMarketMintNowAction } from '../../store/nftMarket/actions';
+import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
+import { nftMarketMintNowAction, nftMarketSignInAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
 import styles from './styles.module.scss';
 
@@ -37,8 +37,9 @@ const MintModal: FC<Props> = ({
   const [selectedOption, setSelectedOption] = useState<SelectOption>();
   const getMintStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.MINT_NOW'));
   const address = useShallowSelector(tronSelector.getProp('address'));
+  const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
   const [trxHash, setTrxHash] = useState('');
-  const [isSent, setSent] = useState(false);
+  const [isSent, setSent] = useState(true);
 
   const selectHandler = useCallback((option) => {
     setSelectedOption(option as SelectOption);
@@ -56,10 +57,15 @@ const MintModal: FC<Props> = ({
   }, [selectedOption, dispatch, onToggle, setSent]);
 
   const seeGalleryHandler = useCallback(() => {
-    onToggle();
-    dispatch(nftMarketGetMyGalleryAction());
-    history.push(routes.nftMarket.myGalleryProfile.root);
-  }, [history]);
+    if (isAuth) {
+      onToggle();
+      history.push(`${routes.nftMarket.root}?tab=My+Gallery`);
+    } else {
+      dispatch(nftMarketSignInAction(() => {
+        history.push(`${routes.nftMarket.root}?tab=My+Gallery`);
+      }));
+    }
+  }, [history, isAuth, dispatch]);
 
   return (
     <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
