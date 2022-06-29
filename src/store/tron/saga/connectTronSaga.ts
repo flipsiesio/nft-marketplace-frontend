@@ -64,6 +64,7 @@ function getPlayerName(address: string) {
 
 function* setConnect(type: string) {
   if (window.tronWeb) {
+    yield delay(30);
     const address = window.tronWeb.defaultAddress?.base58 || '';
     const networkUrl = window.tronWeb.fullNode.host;
     const network = getNetworkName(networkUrl);
@@ -123,7 +124,11 @@ function* handleTronListener(type: string) {
       yield setConnect(type);
     }
     if (['setAccount'].includes(e.data.message?.action)) {
-      yield handleChangeAccount(e.data.message.data.address, e.data.message.data.name);
+      if (!e.data.message.data.address) {
+        yield put(logoutTronAction());
+        return;
+      }
+      yield handleChangeAccount(e.data.message.data.address || '', e.data.message.data.name);
     }
     if (['disconnectWeb', 'disconnect'].includes(e.data.message?.action)) {
       yield put(logoutTronAction());
