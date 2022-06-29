@@ -17,6 +17,22 @@ $width: 232px;
   margin-top: 30px;
 }
 
+.shadowWrap {
+  position: relative;
+}
+
+.shadow {
+  top: 20px;
+  left: 20px;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  content: '';
+  display: block;
+  box-shadow: 0 0 100px 10px #B01213;
+  z-index: -1;
+}
+
 .img {
   width: 232px;
 }
@@ -29,7 +45,7 @@ $width: 232px;
 .cards {
   @include flexbox();
   width: 100%;
-  & > img:first-child {
+  & > div:first-child {
     margin-right: 10px;
   }
 }

@@ -17,13 +17,22 @@ const NftArtwork: FC<Props> = ({
 }) => (
   <div className={secondImg ? styles.secondCardWrap : styles.wrap}>
     {!secondImg && (
-      <img src={img} alt="card" className={styles.img} />
+      <div className={styles.shadowWrap}>
+        <div className={styles.shadow} />
+        <img src={img} alt="card" className={styles.img} />
+      </div>
     )}
 
     {secondImg && (
       <div className={styles.cards}>
-        <img src={img} alt="card" className={styles.img} />
-        <img src={secondImg} alt="card" className={styles.img} />
+        <div className={styles.shadowWrap}>
+          <div className={styles.shadow} />
+          <img src={img} alt="card" className={styles.img} />
+        </div>
+        <div className={styles.shadowWrap}>
+          <div className={styles.shadow} />
+          <img src={secondImg} alt="card" className={styles.img} />
+        </div>
       </div>
     )}
     <Text className={styles.title}>
