@@ -2,7 +2,7 @@ import React, { FC, useCallback, useState } from 'react';
 import { Button, Modal, Text } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { routes, TRONSCAN_URL } from 'appConstants';
+import { routes, scanTransactionUrl } from 'appConstants';
 import { useDispatch } from 'react-redux';
 import { useShallowSelector } from 'hooks';
 import { tronSelector } from '../../store/selectors';
@@ -71,7 +71,7 @@ const ClaimJackpotModal: FC<Props> = ({
           >
             {t('claimModalJackpot.seeInGallery')}
           </Button>
-          <a className={styles.link} href={`${TRONSCAN_URL}${trxHash}`} target="_blank" rel="noopener noreferrer">
+          <a className={styles.link} href={`${scanTransactionUrl}${trxHash}`} target="_blank" rel="noopener noreferrer">
             {t('claimModalJackpot.seeOnTronscan')}
           </a>
         </>
