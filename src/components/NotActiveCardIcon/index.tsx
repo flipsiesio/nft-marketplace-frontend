@@ -6,6 +6,7 @@ type Props = {
   className?: string
   url: string
   active?: boolean
+  showShadows?: boolean
 };
 
 const getRandomArbitrary = (min: number, max: number) => {
@@ -16,6 +17,7 @@ export const NotActiveCardIcon: FC<Props> = ({
   url,
   active = true,
   className,
+  showShadows,
 }) => {
   const randomColor = useMemo(() => {
     return getRandomArbitrary(0, 1) === 0 ? styles.red : styles.blue;
@@ -33,11 +35,13 @@ export const NotActiveCardIcon: FC<Props> = ({
         </div>
       )}
       <img alt="card" src={url} className={styles.img} />
-      <div className={cx(
-        styles.shadow,
-        randomColor,
+      {showShadows && (
+        <div className={cx(
+          styles.shadow,
+          randomColor,
+        )}
+        />
       )}
-      />
     </div>
   );
 };
