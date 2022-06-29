@@ -172,7 +172,7 @@ const MyGalleryCardProfile: FC = () => {
                   <div>
                     <Text className={styles.buttonLabel}>{t('nftMarket.salePrice')}</Text>
                     <div className={styles.price}>
-                      <Text className={styles.infoBlockValue}>{`${salePrice}`}</Text>
+                      <Text title={salePrice} className={styles.infoBlockValue}>{`${salePrice}`}</Text>
                       <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
                     </div>
                   </div>
@@ -189,7 +189,7 @@ const MyGalleryCardProfile: FC = () => {
                   <div>
                     <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
                     <div className={styles.price}>
-                      <Text className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
+                      <Text title={bidPrice} className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
                       <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
                     </div>
                   </div>

@@ -223,7 +223,7 @@
   "marketFilterModal": {
     "title": "Filters",
     "price": {
-      "title": "Price",
+      "title": "Highest Bid",
       "asc": "ASC",
       "desc": "DESC"
     },

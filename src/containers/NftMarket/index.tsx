@@ -27,7 +27,7 @@ const NftMarket: FC = () => {
     <div className={styles.wrap}>
       <Text className={styles.title}>{t('nftMarket.title')}</Text>
 
-      <NavTabs tabItems={tabItems} />
+      <NavTabs className={styles.tab} tabItems={tabItems} />
     </div>
   );
 };

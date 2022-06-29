@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+import { useCallback, useState } from 'react';
 import { marketClient } from '../store/api';
 import { PAGE_ITEM_LIMIT } from '../appConstants';
 import { CardDataForList, NftReqDto } from '../types';
@@ -21,20 +20,6 @@ export const useTabHandlers = (url: string) => {
         count: true,
       },
     }).then((res) => setPageCount(Math.ceil(res.data / PAGE_ITEM_LIMIT)));
-  }, [url]);
-
-  useEffect(() => {
-    const cancelToken = axios.CancelToken.source();
-    marketClient.get<number>(url, {
-      params: {
-        count: true,
-      },
-      cancelToken: cancelToken.token,
-    }).then((res) => setPageCount(Math.ceil(res.data / PAGE_ITEM_LIMIT)));
-
-    return () => {
-      cancelToken.cancel();
-    };
   }, [url]);
 
   const getSalePrice = useCallback((item: CardDataForList) => {

@@ -32,10 +32,13 @@
 
 .green {
   color: $successColor;
+  font-weight: bold;
 }
 
 .text {
   margin-top: 35px;
+  letter-spacing: -0.41px;
+  line-height: 32px;
 }
 
 .button {

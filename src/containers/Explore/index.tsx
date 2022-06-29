@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import {
-  Button, InfoModal, NftArtwork, Text,
+  Button, Icon, InfoModal, NftArtwork, Text,
 } from 'components';
 import {
   useConnectWallet, useShallowSelector, useToggle,
@@ -19,6 +19,7 @@ import { TronStatus } from 'appConstants';
 import { ClaimJackpotModal } from 'containers';
 import { tronSelector } from 'store/selectors';
 import styles from './styles.module.scss';
+import { history } from '../../utils';
 
 const Explore: FC = () => {
   const { t } = useTranslation();
@@ -42,11 +43,21 @@ const Explore: FC = () => {
     window.open(flipsiesGameUrl);
   };
 
+  const goBack = useCallback(() => {
+    history.goBack();
+  }, []);
+
   return (
     <div className={styles.wrap}>
-      <Text className={styles.title}>{t('explore.title')}</Text>
-      <Text className={styles.subTitle}>{t('explore.tryLuck')}</Text>
-      <Button onClick={onMintClick} className={styles.button}>{t('explore.mintNow')}</Button>
+      <div className={styles.titleWrap}>
+        <button className={styles.backButton} onClick={goBack} type="button">
+          <Icon className={styles.backButtonArrow} icon="chevron" />
+        </button>
+
+        <Text className={styles.title}>{t('explore.title')}</Text>
+        <Text className={styles.subTitle}>{t('explore.tryLuck')}</Text>
+        <Button onClick={onMintClick} className={styles.button}>{t('explore.mintNow')}</Button>
+      </div>
 
       <div className={styles.cardContainer}>
         <NftArtwork
