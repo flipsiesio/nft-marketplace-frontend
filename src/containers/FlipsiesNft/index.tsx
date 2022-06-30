@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { Button, Text } from 'components';
 import { useHistory } from 'react-router-dom';
 import { routes } from 'appConstants';
@@ -12,6 +12,10 @@ const FlipsiesNft: FC = () => {
   const clickHandler = useCallback(() => {
     history.push(routes.explore.root);
   }, [history]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={styles.wrap}>
