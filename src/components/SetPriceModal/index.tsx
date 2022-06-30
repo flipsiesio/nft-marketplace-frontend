@@ -35,9 +35,9 @@ const SetPriceModal: FC<Props> = ({
     if (value.length === 0) return true;
 
     const reg = /([0-9]*[.])?[0-9]+/;
-    const exacValue = reg.exec(value);
-    if (exacValue === null) return true;
-    if (value.length !== exacValue[0].length) return true;
+    const execValue = reg.exec(value);
+    if (execValue === null) return true;
+    if (value.length !== execValue[0].length) return true;
 
     const valueAfterPoint = value.split('.')[1];
     if (valueAfterPoint && valueAfterPoint.length > 6) return true;

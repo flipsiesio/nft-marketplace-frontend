@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Button, MarketNftInteractionModal, Text } from 'components';
+import { Button, Text, MarketNftInteractionModal } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
-import { nftMarketSelector, uiSelector } from 'store/selectors';
+import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
@@ -16,6 +16,7 @@ const GalleryCardProfile: FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const dispatch = useDispatch();
+  const balance = useShallowSelector(tronSelector.getProp('balance'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
 
@@ -76,6 +77,7 @@ const GalleryCardProfile: FC = () => {
         onToggle={toggleBuy}
         onSubmit={buyHandler}
         title={t('nftMarket.purchaseConfirmation')}
+        balance={balance}
       />
     </>
   );

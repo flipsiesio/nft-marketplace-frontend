@@ -180,6 +180,7 @@
     "here": "here"
   },
   "nftMarket": {
+    "notHaveEnoughFunds": "You don't have enough funds",
     "cancelBid": "Cancel Bid",
     "empty": "Empty...",
     "title": "NFT Market",
