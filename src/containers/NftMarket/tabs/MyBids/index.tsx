@@ -11,6 +11,7 @@ import {
   nftMarketSelectProfileAction,
 } from '../../../../store/nftMarket/actions';
 import { marketURL, PAGE_ITEM_LIMIT, routes } from '../../../../appConstants';
+import { NftReqDto } from '../../../../types';
 
 export const MyBidsTab: FC = () => {
   const { t } = useTranslation();
@@ -22,11 +23,14 @@ export const MyBidsTab: FC = () => {
     setPage,
     getMyBidsPrice,
     pageCount,
+    updatePage,
   } = useTabHandlers(marketURL.MARKETPLACE.MY_BIDS_LIST);
 
   useEffect(() => {
+    const dto: NftReqDto = { limit: PAGE_ITEM_LIMIT, skip: page * PAGE_ITEM_LIMIT };
     dispatch(nftMarketGetMyBidsAction({ limit: PAGE_ITEM_LIMIT, skip: page * PAGE_ITEM_LIMIT }));
-  }, [dispatch, page]);
+    updatePage(dto);
+  }, [dispatch, page, updatePage]);
 
   const onCardClick = useCallback((id: number) => {
     dispatch(nftMarketSelectProfileAction(undefined));
