@@ -1,4 +1,6 @@
-import React, { FC, useMemo } from 'react';
+import React, {
+  FC, useCallback, useMemo, useState,
+} from 'react';
 import cx from 'classnames';
 import styles from './styles.module.scss';
 
@@ -19,8 +21,13 @@ export const NotActiveCardIcon: FC<Props> = ({
   className,
   showShadows,
 }) => {
+  const [isLoad, setLoad] = useState(false);
   const randomColor = useMemo(() => {
     return getRandomArbitrary(0, 1) === 0 ? styles.red : styles.blue;
+  }, []);
+
+  const onLoadHandler = useCallback(() => {
+    setLoad(true);
   }, []);
 
   return (
@@ -34,8 +41,8 @@ export const NotActiveCardIcon: FC<Props> = ({
           <p className={styles.errorLabel}>Not Active</p>
         </div>
       )}
-      <img alt="card" src={url} className={styles.img} />
-      {showShadows && (
+      <img onLoad={onLoadHandler} alt="card" src={url} className={styles.img} />
+      {showShadows && isLoad && (
         <div className={cx(
           styles.shadow,
           randomColor,

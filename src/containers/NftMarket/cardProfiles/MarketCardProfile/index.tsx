@@ -66,7 +66,7 @@ const MarketCardProfile: FC = () => {
                     <Text className={styles.primary} tag="span">TRX</Text>
                   </div>
                 </div>
-                <Button onClick={toggleBid} theme="success" className={styles.button}>{t('nftMarket.bid')}</Button>
+                <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
               </div>
             </div>
           )}

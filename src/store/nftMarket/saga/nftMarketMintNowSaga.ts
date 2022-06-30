@@ -25,7 +25,6 @@ function* nftMarketMintNowSaga(
     callback(trxHash);
     yield toast.success('Mint successful!');
   } catch (err) {
-    yield toast.error('Error Mint');
     yield put(apiActions.error(type, err));
   }
 }

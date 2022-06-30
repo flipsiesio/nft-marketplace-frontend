@@ -1,5 +1,5 @@
 import React, {
-  FC, useCallback,
+  FC, useCallback, useMemo,
 } from 'react';
 import {
   Icon, NotActiveCardIcon, Text,
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
 import { CardHistory } from '../../CardHistory';
+import { shortenPhrase } from '../../../utils';
 
 type Props = {
   onAcceptBidClick?: (payerAddress: string, nftId: string) => void
@@ -19,6 +20,8 @@ type Props = {
   active?: boolean
   actualOrderId?: number
   disabled?: boolean
+  owner?: string
+  showBid?: boolean
 };
 
 const CardProfile: FC<Props> = ({
@@ -29,6 +32,8 @@ const CardProfile: FC<Props> = ({
   active,
   actualOrderId,
   disabled,
+  owner,
+  showBid,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -36,6 +41,10 @@ const CardProfile: FC<Props> = ({
   const goBack = useCallback(() => {
     history.goBack();
   }, [history]);
+
+  const cardOwner = useMemo(() => {
+    return shortenPhrase(owner || selectedNft.owner || '');
+  }, [owner, selectedNft]);
 
   return (
     <div className={styles.wrap}>
@@ -49,15 +58,28 @@ const CardProfile: FC<Props> = ({
       <div className={styles.body}>
         <div className={styles.bodyLabels}>
           <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
-          <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
+          <Text>
+            {t('nftMarket.owner')}
+            &nbsp;
+            <Text tag="span" className={styles.primary}>{cardOwner}</Text>
+          </Text>
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
-          <NotActiveCardIcon url={selectedNft.url} active={active} className={styles.img} />
+          <NotActiveCardIcon
+            showShadows
+            url={selectedNft.url}
+            active={active}
+            className={styles.img}
+          />
 
           <div className={styles.mobileBodyLabels}>
             <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
-            <Text>{t('nftMarket.owner')} <Text tag="span" className={styles.primary}>{selectedNft.owner}</Text></Text>
+            <Text>
+              {t('nftMarket.owner')}
+              &nbsp;
+              <Text tag="span" className={styles.primary}>{cardOwner}</Text>
+            </Text>
           </div>
 
           <div className={styles.content}>
@@ -89,6 +111,7 @@ const CardProfile: FC<Props> = ({
         </div>
 
         <CardHistory
+          showBid={showBid}
           disabled={disabled}
           onAcceptBidClick={onAcceptBidClick}
           cardId={selectedNft.cardId}

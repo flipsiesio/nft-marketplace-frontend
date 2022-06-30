@@ -19,6 +19,7 @@ type Props = {
   cardId: number
   actualOrderId?: number
   disabled?: boolean
+  showBid?: boolean
 };
 
 type EventNames = {
@@ -106,6 +107,7 @@ export const CardHistory: FC<Props> = ({
   cardId,
   actualOrderId,
   disabled,
+  showBid = true,
 }) => {
   const [bidData, setBidData] = useState<HistoryData[]>([]);
   const [tradingData, setTradingData] = useState<HistoryData[]>([]);
@@ -162,8 +164,8 @@ export const CardHistory: FC<Props> = ({
     },
   ]), [onAcceptBidClick, isMyGallery, actualOrderId, disabled]);
 
-  const tabItems = useMemo<TabItem[]>(() => (
-    [
+  const tabItems = useMemo<TabItem[]>(() => {
+    const tabs = [
       {
         title: t('nftMarket.tradingHistory'),
         content: (
@@ -181,7 +183,10 @@ export const CardHistory: FC<Props> = ({
           </div>
         ),
       },
-      {
+    ];
+
+    if (showBid) {
+      tabs.push({
         title: t('nftMarket.bids'),
         content: (
           <div>
@@ -197,11 +202,14 @@ export const CardHistory: FC<Props> = ({
             />
           </div>
         ),
-      },
-    ]
-  ), [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage, bidCol]);
+      });
+    }
+
+    return tabs;
+  }, [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage, bidCol, showBid]);
 
   useEffect(() => {
+    if (!showBid) return;
     getHistory(
       marketURL.MARKETPLACE.GET_BID_HISTORY,
       cardId,
@@ -211,7 +219,7 @@ export const CardHistory: FC<Props> = ({
       .then((res) => {
         setBidData(res.data);
       });
-  }, [cardId, bidPage]);
+  }, [cardId, bidPage, showBid]);
 
   useEffect(() => {
     getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId, tradingPage)
@@ -221,6 +229,7 @@ export const CardHistory: FC<Props> = ({
   }, [cardId, tradingPage]);
 
   useEffect(() => {
+    if (!showBid) return;
     getHistoryCount(
       marketURL.MARKETPLACE.GET_BID_HISTORY,
       cardId,
@@ -232,7 +241,7 @@ export const CardHistory: FC<Props> = ({
     getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
       setTradingCount(res.data);
     });
-  }, [cardId]);
+  }, [cardId, showBid]);
 
   return (
     <NavTabs shouldSearch={false} className={styles.tables} tabItems={tabItems} />
