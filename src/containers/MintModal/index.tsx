@@ -68,7 +68,11 @@ const MintModal: FC<Props> = ({
   }, [history, isAuth, dispatch]);
 
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={getMintStatus === 'REQUEST' ? onToggle : undefined}
+    >
       {!isSent && (
         <>
           <Text className={styles.title}>

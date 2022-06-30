@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Modal, Text, Button,
 } from 'components';
 import cx from 'classnames';
+import { toast } from 'react-toastify';
 import styles from './styles.module.scss';
+import { fromSunToNumber } from '../../utils';
 
 type Props = {
   isLoading?: boolean,
@@ -14,6 +16,7 @@ type Props = {
   onSubmit: () => void
   price?: string
   id?: number
+  balance?: number
 };
 
 const MarketNftInteractionModal: FC<Props> = ({
@@ -24,11 +27,27 @@ const MarketNftInteractionModal: FC<Props> = ({
   title,
   id,
   price,
+  balance,
 }) => {
   const { t } = useTranslation();
 
+  const clickHandler = useCallback(() => {
+    const convertPrice = fromSunToNumber(`${price}`);
+
+    if (balance && balance < convertPrice) {
+      toast.error(t('nftMarket.notHaveEnoughFunds'));
+      return;
+    }
+
+    onSubmit();
+  }, [price, balance, onSubmit, t]);
+
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={!isLoading ? onToggle : undefined}
+    >
       <Text className={styles.title}>{title}</Text>
       <div className={styles.row}>
         <div className={styles.col}>
@@ -48,7 +67,7 @@ const MarketNftInteractionModal: FC<Props> = ({
           </Text>
         </div>
       </div>
-      <Button className={styles.button} onClick={onSubmit} disabled={isLoading}>
+      <Button className={styles.button} onClick={clickHandler} disabled={isLoading}>
         {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
       </Button>
     </Modal>

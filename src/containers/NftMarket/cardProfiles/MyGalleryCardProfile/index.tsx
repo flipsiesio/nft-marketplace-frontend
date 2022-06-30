@@ -20,7 +20,7 @@ import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
 import cx from 'classnames';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
-import { history } from '../../../../utils';
+import { getApproved, history } from '../../../../utils';
 import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 
@@ -115,14 +115,28 @@ const MyGalleryCardProfile: FC = () => {
   }, [actionType, selectedNft, toggleApprove, togglePutOn]);
 
   const onAuctionButtonClick = useCallback(() => {
-    setActionType(MarketType.Auction);
-    toggleApprove();
-  }, [dispatch, toggleApprove]);
+    getApproved(selectedNft?.cardId || '', MarketType.Auction).then((res) => {
+      setActionType(MarketType.Auction);
+      if (res) {
+        togglePutOn();
+        return;
+      }
+
+      toggleApprove();
+    });
+  }, [dispatch, toggleApprove, selectedNft, togglePutOn]);
 
   const onSaleButtonClick = useCallback(() => {
-    setActionType(MarketType.Sale);
-    toggleApprove();
-  }, [dispatch, toggleApprove]);
+    getApproved(selectedNft?.cardId || '', MarketType.Sale).then((res) => {
+      setActionType(MarketType.Sale);
+      if (res) {
+        togglePutOn();
+        return;
+      }
+
+      toggleApprove();
+    });
+  }, [dispatch, toggleApprove, selectedNft, togglePutOn]);
 
   const getBackClick = useCallback((marketType: MarketType) => {
     return () => {
@@ -138,6 +152,7 @@ const MyGalleryCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          showBid={isBid}
           disabled={isWait}
           actualOrderId={actualBidOrderId}
           active={isActive}

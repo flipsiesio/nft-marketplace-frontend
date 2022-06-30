@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { MarketType } from '../types';
 
 export const getMyAddress = () => {
   if (window.tronWeb) {
@@ -32,4 +33,14 @@ export const getTrxFromSun = (sun: string) => {
     return Number(window.tronWeb.fromSun(sun));
   }
   return 0;
+};
+
+export const getApproved = async (cardId: number | string, type: MarketType) => {
+  const toAproveContractAddress = type === MarketType.Auction
+    ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
+    : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
+  const contract = await getTronContract(process.env.REACT_APP_CONTRACT_CARD as string);
+  const data: string = await contract.getApproved(cardId).call();
+  const dataAddress = window.tronWeb.address.fromHex(data);
+  return toAproveContractAddress === dataAddress;
 };

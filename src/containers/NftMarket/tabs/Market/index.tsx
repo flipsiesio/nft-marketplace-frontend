@@ -33,6 +33,7 @@ const MarketTab: FC = () => {
       items={market}
       getPrice={getBidsPrice}
       pageCount={pageCount}
+      isSale={false}
     />
   );
 };

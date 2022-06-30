@@ -37,7 +37,7 @@ const MyGalleryTab: FC = () => {
     let inWalletListed: NftReqDto['inWalletListed'] = 'All';
 
     if (listed) inWalletListed = 'Listed';
-    if (inWallet) inWalletListed = 'InWallet';
+    if (inWallet) inWalletListed = 'Wallet';
 
     const dto: NftReqDto = {
       limit: PAGE_ITEM_LIMIT,

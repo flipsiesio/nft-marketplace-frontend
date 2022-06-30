@@ -15,12 +15,14 @@ type Props = {
   isOpen: boolean
   onToggle: () => void
   onApply: (data: FilterData) => void
+  isSale?: boolean
 };
 
 const MarketFilterModal: FC<Props> = ({
   isOpen,
   onToggle,
   onApply,
+  isSale,
 }) => {
   const [data, setData] = useState<FilterData>({
     price: 'DESC',
@@ -101,7 +103,7 @@ const MarketFilterModal: FC<Props> = ({
         className={styles.dropdown}
         isActive={priceDropdown}
         onToggle={onPriceToggle}
-        label={t('marketFilterModal.price.title')}
+        label={isSale ? t('marketFilterModal.price.price') : t('marketFilterModal.price.highestBid')}
       >
         <div className={styles.checkboxWrap}>
           <Checkbox

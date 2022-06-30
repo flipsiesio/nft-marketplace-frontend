@@ -180,6 +180,7 @@
     "here": "here"
   },
   "nftMarket": {
+    "notHaveEnoughFunds": "You don't have enough funds",
     "cancelBid": "Cancel Bid",
     "empty": "Empty...",
     "title": "NFT Market",
@@ -213,17 +214,18 @@
     "owner": "Owner",
     "approve": "Approve",
     "approveText": "Please approve your action",
-    "bidPrice": "Bid Price",
+    "bidPrice": "Highest Bid",
     "myBid": "My Bid",
     "highestBid": "Highest Bid",
-    "salePrice": "Sale Price",
+    "salePrice": "Listing price",
     "attributes": "Attributes",
     "type": "Type"
   },
   "marketFilterModal": {
     "title": "Filters",
     "price": {
-      "title": "Highest Bid",
+      "highestBid": "Highest Bid",
+      "price": "Price",
       "asc": "ASC",
       "desc": "DESC"
     },

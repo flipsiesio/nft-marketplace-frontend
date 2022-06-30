@@ -23,6 +23,7 @@ type Props = {
   getPrice: (item: CardDataForList) => string,
   pageCount: number,
   priceLabel?: string
+  isSale?: boolean
 };
 
 const TabWithFilter: FC<Props> = ({
@@ -32,6 +33,7 @@ const TabWithFilter: FC<Props> = ({
   getPrice,
   pageCount,
   priceLabel,
+  isSale,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -110,6 +112,7 @@ const TabWithFilter: FC<Props> = ({
         onApply={setFilters}
         onToggle={toggleModal}
         isOpen={modalActive}
+        isSale={isSale}
       />
     </div>
   );

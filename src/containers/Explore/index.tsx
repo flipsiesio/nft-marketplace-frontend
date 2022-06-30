@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import {
   Button, Icon, InfoModal, NftArtwork, Text,
 } from 'components';
@@ -45,6 +45,10 @@ const Explore: FC = () => {
 
   const goBack = useCallback(() => {
     history.goBack();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   return (

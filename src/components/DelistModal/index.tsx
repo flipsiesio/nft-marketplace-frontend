@@ -29,7 +29,11 @@ const DelistModal: FC<Props> = ({
   }, [onSubmit]);
 
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={!isLoading ? onToggle : undefined}
+    >
       <Text className={styles.title}>{title}</Text>
       <Button
         className={styles.button}
