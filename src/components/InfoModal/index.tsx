@@ -24,7 +24,11 @@ const InfoModal: FC<Props> = ({
   const { t } = useTranslation();
 
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={!isLoading ? onToggle : undefined}
+    >
       {children}
       <Button
         className={styles.button}

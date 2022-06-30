@@ -46,7 +46,11 @@ const SetPriceModal: FC<Props> = ({
   }, [value]);
 
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={!isLoading ? onToggle : undefined}
+    >
       <Text className={styles.title}>{t('nftMarket.setPrice')}</Text>
       <Input placeholder={t('nftMarket.setPrice')} value={value} onChange={changeHandler} />
       <Button

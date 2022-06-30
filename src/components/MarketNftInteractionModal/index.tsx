@@ -43,7 +43,11 @@ const MarketNftInteractionModal: FC<Props> = ({
   }, [price, balance, onSubmit, t]);
 
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={!isLoading ? onToggle : undefined}
+    >
       <Text className={styles.title}>{title}</Text>
       <div className={styles.row}>
         <div className={styles.col}>
