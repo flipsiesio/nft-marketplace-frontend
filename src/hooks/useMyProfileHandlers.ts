@@ -24,7 +24,7 @@ export const useMyProfileHandlers = () => {
   const [salePrice, setSalePrice] = useState('0');
   const [bidPrice, setBidPrice] = useState('0');
   const [myBidPrice, setMyBidPrice] = useState('0');
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [actualBidOrderId, setActualOrderId] = useState<number>();
 
   const id = useMemo(() => {

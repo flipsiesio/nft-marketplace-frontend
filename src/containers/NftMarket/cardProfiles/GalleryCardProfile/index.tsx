@@ -45,6 +45,7 @@ const GalleryCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          showBid={false}
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>

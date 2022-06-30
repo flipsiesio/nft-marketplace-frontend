@@ -138,6 +138,7 @@ const MyGalleryCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          showBid={isBid}
           disabled={isWait}
           actualOrderId={actualBidOrderId}
           active={isActive}

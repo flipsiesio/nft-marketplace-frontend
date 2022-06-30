@@ -21,6 +21,7 @@ type Props = {
   actualOrderId?: number
   disabled?: boolean
   owner?: string
+  showBid?: boolean
 };
 
 const CardProfile: FC<Props> = ({
@@ -32,6 +33,7 @@ const CardProfile: FC<Props> = ({
   actualOrderId,
   disabled,
   owner,
+  showBid,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -109,6 +111,7 @@ const CardProfile: FC<Props> = ({
         </div>
 
         <CardHistory
+          showBid={showBid}
           disabled={disabled}
           onAcceptBidClick={onAcceptBidClick}
           cardId={selectedNft.cardId}

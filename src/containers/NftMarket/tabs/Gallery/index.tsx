@@ -31,6 +31,7 @@ const GalleryTab: FC = () => {
       items={gallery}
       getPrice={getSalePrice}
       pageCount={pageCount}
+      isSale
     />
   );
 };
