@@ -48,6 +48,7 @@
 
 .img {
   height: 100%;
+  position: relative;
   z-index: 2;
 }
 
@@ -57,7 +58,7 @@
   position: absolute;
   width: 80%;
   height: 80%;
-  z-index: -1;
+  z-index: 1;
 }
 
 .red {

@@ -213,10 +213,10 @@
     "owner": "Owner",
     "approve": "Approve",
     "approveText": "Please approve your action",
-    "bidPrice": "Bid Price",
+    "bidPrice": "Highest Bid",
     "myBid": "My Bid",
     "highestBid": "Highest Bid",
-    "salePrice": "Sale Price",
+    "salePrice": "Listing price",
     "attributes": "Attributes",
     "type": "Type"
   },

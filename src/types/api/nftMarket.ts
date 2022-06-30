@@ -44,7 +44,7 @@ export type NftDto = {
   suitRarity: string;
   face: NftType;
   faceRarity: string;
-  owner: string;
+  owner?: string;
   properties: NftProperty[]
   url: string
   bidPrice: string
