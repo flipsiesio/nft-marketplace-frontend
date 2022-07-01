@@ -8,3 +8,4 @@ export { default as getNetworkName } from './getNetworkName';
 export * from './useAPIInterceptors';
 export * from './getBidPriceHelpers';
 export * from './shortenPhrase';
+export * from './usePrice';

@@ -1,11 +1,12 @@
 import React, {
-  ChangeEventHandler, FC, useCallback, useMemo, useState,
+  FC, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Modal, Text, Input, Button,
 } from 'components';
 import styles from './styles.module.scss';
+import { usePrice } from '../../utils';
 
 type Props = {
   isLoading: boolean
@@ -21,29 +22,15 @@ const SetPriceModal: FC<Props> = ({
   onToggle,
 }) => {
   const { t } = useTranslation();
-  const [value, setValue] = useState<string>('');
+  const {
+    changeHandler,
+    hasError,
+    value,
+  } = usePrice();
 
   const submitHandler = useCallback(() => {
     onSubmit(value);
   }, [onSubmit, value]);
-
-  const changeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => {
-    setValue(e.target.value);
-  }, []);
-
-  const hasError = useMemo(() => {
-    if (value.length === 0) return true;
-
-    const reg = /([0-9]*[.])?[0-9]+/;
-    const execValue = reg.exec(value);
-    if (execValue === null) return true;
-    if (value.length !== execValue[0].length) return true;
-
-    const valueAfterPoint = value.split('.')[1];
-    if (valueAfterPoint && valueAfterPoint.length > 6) return true;
-
-    return false;
-  }, [value]);
 
   return (
     <Modal

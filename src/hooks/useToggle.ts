@@ -10,5 +10,6 @@ export const useToggle = (initialState = false) => {
   return {
     isActive,
     onToggle,
+    setActive,
   };
 };
