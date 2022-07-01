@@ -1,10 +1,11 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Modal, Text, Button,
 } from 'components';
 import cx from 'classnames';
 import { toast } from 'react-toastify';
+import BigNumber from 'bignumber.js';
 import styles from './styles.module.scss';
 import { fromSunToNumber } from '../../utils';
 
@@ -30,6 +31,17 @@ const MarketNftInteractionModal: FC<Props> = ({
   balance,
 }) => {
   const { t } = useTranslation();
+
+  const notEnoughFunds = useMemo(() => {
+    if (!price) return true;
+    if (!balance) return true;
+
+    const balanceSun: BigNumber =
+      new window.tronWeb.BigNumber(window.tronWeb.toSun(balance));
+    const priceBN: BigNumber = new window.tronWeb.BigNumber(price);
+
+    return balanceSun.lte(priceBN);
+  }, [price, balance]);
 
   const clickHandler = useCallback(() => {
     const convertPrice = fromSunToNumber(`${price}`);
@@ -67,9 +79,16 @@ const MarketNftInteractionModal: FC<Props> = ({
           </Text>
         </div>
       </div>
-      <Button className={styles.button} onClick={clickHandler} disabled={isLoading}>
+      <Button
+        className={styles.button}
+        onClick={clickHandler}
+        disabled={isLoading || notEnoughFunds}
+      >
         {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
       </Button>
+      {notEnoughFunds && (
+        <Text className={styles.notFunds}>{t('nftMarket.notHaveEnoughFunds')}</Text>
+      )}
     </Modal>
   );
 };

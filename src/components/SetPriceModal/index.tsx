@@ -7,12 +7,14 @@ import {
 } from 'components';
 import styles from './styles.module.scss';
 import { usePrice } from '../../utils';
+import { MarketType } from '../../types';
 
 type Props = {
   isLoading: boolean
   isOpen?: boolean
   onToggle: () => void
   onSubmit: (value: string) => void
+  marketType?: MarketType
 };
 
 const SetPriceModal: FC<Props> = ({
@@ -20,13 +22,15 @@ const SetPriceModal: FC<Props> = ({
   isOpen = false,
   onSubmit,
   onToggle,
+  marketType,
 }) => {
   const { t } = useTranslation();
   const {
     changeHandler,
     hasError,
     value,
-  } = usePrice();
+    notEnoughFunds,
+  } = usePrice(marketType);
 
   const submitHandler = useCallback(() => {
     onSubmit(value);
@@ -43,10 +47,13 @@ const SetPriceModal: FC<Props> = ({
       <Button
         className={styles.button}
         onClick={submitHandler}
-        disabled={isLoading || hasError}
+        disabled={isLoading || hasError || notEnoughFunds}
       >
         {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
       </Button>
+      {notEnoughFunds && (
+        <Text className={styles.notFunds}>{t('nftMarket.notHaveEnoughFunds')}</Text>
+      )}
     </Modal>
   );
 };

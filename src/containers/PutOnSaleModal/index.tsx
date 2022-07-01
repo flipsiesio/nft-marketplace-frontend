@@ -49,7 +49,8 @@ export const PutOnSaleModal: FC<Props> = ({
     hasError,
     changeHandler,
     value,
-  } = usePrice();
+    notEnoughFunds,
+  } = usePrice(marketType);
 
   const [selectOptions, setSelectOptions] = useState<SelectOption[]>([]);
   const [selectValue, setSelectValue] = useState<SelectOption>();
@@ -173,10 +174,13 @@ export const PutOnSaleModal: FC<Props> = ({
               <Button
                 className={styles.button}
                 onClick={saleHandler}
-                disabled={isLoading || hasError}
+                disabled={isLoading || hasError || notEnoughFunds}
               >
                 {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
               </Button>
+              {notEnoughFunds && (
+                <Text className={styles.notFunds}>{t('nftMarket.notHaveEnoughFunds')}</Text>
+              )}
             </>
           )}
         </>

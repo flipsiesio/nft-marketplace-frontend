@@ -1,9 +1,7 @@
 import React, {
   FC, useCallback, useEffect, useMemo,
 } from 'react';
-import {
-  Button, SetPriceModal, Text,
-} from 'components';
+import { Button, SetPriceModal, Text } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
@@ -13,6 +11,7 @@ import { useLocation } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
+import { MarketType } from '../../../../types';
 
 const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
@@ -74,6 +73,7 @@ const MarketCardProfile: FC = () => {
         />
       )}
       <SetPriceModal
+        marketType={MarketType.Auction}
         isLoading={getPutOnSaleStatus === 'REQUEST'}
         onToggle={toggleBid}
         onSubmit={bidHandler}
