@@ -62,6 +62,8 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       url: currentCard.url,
       bidPrice: getBidPrice(currentCard.state_bids),
       salePrice: currentCard.state_sale?.price ? `${fromSunToNumber(currentCard.state_sale.price)}` : '0',
+      expirationTime: currentCard.state_sale?.expirationTime ||
+        currentCard.state_bids?.expirationTime,
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {

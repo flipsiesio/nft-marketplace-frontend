@@ -46,6 +46,7 @@ const GalleryCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          showExpirationTime
           showBid={false}
           selectedNft={selectedNft}
           buttons={(

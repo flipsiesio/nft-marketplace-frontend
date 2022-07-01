@@ -49,6 +49,7 @@ const MarketCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          showExpirationTime
           active={selectedNft.active}
           selectedNft={selectedNft}
           buttons={(

@@ -180,6 +180,8 @@
     "here": "here"
   },
   "nftMarket": {
+    "todayEndExpiration": "Today end expiration",
+    "dayBeforeExpiration{{day}}": "{{day}} days - before expiration",
     "notHaveEnoughFunds": "You don't have enough funds",
     "cancelBid": "Cancel Bid",
     "empty": "Empty...",
