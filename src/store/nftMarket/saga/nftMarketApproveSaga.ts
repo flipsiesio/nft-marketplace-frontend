@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { put, takeLatest } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract } from 'utils';
+import { getTronContract, simpleErrorHandler } from 'utils';
 import { nftMarketApproveAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { MarketType } from '../../../types';
@@ -25,6 +25,7 @@ function* nftMarketApproveSaga(
     callback(payload.actionType);
     yield toast.success('Approve successful!');
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

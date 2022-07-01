@@ -3,7 +3,7 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract } from 'utils';
+import { getTronContract, simpleErrorHandler } from 'utils';
 import { nftMarketPutOnAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { MarketType } from '../../../types';
@@ -27,6 +27,7 @@ function* nftMarketPutOnSaga(
     const label = MarketType.Sale === payload.marketType ? 'sale' : 'auction';
     yield toast.success(`Put on ${label} successful!`);
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

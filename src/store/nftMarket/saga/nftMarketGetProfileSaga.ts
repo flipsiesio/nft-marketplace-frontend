@@ -9,7 +9,7 @@ import {
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { fromSunToNumber, getBidPrice } from '../../../utils';
+import { fromSunToNumber, getBidPrice, simpleErrorHandler } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
@@ -70,6 +70,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }
