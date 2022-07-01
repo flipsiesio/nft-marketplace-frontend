@@ -1,4 +1,6 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, {
+  FC, useCallback, useEffect, useMemo,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Button, Text, MarketNftInteractionModal } from 'components';
@@ -6,6 +8,7 @@ import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
+import cx from 'classnames';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 import { RequestStatus } from '../../../../appConstants';
@@ -16,6 +19,7 @@ const GalleryCardProfile: FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const dispatch = useDispatch();
+  const address = useShallowSelector(tronSelector.getProp('address'));
   const balance = useShallowSelector(tronSelector.getProp('balance'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
@@ -42,6 +46,10 @@ const GalleryCardProfile: FC = () => {
     }
   }, [dispatch, selectedNft, successHandler]);
 
+  const isOwner = useMemo(() => {
+    return selectedNft?.owner === address;
+  }, [selectedNft, address]);
+
   return (
     <>
       {selectedNft && (
@@ -51,7 +59,11 @@ const GalleryCardProfile: FC = () => {
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>
-              <div className={styles.buttonWrap}>
+              <div className={cx(
+                styles.buttonWrap,
+                { [styles.singleButtonWrap]: isOwner },
+              )}
+              >
                 <div>
                   <Text className={styles.buttonLabel}>{t('nftMarket.salePrice')}</Text>
                   <div className={styles.price}>
@@ -64,7 +76,9 @@ const GalleryCardProfile: FC = () => {
                     <Text className={styles.primary} tag="span">TRX</Text>
                   </div>
                 </div>
-                <Button onClick={toggleBuy} className={styles.button}>{t('nftMarket.buyNow')}</Button>
+                {!isOwner && (
+                  <Button onClick={toggleBuy} className={styles.button}>{t('nftMarket.buyNow')}</Button>
+                )}
               </div>
             </div>
           )}

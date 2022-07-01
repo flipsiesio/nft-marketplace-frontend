@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { nftMarketBidAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
-import { nftMarketSelector, uiSelector } from 'store/selectors';
+import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
+import cx from 'classnames';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
@@ -17,6 +18,7 @@ const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
+  const address = useShallowSelector(tronSelector.getProp('address'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BID));
   const id = useMemo(() => {
@@ -44,6 +46,10 @@ const MarketCardProfile: FC = () => {
     }
   }, [dispatch, selectedNft, successCallback]);
 
+  const isOwner = useMemo(() => {
+    return selectedNft?.owner === address;
+  }, [selectedNft, address]);
+
   return (
     <>
       {selectedNft && (
@@ -53,7 +59,11 @@ const MarketCardProfile: FC = () => {
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>
-              <div className={styles.buttonWrap}>
+              <div className={cx(
+                styles.buttonWrap,
+                { [styles.singleButtonWrap]: isOwner },
+              )}
+              >
                 <div>
                   <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
                   <div className={styles.price}>
@@ -66,7 +76,9 @@ const MarketCardProfile: FC = () => {
                     <Text className={styles.primary} tag="span">TRX</Text>
                   </div>
                 </div>
-                <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
+                {!isOwner && (
+                  <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
+                )}
               </div>
             </div>
           )}
