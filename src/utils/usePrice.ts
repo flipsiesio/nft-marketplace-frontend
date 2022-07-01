@@ -13,7 +13,8 @@ export const usePrice = (marketType?: MarketType) => {
   const [maxFee, setMaxFee] = useState<BigNumber>();
 
   const changeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => {
-    setValue(e.target.value);
+    const newValue = e.target.value.replace(',', '.');
+    setValue(newValue);
   }, []);
 
   const hasError = useMemo(() => {
