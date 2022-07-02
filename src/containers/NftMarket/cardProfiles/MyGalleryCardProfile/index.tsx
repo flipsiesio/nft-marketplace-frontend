@@ -18,7 +18,7 @@ import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 import { PutOnSaleModal } from '../../../PutOnSaleModal';
 import { AcceptBidData } from '../../../CardHistory';
-import { history } from '../../../../utils';
+import { history, fromSunToNumber } from '../../../../utils';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
@@ -209,7 +209,7 @@ const MyGalleryCardProfile: FC = () => {
         onToggle={acceptBidToggle}
         onSubmit={acceptBidHandler}
         isOpen={acceptBidActive}
-        price={`${acceptBidData?.price || 0}`}
+        price={`${fromSunToNumber(`${acceptBidData?.price || 0}`)}`}
       />
     </>
   );
