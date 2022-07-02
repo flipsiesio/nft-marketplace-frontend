@@ -71,7 +71,7 @@ const MintModal: FC<Props> = ({
     <Modal
       classNameContent={styles.wrap}
       isOpen={isOpen}
-      onClose={getMintStatus === 'REQUEST' ? onToggle : undefined}
+      onClose={getMintStatus === 'REQUEST' ? undefined : onToggle}
     >
       {!isSent && (
         <>
