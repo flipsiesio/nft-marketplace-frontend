@@ -20,6 +20,7 @@
 .select {
   margin-top: 10px;
   width: 100%;
+  min-width: 200px;
 
   :global(.rs__menu) {
     position: initial;

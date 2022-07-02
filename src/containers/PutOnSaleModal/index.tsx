@@ -81,7 +81,7 @@ export const PutOnSaleModal: FC<Props> = ({
     if (selectedNft && selectValue) {
       dispatch(nftMarketPutOnAction({
         marketType,
-        price: parseFloat(value),
+        price: marketType === MarketType.Sale ? parseFloat(value) : 0,
         nftAddress: selectedNft.cardId,
         maxDuration: getSecondsFromDays(Number(selectValue?.value)),
       }, () => {
@@ -162,8 +162,10 @@ export const PutOnSaleModal: FC<Props> = ({
 
           {shouldSale && (
             <>
-              <Text className={styles.title}>{t('nftMarket.setPrice')}</Text>
-              <Input placeholder={t('nftMarket.setPrice')} value={value} onChange={changeHandler} />
+              <Text className={styles.title}>{t('nftMarket.setSale')}</Text>
+              {marketType === MarketType.Sale && (
+                <Input placeholder={t('nftMarket.setPrice')} value={value} onChange={changeHandler} />
+              )}
               <Select
                 maxMenuHeight={200}
                 value={selectValue}
@@ -174,7 +176,7 @@ export const PutOnSaleModal: FC<Props> = ({
               <Button
                 className={styles.button}
                 onClick={saleHandler}
-                disabled={isLoading || hasError || notEnoughFunds}
+                disabled={isLoading || hasError || notEnoughFunds || !selectValue}
               >
                 {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
               </Button>
