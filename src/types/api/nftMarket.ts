@@ -54,7 +54,7 @@ export type NftDto = {
 
 export type AcceptBid = {
   payerAddress: string
-  nftId: string
+  orderId: string
 };
 
 export type SoldReq = {

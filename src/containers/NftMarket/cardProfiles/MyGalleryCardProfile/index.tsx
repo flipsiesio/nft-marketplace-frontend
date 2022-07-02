@@ -84,7 +84,7 @@ const MyGalleryCardProfile: FC = () => {
     if (!acceptBidData) return;
     dispatch(nftMarketAcceptBidAction({
       payerAddress: acceptBidData.payerAddress,
-      nftId: acceptBidData.orderId,
+      orderId: acceptBidData.orderId,
     }, () => history.goBack()));
   }, [acceptBidData, dispatch]);
 

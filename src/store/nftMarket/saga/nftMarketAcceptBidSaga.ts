@@ -8,13 +8,16 @@ import { nftMarketAcceptBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
 function* nftMarketAcceptBidSaga(
-  { type, payload: { payerAddress, nftId }, callback }: ReturnType<typeof nftMarketAcceptBidAction>,
+  {
+    type,
+    payload: { payerAddress, orderId }, callback,
+  }: ReturnType<typeof nftMarketAcceptBidAction>,
 ) {
   try {
     yield put(apiActions.request(type));
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
-    yield contract.performBuyOperation(payerAddress, nftId).send({
+    yield contract.performBuyOperation(payerAddress, orderId).send({
       shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
