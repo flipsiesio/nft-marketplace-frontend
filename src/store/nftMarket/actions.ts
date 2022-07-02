@@ -117,6 +117,7 @@ export const nftMarketPutOnAction = (payload: {
 });
 
 export const getBackFromSaleAction = (
+  type: NftMarketActionTypes.GET_BACK_FROM_SALE,
   payload: {
     marketType: MarketType
     orderId: number
