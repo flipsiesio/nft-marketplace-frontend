@@ -11,11 +11,11 @@ import { scanAddressUrl } from 'appConstants';
 import { differenceInDays } from 'date-fns';
 import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
-import { CardHistory } from '../../CardHistory';
+import { AcceptBidData, CardHistory } from '../../CardHistory';
 import { shortenPhrase } from '../../../utils';
 
 type Props = {
-  onAcceptBidClick?: (payerAddress: string, nftId: string) => void
+  onAcceptBidClick?: (data: AcceptBidData) => void
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,

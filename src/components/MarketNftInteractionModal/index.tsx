@@ -18,6 +18,7 @@ type Props = {
   price?: string
   id?: number
   balance?: number
+  showNotFunds?: boolean
 };
 
 const MarketNftInteractionModal: FC<Props> = ({
@@ -29,6 +30,7 @@ const MarketNftInteractionModal: FC<Props> = ({
   id,
   price,
   balance,
+  showNotFunds = true,
 }) => {
   const { t } = useTranslation();
 
@@ -82,11 +84,11 @@ const MarketNftInteractionModal: FC<Props> = ({
       <Button
         className={styles.button}
         onClick={clickHandler}
-        disabled={isLoading || notEnoughFunds}
+        disabled={isLoading || (showNotFunds && notEnoughFunds)}
       >
         {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
       </Button>
-      {notEnoughFunds && (
+      {notEnoughFunds && showNotFunds && (
         <Text className={styles.notFunds}>{t('nftMarket.notHaveEnoughFunds')}</Text>
       )}
     </Modal>

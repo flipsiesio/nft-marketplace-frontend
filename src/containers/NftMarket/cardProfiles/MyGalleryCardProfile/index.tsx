@@ -3,25 +3,27 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, DelistModal, Text,
+  Button, DelistModal, MarketNftInteractionModal, Text,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useDispatch } from 'react-redux';
-import { getBackFromSaleAction, nftMarketAcceptBidAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
+import { getBackFromSaleAction, nftMarketGetProfileAction, nftMarketAcceptBidAction } from 'store/nftMarket/actions';
 import { MarketType } from 'types';
 import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
 import cx from 'classnames';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
-import { history } from '../../../../utils';
 import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 import { PutOnSaleModal } from '../../../PutOnSaleModal';
+import { AcceptBidData } from '../../../CardHistory';
+import { history } from '../../../../utils';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const [acceptBidData, setAcceptBidData] = useState<AcceptBidData>();
   const [actionType, setActionType] = useState<MarketType>(MarketType.Auction);
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
 
@@ -68,12 +70,23 @@ const MyGalleryCardProfile: FC = () => {
     onToggle: saleToggleDelist,
   } = useToggle();
 
-  const onAcceptBidClick = useCallback((payerAddress: string, nftId: string) => {
+  const {
+    isActive: acceptBidActive,
+    onToggle: acceptBidToggle,
+  } = useToggle();
+
+  const onAcceptBidClick = useCallback((data: AcceptBidData) => {
+    setAcceptBidData(data);
+    acceptBidToggle();
+  }, [dispatch, acceptBidToggle]);
+
+  const acceptBidHandler = useCallback(() => {
+    if (!acceptBidData) return;
     dispatch(nftMarketAcceptBidAction({
-      payerAddress,
-      nftId,
+      payerAddress: acceptBidData.payerAddress,
+      nftId: acceptBidData.orderId,
     }, () => history.goBack()));
-  }, [dispatch]);
+  }, [acceptBidData, dispatch]);
 
   const onAuctionButtonClick = useCallback(() => {
     setActionType(MarketType.Auction);
@@ -182,11 +195,21 @@ const MyGalleryCardProfile: FC = () => {
         isOpen={saleDelistActive}
       />
       <DelistModal
-        title={t('nftMarket.cancelBids')}
+        title={t('nftMarket.cancelSale')}
         isLoading={getBackFromSaleStatus === 'REQUEST'}
         onToggle={bidToggleDelist}
         onSubmit={getBackClick(MarketType.Auction)}
         isOpen={bidDelistActive}
+      />
+      <MarketNftInteractionModal
+        isLoading={isWait}
+        showNotFunds={false}
+        id={selectedNft?.cardId || 0}
+        title={t('nftMarket.sellTitle')}
+        onToggle={acceptBidToggle}
+        onSubmit={acceptBidHandler}
+        isOpen={acceptBidActive}
+        price={`${acceptBidData?.price || 0}`}
       />
     </>
   );
