@@ -6,7 +6,7 @@ export const getBidPrice = (state?: BidCardState | null) => {
     const prices = Object
       .values(state.bids)
       .map((v) => v.price)
-      .sort((a, b) => a - b);
+      .sort((a, b) => b - a);
 
     const price = prices[0];
     return `${fromSunToNumber(price ? `${price}` : '0')}`;
@@ -20,7 +20,7 @@ export const getMyBidPrice = (address: string, state?: BidCardState | null) => {
       .values(state.bids)
       .filter((b) => b.buyer === address)
       .map((b) => b.price)
-      .sort((a, b) => a - b);
+      .sort((a, b) => b - a);
 
     const price = prices[0];
     return `${fromSunToNumber(price ? `${price}` : '0')}`;

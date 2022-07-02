@@ -2,7 +2,7 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getFeeString, getTronContract } from 'utils';
+import { getFeeString, getTronContract, simpleErrorHandler } from 'utils';
 import BigNumber from 'bignumber.js';
 import { toast } from 'react-toastify';
 import { nftMarketBidAction } from '../actions';
@@ -31,7 +31,7 @@ function* nftMarketBidSaga(
     yield put(apiActions.success(type));
     yield toast.success('Bid successful!');
   } catch (err) {
-    yield toast.error('Error Bid');
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

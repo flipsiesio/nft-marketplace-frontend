@@ -49,11 +49,12 @@ export type NftDto = {
   url: string
   bidPrice: string
   salePrice: string
+  expirationTime?: number
 };
 
 export type AcceptBid = {
   payerAddress: string
-  nftId: string
+  orderId: string
 };
 
 export type SoldReq = {
@@ -81,6 +82,7 @@ export interface CardState {
   orderIndex: number
   seller: string
   tokenId: number
+  expirationTime: number
 }
 
 export interface SaleCardState extends CardState {

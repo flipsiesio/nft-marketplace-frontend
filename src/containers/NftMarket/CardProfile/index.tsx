@@ -1,19 +1,21 @@
 import React, {
-  FC, useCallback, useMemo,
+  FC, MouseEventHandler, useCallback, useMemo,
 } from 'react';
 import {
-  Icon, NotActiveCardIcon, Text,
+  Icon, Link, NotActiveCardIcon, Text,
 } from 'components';
 import { useHistory } from 'react-router-dom';
 import { NftDto } from 'types';
 import { useTranslation } from 'react-i18next';
+import { scanAddressUrl } from 'appConstants';
+import { differenceInDays } from 'date-fns';
 import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
-import { CardHistory } from '../../CardHistory';
+import { AcceptBidData, CardHistory } from '../../CardHistory';
 import { shortenPhrase } from '../../../utils';
 
 type Props = {
-  onAcceptBidClick?: (payerAddress: string, nftId: string) => void
+  onAcceptBidClick?: (data: AcceptBidData) => void
   isMyGallery?: boolean,
   buttons: JSX.Element,
   selectedNft: NftDto,
@@ -22,6 +24,7 @@ type Props = {
   disabled?: boolean
   owner?: string
   showBid?: boolean
+  showExpirationTime?: boolean
 };
 
 const CardProfile: FC<Props> = ({
@@ -34,6 +37,7 @@ const CardProfile: FC<Props> = ({
   disabled,
   owner,
   showBid,
+  showExpirationTime,
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -46,13 +50,37 @@ const CardProfile: FC<Props> = ({
     return shortenPhrase(owner || selectedNft.owner || '');
   }, [owner, selectedNft]);
 
+  const ownerClick = useCallback<MouseEventHandler<HTMLAnchorElement>>((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(`${scanAddressUrl}${owner || selectedNft.owner}`);
+  }, [owner, selectedNft]);
+
+  const expirationDays = useMemo(() => {
+    if (selectedNft.expirationTime) {
+      const day = differenceInDays(new Date(selectedNft.expirationTime * 1000), new Date());
+
+      return `${day}`;
+    }
+
+    return '0';
+  }, [selectedNft]);
+
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
         <button className={styles.backButton} onClick={goBack} type="button">
           <Icon className={styles.backButtonArrow} icon="chevron" />
         </button>
-        <Text className={styles.title}>{`ID #${selectedNft.cardId}`}</Text>
+        <div className={styles.titleWrap}>
+          <Text className={styles.title}>{`ID #${selectedNft.cardId}`}</Text>
+          {showExpirationTime && expirationDays !== '0' && (
+            <Text className={styles.subTitle}>{t('nftMarket.dayBeforeExpiration{{day}}', { day: expirationDays })}</Text>
+          )}
+          {showExpirationTime && expirationDays === '0' && (
+            <Text className={styles.subTitle}>{t('nftMarket.todayEndExpiration')}</Text>
+          )}
+        </div>
       </div>
 
       <div className={styles.body}>
@@ -61,7 +89,12 @@ const CardProfile: FC<Props> = ({
           <Text>
             {t('nftMarket.owner')}
             &nbsp;
-            <Text tag="span" className={styles.primary}>{cardOwner}</Text>
+            <Link
+              onClick={ownerClick}
+              to={`${scanAddressUrl}${owner || selectedNft.owner}`}
+              className={styles.primary}
+            >{cardOwner}
+            </Link>
           </Text>
           <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
