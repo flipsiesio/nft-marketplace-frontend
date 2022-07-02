@@ -9,19 +9,23 @@ import {
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { fromSunToNumber, getBidPrice } from '../../../utils';
+import { fromSunToNumber, getBidPrice, simpleErrorHandler } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
 
   if (Number.isInteger(value)) {
-    return `${value}%`;
+    return `${value * 100}%`;
   }
 
-  return `${value.toFixed((3))}%`;
+  return `${(value * 100).toFixed((3))}%`;
 };
 
-const exceptionsProperty = ['CardSuit'];
+const getCardName = (name: string) => {
+  if (name === 'cardSuit') return 'Borderline ';
+
+  return name[0].toUpperCase() + name.slice(1);
+};
 
 function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarketGetProfileAction>) {
   try {
@@ -44,10 +48,9 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       .values(currentCard.traits)
       .map((trait) => ({
         rarity: trait.frequency ? percent(trait.frequency) : '',
-        name: trait.main.name[0].toUpperCase() + trait.main.name.slice(1),
+        name: getCardName(trait.main.name),
         label: `${trait.main.color.name} (#${trait.main.color.color})`,
-      }))
-      .filter((trait) => !exceptionsProperty.includes(trait.name));
+      }));
 
     yield put(nftMarketSelectProfileAction({
       active: currentCard.state_bids?.active || currentCard.state_sale?.active || false,
@@ -62,9 +65,12 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       url: currentCard.url,
       bidPrice: getBidPrice(currentCard.state_bids),
       salePrice: currentCard.state_sale?.price ? `${fromSunToNumber(currentCard.state_sale.price)}` : '0',
+      expirationTime: currentCard.state_sale?.expirationTime ||
+        currentCard.state_bids?.expirationTime,
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

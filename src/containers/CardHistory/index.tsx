@@ -13,9 +13,15 @@ import { marketClient } from '../../store/api';
 import { marketURL, PAGE_ITEM_LIMIT, scanTransactionUrl } from '../../appConstants';
 import { fromSunToNumber } from '../../utils';
 
+export type AcceptBidData = {
+  payerAddress: string
+  orderId: string
+  price: number | null
+};
+
 type Props = {
   isMyGallery?: boolean
-  onAcceptBidClick?: (payerAddress: string, nftId: string) => void
+  onAcceptBidClick?: (data: AcceptBidData) => void
   cardId: number
   actualOrderId?: number
   disabled?: boolean
@@ -141,25 +147,31 @@ export const CardHistory: FC<Props> = ({
     {
       Header: 'Address',
       accessor: 'buyer',
-      Cell: ({ row: { original: { buyer, orderIndex } } }: TableRowProps<HistoryData>) => (
-        !isMyGallery
-          ? <Text>{buyer}</Text>
-          : (
-            <div className={styles.flex}>
-              <Text>{buyer}</Text>
-              {actualOrderId === orderIndex && (
-                <Button
-                  disabled={disabled}
-                  className={styles.acceptButton}
-                  onClick={onAcceptBidClick
-                    ? () => onAcceptBidClick(buyer || '', `${orderIndex}`)
-                    : undefined}
-                >
-                  {t('nftMarket.accept')}
-                </Button>
-              )}
-            </div>
-          )
+      Cell: ({ row: { original: { buyer } } }: TableRowProps<HistoryData>) => (
+        <Text>{buyer}</Text>
+      ),
+    },
+    {
+      Header: '',
+      accessor: 'orderIndex',
+      Cell: ({ row: { original: { buyer, orderIndex, amount } } }: TableRowProps<HistoryData>) => (
+        <>
+          {actualOrderId === orderIndex && isMyGallery && (
+            <Button
+              disabled={disabled}
+              className={styles.acceptButton}
+              onClick={onAcceptBidClick
+                ? () => onAcceptBidClick({
+                  orderId: `${orderIndex}`,
+                  payerAddress: buyer || '',
+                  price: amount,
+                })
+                : undefined}
+            >
+              {t('nftMarket.accept')}
+            </Button>
+          )}
+        </>
       ),
     },
   ]), [onAcceptBidClick, isMyGallery, actualOrderId, disabled]);

@@ -34,6 +34,11 @@
   }
 }
 
+.singleButtonWrap {
+  padding: 24px 45px;
+  width: auto;
+}
+
 .buttonWrapInfo {
   @include flexbox(center, center);
 

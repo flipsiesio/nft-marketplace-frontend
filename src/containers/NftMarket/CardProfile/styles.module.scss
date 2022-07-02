@@ -11,11 +11,21 @@
   @include flexbox(center, flex-start);
 }
 
+.titleWrap {
+  @include flexbox(center, center);
+  flex-direction: column;
+  width: 100%;
+}
+
 .title {
   font-size: 48px;
   font-weight: bold;
-  text-align: center;
-  width: 100%;
+  margin-bottom: 10px;
+}
+
+.subTitle {
+  font-size: 26px;
+  color: $primaryColor;
 }
 
 .backButton {

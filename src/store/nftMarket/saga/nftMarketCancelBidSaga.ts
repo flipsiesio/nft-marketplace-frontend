@@ -2,7 +2,7 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract } from 'utils';
+import { getTronContract, simpleErrorHandler } from 'utils';
 import { toast } from 'react-toastify';
 import { nftMarketCancelBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
@@ -21,6 +21,7 @@ function* nftMarketCancelBidSaga(
     yield toast.success('Bid cancel successful!');
     if (callback) callback();
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

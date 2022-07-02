@@ -30,7 +30,7 @@ interface Window {
       toHex: (value: string) => string,
     },
     trx: {
-      getBalance: (address: string) => number,
+      getBalance: (address: string) => Promise<number>,
       sign: (value: string) => Promise<string>,
     },
     getEventResult: (

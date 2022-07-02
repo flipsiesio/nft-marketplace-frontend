@@ -7,6 +7,7 @@ import { ApiResponse, CardDataForList } from 'types';
 import { marketURL } from 'appConstants';
 import { nftMarketGetMyGalleryAction, nftMarketSetStateAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { simpleErrorHandler } from '../../../utils';
 
 function* nftMarketGetMyGallerySaga(
   { type, payload }: ReturnType<typeof nftMarketGetMyGalleryAction>,
@@ -29,6 +30,7 @@ function* nftMarketGetMyGallerySaga(
     yield put(nftMarketSetStateAction({ myGallery: res.data }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

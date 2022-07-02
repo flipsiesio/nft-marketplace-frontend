@@ -109,6 +109,7 @@ export const nftMarketPutOnAction = (payload: {
   marketType: MarketType,
   price: number,
   nftAddress: number,
+  maxDuration: number
 }, callback: () => void) => ({
   type: NftMarketActionTypes.PUT_ON,
   payload,

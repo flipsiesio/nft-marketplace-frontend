@@ -7,6 +7,7 @@ import { getTronContract } from 'utils/tronHelpers';
 import { nftMarketMintNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { tronSelector } from '../../selectors';
+import { simpleErrorHandler } from '../../../utils';
 
 function* nftMarketMintNowSaga(
   { type, payload, callback }: ReturnType<typeof nftMarketMintNowAction>,
@@ -25,6 +26,7 @@ function* nftMarketMintNowSaga(
     callback(trxHash);
     yield toast.success('Mint successful!');
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

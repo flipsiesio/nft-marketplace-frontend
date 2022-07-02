@@ -4,7 +4,9 @@ import {
 import apiActions from 'store/api/actions';
 import { authApiSaga } from 'store/api';
 import { ApiResponse, NftMarketCheckSignRes } from 'types';
-import { marketURL, routes } from 'appConstants';
+import {
+  marketURL, routes, TronStatus, ERRORS,
+} from 'appConstants';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import { nftMarketSetStateAction, nftMarketSignInAction } from '../actions';
@@ -49,8 +51,14 @@ const signMessage = async (str: string) => {
 function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSignInAction>) {
   try {
     yield put(apiActions.request(type));
+    const tronStatus: TronStatus = yield select(tronSelector.getProp('status'));
     const address: string = yield select(tronSelector.getProp('address'));
     const signedMsg: string = yield select(nftMarketSelector.getProp('signedMsg'));
+
+    if (tronStatus !== TronStatus.ADDRESS_SELECTED) {
+      toast.error(ERRORS.signInToTroLink);
+      return;
+    }
 
     if (signedMsg) {
       const checkRes = yield checkSign(signedMsg, address);

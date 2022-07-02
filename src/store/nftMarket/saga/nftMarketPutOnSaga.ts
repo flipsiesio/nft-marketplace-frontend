@@ -3,7 +3,7 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract } from 'utils';
+import { getTronContract, simpleErrorHandler } from 'utils';
 import { nftMarketPutOnAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { MarketType } from '../../../types';
@@ -18,10 +18,8 @@ function* nftMarketPutOnSaga(
       : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
     const contract =
       yield getTronContract(contractName);
-    const maxExpirationDuration: string = yield contract.maxExpirationDuration().call();
-    const maxDuration = Number(maxExpirationDuration);
     const price = window.tronWeb.toSun(payload.price);
-    yield contract.acceptTokenToSell(payload.nftAddress, price, maxDuration).send({
+    yield contract.acceptTokenToSell(payload.nftAddress, price, payload.maxDuration).send({
       shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
@@ -29,6 +27,7 @@ function* nftMarketPutOnSaga(
     const label = MarketType.Sale === payload.marketType ? 'sale' : 'auction';
     yield toast.success(`Put on ${label} successful!`);
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }
