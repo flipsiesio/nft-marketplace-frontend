@@ -85,8 +85,12 @@ const CardProfile: FC<Props> = ({
 
       <div className={styles.body}>
         <div className={styles.bodyLabels}>
-          <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
-          <Text>
+          <Text className={styles.bodyLabel}>
+            ID
+            &nbsp;
+            <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text>
+          </Text>
+          <Text className={styles.bodyLabel}>
             {t('nftMarket.owner')}
             &nbsp;
             <Link
@@ -96,7 +100,6 @@ const CardProfile: FC<Props> = ({
             >{cardOwner}
             </Link>
           </Text>
-          <Text>{`${t('nftMarket.attributes')}:`}</Text>
         </div>
         <div className={styles.info}>
           <NotActiveCardIcon
@@ -107,22 +110,34 @@ const CardProfile: FC<Props> = ({
           />
 
           <div className={styles.mobileBodyLabels}>
-            <Text>ID <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text></Text>
-            <Text>
+            <Text className={styles.bodyLabel}>
+              ID
+              &nbsp;
+              <Text tag="span" className={styles.bold}>{`#${selectedNft.cardId}`}</Text>
+            </Text>
+            <Text className={styles.bodyLabel}>
               {t('nftMarket.owner')}
               &nbsp;
-              <Text tag="span" className={styles.primary}>{cardOwner}</Text>
+              <Link
+                onClick={ownerClick}
+                to={`${scanAddressUrl}${owner || selectedNft.owner}`}
+                className={styles.primary}
+              >{cardOwner}
+              </Link>
             </Text>
           </div>
 
           <div className={styles.content}>
             <div className={styles.rowWrap}>
-              <ProfileAttribute
-                className={styles.profileAttribute}
-                head="Suit"
-                value={String(selectedNft.suit)}
-                percent={selectedNft.suitRarity}
-              />
+              <div className={styles.firstAttribute}>
+                <Text className={styles.attributeLabel}>{`${t('nftMarket.attributes')}:`}</Text>
+                <ProfileAttribute
+                  className={styles.profileAttribute}
+                  head="Suit"
+                  value={String(selectedNft.suit)}
+                  percent={selectedNft.suitRarity}
+                />
+              </div>
               <ProfileAttribute
                 className={styles.profileAttribute}
                 head="Face"
