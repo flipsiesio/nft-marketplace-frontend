@@ -15,9 +15,6 @@ const config = configureStore();
 const { store, persistor } = config;
 const root = document.getElementById('root');
 
-console.log('POKER', process.env.REACT_APP_CONTRACT_POKER_ADDRESS);
-console.log('POOL_CONTROLLER', process.env.REACT_APP_CONTRACT_CONTROLLER_ADDRESS);
-
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
