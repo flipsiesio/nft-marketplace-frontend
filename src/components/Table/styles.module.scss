@@ -71,11 +71,7 @@
     }
   }
 
-
-
-
   @include forPhone {
-    padding: 15px 5px;
     font-size: 12px;
   }
 }
@@ -111,7 +107,6 @@
   color: white;
 
   @include forPhone {
-    padding: 15px 5px;
     font-size: 12px;
   }
 }

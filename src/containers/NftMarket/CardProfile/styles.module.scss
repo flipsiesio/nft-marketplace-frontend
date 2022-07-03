@@ -9,6 +9,10 @@
 
 .header {
   @include flexbox(center, flex-start);
+
+  @include forTablet {
+    margin-top: 10px;
+  }
 }
 
 .titleWrap {
@@ -26,6 +30,7 @@
 .subTitle {
   font-size: 26px;
   color: $primaryColor;
+  text-align: center;
 }
 
 .backButton {
@@ -117,7 +122,6 @@
 .bodyLabels {
   @include flexbox(flex-start, flex-start);
 
-  font-size: 14px;
   margin-bottom: 16px;
 
   p:nth-child(1) {
@@ -133,6 +137,10 @@
   }
 }
 
+.bodyLabel {
+  font-size: 14px;
+}
+
 .mobileBodyLabels {
   margin-top: 40px;
   display: none;
@@ -144,4 +152,14 @@
   p:first-child {
     margin-right: 70px;
   }
+}
+
+.firstAttribute {
+  position: relative;
+}
+
+.attributeLabel {
+  position: absolute;
+  top: -35px;
+  left: 0;
 }

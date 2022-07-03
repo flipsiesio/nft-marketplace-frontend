@@ -15,7 +15,7 @@
   border-radius: 10px;
 
   @include forTablet {
-    padding: 0 40px 45px;
+    padding: 40px 45px;
   }
 
   @include forPhone {

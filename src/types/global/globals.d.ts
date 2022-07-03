@@ -1,6 +1,10 @@
 type PokerContract = {};
 
 interface Window {
+  tronLink: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    request?: (obj: any) => Promise<void>
+  }
   tronWeb: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     request: (obj: any) => Promise<void>
