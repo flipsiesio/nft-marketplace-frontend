@@ -29,6 +29,10 @@
 
 .selector {
   width: 374px;
+
+  @include forPhone() {
+    width: 296px;
+  }
 }
 
 .link {
