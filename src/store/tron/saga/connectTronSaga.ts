@@ -66,7 +66,9 @@ function getPlayerName(address: string) {
 
 function* setConnect(type: string) {
   if (window.tronWeb) {
-    yield window.tronWeb.request({ method: 'tron_requestAccounts' });
+    if (window.tronLink && window.tronLink?.request) {
+      yield window.tronLink.request({ method: 'tron_requestAccounts' });
+    }
     if (!window.tronWeb?.defaultAddress?.base58) yield delay(MS_RETRY_TRON);
     const address = window.tronWeb.defaultAddress?.base58 || '';
     const networkUrl = window.tronWeb.fullNode.host;

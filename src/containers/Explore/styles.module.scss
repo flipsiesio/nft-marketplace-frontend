@@ -5,6 +5,10 @@
   @include flexbox();
 
   flex-direction: column;
+
+  @include forTablet() {
+    margin-top: 10px;
+  }
 }
 
 .cardContainer {
@@ -15,6 +19,8 @@
   gap: 35px;
 
   @include forTablet {
+    margin: 0;
+    padding-top: 55px;
     flex-wrap: nowrap;
     overflow: auto;
     justify-content: initial;
@@ -28,6 +34,10 @@
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
+
+  @include forTablet {
+    margin-top: 60px;
+  }
 }
 
 .titleWrap {
