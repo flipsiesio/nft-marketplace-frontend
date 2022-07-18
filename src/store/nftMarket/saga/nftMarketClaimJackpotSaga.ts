@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { toast } from 'react-toastify';
-import { getTronContract } from 'utils';
+import { getTronContract, simpleErrorHandler } from 'utils';
 import { nftMarketClaimJackpotAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { tronSelector } from '../../selectors';
@@ -26,10 +26,12 @@ function* nftMarketClaimJackpotSaga(
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
     const trxHash: string = yield contract.mintRandomFree(0, address).send({
       address,
+      shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
     callback(trxHash);
   } catch (err) {
+    simpleErrorHandler(err);
     yield toast.error(err.message);
     yield put(apiActions.error(type, err));
   }

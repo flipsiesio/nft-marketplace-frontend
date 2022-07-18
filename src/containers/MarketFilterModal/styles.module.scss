@@ -5,8 +5,11 @@
   @include flexbox();
 
   flex-direction: column;
-  min-width: 562px;
-  padding: 50px 50px 40px 50px;
+  padding: 30px 50px;
+
+  @include forPhone {
+    padding: 30px;
+  }
 }
 
 .title {
@@ -16,7 +19,8 @@
 
 .checkboxWrap {
   @include flexbox();
-
+  flex-wrap: wrap;
+  gap: 20px 30px;
   margin-top: 25px;
 }
 
@@ -32,9 +36,7 @@
 }
 
 .checkbox {
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
+
 }
 
 .checkmark {
@@ -42,5 +44,6 @@
 }
 
 .button {
+  width: 200px;
   margin-top: 50px;
 }

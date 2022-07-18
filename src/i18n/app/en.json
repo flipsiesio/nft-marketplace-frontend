@@ -13,95 +13,6 @@
     "extensionInstall": "Install extension",
     "extensionLogin": "OK, I wil log in via extension"
   },
-  "preview": {
-    "title": "Please <1>sign in</1> to TronLink and connect wallet to play",
-    "playNow": "Play now"
-  },
-  "betsHistory": {
-    "title": "My bets history",
-    "bet": "Bet",
-    "payout": "Payout",
-    "flip": "Poker",
-    "color": "Color",
-    "date": "Date & Time"
-  },
-  "preloader": {
-    "alert": "Please click on TronLink extension to activate app or login in TronLink!"
-  },
-  "combinations": {
-    "royalFlush": "Royal flush",
-    "straightFlush": "Straight flush",
-    "quads": "Quads",
-    "fullHouse": "Full house",
-    "flush": "Flush",
-    "straight": "Straight",
-    "threeOfKind": "Three of a kind",
-    "twoPair": "Two pair",
-    "pair": "Pair",
-    "highCard": "High card"
-  },
-  "game": {
-    "handleRankings": " Handle Rankings",
-    "showResults": "Show results",
-    "playAgain": "Play again",
-    "home": "Home",
-    "jackpot": "Jackpot",
-    "betOn": "You bet on",
-    "colorBet": "Your color bet",
-    "win": "won",
-    "lost": "lost",
-    "red": "red",
-    "black": "black",
-    "youWon": "You won",
-    "youLost": "You lost",
-    "youDraw": "It`s a draw",
-    "youWonJackpot": "You won Jackpot!",
-    "results": "Results",
-    "pokerHand": "Poker hand",
-    "flopColor": "Flop color",
-    "start": "Bet",
-    "sameBet": "Same bet",
-    "bet": "Bet",
-    "probablyFair": "Flipsies is a <1>provably fair</1> game.",
-    "balance": "Balance",
-    "amountOfBet": "Amount of bet"
-  },
-  "profile": {
-    "referral": "Referral",
-    "betsHistory": "My bets history",
-    "invitedPlayers": "Invited players",
-    "currentRank": "Current rank",
-    "ofHouseEdge": "of house edge wins",
-    "totalEarnings": "Total Earnings",
-    "withdraw": "Withdraw",
-    "note": "Please note: you have to pay energy fee for withdrawing transaction"
-  },
-  "ranks": {
-    "bronze": "bronze",
-    "silver": "silver",
-    "gold": "gold",
-    "platinum": "platinum",
-    "diamond": "diamond",
-    "emerald": "emerald",
-    "sapphire": "sapphire"
-  },
-  "rating": {
-    "jackpotWinners": "Jackpot winners",
-    "jackpot": "Jackpot"
-  },
-  "referral": {
-    "title": "Share the referral link with friends and get rewarded each time your friend wins.",
-    "provideEmail": "Provide your e-mail to join our referral program!",
-    "enterEmail": "Enter your email",
-    "join": "Join",
-    "copy": "Copy",
-    "rankUp": "Rank up to get higher rewards!",
-    "yourReferralLink": "Your referral link",
-    "completeRank": "Complete to rank up"
-  },
-  "notifications": {
-    "copy": "Value copied"
-  },
   "termsOfServices": {
     "title": "Terms of service",
     "flipsies": "Flipsies",
@@ -110,75 +21,22 @@
     "verify": "We are not able to verify the legality of the service in each jurisdiction and provide you with any legal advice. It is your sole responsibility to comply with any relevant laws, policies and regulations of your jurisdiction regarding the use of Tron tokens in the way described above.",
     "based": "Flipsies games are based on transparency, players should be aware of the risks and manage themselves accordingly. Please play responsibly and goodluck."
   },
-  "howToPlay": {
-    "title": "How to play Flipsies",
-    "gameDerived": "Flipsies is a game derived from a \"coin flip\" or a “flip” in poker, where both you and your opponent have an equal chance at winning the hand. We added an optional side bet where you can bet on the majority color of the suits on the flop(2 or more of either red or black), this is often played in private poker games.",
-    "followStandart": "Flipsies follows standard Texas Holdem hand rankings, these rankings are provided in the drop down menu on the upper right hand corner of the game.",
-    "thankYou": "Thank you and good luck!",
-    "step": "Step",
-    "step1": "You are dealt two cards and the house also gets dealt two cards.",
-    "step2": "Select the size of your flip bet(poker hand) and your flop color bet, there is no further betting.",
-    "step3": "The flop(first 3 cards), turn(4th card) and river(5th card) are run out- these are the community cards.",
-    "step4": "Whoever makes the best 5 card hand wins the flip. If it’s a draw(tie), the pot gets split equally."
-  },
-  "faq": {
-    "title": "FAQ",
-    "question1": {
-      "title": "Does Flipsies offer a referral program?",
-      "content": "Yes, our referral program is comprised of seven levels (bronze, silver, gold, platinum, diamond, emerald and sapphire) each level is unlocked dependent on how much the referred player plays."
-    },
-    "question2": {
-      "title": "Do I need to sign up for an account?",
-      "content": "No, although registration is recommended because of our referral program which offers incentives, signing up is not mandatory."
-    },
-    "question3": {
-      "title": "What is the house edge?",
-      "content": "1.5% per bet (this helps pay bills to keep the game running) .2% goes into the jackpot."
-    },
-    "question4": {
-      "title": "What is provably fair?",
-      "content": "Most of the players think that they can be cheated on an online casino, they are right in most cases. It is, technically, very easy for an online casino to cheat you. In the crypto gambling world we have a solution called provably fair, this allows for total transparency through implementing smart contracts. Smart contracts contain a set of rules that cannot be tampered with and are automatically enforced. Any party can audit these smart contracts because they are public. Our random number generators are executed on these smart contracts which means it is technically impossible for them to be rigged, in any way."
-    },
-    "question5": {
-      "title": "Is Flipsies provably fair?",
-      "content": "Yes, all Flipsies wagers are executed through our smart contracts on the TRON network. This ensures total transparency and fairness for all users."
-    },
-    "question6": {
-      "title": "Who do I contact if I have an issue?",
-      "content": "support@flipsies.io"
-    },
-    "question7": {
-      "title": "How do I create a Tron account?",
-      "desktop": {
-        "1": "Download and install <1>TronLink Chrome Extension</1>",
-        "2": "Follow the instructions in TronLink to Create or Import Account.",
-        "3": "If you have an extension and wallet, just log in.",
-        "4": "Make sure you have enough TRX, bandwith and energy to start playing.",
-        "5": "Well done!"
-      },
-      "mobile": {
-        "title": "For mobile devices",
-        "1": "Download TronLink mobile application for <1>IOS</1> or <3>Android</3> device.",
-        "2": "Create or Import Account following the instructions.",
-        "3": "Go to build-in Browser and paste https://flipsies.io/  to open Flipsies dapp.",
-        "4": "Make sure you have enough TRX, bandwith and energy to start playing.",
-        "5": "Well done!"
-      }
-    },
-    "question8": {
-      "title": "What happens if my phone or computer gets disconnected or the battery suddenly dies?",
-      "content": "No need to worry, all bets can be claimed in my bet history."
-    },
-    "question9": {
-      "title": "About TRON",
-      "content": "<b>Tron</b> is a decentralized entertainment and content-sharing platform that uses blockchain and peer-to-peer (P2P) technology.<br/><br/><b>Bandwidth</b>: Having TRON bandwidth allows you to perform transactions on the TRON mainnet without paying any gas fees. Having sufficient bandwidth is crucial when using for dApps such as Flipsies.io, where you might want to make several smaller transactions without having to worry about using your TRX tokens in the process. Bandwidth is also used to cement yourself as an active member of the TRON community, allowing you to cast votes for Super Representatives.<br/><br/><b>Energy</b>: This is a special resource used to process smart contracts on the TRON network. Smart contracts consume Energy in addition to Bandwidth, so be sure you have enough of both when moving your tokens around.<br/><br/><b>Freezing</b> is a unique mechanism for the Tron blockchain. You can freeze your TRX in order to gain certain benefits. When you do this, your Tron will still be yours, but you cannot send it anywhere for 3 days. Freezing is similar to putting money onto a saving account: the money is there but you cannot spent it.<br/>When you freeze your TRX, there are several things you can gain.<br/> First you would have to choose if you want to freeze your Tron to gain either <i>Bandwidth points</i> (BP)or <i>Energy Points</i> (EP). On top of this, for each TRX frozen you will get 1 <i>Tron Power</i> - no matter which of the two you choose."
-    }
+  "jackpot": {
+    "pendingJackpot": "You have won the jackpot. The jackpot is pending...",
+    "wonJackpot{{id}}": "You have won the jackpot ID #{{id}}. It can be viewed",
+    "here": "here"
   },
   "nftMarket": {
+    "todayEndExpiration": "Today end expiration",
+    "dayBeforeExpiration{{day}}": "{{day}} days - before expiration",
+    "notHaveEnoughFunds": "You don't have enough funds",
+    "cancelBid": "Cancel Bid",
+    "empty": "Empty...",
     "title": "NFT Market",
-    "marketTab": "Market",
-    "galleryTab": "Gallery",
+    "marketTab": "Bids",
+    "galleryTab": "Fix Sale",
     "myGalleryTab": "My Gallery",
+    "myBidsTab": "My Bids",
     "id": "ID",
     "tradingHistory": "Trading History",
     "bids": "Bids",
@@ -188,11 +46,13 @@
     "buyNow": "Buy now",
     "price": "Price",
     "setPrice": "Set price",
+    "setSale": "Set sale",
     "confirm": "Confirm",
+    "cancelBids": "Are you sure that you want to cancel the bids?",
     "cancelSale": "Are you sure that you want to cancel the sale?",
     "purchaseConfirmation": "Purchase confirmation",
     "putOnSale": "Put on sale",
-    "putOnAuction": "Put on auction",
+    "putOnAuction": "Put on bids",
     "sellTitle": "Are you sure that you want to sell NFT",
     "tableCols": {
       "event": "Event",
@@ -204,16 +64,20 @@
     "owner": "Owner",
     "approve": "Approve",
     "approveText": "Please approve your action",
-    "listingPrice": "Listing Price",
+    "bidPrice": "Highest Bid",
+    "myBid": "My Bid",
     "highestBid": "Highest Bid",
-    "attributes": "Attributes"
+    "salePrice": "Listing price",
+    "attributes": "Attributes",
+    "type": "Type"
   },
   "marketFilterModal": {
     "title": "Filters",
     "price": {
-      "title": "Price",
-      "highestPrice": "Highest price",
-      "highestBid": "Highest bid"
+      "highestBid": "Highest Bid",
+      "price": "Price",
+      "asc": "ASC",
+      "desc": "DESC"
     },
     "type": {
       "title": "Type",

@@ -1,7 +1,13 @@
 type PokerContract = {};
 
 interface Window {
+  tronLink: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    request?: (obj: any) => Promise<void>
+  }
   tronWeb: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    request: (obj: any) => Promise<void>
     fullNode: {
       host: string,
     },
@@ -9,6 +15,12 @@ interface Window {
       base58: string,
       name: string,
     },
+    utils: {
+      code: {
+        hexStr2byteArray: (msg: string) => string[]
+      }
+    }
+    sha3: (msg: string[]) => string
     contract: () => {
       at: (value: string) => Promise<void>,
     },
@@ -22,8 +34,8 @@ interface Window {
       toHex: (value: string) => string,
     },
     trx: {
-      getBalance: (address: string) => number,
-      sign: (value: string) => Promise<void>,
+      getBalance: (address: string) => Promise<number>,
+      sign: (value: string) => Promise<string>,
     },
     getEventResult: (
       address: string,
@@ -35,6 +47,8 @@ interface Window {
       callback?: () => void
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ) => Promise<any[]>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    BigNumber: any
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Hand: any,
@@ -44,7 +58,6 @@ interface Window {
   },
 }
 
-declare module 'react-jdenticon';
 declare module '*.mp3' {
   const src: string;
   export default src;

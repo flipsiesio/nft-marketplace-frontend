@@ -15,20 +15,19 @@ type Props = {
   isOpen: boolean
   onToggle: () => void
   onApply: (data: FilterData) => void
+  isSale?: boolean
 };
 
 const MarketFilterModal: FC<Props> = ({
   isOpen,
   onToggle,
   onApply,
+  isSale,
 }) => {
   const [data, setData] = useState<FilterData>({
-    price: {
-      highestBid: false,
-      highestPrice: false,
-    },
-    type: NftType.KING,
-    suit: NftSuit.DIAMONDS,
+    price: 'DESC',
+    type: new Set<NftType>(),
+    suit: new Set<NftSuit>(),
   });
   const { t } = useTranslation();
 
@@ -47,44 +46,44 @@ const MarketFilterModal: FC<Props> = ({
     onToggle: suitToggle,
   } = useToggle(true);
 
-  const priceHandler = useCallback((type: keyof FilterData['price']) => {
-    return (e: ChangeEvent<HTMLInputElement>, value: boolean) => {
-      if (type === 'highestPrice') {
-        setData({
-          ...data,
-          price: {
-            highestPrice: value,
-            highestBid: false,
-          },
-        });
-      }
-
-      if (type === 'highestBid') {
-        setData({
-          ...data,
-          price: {
-            highestPrice: false,
-            highestBid: value,
-          },
-        });
-      }
+  const priceHandler = useCallback((type: FilterData['price']) => {
+    return () => {
+      setData({
+        ...data,
+        price: type,
+      });
     };
   }, [data]);
 
   const typeHandler = useCallback((type: NftType) => {
     return (e: ChangeEvent<HTMLInputElement>, value: boolean) => {
+      const newData = new Set(data.type);
+      if (value) {
+        newData.add(type);
+      } else {
+        newData.delete(type);
+      }
+
       setData({
         ...data,
-        type: value ? type : undefined,
+        type: newData,
       });
     };
   }, [data]);
 
   const suitHandler = useCallback((suit: NftSuit) => {
     return (e: ChangeEvent<HTMLInputElement>, value: boolean) => {
+      const newData = new Set(data.suit);
+
+      if (value) {
+        newData.add(suit);
+      } else {
+        newData.delete(suit);
+      }
+
       setData({
         ...data,
-        suit: value ? suit : undefined,
+        suit: newData,
       });
     };
   }, [data]);
@@ -104,24 +103,24 @@ const MarketFilterModal: FC<Props> = ({
         className={styles.dropdown}
         isActive={priceDropdown}
         onToggle={onPriceToggle}
-        label={t('marketFilterModal.price.title')}
+        label={isSale ? t('marketFilterModal.price.price') : t('marketFilterModal.price.highestBid')}
       >
         <div className={styles.checkboxWrap}>
           <Checkbox
-            checked={data.price.highestPrice}
-            onChange={priceHandler('highestPrice')}
+            checked={data.price === 'ASC'}
+            onChange={priceHandler('ASC')}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Highest price"
-            label={t('marketFilterModal.price.highestPrice')}
+            label={t('marketFilterModal.price.asc')}
           />
           <Checkbox
-            checked={data.price.highestBid}
-            onChange={priceHandler('highestBid')}
+            checked={data.price === 'DESC'}
+            onChange={priceHandler('DESC')}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Highest bid"
-            label={t('marketFilterModal.price.highestBid')}
+            label={t('marketFilterModal.price.desc')}
           />
         </div>
       </Dropdown>
@@ -135,7 +134,7 @@ const MarketFilterModal: FC<Props> = ({
       >
         <div className={styles.checkboxWrap}>
           <Checkbox
-            checked={NftType.KING === data.type}
+            checked={data.type.has(NftType.KING)}
             onChange={typeHandler(NftType.KING)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
@@ -143,7 +142,7 @@ const MarketFilterModal: FC<Props> = ({
             label={t('marketFilterModal.type.king')}
           />
           <Checkbox
-            checked={NftType.JACK === data.type}
+            checked={data.type.has(NftType.JACK)}
             onChange={typeHandler(NftType.JACK)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
@@ -151,7 +150,7 @@ const MarketFilterModal: FC<Props> = ({
             label={t('marketFilterModal.type.jack')}
           />
           <Checkbox
-            checked={NftType.QUEEN === data.type}
+            checked={data.type.has(NftType.QUEEN)}
             onChange={typeHandler(NftType.QUEEN)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
@@ -159,8 +158,8 @@ const MarketFilterModal: FC<Props> = ({
             label={t('marketFilterModal.type.queen')}
           />
           <Checkbox
-            checked={NftType.RARE === data.type}
-            onChange={typeHandler(NftType.RARE)}
+            checked={data.type.has(NftType.JOKER)}
+            onChange={typeHandler(NftType.JOKER)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
             name="Rare"
@@ -178,7 +177,7 @@ const MarketFilterModal: FC<Props> = ({
       >
         <div className={styles.checkboxWrap}>
           <Checkbox
-            checked={NftSuit.HEARTS === data.suit}
+            checked={data.suit.has(NftSuit.HEARTS)}
             onChange={suitHandler(NftSuit.HEARTS)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
@@ -186,7 +185,7 @@ const MarketFilterModal: FC<Props> = ({
             label={t('marketFilterModal.suit.hearts')}
           />
           <Checkbox
-            checked={NftSuit.CLUBS === data.suit}
+            checked={data.suit.has(NftSuit.CLUBS)}
             onChange={suitHandler(NftSuit.CLUBS)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
@@ -194,7 +193,7 @@ const MarketFilterModal: FC<Props> = ({
             label={t('marketFilterModal.suit.clubs')}
           />
           <Checkbox
-            checked={NftSuit.DIAMONDS === data.suit}
+            checked={data.suit.has(NftSuit.DIAMONDS)}
             onChange={suitHandler(NftSuit.DIAMONDS)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}
@@ -202,7 +201,7 @@ const MarketFilterModal: FC<Props> = ({
             label={t('marketFilterModal.suit.diamonds')}
           />
           <Checkbox
-            checked={NftSuit.SPADES === data.suit}
+            checked={data.suit.has(NftSuit.SPADES)}
             onChange={suitHandler(NftSuit.SPADES)}
             classNameCheckmark={styles.checkmark}
             className={styles.checkbox}

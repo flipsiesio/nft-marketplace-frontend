@@ -1,21 +1,38 @@
-import React, { FC, useEffect } from 'react';
-import { useShallowSelector } from 'hooks';
+import React, {
+  FC, useCallback,
+} from 'react';
+import { useShallowSelector, useTabHandlers } from 'hooks';
 import { useDispatch } from 'react-redux';
+import { marketURL, routes } from 'appConstants';
 import { nftMarketSelector } from 'store/selectors';
 import { nftMarketGetGalleryAction } from 'store/nftMarket/actions';
-import { routes } from 'appConstants';
+import { NftReqDto } from 'types';
 import { TabWithFilter } from '../TabWithFilter';
 
 const GalleryTab: FC = () => {
   const dispatch = useDispatch();
   const { gallery } = useShallowSelector(nftMarketSelector.getState);
 
-  useEffect(() => {
-    dispatch(nftMarketGetGalleryAction());
-  }, [dispatch]);
+  const {
+    pageCount,
+    getSalePrice,
+    updatePage,
+  } = useTabHandlers(marketURL.MARKETPLACE.GALLERY_LIST);
+
+  const onUpdate = useCallback((data: NftReqDto) => {
+    dispatch(nftMarketGetGalleryAction(data));
+    updatePage(data);
+  }, [dispatch, updatePage]);
 
   return (
-    <TabWithFilter link={routes.nftMarket.galleryProfile.root} items={gallery} />
+    <TabWithFilter
+      onUpdate={onUpdate}
+      link={routes.nftMarket.galleryProfile.root}
+      items={gallery}
+      getPrice={getSalePrice}
+      pageCount={pageCount}
+      isSale
+    />
   );
 };
 

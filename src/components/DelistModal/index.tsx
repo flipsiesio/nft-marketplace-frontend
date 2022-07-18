@@ -8,6 +8,7 @@ import {
 import styles from './styles.module.scss';
 
 type Props = {
+  title: string
   isLoading: boolean,
   isOpen?: boolean
   onToggle: () => void
@@ -19,6 +20,7 @@ const DelistModal: FC<Props> = ({
   isOpen = false,
   onSubmit,
   onToggle,
+  title,
 }) => {
   const { t } = useTranslation();
 
@@ -27,8 +29,12 @@ const DelistModal: FC<Props> = ({
   }, [onSubmit]);
 
   return (
-    <Modal classNameContent={styles.wrap} isOpen={isOpen} onClose={onToggle}>
-      <Text className={styles.title}>{t('nftMarket.cancelSale')}</Text>
+    <Modal
+      classNameContent={styles.wrap}
+      isOpen={isOpen}
+      onClose={isLoading ? undefined : onToggle}
+    >
+      <Text className={styles.title}>{title}</Text>
       <Button
         className={styles.button}
         disabled={isLoading}

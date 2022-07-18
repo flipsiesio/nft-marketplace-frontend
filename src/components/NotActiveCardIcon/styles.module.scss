@@ -1,0 +1,71 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.imgWrapper {
+  position: relative;
+}
+
+.error {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8%;
+  z-index: 3;
+}
+
+.errorLabel {
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $primaryColor;
+}
+
+.line {
+  background-color:$primaryColor;
+  width: 3px;
+  height: 40px;
+  position: absolute;
+}
+
+.lineTR {
+  transform: rotate(35deg) translate(30px, -70px);
+}
+
+.lineTL {
+  transform: rotate(215deg) translate(30px, -70px);
+}
+
+.lineBL {
+  transform: rotate(-215deg) translate(30px, 70px);
+}
+
+.lineBR {
+  transform: rotate(-35deg) translate(30px, 70px);
+}
+
+.img {
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.shadow {
+  top: 10%;
+  left: 10%;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  z-index: 1;
+}
+
+.red {
+  box-shadow: 0 0 50px 10px #B01213;
+}
+
+.blue {
+  box-shadow: 0 0 50px 10px #9B51E0;
+}

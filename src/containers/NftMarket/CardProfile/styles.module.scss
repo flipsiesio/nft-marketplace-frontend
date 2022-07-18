@@ -9,13 +9,28 @@
 
 .header {
   @include flexbox(center, flex-start);
+
+  @include forTablet {
+    margin-top: 10px;
+  }
+}
+
+.titleWrap {
+  @include flexbox(center, center);
+  flex-direction: column;
+  width: 100%;
 }
 
 .title {
   font-size: 48px;
   font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subTitle {
+  font-size: 26px;
+  color: $primaryColor;
   text-align: center;
-  width: 100%;
 }
 
 .backButton {
@@ -91,11 +106,8 @@
 }
 
 .img {
-  min-width: 241px;
-}
-
-.table {
-  margin-top: 30px;
+  max-height: 370px;
+  height: 370px;
 }
 
 .tables {
@@ -110,11 +122,10 @@
 .bodyLabels {
   @include flexbox(flex-start, flex-start);
 
-  font-size: 14px;
   margin-bottom: 16px;
 
   p:nth-child(1) {
-    margin-right: 70px;
+    margin-right: 68px;
   }
 
   p:nth-child(2) {
@@ -124,6 +135,10 @@
   @include forTablet {
     display: none;
   }
+}
+
+.bodyLabel {
+  font-size: 14px;
 }
 
 .mobileBodyLabels {
@@ -137,4 +152,14 @@
   p:first-child {
     margin-right: 70px;
   }
+}
+
+.firstAttribute {
+  position: relative;
+}
+
+.attributeLabel {
+  position: absolute;
+  top: -35px;
+  left: 0;
 }

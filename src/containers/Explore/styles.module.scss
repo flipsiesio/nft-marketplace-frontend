@@ -5,6 +5,10 @@
   @include flexbox();
 
   flex-direction: column;
+
+  @include forTablet() {
+    margin-top: 10px;
+  }
 }
 
 .cardContainer {
@@ -15,6 +19,8 @@
   gap: 35px;
 
   @include forTablet {
+    margin: 0;
+    padding-top: 55px;
     flex-wrap: nowrap;
     overflow: auto;
     justify-content: initial;
@@ -28,6 +34,18 @@
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
+
+  @include forTablet {
+    margin-top: 60px;
+  }
+}
+
+.titleWrap {
+  @include flexbox();
+
+  position: relative;
+  width: 100%;
+  flex-direction: column;
 }
 
 .subTitle {
@@ -49,5 +67,28 @@
 
   &:hover {
     color: $primaryColor;
+  }
+}
+
+.backButton {
+  @include flexbox();
+
+  min-width: 56px;
+  min-height: 56px;
+  width: 56px;
+  height: 56px;
+  background-color: #12151E;
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.backButtonArrow {
+  color: $primaryColor;
+  font-size: 16px;
+
+  &:before {
+    transform: rotate(90deg);
   }
 }

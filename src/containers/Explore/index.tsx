@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import {
-  Button, InfoModal, NftArtwork, Text,
+  Button, Icon, InfoModal, NftArtwork, Text,
 } from 'components';
 import {
-  useConnectWallet, useJackpotInfo, useShallowSelector, useToggle,
+  useConnectWallet, useShallowSelector, useToggle,
 } from 'hooks';
 import { MintModal } from 'containers/MintModal';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +19,7 @@ import { TronStatus } from 'appConstants';
 import { ClaimJackpotModal } from 'containers';
 import { tronSelector } from 'store/selectors';
 import styles from './styles.module.scss';
+import { history } from '../../utils';
 
 const Explore: FC = () => {
   const { t } = useTranslation();
@@ -28,15 +29,6 @@ const Explore: FC = () => {
   const { handleConnect } = useConnectWallet();
   const { status } = useShallowSelector(tronSelector.getState);
   const address = useShallowSelector(tronSelector.getProp('address'));
-  const { avaliableNftAmount } = useJackpotInfo();
-
-  const onClaimClick = () => {
-    if (status !== TronStatus.ADDRESS_SELECTED) {
-      handleConnect();
-    } else if (avaliableNftAmount) {
-      toggleClaim();
-    } else toggleInfo();
-  };
 
   const onMintClick = () => {
     if (status !== TronStatus.ADDRESS_SELECTED) {
@@ -51,12 +43,25 @@ const Explore: FC = () => {
     window.open(flipsiesGameUrl);
   };
 
+  const goBack = useCallback(() => {
+    history.goBack();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.wrap}>
-      <Text className={styles.title}>{t('explore.title')}</Text>
-      <Text className={styles.subTitle}>{t('explore.tryLuck')}</Text>
-      <Button onClick={onMintClick} className={styles.button}>{t('explore.mintNow')}</Button>
-      <button onClick={onClaimClick} className={styles.claimButton} type="button">{t('explore.claimNft')}</button>
+      <div className={styles.titleWrap}>
+        <button className={styles.backButton} onClick={goBack} type="button">
+          <Icon className={styles.backButtonArrow} icon="chevron" />
+        </button>
+
+        <Text className={styles.title}>{t('explore.title')}</Text>
+        <Text className={styles.subTitle}>{t('explore.tryLuck')}</Text>
+        <Button onClick={onMintClick} className={styles.button}>{t('explore.mintNow')}</Button>
+      </div>
 
       <div className={styles.cardContainer}>
         <NftArtwork

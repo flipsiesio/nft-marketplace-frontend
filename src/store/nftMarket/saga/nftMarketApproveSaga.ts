@@ -1,12 +1,10 @@
 import { toast } from 'react-toastify';
-import {
-  put, select, takeLatest,
-} from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { tronSelector } from 'store/selectors';
-import { getTronContract } from 'utils';
+import { getTronContract, simpleErrorHandler } from 'utils';
 import { nftMarketApproveAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { MarketType } from '../../../types';
 
 function* nftMarketApproveSaga(
   {
@@ -15,19 +13,19 @@ function* nftMarketApproveSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const from: string = yield select(tronSelector.getProp('address'));
-    const contractName = payload.actionType === 'sale' ?
-      process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
-      : process.env.REACT_APP_CONTRACT_NFT_AUCTION as string;
+    const contractName = payload.actionType === MarketType.Sale
+      ? process.env.REACT_APP_CONTRACT_NFT_SALE as string
+      : process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string;
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD as string);
     yield contract.approve(contractName, payload.tokenId).send({
-      from,
+      shouldPollResponse: true,
     });
     yield put(apiActions.success(type));
     callback(payload.actionType);
     yield toast.success('Approve successful!');
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

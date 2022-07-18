@@ -73,4 +73,11 @@
 
 .card {
   margin-bottom: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.emptyLabel {
+  margin-bottom: 15px;
 }

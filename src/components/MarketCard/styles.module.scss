@@ -8,6 +8,7 @@
   border-radius: 10px;
   background-color: $blueColor;
   padding: 10px 50px 20px;
+  z-index: 1;
 }
 
 .title {
@@ -34,6 +35,10 @@
   @include flexbox();
 
   flex-direction: column;
+
+  &:not(:first-child) {
+    margin-left: 6px;
+  }
 }
 
 .infoBlockLabel {
@@ -44,4 +49,21 @@
 .infoBlockValue {
   font-size: 16px;
   font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+
+.img {
+  height: 258px;
+}
+
+.price {
+  @include flexbox()
+}
+
+.trx {
+  font-size: 16px;
+  margin-left: 6px;
 }

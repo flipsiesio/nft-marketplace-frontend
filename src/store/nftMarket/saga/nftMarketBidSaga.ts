@@ -2,24 +2,36 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
+import { getFeeString, getTronContract, simpleErrorHandler } from 'utils';
+import BigNumber from 'bignumber.js';
+import { toast } from 'react-toastify';
 import { nftMarketBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 
 function* nftMarketBidSaga(
-  { type }: ReturnType<typeof nftMarketBidAction>,
+  { type, payload, successCallback }: ReturnType<typeof nftMarketBidAction>,
 ) {
   try {
     yield put(apiActions.request(type));
-    // TODO: need an NFT address here
-    // const from: string = yield select(tronSelector.getProp('address'));
-    // const contract =
-    //   yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
-    // const sunAmount = window.tronWeb.toSun(parseFloat(payload));
-    // yield contract.bid(nftAddress, sunAmount).send({
-    //   from,
-    // });
+    const price: BigNumber =
+      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(payload.price)));
+
+    const contract =
+      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
+    const feeInBps = yield contract.feeInBps().call();
+    const maxFee = yield contract.MAX_FEE().call();
+
+    const amountString: string = getFeeString(feeInBps, maxFee, price);
+    yield contract.bid(`${payload.id}`, price.toString()).send({
+      callValue: amountString,
+      shouldPollResponse: true,
+    });
+
+    successCallback();
     yield put(apiActions.success(type));
+    yield toast.success('Bid successful!');
   } catch (err) {
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }

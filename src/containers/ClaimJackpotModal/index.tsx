@@ -2,9 +2,9 @@ import React, { FC, useCallback, useState } from 'react';
 import { Button, Modal, Text } from 'components';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { routes, TRONSCAN_URL } from 'appConstants';
+import { routes, scanTransactionUrl } from 'appConstants';
 import { useDispatch } from 'react-redux';
-import { useJackpotInfo, useShallowSelector } from 'hooks';
+import { useShallowSelector } from 'hooks';
 import { tronSelector } from '../../store/selectors';
 import { nftMarketClaimJackpotAction, nftMarketGetMyGalleryAction } from '../../store/nftMarket/actions';
 import styles from './styles.module.scss';
@@ -21,7 +21,6 @@ const ClaimJackpotModal: FC<Props> = ({
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const history = useHistory();
-  const { avaliableNftAmount } = useJackpotInfo();
   const [isSent, setSent] = useState(false);
   const [trxHash, setTrxHash] = useState('');
   const address = useShallowSelector(tronSelector.getProp('address'));
@@ -38,7 +37,7 @@ const ClaimJackpotModal: FC<Props> = ({
   const seeGalleryHandler = useCallback(() => {
     onToggle();
     dispatch(nftMarketGetMyGalleryAction());
-    history.push(routes.nftMarket.myGalleryProfile.root);
+    history.push(`${routes.nftMarket.root}?tab=My+Gallery`);
   }, [history]);
 
   return (
@@ -50,7 +49,6 @@ const ClaimJackpotModal: FC<Props> = ({
           <Text>
             {t('claimModalJackpot.address2')}
             &nbsp;
-            {avaliableNftAmount}
             &nbsp;
             {t('claimModalJackpot.jackpotNft')}
           </Text>
@@ -58,7 +56,6 @@ const ClaimJackpotModal: FC<Props> = ({
           <Button
             onClick={claimHandler}
             className={styles.button}
-            disabled={avaliableNftAmount === 0}
           >
             {t('claimModalJackpot.claim')}
           </Button>
@@ -74,7 +71,7 @@ const ClaimJackpotModal: FC<Props> = ({
           >
             {t('claimModalJackpot.seeInGallery')}
           </Button>
-          <a className={styles.link} href={`${TRONSCAN_URL}${trxHash}`} target="_blank" rel="noopener noreferrer">
+          <a className={styles.link} href={`${scanTransactionUrl}${trxHash}`} target="_blank" rel="noopener noreferrer">
             {t('claimModalJackpot.seeOnTronscan')}
           </a>
         </>

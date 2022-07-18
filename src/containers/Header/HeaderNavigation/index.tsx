@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading,react/destructuring-assignment */
-import React, {
-  FC, MouseEventHandler, useCallback,
-} from 'react';
+import React, { FC, MouseEventHandler, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import cx from 'classnames';
@@ -32,9 +30,11 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
 
   const nftMarketHandler = useCallback<MouseEventHandler>((e) => {
     e.preventDefault();
-    dispatch(nftMarketSignInAction(() => {
-      history.push(routes.nftMarket.root);
-    }));
+    if (tronStatus === TronStatus.ADDRESS_SELECTED) {
+      dispatch(nftMarketSignInAction(() => {
+        history.push(routes.nftMarket.root);
+      }));
+    }
 
     if (tronStatus !== TronStatus.ADDRESS_SELECTED) {
       handleConnect(routes.nftMarket.root);
@@ -65,6 +65,7 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
         text={t(tronStatus === TronStatus.ADDRESS_SELECTED ? address : 'header.wallet')}
         onClick={(e) => {
           e.preventDefault();
+          e.stopPropagation();
           handleConnect();
         }}
       />

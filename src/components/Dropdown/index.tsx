@@ -34,9 +34,7 @@ const Dropdown: FC<Props> = ({
       </button>
     </div>
     {isActive && (
-      <div>
-        {children}
-      </div>
+      children
     )}
   </div>
 );

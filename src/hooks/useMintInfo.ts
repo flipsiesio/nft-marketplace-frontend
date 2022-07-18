@@ -2,7 +2,7 @@ import { TokenOptions, TronStatus } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { useEffect, useState } from 'react';
 import { tronSelector } from 'store/selectors';
-import { getTronContract } from 'utils';
+import { fromSunToNumber, getTronContract } from 'utils';
 
 export const useMintInfo = () => {
   const [price, setPrice] = useState(0);
@@ -15,7 +15,7 @@ export const useMintInfo = () => {
         await getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
 
       const nftPrice = await contract.price().call();
-      setPrice(nftPrice);
+      setPrice(fromSunToNumber(nftPrice.toString()));
 
       const factoryContract =
         await getTronContract(process.env.REACT_APP_CONTRACT_CARD_FACTORY as string);

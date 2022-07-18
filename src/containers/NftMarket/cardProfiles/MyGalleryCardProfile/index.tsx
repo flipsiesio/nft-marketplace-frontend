@@ -1,146 +1,215 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, {
+  FC, useCallback, useEffect, useMemo, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, SetPriceModal, Text, DelistModal, ApproveModal,
+  Button, DelistModal, MarketNftInteractionModal, Text,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
 import { useDispatch } from 'react-redux';
-import {
-  nftMarketApproveAction,
-  nftMarketDelistAction,
-  nftMarketPutOnAuctionAction,
-  nftMarketPutOnSaleAction,
-} from 'store/nftMarket/actions';
+import { getBackFromSaleAction, nftMarketGetProfileAction, nftMarketAcceptBidAction } from 'store/nftMarket/actions';
+import { MarketType } from 'types';
+import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
+import cx from 'classnames';
 import { CardProfile } from '../../CardProfile';
 import styles from '../styles.module.scss';
+import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
+import { RequestStatus } from '../../../../appConstants';
+import { PutOnSaleModal } from '../../../PutOnSaleModal';
+import { AcceptBidData } from '../../../CardHistory';
+import { history, fromSunToNumber } from '../../../../utils';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const [actionType, setActionType] = useState('');
+  const [acceptBidData, setAcceptBidData] = useState<AcceptBidData>();
+  const [actionType, setActionType] = useState<MarketType>(MarketType.Auction);
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
-  const getDelistStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.DELIST'));
-  const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_SALE'));
-  const getPutOnAuctionStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.PUT_ON_AUCTION'));
-  const getApproveStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.APPROVE'));
+
+  const getAcceptBidState = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.ACCEPT_BID));
+  const getBackFromSaleStatus =
+    useShallowSelector(uiSelector.getProp(NftMarketActionTypes.GET_BACK_FROM_SALE));
+  const {
+    id,
+    isBid,
+    isSale,
+    salePrice,
+    bidPrice,
+    isActive,
+    actualBidOrderId,
+  } = useMyProfileHandlers();
+
+  const isWait = useMemo(() => {
+    return getAcceptBidState === RequestStatus.REQUEST ||
+      getBackFromSaleStatus === RequestStatus.REQUEST;
+  }, [
+    getBackFromSaleStatus,
+    getAcceptBidState]);
+
+  useEffect(() => {
+    if (id) dispatch(nftMarketGetProfileAction(id));
+  }, [id]);
+
+  const successHandler = useCallback(() => {
+    if (id) dispatch(nftMarketGetProfileAction(id));
+  }, [id]);
 
   const {
-    isActive: putOnSaleActive,
-    onToggle: togglePutOnSale,
+    isActive: putOnActive,
+    onToggle: togglePutOn,
   } = useToggle();
 
   const {
-    isActive: putOnAuctionActive,
-    onToggle: togglePutOnAuction,
+    isActive: bidDelistActive,
+    onToggle: bidToggleDelist,
   } = useToggle();
 
   const {
-    isActive: approveActive,
-    onToggle: toggleApprove,
+    isActive: saleDelistActive,
+    onToggle: saleToggleDelist,
   } = useToggle();
 
   const {
-    isActive: delistActive,
-    onToggle: toggleDelist,
+    isActive: acceptBidActive,
+    onToggle: acceptBidToggle,
   } = useToggle();
 
-  const putOnSaleHandler = useCallback((amount: string) => {
-    dispatch(nftMarketPutOnSaleAction({
-      price: Number(amount),
-      nftAddress: selectedNft!.id,
-    }, () => togglePutOnSale()));
-  }, [dispatch]);
+  const onAcceptBidClick = useCallback((data: AcceptBidData) => {
+    setAcceptBidData(data);
+    acceptBidToggle();
+  }, [dispatch, acceptBidToggle]);
 
-  const putOnAuctionHandler = useCallback((amount: string) => {
-    dispatch(nftMarketPutOnAuctionAction({
-      price: Number(amount),
-      nftAddress: selectedNft!.id,
-    }, () => togglePutOnAuction()));
-  }, [dispatch]);
+  const acceptBidHandler = useCallback(() => {
+    if (!acceptBidData) return;
+    dispatch(nftMarketAcceptBidAction({
+      payerAddress: acceptBidData.payerAddress,
+      orderId: acceptBidData.orderId,
+    }, () => history.goBack()));
+  }, [acceptBidData, dispatch]);
 
-  const onAcceptBidClick = useCallback(() => {
-    // TODO when will ready backend
-  }, [dispatch]);
+  const onAuctionButtonClick = useCallback(() => {
+    setActionType(MarketType.Auction);
+    togglePutOn();
+  }, [dispatch, togglePutOn]);
 
-  const delistHandler = useCallback(() => {
-    dispatch(nftMarketDelistAction(
-      selectedNft!.id,
-      () => toggleDelist(),
-    ));
-  }, []);
+  const onSaleButtonClick = useCallback(() => {
+    setActionType(MarketType.Sale);
+    togglePutOn();
+  }, [dispatch, togglePutOn]);
 
-  const approveHandler = useCallback(() => {
-    dispatch(nftMarketApproveAction({
-      actionType,
-      tokenId: selectedNft!.id,
-    }, () => {
-      toggleApprove();
-      if (actionType === 'sale') togglePutOnSale();
-      else togglePutOnAuction();
-    }));
-  }, [actionType]);
-
-  const onAuctionButtonClick = () => {
-    setActionType('auction');
-    toggleApprove();
-  };
-
-  const onSaleButtonClick = () => {
-    setActionType('sale');
-    toggleApprove();
-  };
+  const getBackClick = useCallback((marketType: MarketType) => {
+    return () => {
+      if (selectedNft?.orderId === undefined) return;
+      dispatch(getBackFromSaleAction({
+        marketType,
+        orderId: selectedNft.orderId,
+      }, successHandler));
+    };
+  }, [dispatch, selectedNft]);
 
   return (
     <>
       {selectedNft && (
         <CardProfile
+          showBid={isBid}
+          disabled={isWait}
+          actualOrderId={actualBidOrderId}
+          active={isActive}
           onAcceptBidClick={onAcceptBidClick}
           selectedNft={selectedNft}
           isMyGallery
           buttons={(
             <div className={styles.buttonContainer}>
-              <div className={styles.buttonWrap}>
-                <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.listingPrice')}</Text>
-                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
+              {!isSale && !isBid && (
+                <>
+                  <div className={styles.buttonWrapInfo}>
+                    <Button
+                      disabled={isWait}
+                      onClick={onSaleButtonClick}
+                      className={styles.button}
+                    >{t('nftMarket.putOnSale')}
+                    </Button>
+                  </div>
+                  <div className={styles.buttonWrapInfo}>
+                    <Button
+                      disabled={isWait}
+                      onClick={onAuctionButtonClick}
+                      className={styles.button}
+                    >{t('nftMarket.putOnAuction')}
+                    </Button>
+                  </div>
+                </>
+              )}
+
+              {isSale && (
+                <div className={styles.buttonWrap}>
+                  <div>
+                    <Text className={styles.buttonLabel}>{t('nftMarket.salePrice')}</Text>
+                    <div className={styles.price}>
+                      <Text title={salePrice} className={styles.infoBlockValue}>{`${salePrice}`}</Text>
+                      <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                    </div>
+                  </div>
+                  <Button
+                    disabled={isWait}
+                    onClick={saleToggleDelist}
+                    className={styles.button}
+                  >{t('nftMarket.delist')}
+                  </Button>
                 </div>
-                <Button onClick={onSaleButtonClick} className={styles.button}>{t('nftMarket.putOnSale')}</Button>
-              </div>
-              <div className={styles.buttonWrap}>
-                <div>
-                  <Text className={styles.buttonLabel}>{t('nftMarket.highestBid')}</Text>
-                  <Text className={styles.buttonValue}>20,000 <Text className={styles.primary} tag="span">TRX</Text></Text>
+              )}
+              {isBid && (
+                <div className={styles.buttonWrap}>
+                  <div>
+                    <Text className={styles.buttonLabel}>{t('nftMarket.bidPrice')}</Text>
+                    <div className={styles.price}>
+                      <Text title={bidPrice} className={styles.infoBlockValue}>{`${bidPrice}`}</Text>
+                      <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                    </div>
+                  </div>
+                  <Button
+                    disabled={isWait}
+                    onClick={bidToggleDelist}
+                    className={styles.button}
+                  >{t('nftMarket.delist')}
+                  </Button>
                 </div>
-                <Button onClick={onAuctionButtonClick} className={styles.button}>{t('nftMarket.putOnAuction')}</Button>
-              </div>
+              )}
             </div>
           )}
         />
       )}
-      <SetPriceModal
-        isLoading={getPutOnSaleStatus === 'REQUEST'}
-        onToggle={togglePutOnSale}
-        onSubmit={putOnSaleHandler}
-        isOpen={putOnSaleActive}
-      />
-      <SetPriceModal
-        isLoading={getPutOnAuctionStatus === 'REQUEST'}
-        onToggle={togglePutOnAuction}
-        onSubmit={putOnAuctionHandler}
-        isOpen={putOnAuctionActive}
+      {putOnActive && (
+        <PutOnSaleModal
+          marketType={actionType}
+          isOpen={putOnActive}
+          onToggle={togglePutOn}
+        />
+      )}
+      <DelistModal
+        title={t('nftMarket.cancelSale')}
+        isLoading={getBackFromSaleStatus === 'REQUEST'}
+        onToggle={saleToggleDelist}
+        onSubmit={getBackClick(MarketType.Sale)}
+        isOpen={saleDelistActive}
       />
       <DelistModal
-        isLoading={getDelistStatus === 'REQUEST'}
-        onToggle={toggleDelist}
-        onSubmit={delistHandler}
-        isOpen={delistActive}
+        title={t('nftMarket.cancelSale')}
+        isLoading={getBackFromSaleStatus === 'REQUEST'}
+        onToggle={bidToggleDelist}
+        onSubmit={getBackClick(MarketType.Auction)}
+        isOpen={bidDelistActive}
       />
-      <ApproveModal
-        isLoading={getApproveStatus === 'REQUEST'}
-        onToggle={toggleApprove}
-        onSubmit={approveHandler}
-        isOpen={approveActive}
+      <MarketNftInteractionModal
+        isLoading={isWait}
+        showNotFunds={false}
+        id={selectedNft?.cardId || 0}
+        title={t('nftMarket.sellTitle')}
+        onToggle={acceptBidToggle}
+        onSubmit={acceptBidHandler}
+        isOpen={acceptBidActive}
+        price={`${fromSunToNumber(`${acceptBidData?.price || 0}`)}`}
       />
     </>
   );
