@@ -18,7 +18,13 @@ const ProfileAttribute: FC<Props> = ({
 }) => (
   <div className={cx(styles.wrap, className)}>
     <Text className={styles.head}>{head}</Text>
-    <Text className={styles.value}>{value}</Text>
+    <Text title={value} className={styles.value}>{value.split(' ').map((text) => (
+      <>
+        {text}
+        <br />
+      </>
+    ))}
+    </Text>
     <Text className={styles.percent}>{percent}</Text>
   </div>
 );

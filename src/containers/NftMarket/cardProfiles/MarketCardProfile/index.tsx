@@ -50,6 +50,13 @@ const MarketCardProfile: FC = () => {
     return selectedNft?.owner === address;
   }, [selectedNft, address]);
 
+  const isRaiseBid = useMemo(() => {
+    if (selectedNft?.bids) {
+      return Object.keys(selectedNft.bids).some((key) => key === address);
+    }
+    return false;
+  }, [selectedNft, address]);
+
   return (
     <>
       {selectedNft && (
@@ -77,7 +84,9 @@ const MarketCardProfile: FC = () => {
                   </div>
                 </div>
                 {!isOwner && (
-                  <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
+                  <Button onClick={toggleBid} className={styles.button}>
+                    {isRaiseBid ? t('nftMarket.raiseBid') : t('nftMarket.bid')}
+                  </Button>
                 )}
               </div>
             </div>

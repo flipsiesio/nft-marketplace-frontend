@@ -50,6 +50,13 @@ export type NftDto = {
   bidPrice: string
   salePrice: string
   expirationTime?: number
+  bids?: {
+    [key: string]: {
+      buyer: string
+      price: number
+      transaction: string
+    }
+  }
 };
 
 export type AcceptBid = {
@@ -83,6 +90,7 @@ export interface CardState {
   seller: string
   tokenId: number
   expirationTime: number
+  bidsSum: string
 }
 
 export interface SaleCardState extends CardState {

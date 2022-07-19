@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { fromSunToNumber } from 'utils';
 import cx from 'classnames';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 import styles from '../styles.module.scss';
 import {
   Button, NotActiveCardIcon, Pagination, Table, Text,
@@ -22,6 +23,7 @@ import {
 import { MyBidsCardData, NftReqDto, TableRowProps } from '../../../../types';
 
 export const MyBidsTab: FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { myBids } = useShallowSelector(nftMarketSelector.getState);
   const {
@@ -88,11 +90,11 @@ export const MyBidsTab: FC = () => {
       accessor: 'timestamp',
       Cell: ({ row: { original: { orderIndex, active } } }: TableRowProps<MyBidsCardData>) => (
         orderIndex !== undefined && !active ?
-          <Button onClick={cancelBid(orderIndex)}>Cancel bid</Button> :
+          <Button onClick={cancelBid(orderIndex)}>{t('nftMarket.cancelBid')}</Button> :
           null
       ),
     },
-  ], []);
+  ], [cancelBid]);
 
   return (
     <div className={styles.wrap}>
