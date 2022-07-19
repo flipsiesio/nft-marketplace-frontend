@@ -27,6 +27,17 @@ const getCardName = (name: string) => {
   return name[0].toUpperCase() + name.slice(1);
 };
 
+const getOrderIndex = (firstOrderId?: number, secondOrderId?: number) => {
+  if (firstOrderId !== undefined) {
+    return firstOrderId;
+  }
+
+  if (secondOrderId !== undefined) {
+    return secondOrderId;
+  }
+  return undefined;
+};
+
 function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarketGetProfileAction>) {
   try {
     yield put(apiActions.request(type));
@@ -55,7 +66,8 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
     yield put(nftMarketSelectProfileAction({
       active: currentCard.state_bids?.active || currentCard.state_sale?.active || false,
       cardId: Number(payload.id),
-      orderId: currentCard.state_bids?.orderIndex || currentCard.state_sale?.orderIndex,
+      orderId:
+        getOrderIndex(currentCard.state_bids?.orderIndex, currentCard.state_sale?.orderIndex),
       suit: currentCard.suit,
       face: currentCard.face,
       properties,

@@ -41,7 +41,7 @@ const MarketCardProfile: FC = () => {
   }, [toggleBid, id, dispatch]);
 
   const bidHandler = useCallback((amount: string) => {
-    if (selectedNft && selectedNft.orderId) {
+    if (selectedNft && selectedNft.orderId !== undefined) {
       dispatch(nftMarketBidAction({ price: amount, id: selectedNft.orderId }, successCallback));
     }
   }, [dispatch, selectedNft, successCallback]);

@@ -157,3 +157,22 @@ export type JackpotIssue = {
   count: number,
   jackpots: Jackpot[]
 };
+
+export type MyBidsCardData = {
+  active: boolean
+  bidsSum: string
+  cardId: number
+  createdTokenId: number
+  expirationTime: number
+  face: string
+  id: number
+  name: number
+  orderIndex: number
+  seller: string
+  suit: string
+  timestamp: string
+  tokenId: number
+  transaction: string
+  url: string
+  updatedAt: string
+};

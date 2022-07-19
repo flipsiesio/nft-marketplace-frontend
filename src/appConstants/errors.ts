@@ -4,5 +4,5 @@ export default {
   email: 'Email is invalid',
   getBalanceFailed: 'Get Balance failed',
   wrongNetwork: (networkName: string) => `Please select the ${networkName} network`,
-  notSupportNetwork: 'The game is not supported on this network',
+  notSupportNetwork: 'Not supported on this network',
 };
