@@ -39,6 +39,13 @@ const eventNames: EventNames = {
   OrderFilled: 'sold',
 };
 
+type SaleAndMintData = {
+  count: number
+  entities: {
+    [key: number]: HistoryData
+  }
+};
+
 const getHistory = (url: string, id: number, page: number, param?: AxiosRequestConfig['params']) => {
   return marketClient.get<HistoryData[]>(url, {
     params: {
@@ -64,17 +71,37 @@ const getHistoryCount = (url: string, id: number, param?: AxiosRequestConfig['pa
   });
 };
 
+const getTradingColName = (name: string | null, method: string) => {
+  if (name === null && method.includes('mintRandom')) {
+    return 'mint';
+  }
+
+  if (name !== null) {
+    return eventNames[name] || name;
+  }
+
+  return '';
+};
+
 const tradingCol = [
   {
     Header: 'Event',
     accessor: 'name',
-    Cell: ({ row: { original: { name } } }: TableRowProps<HistoryData>) => (
+    Cell: ({ row: { original: { name, method } } }: TableRowProps<HistoryData>) => (
       <Text>
-        {eventNames[name] || name}
+        {getTradingColName(name, method)}
       </Text>
     ),
   },
-  { Header: 'Address', accessor: 'seller' },
+  {
+    Header: 'Address',
+    accessor: 'seller',
+    Cell: ({ row: { original: { seller, address } } }: TableRowProps<HistoryData>) => (
+      <Text>
+        {seller || address}
+      </Text>
+    ),
+  },
   {
     Header: 'Price',
     accessor: 'amount',
@@ -236,10 +263,23 @@ export const CardHistory: FC<Props> = ({
   }, [cardId, bidPage, showBid]);
 
   useEffect(() => {
-    getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId, tradingPage)
-      .then((res) => {
-        setTradingData(res.data);
-      });
+    marketClient.get<SaleAndMintData>(marketURL.MARKETPLACE.GET_SALE_HISTORY, {
+      params: {
+        ids: [cardId],
+        skip: tradingPage * PAGE_ITEM_LIMIT,
+        take: PAGE_ITEM_LIMIT,
+        byOrder: false,
+        order: 'ASC',
+      },
+    }).then((data) => {
+      setTradingData(Object.values(data.data.entities));
+      setTradingCount(data.data.count);
+    });
+
+    // getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId, tradingPage)
+    //   .then((res) => {
+    //     setTradingData(res.data);
+    //   });
   }, [cardId, tradingPage]);
 
   useEffect(() => {
@@ -252,9 +292,9 @@ export const CardHistory: FC<Props> = ({
       setBidCount(res.data);
     });
 
-    getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
-      setTradingCount(res.data);
-    });
+    // getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
+    //   setTradingCount(res.data);
+    // });
   }, [cardId, showBid]);
 
   return (

@@ -15,10 +15,10 @@ const percent = (value?: number) => {
   if (value === undefined) return '';
 
   if (Number.isInteger(value)) {
-    return `${value * 100}%`;
+    return `${value}%`;
   }
 
-  return `${(value * 100).toFixed((3))}%`;
+  return `${(value).toFixed((3))}%`;
 };
 
 const getCardName = (name: string) => {

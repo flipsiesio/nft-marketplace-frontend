@@ -142,13 +142,15 @@ export type HistoryData = {
   createdAt: string
   expirationTime: number | null
   id: number
-  name: string
+  name: string | null
   orderIndex: number
   seller: string | null
   timestamp: string
   tokenId: number
   transaction: string
   updatedAt: string
+  method: string
+  address: string
 };
 
 export type Jackpot = {
