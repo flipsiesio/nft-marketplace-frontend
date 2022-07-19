@@ -46,6 +46,7 @@ const getHistory = (url: string, id: number, page: number, param?: AxiosRequestC
       skip: page * PAGE_ITEM_LIMIT,
       take: PAGE_ITEM_LIMIT,
       byOrder: false,
+      order: 'ASC',
       ...param,
     },
   });
@@ -57,6 +58,7 @@ const getHistoryCount = (url: string, id: number, param?: AxiosRequestConfig['pa
       ids: [id],
       count: true,
       byOrder: false,
+      order: 'ASC',
       ...param,
     },
   });

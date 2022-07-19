@@ -74,7 +74,7 @@ const CardProfile: FC<Props> = ({
         </button>
         <div className={styles.titleWrap}>
           <Text className={styles.title}>{`ID #${selectedNft.cardId}`}</Text>
-          {showExpirationTime && expirationDays !== '0' && (
+          {showExpirationTime && expirationDays > '0' && (
             <Text className={styles.subTitle}>{t('nftMarket.dayBeforeExpiration{{day}}', { day: expirationDays })}</Text>
           )}
           {showExpirationTime && expirationDays === '0' && (
