@@ -9,22 +9,33 @@ import {
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { fromSunToNumber, getBidPrice, simpleErrorHandler } from '../../../utils';
+import { fromSunToNumber, simpleErrorHandler } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
 
   if (Number.isInteger(value)) {
-    return `${value * 100}%`;
+    return `${value}%`;
   }
 
-  return `${(value * 100).toFixed((3))}%`;
+  return `${(value).toFixed((3))}%`;
 };
 
 const getCardName = (name: string) => {
   if (name === 'cardSuit') return 'Borderline ';
 
   return name[0].toUpperCase() + name.slice(1);
+};
+
+const getOrderIndex = (firstOrderId?: number, secondOrderId?: number) => {
+  if (firstOrderId !== undefined) {
+    return firstOrderId;
+  }
+
+  if (secondOrderId !== undefined) {
+    return secondOrderId;
+  }
+  return undefined;
 };
 
 function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarketGetProfileAction>) {
@@ -55,7 +66,8 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
     yield put(nftMarketSelectProfileAction({
       active: currentCard.state_bids?.active || currentCard.state_sale?.active || false,
       cardId: Number(payload.id),
-      orderId: currentCard.state_bids?.orderIndex || currentCard.state_sale?.orderIndex,
+      orderId:
+        getOrderIndex(currentCard.state_bids?.orderIndex, currentCard.state_sale?.orderIndex),
       suit: currentCard.suit,
       face: currentCard.face,
       properties,
@@ -63,10 +75,11 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       faceRarity: percent(currentCard.faceFrequency),
       suitRarity: percent(currentCard.suitFrequency),
       url: currentCard.url,
-      bidPrice: getBidPrice(currentCard.state_bids),
+      bidPrice: `${fromSunToNumber(currentCard.state_bids?.bidsSum || '0')}`,
       salePrice: currentCard.state_sale?.price ? `${fromSunToNumber(currentCard.state_sale.price)}` : '0',
       expirationTime: currentCard.state_sale?.expirationTime ||
         currentCard.state_bids?.expirationTime,
+      bids: currentCard.state_bids?.bids,
     }));
     yield put(apiActions.success(type, res.data));
   } catch (err) {

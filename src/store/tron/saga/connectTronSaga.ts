@@ -77,6 +77,7 @@ function* setConnect(type: string) {
     /**
      * Check that for user is on the correct network
      */
+    console.log(networkUrl);
     if (networkUrl !== process.env.REACT_APP_FULL_NODE_URL && address) {
       const needNetworkName = getNetworkName(process.env.REACT_APP_FULL_NODE_URL as string);
       if (!needNetworkName) {

@@ -50,6 +50,13 @@ export type NftDto = {
   bidPrice: string
   salePrice: string
   expirationTime?: number
+  bids?: {
+    [key: string]: {
+      buyer: string
+      price: number
+      transaction: string
+    }
+  }
 };
 
 export type AcceptBid = {
@@ -83,6 +90,7 @@ export interface CardState {
   seller: string
   tokenId: number
   expirationTime: number
+  bidsSum: string
 }
 
 export interface SaleCardState extends CardState {
@@ -134,13 +142,15 @@ export type HistoryData = {
   createdAt: string
   expirationTime: number | null
   id: number
-  name: string
+  name: string | null
   orderIndex: number
   seller: string | null
   timestamp: string
   tokenId: number
   transaction: string
   updatedAt: string
+  method: string
+  address: string
 };
 
 export type Jackpot = {
@@ -156,4 +166,31 @@ export type Jackpot = {
 export type JackpotIssue = {
   count: number,
   jackpots: Jackpot[]
+};
+
+export type MyBidsCardData = {
+  bids: {
+    [key: string]: {
+      buyer: string
+      price: number
+      transaction: string
+      timestamp: string
+    }
+  }
+  active: boolean
+  bidsSum: string
+  cardId: number
+  createdTokenId: number
+  expirationTime: number
+  face: string
+  id: number
+  name: number
+  orderIndex: number
+  seller: string
+  suit: string
+  timestamp: string
+  tokenId: number
+  transaction: string
+  url: string
+  updatedAt: string
 };

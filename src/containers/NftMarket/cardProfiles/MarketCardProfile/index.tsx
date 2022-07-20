@@ -41,13 +41,20 @@ const MarketCardProfile: FC = () => {
   }, [toggleBid, id, dispatch]);
 
   const bidHandler = useCallback((amount: string) => {
-    if (selectedNft && selectedNft.orderId) {
+    if (selectedNft && selectedNft.orderId !== undefined) {
       dispatch(nftMarketBidAction({ price: amount, id: selectedNft.orderId }, successCallback));
     }
   }, [dispatch, selectedNft, successCallback]);
 
   const isOwner = useMemo(() => {
     return selectedNft?.owner === address;
+  }, [selectedNft, address]);
+
+  const isRaiseBid = useMemo(() => {
+    if (selectedNft?.bids) {
+      return Object.keys(selectedNft.bids).some((key) => key === address);
+    }
+    return false;
   }, [selectedNft, address]);
 
   return (
@@ -77,7 +84,9 @@ const MarketCardProfile: FC = () => {
                   </div>
                 </div>
                 {!isOwner && (
-                  <Button onClick={toggleBid} className={styles.button}>{t('nftMarket.bid')}</Button>
+                  <Button onClick={toggleBid} className={styles.button}>
+                    {isRaiseBid ? t('nftMarket.raiseBid') : t('nftMarket.bid')}
+                  </Button>
                 )}
               </div>
             </div>

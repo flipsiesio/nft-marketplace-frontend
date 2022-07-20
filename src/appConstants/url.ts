@@ -27,7 +27,7 @@ export const marketURL = {
     CARD: '/marketplace/getCards',
     CARD_SVG: '/cards/svg',
     GET_BID_HISTORY: '/marketplace/getBidHistory',
-    GET_SALE_HISTORY: '/marketplace/getSaleHistory',
+    GET_SALE_HISTORY: '/marketplace/getSaleAndMintHistory',
     GET_ACTUAL_BIDS: '/marketplace/getActualOrderBids',
     GET_ACTUAL_SALE: '/marketplace/getActualOrderSale',
   },

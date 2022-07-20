@@ -7,9 +7,10 @@
   flex-direction: column;
   background-color: #191D2B;
   padding: 10px 5px;
-  width: 156px;
+  min-width: 156px;
   height: 115px;
   border-radius: 6px;
+  //overflow: hidden;
 
   @include forPhone {
     background-color: $blueColor;

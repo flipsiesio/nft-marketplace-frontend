@@ -81,3 +81,12 @@
 .emptyLabel {
   margin-bottom: 15px;
 }
+
+.primary {
+  color: $primaryColor;
+}
+
+.smallCardIcon {
+  @include flexbox(center, center);
+  height: 100px;
+}

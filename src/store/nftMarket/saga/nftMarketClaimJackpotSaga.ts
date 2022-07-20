@@ -12,6 +12,10 @@ import { tronSelector } from '../../selectors';
 function* nftMarketClaimJackpotSaga(
   { type, callback }: ReturnType<typeof nftMarketClaimJackpotAction>,
 ) {
+  function* success(trxHash: string) {
+    yield put(apiActions.success(type));
+    callback(trxHash);
+  }
   try {
     yield put(apiActions.request(type));
     const address: string = yield select(tronSelector.getProp('address'));
@@ -28,9 +32,12 @@ function* nftMarketClaimJackpotSaga(
       address,
       shouldPollResponse: true,
     });
-    yield put(apiActions.success(type));
-    callback(trxHash);
+    yield success(trxHash);
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success('');
+      return;
+    }
     simpleErrorHandler(err);
     yield toast.error(err.message);
     yield put(apiActions.error(type, err));

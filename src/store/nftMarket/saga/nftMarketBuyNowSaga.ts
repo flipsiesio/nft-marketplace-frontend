@@ -13,6 +13,11 @@ import { NftMarketState } from '../../../types';
 function* nftMarketBuyNowSaga(
   { type, callback }: ReturnType<typeof nftMarketBuyNowAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    yield toast.success('Buy successful!');
+    callback();
+  }
   try {
     const {
       selectedNft,
@@ -34,10 +39,12 @@ function* nftMarketBuyNowSaga(
       shouldPollResponse: true,
     });
 
-    yield put(apiActions.success(type));
-    yield toast.success('Buy successful!');
-    callback();
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     yield toast.error('Error Buy');
     yield put(apiActions.error(type, err));
   }

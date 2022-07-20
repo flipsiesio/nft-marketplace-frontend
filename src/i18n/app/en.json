@@ -41,6 +41,7 @@
     "tradingHistory": "Trading History",
     "bids": "Bids",
     "bid": "Bid",
+    "raiseBid": "Raise Bid",
     "delist": "Delist",
     "accept": "Accept",
     "buyNow": "Buy now",
