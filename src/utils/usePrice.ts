@@ -18,7 +18,6 @@ export const usePrice = (marketType?: MarketType) => {
   }, []);
 
   const hasError = useMemo(() => {
-    if (marketType === MarketType.Auction) return false;
     if (value.length === 0) return true;
 
     const reg = /([0-9]*[.])?[0-9]+/;

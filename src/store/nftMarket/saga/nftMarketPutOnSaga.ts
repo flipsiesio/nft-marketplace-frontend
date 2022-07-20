@@ -11,6 +11,12 @@ import { MarketType } from '../../../types';
 function* nftMarketPutOnSaga(
   { payload, type, callback }: ReturnType<typeof nftMarketPutOnAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    callback();
+    const label = MarketType.Sale === payload.marketType ? 'sale' : 'auction';
+    yield toast.success(`Put on ${label} successful!`);
+  }
   try {
     yield put(apiActions.request(type));
     const contractName = payload.marketType === MarketType.Auction
@@ -22,11 +28,12 @@ function* nftMarketPutOnSaga(
     yield contract.acceptTokenToSell(payload.nftAddress, price, payload.maxDuration).send({
       shouldPollResponse: true,
     });
-    yield put(apiActions.success(type));
-    callback();
-    const label = MarketType.Sale === payload.marketType ? 'sale' : 'auction';
-    yield toast.success(`Put on ${label} successful!`);
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }

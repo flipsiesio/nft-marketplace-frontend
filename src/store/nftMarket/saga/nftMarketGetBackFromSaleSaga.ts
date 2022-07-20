@@ -9,6 +9,11 @@ import { MarketType } from '../../../types';
 function* nftMarketGetBackFromSaleSaga(
   { type, payload: { marketType, orderId }, callback }: ReturnType<typeof getBackFromSaleAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    yield toast.success('Card back successes!');
+    if (callback) callback();
+  }
   try {
     yield put(apiActions.request(type));
     const contractName = marketType === MarketType.Auction
@@ -19,10 +24,12 @@ function* nftMarketGetBackFromSaleSaga(
     yield contract.getBackFromSale(orderId).send({
       shouldPollResponse: true,
     });
-    yield put(apiActions.success(type));
-    yield toast.success('Card back successes!');
-    if (callback) callback();
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }

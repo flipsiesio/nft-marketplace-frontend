@@ -16,7 +16,6 @@ import JackOfDiamonds from 'assets/img/nft/JackOfDiamonds.svg';
 import JackOfSpades from 'assets/img/nft/JackOfSpades.svg';
 import JackOfHearts from 'assets/img/nft/JackOfHearts.svg';
 import { TronStatus } from 'appConstants';
-import { ClaimJackpotModal } from 'containers';
 import { tronSelector } from 'store/selectors';
 import styles from './styles.module.scss';
 import { history } from '../../utils';
@@ -24,7 +23,6 @@ import { history } from '../../utils';
 const Explore: FC = () => {
   const { t } = useTranslation();
   const { isActive: mintActive, onToggle: toggleMint } = useToggle();
-  const { isActive: claimIsActive, onToggle: toggleClaim } = useToggle();
   const { isActive: infoIsActive, onToggle: toggleInfo } = useToggle();
   const { handleConnect } = useConnectWallet();
   const { status } = useShallowSelector(tronSelector.getState);
@@ -97,7 +95,6 @@ const Explore: FC = () => {
         />
       </div>
       <MintModal onToggle={toggleMint} isOpen={mintActive} />
-      <ClaimJackpotModal isOpen={claimIsActive} onToggle={toggleClaim} />
       <InfoModal
         isOpen={infoIsActive}
         onToggle={toggleInfo}

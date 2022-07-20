@@ -10,6 +10,11 @@ import { NftMarketActionTypes } from '../actionTypes';
 function* nftMarketCancelBidSaga(
   { type, payload: { orderId }, callback }: ReturnType<typeof nftMarketCancelBidAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    yield toast.success('Bid cancel successful!');
+    if (callback) callback();
+  }
   try {
     yield put(apiActions.request(type));
     const contract =
@@ -17,10 +22,12 @@ function* nftMarketCancelBidSaga(
     yield contract.cancelBid(orderId).send({
       shouldPollResponse: true,
     });
-    yield put(apiActions.success(type));
-    yield toast.success('Bid cancel successful!');
-    if (callback) callback();
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }

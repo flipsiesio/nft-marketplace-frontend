@@ -11,6 +11,12 @@ import { NftMarketActionTypes } from '../actionTypes';
 function* nftMarketBidSaga(
   { type, payload, successCallback }: ReturnType<typeof nftMarketBidAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    yield toast.success('Bid accept successful!');
+    if (successCallback) successCallback();
+  }
+
   try {
     yield put(apiActions.request(type));
     const price: BigNumber =
@@ -27,10 +33,12 @@ function* nftMarketBidSaga(
       shouldPollResponse: true,
     });
 
-    successCallback();
-    yield put(apiActions.success(type));
-    yield toast.success('Bid successful!');
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }

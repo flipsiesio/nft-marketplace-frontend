@@ -13,6 +13,12 @@ function* nftMarketAcceptBidSaga(
     payload: { payerAddress, orderId }, callback,
   }: ReturnType<typeof nftMarketAcceptBidAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    yield toast.success('Bid accept successful!');
+    if (callback) callback();
+  }
+
   try {
     yield put(apiActions.request(type));
     const contract =
@@ -20,10 +26,12 @@ function* nftMarketAcceptBidSaga(
     yield contract.performBuyOperation(payerAddress, orderId).send({
       shouldPollResponse: true,
     });
-    yield put(apiActions.success(type));
-    yield toast.success('Bid accept successful!');
-    if (callback) callback();
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     yield put(apiActions.error(type, err));
     simpleErrorHandler(err);
   }

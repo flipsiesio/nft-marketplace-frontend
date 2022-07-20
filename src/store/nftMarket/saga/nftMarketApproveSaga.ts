@@ -11,6 +11,11 @@ function* nftMarketApproveSaga(
     payload, type, callback,
   }: ReturnType<typeof nftMarketApproveAction>,
 ) {
+  function* success() {
+    yield put(apiActions.success(type));
+    callback(payload.actionType);
+    yield toast.success('Approve successful!');
+  }
   try {
     yield put(apiActions.request(type));
     const contractName = payload.actionType === MarketType.Sale
@@ -21,10 +26,12 @@ function* nftMarketApproveSaga(
     yield contract.approve(contractName, payload.tokenId).send({
       shouldPollResponse: true,
     });
-    yield put(apiActions.success(type));
-    callback(payload.actionType);
-    yield toast.success('Approve successful!');
+    yield success();
   } catch (err) {
+    if (err.error === 'Cannot find result in solidity node') {
+      yield success();
+      return;
+    }
     simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
