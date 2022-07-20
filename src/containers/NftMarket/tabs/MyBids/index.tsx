@@ -12,7 +12,7 @@ import {
   Button, NotActiveCardIcon, Pagination, Table, Text,
 } from '../../../../components';
 import { useShallowSelector, useTabHandlers } from '../../../../hooks';
-import { nftMarketSelector } from '../../../../store/selectors';
+import { nftMarketSelector, tronSelector } from '../../../../store/selectors';
 import {
   nftMarketCancelBidAction,
   nftMarketGetMyBidsAction,
@@ -21,6 +21,52 @@ import {
   marketURL, PAGE_ITEM_LIMIT,
 } from '../../../../appConstants';
 import { MyBidsCardData, NftReqDto, TableRowProps } from '../../../../types';
+
+type PriceProps = Pick<MyBidsCardData, 'bids'>;
+
+const Price: FC<PriceProps> = ({ bids }) => {
+  const address = useShallowSelector(tronSelector.getProp('address'));
+  const price = useMemo(() => {
+    return Object
+      .entries(bids)
+      .filter(([key]) => key === address)
+      .map(([, value]) => value.price)
+      .reduce((val1, val2) => val1 + val2);
+  }, [bids, address]);
+
+  return (
+    <div style={{ display: 'flex' }}>
+      <Text title={fromSunToNumber(`${price}`)} className={styles.priceCol}>
+        {fromSunToNumber(`${price}`)}
+      </Text>
+      &nbsp;
+      <Text className={styles.primary}>TRX</Text>
+    </div>
+  );
+};
+
+type DateColProps = Pick<MyBidsCardData, 'bids'>;
+
+const DateCol: FC<DateColProps> = ({ bids }) => {
+  const address = useShallowSelector(tronSelector.getProp('address'));
+  const date = useMemo(() => {
+    const filteredBids = Object
+      .entries(bids)
+      .filter(([key]) => key === address)
+      .map(([, value]) => value);
+
+    if (filteredBids.length === 0) {
+      return 0;
+    }
+
+    const { timestamp } = filteredBids[filteredBids.length - 1];
+    return Number(timestamp);
+  }, [bids, address]);
+
+  return (
+    <Text>{date > 0 ? format(new Date(date), 'dd.MM.yyyy') : ''}</Text>
+  );
+};
 
 export const MyBidsTab: FC = () => {
   const { t } = useTranslation();
@@ -61,14 +107,8 @@ export const MyBidsTab: FC = () => {
     {
       Header: 'Price',
       accessor: 'amount',
-      Cell: ({ row: { original: { bidsSum } } }: TableRowProps<MyBidsCardData>) => (
-        <div style={{ display: 'flex' }}>
-          <Text title={fromSunToNumber(bidsSum)} className={styles.priceCol}>
-            {fromSunToNumber(bidsSum)}
-          </Text>
-          &nbsp;
-          <Text className={styles.primary}>TRX</Text>
-        </div>
+      Cell: ({ row: { original: { bids } } }: TableRowProps<MyBidsCardData>) => (
+        <Price bids={bids} />
       ),
     },
     {
@@ -81,8 +121,8 @@ export const MyBidsTab: FC = () => {
     {
       Header: 'Date',
       accessor: 'date',
-      Cell: ({ row: { original: { updatedAt } } }: TableRowProps<MyBidsCardData>) => (
-        <Text>{format(new Date(updatedAt), 'dd.MM.yyyy')}</Text>
+      Cell: ({ row: { original: { bids } } }: TableRowProps<MyBidsCardData>) => (
+        <DateCol bids={bids} />
       ),
     },
     {

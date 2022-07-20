@@ -169,6 +169,14 @@ export type JackpotIssue = {
 };
 
 export type MyBidsCardData = {
+  bids: {
+    [key: string]: {
+      buyer: string
+      price: number
+      transaction: string
+      timestamp: string
+    }
+  }
   active: boolean
   bidsSum: string
   cardId: number
