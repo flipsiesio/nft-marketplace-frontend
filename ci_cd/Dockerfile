@@ -4,7 +4,8 @@ COPY package.json yarn.lock ./
 
 COPY . .
 
-RUN yarn install
+RUN yarn install sass
+RUN yarn 
 RUN yarn build
 
 FROM nginx:alpine
