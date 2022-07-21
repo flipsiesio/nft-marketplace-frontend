@@ -4,7 +4,7 @@ COPY package.json yarn.lock ./
 
 COPY . .
 
-RUN yarn install sass
+RUN npm install sass
 RUN yarn 
 RUN yarn build
 
