@@ -139,6 +139,13 @@ export const PutOnSaleModal: FC<Props> = ({
     });
   }, [selectedNft, marketType, toggleApprove, toggleSale]);
 
+  const disabled = useMemo(() => {
+    if (marketType === MarketType.Auction) {
+      return isLoading || notEnoughFunds || !selectValue;
+    }
+    return isLoading || hasError || notEnoughFunds || !selectValue;
+  }, [isLoading, hasError, notEnoughFunds, selectValue, marketType]);
+
   return (
     <Modal
       classNameContent={styles.wrap}
@@ -176,7 +183,7 @@ export const PutOnSaleModal: FC<Props> = ({
               <Button
                 className={styles.button}
                 onClick={saleHandler}
-                disabled={isLoading || hasError || notEnoughFunds || !selectValue}
+                disabled={disabled}
               >
                 {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
               </Button>
