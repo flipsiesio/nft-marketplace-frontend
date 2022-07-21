@@ -96,10 +96,10 @@ export const MyBidsTab: FC = () => {
   }, [dispatch, updatePageHandler]);
 
   const onLinkClick = useCallback((id: number) => {
-    dispatch(nftMarketSelectProfileAction(undefined));
     return (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
       e.stopPropagation();
       e.preventDefault();
+      dispatch(nftMarketSelectProfileAction(undefined));
       history.push({
         pathname: routes.nftMarket.marketProfile.root,
         search: `?id=${id}`,
