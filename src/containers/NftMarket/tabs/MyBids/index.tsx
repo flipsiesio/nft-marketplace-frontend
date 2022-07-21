@@ -7,18 +7,19 @@ import { fromSunToNumber } from 'utils';
 import cx from 'classnames';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import styles from '../styles.module.scss';
 import {
-  Button, NotActiveCardIcon, Pagination, Table, Text,
+  Button, NotActiveCardIcon, Pagination, Table, Text, Link,
 } from '../../../../components';
 import { useShallowSelector, useTabHandlers } from '../../../../hooks';
 import { nftMarketSelector, tronSelector } from '../../../../store/selectors';
 import {
   nftMarketCancelBidAction,
-  nftMarketGetMyBidsAction,
+  nftMarketGetMyBidsAction, nftMarketSelectProfileAction,
 } from '../../../../store/nftMarket/actions';
 import {
-  marketURL, PAGE_ITEM_LIMIT,
+  marketURL, PAGE_ITEM_LIMIT, routes,
 } from '../../../../appConstants';
 import { MyBidsCardData, NftReqDto, TableRowProps } from '../../../../types';
 
@@ -69,6 +70,7 @@ const DateCol: FC<DateColProps> = ({ bids }) => {
 };
 
 export const MyBidsTab: FC = () => {
+  const history = useHistory();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { myBids } = useShallowSelector(nftMarketSelector.getState);
@@ -93,13 +95,30 @@ export const MyBidsTab: FC = () => {
     return () => dispatch(nftMarketCancelBidAction({ orderId }, updatePageHandler));
   }, [dispatch, updatePageHandler]);
 
+  const onLinkClick = useCallback((id: number) => {
+    return (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      e.stopPropagation();
+      e.preventDefault();
+      dispatch(nftMarketSelectProfileAction(undefined));
+      history.push({
+        pathname: routes.nftMarket.marketProfile.root,
+        search: `?id=${id}`,
+      });
+    };
+  }, [dispatch]);
+
   const col = useMemo(() => [
     {
       Header: 'Card',
       accessor: 'name',
-      Cell: ({ row: { original: { url } } }: TableRowProps<MyBidsCardData>) => (
+      Cell: ({ row: { original: { url, tokenId, active } } }: TableRowProps<MyBidsCardData>) => (
         <div className={styles.smallCardIcon}>
-          <NotActiveCardIcon showShadows url={url} />
+          {active && (
+            <Link to={`${routes.nftMarket.myBidsProfile.root}?=id${tokenId}`} onClick={onLinkClick(tokenId)}>
+              <NotActiveCardIcon showShadows url={url} />
+            </Link>
+          )}
+          {!active && <NotActiveCardIcon showShadows url={url} />}
         </div>
       ),
     },
@@ -134,7 +153,7 @@ export const MyBidsTab: FC = () => {
           null
       ),
     },
-  ], [cancelBid]);
+  ], [cancelBid, onLinkClick]);
 
   return (
     <div className={styles.wrap}>

@@ -5,7 +5,11 @@ type ErrorWithError = {
 };
 
 function instanceOfErrorWithError(object: unknown): object is ErrorWithError {
-  return 'error' in (object as ErrorWithError);
+  if (typeof object === 'object') {
+    return 'error' in (object as ErrorWithError);
+  }
+
+  return false;
 }
 
 export const simpleErrorHandler = (err: unknown) => {

@@ -1,7 +1,7 @@
 import {
   put, select, takeLatest,
 } from 'redux-saga/effects';
-import { getFeeString, getTronContract } from 'utils';
+import { getFeeString, getTronContract, simpleErrorHandler } from 'utils';
 import apiActions from 'store/api/actions';
 import BigNumber from 'bignumber.js';
 import { toast } from 'react-toastify';
@@ -45,7 +45,7 @@ function* nftMarketBuyNowSaga(
       yield success();
       return;
     }
-    yield toast.error('Error Buy');
+    simpleErrorHandler(err);
     yield put(apiActions.error(type, err));
   }
 }
