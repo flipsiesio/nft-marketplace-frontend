@@ -9,7 +9,7 @@ import {
 import { marketURL } from 'appConstants';
 import { nftMarketGetProfileAction, nftMarketSelectProfileAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { fromSunToNumber, simpleErrorHandler } from '../../../utils';
+import { fromSunToNumber, simpleErrorHandler, getBidPrice } from '../../../utils';
 
 const percent = (value?: number) => {
   if (value === undefined) return '';
@@ -75,7 +75,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       faceRarity: percent(currentCard.faceFrequency),
       suitRarity: percent(currentCard.suitFrequency),
       url: currentCard.url,
-      bidPrice: `${fromSunToNumber(currentCard.state_bids?.bidsSum || '0')}`,
+      bidPrice: getBidPrice(currentCard.state_bids),
       salePrice: currentCard.state_sale?.price ? `${fromSunToNumber(currentCard.state_sale.price)}` : '0',
       expirationTime: currentCard.state_sale?.expirationTime ||
         currentCard.state_bids?.expirationTime,
