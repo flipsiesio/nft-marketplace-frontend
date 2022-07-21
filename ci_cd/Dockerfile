@@ -8,5 +8,5 @@ RUN yarn
 RUN yarn build
 
 FROM nginx:alpine
-COPY --from=0 /build/packages/client/build/ /var/www/html/
+COPY --from=0 /build/build/ /var/www/html/
 CMD ["nginx","-g","daemon off;"]
