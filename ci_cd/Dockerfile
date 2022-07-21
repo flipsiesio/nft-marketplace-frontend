@@ -1,10 +1,9 @@
-FROM node:16.13.0-alpine as builder
+FROM node:14-alpine3.15 as builder
 WORKDIR /build
 COPY package.json yarn.lock ./
 
 COPY . .
 
-RUN npm install sass
 RUN yarn 
 RUN yarn build
 
