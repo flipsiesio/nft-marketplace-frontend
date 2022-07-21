@@ -32,6 +32,6 @@ deploy :
     - stage
   script:
     - pip3 install awscli
-    - aws s3 sync ./build s3://pocker-frontend-$target
+    - aws s3 sync ./build s3://nft-poker-frontend
   tags: 
     - deploy
