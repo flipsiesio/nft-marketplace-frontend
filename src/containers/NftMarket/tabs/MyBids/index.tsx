@@ -32,7 +32,7 @@ const Price: FC<PriceProps> = ({ bids }) => {
       .entries(bids)
       .filter(([key]) => key === address)
       .map(([, value]) => value.price)
-      .reduce((val1, val2) => val1 + val2);
+      .reduce((val1, val2) => val1 + val2, 0);
   }, [bids, address]);
 
   return (

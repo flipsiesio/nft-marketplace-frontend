@@ -143,7 +143,7 @@ export const PutOnSaleModal: FC<Props> = ({
     if (marketType === MarketType.Auction) {
       return isLoading || notEnoughFunds || !selectValue;
     }
-    return isLoading || hasError || notEnoughFunds || !selectValue;
+    return isLoading || hasError || !selectValue;
   }, [isLoading, hasError, notEnoughFunds, selectValue, marketType]);
 
   return (
