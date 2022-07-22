@@ -8,7 +8,9 @@ import {
   NavTabs, Pagination, Table, Text, Button, Icon,
 } from '../../components';
 import styles from './styles.module.scss';
-import { HistoryData, TabItem, TableRowProps } from '../../types';
+import {
+  HistoryData, NftDto, TabItem, TableRowProps,
+} from '../../types';
 import { marketClient } from '../../store/api';
 import { marketURL, PAGE_ITEM_LIMIT, scanTransactionUrl } from '../../appConstants';
 import { fromSunToNumber } from '../../utils';
@@ -22,7 +24,7 @@ export type AcceptBidData = {
 type Props = {
   isMyGallery?: boolean
   onAcceptBidClick?: (data: AcceptBidData) => void
-  cardId: number
+  selectedNft: NftDto
   actualOrderId?: number
   disabled?: boolean
   showBid?: boolean
@@ -139,7 +141,7 @@ const tradingCol = [
 export const CardHistory: FC<Props> = ({
   isMyGallery,
   onAcceptBidClick,
-  cardId,
+  selectedNft,
   actualOrderId,
   disabled,
   showBid = true,
@@ -253,19 +255,19 @@ export const CardHistory: FC<Props> = ({
     if (!showBid) return;
     getHistory(
       marketURL.MARKETPLACE.GET_BID_HISTORY,
-      cardId,
+      selectedNft.cardId,
       bidPage,
       { name: ['Bid'] },
     )
       .then((res) => {
         setBidData(res.data);
       });
-  }, [cardId, bidPage, showBid]);
+  }, [selectedNft, bidPage, showBid]);
 
   useEffect(() => {
     marketClient.get<SaleAndMintData>(marketURL.MARKETPLACE.GET_SALE_HISTORY, {
       params: {
-        ids: [cardId],
+        ids: [selectedNft.cardId],
         skip: tradingPage * PAGE_ITEM_LIMIT,
         take: PAGE_ITEM_LIMIT,
         byOrder: false,
@@ -280,13 +282,13 @@ export const CardHistory: FC<Props> = ({
     //   .then((res) => {
     //     setTradingData(res.data);
     //   });
-  }, [cardId, tradingPage]);
+  }, [selectedNft, tradingPage]);
 
   useEffect(() => {
     if (!showBid) return;
     getHistoryCount(
       marketURL.MARKETPLACE.GET_BID_HISTORY,
-      cardId,
+      selectedNft.cardId,
       { name: ['Bid'] },
     ).then((res) => {
       setBidCount(res.data);
@@ -295,7 +297,7 @@ export const CardHistory: FC<Props> = ({
     // getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
     //   setTradingCount(res.data);
     // });
-  }, [cardId, showBid]);
+  }, [selectedNft, showBid]);
 
   return (
     <NavTabs shouldSearch={false} className={styles.tables} tabItems={tabItems} />

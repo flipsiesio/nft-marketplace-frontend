@@ -162,7 +162,7 @@ const CardProfile: FC<Props> = ({
           showBid={showBid}
           disabled={disabled}
           onAcceptBidClick={onAcceptBidClick}
-          cardId={selectedNft.cardId}
+          selectedNft={selectedNft}
           isMyGallery={isMyGallery}
           actualOrderId={actualOrderId}
         />
