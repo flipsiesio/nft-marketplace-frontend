@@ -39,9 +39,17 @@ const FlipsiesNft: FC = () => {
         </Text>
         <Text className={styles.text}>
           {t('flipsiesNft.text5')}
+          &nbsp;
+          <Text tag="span" className={styles.green}>
+            {t('flipsiesNft.text6')}
+          </Text>
+          &nbsp;
+          <Text tag="span" className={styles.text}>
+            {t('flipsiesNft.text7')}
+          </Text>
         </Text>
         <Text className={styles.text}>
-          {t('flipsiesNft.text6')}
+          {t('flipsiesNft.text8')}
         </Text>
       </div>
       <Button onClick={clickHandler} className={styles.button}>
