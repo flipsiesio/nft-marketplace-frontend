@@ -1,0 +1,63 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+.points__outer_container {
+  height: calc(100vh - 100px);
+}
+
+.points__container {
+    @include flexbox(flex-start);
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 20px;
+  }
+
+  .points__logo {
+    display: block;
+    margin: 0 auto 77px auto;
+    width: 292px;
+    height: 108px;
+  }
+
+
+    .points__card_container {
+      width: 562px;
+      position: relative;
+    
+      &:nth-of-type(1){
+        padding: 20px 19px 24px 25px;
+        order: 1;
+      }
+    
+      &:nth-of-type(2){
+        padding: 23px 27px 24px 25px;
+        margin-top: -20px;
+        order: 3;
+      }
+    
+      &:nth-of-type(3){
+        padding: 23px 25px 32px 25px;
+        order: 2;
+      }
+    
+      &:nth-of-type(4){
+        padding: 23px 49px 28px 25px;
+        order: 4;
+      }
+    
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: $blueColor;
+        opacity: 0.5;
+        border-radius: 15px;
+        z-index: -1;
+    
+      }
+    
+    }

@@ -1,0 +1,114 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.system__container {
+  scroll-behavior: smooth;
+
+  & .system__cards_container {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-auto-flow: row;
+   column-gap: 138px;
+   row-gap: 14px;
+
+  }
+
+  & .system__card_container {
+    position: relative;
+  
+    &:nth-of-type(1){
+      order: 1;
+      width: 342px;
+      padding: 0;
+    }
+  
+    &:nth-of-type(2){
+      width: 529px;
+      order: 3;
+      padding: 0;
+      margin: 0;
+    }
+  
+    &:nth-of-type(3){
+      width: 391px;
+      order: 2;
+      padding: 0;
+      p {
+        line-height: 17px;
+      }
+    }
+  
+    &:nth-of-type(4){
+      width: 446px;
+      order: 4;
+      padding: 0;
+      margin: 60px 0 0 0;
+
+       p {
+        line-height: 17px;
+      }
+    }
+  
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: transparent;
+      z-index: -1;
+  
+    }
+  
+  }
+
+
+  .info__point_list_buyback,
+  .info__point_list,
+  .info__about_two,
+  .info__point_two,
+  .info__about,
+  .info__point{
+    @include text;
+  }
+
+  .info__about_two,
+  .info__point_two {
+    line-height: 17px;
+  }
+
+  & .system__card_title {
+      background: linear-gradient(134.98deg, #EB5757 0%, #FF5286 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      line-height: 32px;
+  }
+
+  & .system__preview_container {
+    background-image:  url('../../assets/img/cardsChips.png');
+    background-repeat: no-repeat;
+    background-position: 50% 30%;
+  }
+
+}
+
+
+.info__char {
+  background: linear-gradient(134.98deg, #EB5757 0%, #FF5286 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+line-height: 19px;
+}
+
+
+.info__about {
+  margin: 0 0 15px 0;
+}
+
+

@@ -13,3 +13,4 @@ export * from './ClaimJackpotModal';
 export * from './Explore';
 export * from './CardHistory';
 export * from './PutOnSaleModal';
+export * from './NftEarningSystem';

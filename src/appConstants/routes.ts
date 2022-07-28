@@ -7,6 +7,10 @@ export default {
     root: '/how-to-play',
     title: 'How To Play',
   },
+  nftEarningSystem: {
+    root: '/nft-earning-system',
+    title: 'NFT Earning System',
+  },
   termsOfServices: {
     root: '/terms-of-services',
     title: 'Terms of service',

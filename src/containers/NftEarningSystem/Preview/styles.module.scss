@@ -1,0 +1,34 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+
+.preview__container {
+    @include flexbox();
+
+    flex-direction: column;
+    height: calc(100vh - 130px);
+
+    & .preview__image {
+        width: 668px;
+        height: 228px;
+
+    }
+}
+
+.preview__button {
+margin: 100px 0 0 0;
+
+filter: drop-shadow(2.72826px 2.72826px 40.9239px rgba(0, 0, 0, 0.25));
+position: relative;
+
+&::after{
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: rgba(176, 18, 19, 0.6);
+    filter: blur(200px);
+    width: 274px;
+    height: 274px;
+}
+}

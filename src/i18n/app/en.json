@@ -3,6 +3,7 @@
     "rewardSystem": "Reward system",
     "faq": "FAQ",
     "howToPlay": "How to play?",
+    "nftEarningSystem": "NFT Earning system",
     "nftMarket": "NFT Market",
     "wallet": "Wallet",
     "tronlink": "TronLink",
@@ -146,6 +147,10 @@
       "title": "One Eyed Jacks",
       "label": "Unlike most of the other court cards, the Jack of Spades and the Jack of Hearts both have a side profile, hence their designation as \"one-eyed Jacks.\" One eyed jacks is a phrase most often used to describe cards that are being declared wild. It is a convenient way to specify that half the jacks should be wild, and as an ancient part of poker slang, it's also just fun to say. One eyed jacks are often paired with the \"Suicide King\" in declaring wild cards."
     }
+  },
+  "nftSystemEarn": {
+    "playNow": "Play now"
+
   },
   "claimModalJackpot": {
     "address1": "Your wallet address",
