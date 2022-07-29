@@ -17,6 +17,7 @@ import {
   MyGalleryCardProfilePage,
   ExplorePage,
   MyBidsCardProfilePage,
+  NftEarningSystemPage,
 } from 'pages';
 
 const Routes = () => {
@@ -56,6 +57,7 @@ const Routes = () => {
         checkAccess
       />
       <Route path={routes.explore.root} component={ExplorePage} />
+      <Route path={routes.nftEarningSystem.root} component={NftEarningSystemPage} />
       <Redirect from="*" to={routes.notFound.root} />
     </Switch>
   );

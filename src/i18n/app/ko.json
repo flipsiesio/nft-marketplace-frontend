@@ -3,6 +3,7 @@
     "rewardSystem": "보상 시스템",
     "faq": "FAQ",
     "howToPlay": "게임 방법",
+    "nftEarningSystem": "NFT 적립 시스템",
     "wallet": "지갑",
     "tronlink": "TronLink",
     "referral": "추천",
@@ -170,6 +171,41 @@
     "question9": {
       "title": "TRON 소개",
       "content": "<b>Tron</b> 은 블록체인과 P2P 기술을 사용하는 탈중앙화 엔터테인먼트 및 콘텐츠 공유 플랫폼입니다.<br/><br/><b>대역폭</b>: TRON 대역폭을 보유하면 가스 요금을 지불하지 않고도 TRON 메인넷에서 거래를 수행할 수 있습니다. Flipsies.crypto 등의 디앱을 사용할 경우 충분한 대역폭을 확보하는 것이 중요합니다. 디앱을 통해  프로세스에서 TRX 토큰 사용에 대한 염려 없이 작은 트랜잭션을 여러 번 수행할 수 있습니다. 또한 대역폭은 TRON 커뮤니티의 활동적인 멤버로서 입지를 다지는 데 사용되며 이를 통해 슈퍼 대표 선거에서 표를 행사할 수 있습니다. <br/><br/><b>에너지</b>: 에너지는 TRON 네트워크에서 스마트 컨트랙트를  처리하는 데 사용되는 특수한 리소스입니다. 스마트 컨트랙트는 대역폭 외에도 에너지를 소비하므로 토큰 이전 시 대역폭과 에너지를 모두 충분히 확보해야 합니다.<br/><br/><b>동결은 </b> Tron 블록체인의 고유한 메커니즘입니다. 특정한 혜택을 받기 위해 TRX를 동결할 수 있습니다. 동결을 수행하면 Tron의 소유자는 여전히 귀하이지만 3일 동안 어디로도 전송할 수 없습니다. 동결은 저축 계좌에 입금하는 것과 유사하여, 계좌에 돈이 있어도 사용할 수 없습니다.<br/> TRX 동결 시 몇 가지 혜택이 제공됩니다. <br/> 우선 Tron 동결을 통해 대역폭 포인트(BP) 또는 에너지 포인트(EP) 중 받고 싶은 혜택을 선택해야 합니다. 또한 두 옵션 중 어느 옵션을 선택하든 각 TRX를 동결할 때마다 Tron 파워 1개를 받습니다."
+    }
+  },
+  "nftSystemEarn": {
+    "playNow": "Play now",
+    "buyback": {
+      "title": "Buyback system:",
+      "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
+      "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
+      "description2": "100% payout for Jackpot any time guarantee"
+    },
+    "stacking": {
+      "title": "Staking/holding system:",
+      "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
+      "description1": "The more and longer you are nfts owner the more rewards you will get",
+      "description2": "The higher the rarity score your tokens have the more rewards you will get",
+      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
+      "description4": "Starting rates for owning nfts.",
+      "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
+      "description6": "You can claim rewards only every 7 days from token purchasing."
+    },
+    "allTokens": {
+      "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
+      "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+    },
+    "formula": {
+      "beforeTitle": "Here is the formula for total rate calculation for one group:",
+      "title": "(CurrentTimeRate + (T * B)  ) + R",
+      "description1": "*Will also be getting cashback as additional rewards",
+      "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
+      "description3": "Additional rewards for the number of tokens",
+      "description4": "The sum of all tokens rarity in one group",
+      "description5": "*Note that you will be also getting cashback as additional rewards",
+      "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
+      "description7": "B : additional rewards for the number of tokens.",
+      "description8": "R: the sum of all tokens rarity in one group"
     }
   },
   "footer": {

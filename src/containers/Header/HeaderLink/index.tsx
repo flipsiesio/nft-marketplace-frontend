@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 type Props = {
   to: string,
-  icon: string,
+  icon?: string,
   text: string,
   isActive?: boolean,
   className?: string,
@@ -38,8 +38,8 @@ const HeaderLink: FC<PropsWithChildren<Props>> = ({
     })}
     onClick={onClick}
   >
-    <Icon icon={icon} className={styles.icon} />
-    <Text tag="span" className={styles.linkText}>{text}</Text>
+    {icon && <Icon icon={icon} className={styles.icon} />}
+    <Text tag="span" className={cx(styles.linkText)}>{text}</Text>
     {children}
   </NavLink>
 );

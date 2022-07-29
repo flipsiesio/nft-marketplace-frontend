@@ -4,3 +4,4 @@ export { default as TermsOfServices } from './TermsOfServices';
 export * from './NftMarket';
 export * from './cardProfiles';
 export * from './Explore';
+export * from './NftEarningSystem';

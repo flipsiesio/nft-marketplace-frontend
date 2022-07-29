@@ -25,4 +25,5 @@ export * from './ApproveModal';
 export * from './InfoModal';
 export * from './Pagination';
 export * from './NotActiveCardIcon';
+export * from './InfoCard';
 export { default as NeedExtenstionModal } from './NeedExtenstionModal';
