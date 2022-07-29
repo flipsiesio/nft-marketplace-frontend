@@ -1,14 +1,10 @@
 import React, { FC, useCallback, useEffect } from 'react';
-// import { useTranslation } from 'react-i18next';
 import { content1, content2 } from './content';
 import { NftEarningPoints } from './NftEarningPoints';
 import { Preview } from './Preview';
-// import { NftEarningSystemWrapper } from './NftEarningSystemWrapper';
 import styles from './styles.module.scss';
 
 const NftEarningSystem: FC = () => {
-  // const { t } = useTranslation();
-
   const handleClickPlay = useCallback(() => {
     console.log('Click play');
   }, []);

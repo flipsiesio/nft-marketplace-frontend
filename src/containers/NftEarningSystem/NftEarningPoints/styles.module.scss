@@ -3,6 +3,24 @@
 
 .points__outer_container {
   height: calc(100vh - 100px);
+  position: relative;
+
+  &::after {
+    content: '';
+    @include cardsSymbolsBg;
+
+  }
+
+  @include forDesktopBig {
+    height: 100vh;
+  }
+
+  @include forTabletSm {
+    height: 120vh;
+  }
+  @include forPhone {
+    height: 160vh;
+  }
 }
 
 .points__container {
@@ -33,6 +51,10 @@
         padding: 23px 27px 24px 25px;
         margin-top: -20px;
         order: 3;
+
+        @include forDesktopBig {
+          margin-top: 0;
+        }
       }
     
       &:nth-of-type(3){

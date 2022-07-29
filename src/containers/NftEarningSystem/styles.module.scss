@@ -11,6 +11,12 @@
    column-gap: 138px;
    row-gap: 14px;
 
+   @include forDesktopBig {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 529px));
+    justify-items: start;
+   }
+
+
   }
 
   & .system__card_container {
@@ -20,6 +26,11 @@
       order: 1;
       width: 342px;
       padding: 0;
+
+      @include forDesktopBig {
+        width: auto;
+      }
+
     }
   
     &:nth-of-type(2){
@@ -27,6 +38,10 @@
       order: 3;
       padding: 0;
       margin: 0;
+
+      @include forDesktopBig {
+        width: auto;
+      }
     }
   
     &:nth-of-type(3){
@@ -36,6 +51,10 @@
       p {
         line-height: 17px;
       }
+
+      @include forDesktopBig {
+        width: auto;
+      }
     }
   
     &:nth-of-type(4){
@@ -44,10 +63,16 @@
       padding: 0;
       margin: 60px 0 0 0;
 
+      @include forDesktopBig {
+        margin: 0;
+        width: auto;
+      }
+
        p {
         line-height: 17px;
       }
     }
+
   
     &::after {
       content: '';
@@ -92,6 +117,11 @@
     background-image:  url('../../assets/img/cardsChips.png');
     background-repeat: no-repeat;
     background-position: 50% 30%;
+    background-size: 70vw 50vh;
+
+    @include forTablet{
+      background-size: 90vw 30vh;
+    }
   }
 
 }

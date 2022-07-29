@@ -172,6 +172,41 @@
       "content": "<b>Tron</b>  एक विकेन्द्रीकृत मनोरंजन और सामग्री-साझाकरण प्लैटफॉर्म है जो ब्लॉकचेन और पीयर-टू-पीयर (P2P) टेक्नालॉजी का उपयोग करता है।.<br/><br/><b>बैंडविड्थh</b>: TRON बैंडविड्थ होने से आप किसी गैस शुल्क का भुगतान किए बिना TRON मेननेट पर लेनदेन कर सकते हैं। Flipsies.io जैसे dApps के लिए उपयोग करते समय पर्याप्त बैंडविड्थ महत्वपूर्ण है, जहां आप प्रक्रिया में अपने TRX टोकन का उपयोग करने के बारे में चिंता किए बिना कई छोटे लेनदेन करना चाह सकते हैं। बैंडविड्थ का उपयोग खुद को TRON समुदाय के एक सक्रिय सदस्य के रूप में पक्का करने के लिए भी किया जाता है, जिससे आपको सुपर प्रतिनिधियों के लिए वोट डालने की अनुमति मिलती है। <br/><br/><b>एनर्जी</b>: यह एक विशेष संसाधन है जिसका उपयोग TRON नेटवर्क पर स्मार्ट कॉन्ट्रैक्टों पर प्रक्रिया करने के लिए किया जाता है। स्मार्ट कॉन्ट्रैक्ट्स बैंडविड्थ के अलावा एनर्जी की खपत करते हैं, इसलिए सुनिश्चित करें कि जब आप अपने टोकन को चारों ओर ले जा रहे हों, तो आपके पास दोनों पर्याप्त मात्रा में हों। <br/><br/><b>फ्रीजिंग </b> ट्रॉन ब्लॉकचेन के लिए एक अनूठा तंत्र है। कुछ लाभ प्राप्त करने के लिए आप अपने TRX को फ्रीज कर सकते हैं। जब आप ऐसा करते हैं, तो आपका ट्रॉन अभी भी आपका होगा, लेकिन आप इसे 3 दिनों के लिए कहीं भी नहीं भेज सकते हैं। फ्रीजिंग पैसे को बचत खाते में डालने के समान है: पैसा है, लेकिन आप इसे खर्च नहीं कर सकते हैं। <br/> जब आप अपने TRX को फ्रीज करते हैं, तो कई चीजें हैं जो आप प्राप्त कर सकते हैं। <br/> सबसे पहले आपको यह चुनना होगा कि क्या आप बैंडविड्थ पॉइंट्स (BP) या एनर्जी पॉइंट्स (EP) हासिल करने के लिए अपने Tron को फ्रीज करना चाहते हैं। इसके अलावा, प्रत्येक फ्रीज किए गए TRX के लिए आपको 1 ट्रॉन पावर मिलेगी - चाहे आप दोनों में से कोई भी चुनें। सबसे पहले आपको यह चुनना होगा कि क्या आप बैंडविड्थ पॉइंट्स (BP) या एनर्जी पॉइंट्स (EP) हासिल करने के लिए अपने Tron को फ्रीज करना चाहते हैं। इसके अलावा, प्रत्येक फ्रीज किए गए TRX के लिए आपको 1 ट्रॉन पावर मिलेगी - चाहे आप दोनों में से कोई भी चुनें।"
     }
   },
+  "nftSystemEarn": {
+    "playNow": "Play now",
+    "buyback": {
+      "title": "Buyback system:",
+      "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
+      "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
+      "description2": "100% payout for Jackpot any time guarantee"
+    },
+    "stacking": {
+      "title": "Staking/holding system:",
+      "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
+      "description1": "The more and longer you are nfts owner the more rewards you will get",
+      "description2": "The higher the rarity score your tokens have the more rewards you will get",
+      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
+      "description4": "Starting rates for owning nfts.",
+      "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
+      "description6": "You can claim rewards only every 7 days from token purchasing."
+    },
+    "allTokens": {
+      "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
+      "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+    },
+    "formula": {
+      "beforeTitle": "Here is the formula for total rate calculation for one group:",
+      "title": "(CurrentTimeRate + (T * B)  ) + R",
+      "description1": "*Will also be getting cashback as additional rewards",
+      "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
+      "description3": "Additional rewards for the number of tokens",
+      "description4": "The sum of all tokens rarity in one group",
+      "description5": "*Note that you will be also getting cashback as additional rewards",
+      "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
+      "description7": "B : additional rewards for the number of tokens.",
+      "description8": "R: the sum of all tokens rarity in one group"
+    }
+  },
   "footer": {
     "text": "Flipsies एक ऑनलाइन जुए का अनुभव प्रदान . Flipsies पर जुए से संबंधित किसी भी गतिविधि पर क्लिक करने के लिए आपकी आयु 18 वर्ष से अधिक होनी चाहिए।.  यदि आप ऐसे स्थान पर रहते हैं तो जहां जुआ, लॉटरी या ऑफ़लाइन सट्टेबाजी अवैध है, आपको इस वेबसाइट पर मिली किसी भी चीज़ पर क्लिक नहीं करना चाहिए।. Flipsies आपके क्षेत्र में लागू स्थानीय कानूनों के उल्लंघन के लिए जिम्मेदार नहीं माना जाएगा। फ़्लिपीज़ गेम निष्पक्षता, पारदर्शिता और मज़ेदार पर आधारित हैं। खिलाड़ियों को जोखिमों के बारे में पता होना चाहिए और तदनुसार खुद को प्रबंधित करना चाहिए। कृपया जुआ खेलें और जिम्मेदारी से खेलें।",
     "link": "flipsies.io",
