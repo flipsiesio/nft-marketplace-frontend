@@ -126,6 +126,7 @@ export type CardData = {
   suitFrequency: number,
   state_sale?: SaleCardState | null
   state_bids?: BidCardState | null
+  ownerAddress?: string
 };
 
 export enum MarketType {

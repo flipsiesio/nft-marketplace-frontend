@@ -112,6 +112,7 @@ const MyGalleryCardProfile: FC = () => {
     <>
       {selectedNft && (
         <CardProfile
+          owner={selectedNft.owner}
           showBid={isBid}
           disabled={isWait}
           actualOrderId={actualBidOrderId}
