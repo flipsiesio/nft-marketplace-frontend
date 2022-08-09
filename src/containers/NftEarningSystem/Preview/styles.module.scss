@@ -4,31 +4,43 @@
 
 .preview__container {
     @include flexbox();
-
     flex-direction: column;
-    height: calc(100vh - 130px);
 
-    & .preview__image {
-        width: 100vw;
-        height: 21vh;
+    & .preview__image_wrapper {
+        max-width: 1044px;
+        width: 100%;
+        height: 60vh;
+        position: relative;
+        margin-bottom: 15px;
 
+        & .preview__image {
+            display: block;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            -webkit-transform: translate(50%,-50%);
+            transform: translate(50%,-50%);
+            z-index: 1;
+            pointer-events: none;
+            height: auto;
+        }
     }
 }
 
 .preview__button {
-margin: 100px 0 0 0;
-
-filter: drop-shadow(2.72826px 2.72826px 40.9239px rgba(0, 0, 0, 0.25));
-position: relative;
-
-&::after{
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: rgba(176, 18, 19, 0.6);
-    filter: blur(200px);
-    width: 274px;
-    height: 274px;
+    z-index: 1;
+    position: relative;
 }
+
+.preview__login_label {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    font-weight: bold;
+}
+
+.preview__button_login {
+    color: $successColor;
+    font-weight: bold;
 }

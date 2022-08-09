@@ -21,7 +21,7 @@
 
   & .system__card_container {
     position: relative;
-  
+
     &:nth-of-type(1){
       order: 1;
       width: 342px;
@@ -32,7 +32,7 @@
       }
 
     }
-  
+
     &:nth-of-type(2){
       width: 529px;
       order: 3;
@@ -43,7 +43,7 @@
         width: auto;
       }
     }
-  
+
     &:nth-of-type(3){
       width: 391px;
       order: 2;
@@ -56,7 +56,7 @@
         width: auto;
       }
     }
-  
+
     &:nth-of-type(4){
       width: 446px;
       order: 4;
@@ -73,7 +73,7 @@
       }
     }
 
-  
+
     &::after {
       content: '';
       position: absolute;
@@ -84,9 +84,9 @@
       right: 0;
       background: transparent;
       z-index: -1;
-  
+
     }
-  
+
   }
 
 
@@ -111,17 +111,6 @@
       background-clip: text;
       text-fill-color: transparent;
       line-height: 32px;
-  }
-
-  & .system__preview_container {
-    background-image:  url('../../assets/img/cardsChips.png');
-    background-repeat: no-repeat;
-    background-position: 50% 30%;
-    background-size: 70vw 50vh;
-
-    @include forTablet{
-      background-size: 90vw 30vh;
-    }
   }
 
 }

@@ -187,7 +187,7 @@ export const PutOnSaleModal: FC<Props> = ({
               >
                 {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
               </Button>
-              {notEnoughFunds && (
+              {marketType === MarketType.Auction && notEnoughFunds && (
                 <Text className={styles.notFunds}>{t('nftMarket.notHaveEnoughFunds')}</Text>
               )}
             </>

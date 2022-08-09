@@ -2,10 +2,11 @@ import React, { FC, useCallback } from 'react';
 import cx from 'classnames';
 import logoHoldem from 'assets/img/logoHoldem.svg';
 import logoFlipsies from 'assets/img/logoFlipsies.png';
+import { PreviewImage } from 'assets/img';
 import styles from './styles.module.scss';
 
 type Props = {
-  view?: 'holdem' | 'flipsies',
+  view?: 'holdem' | 'flipsies' | 'preview',
   className?: string,
 };
 
@@ -15,7 +16,7 @@ const Logo: FC<Props> = ({
 }) => {
   const getLogo = useCallback(() => {
     const sources = {
-
+      preview: PreviewImage,
       holdem: logoHoldem,
       flipsies: logoFlipsies,
     };
