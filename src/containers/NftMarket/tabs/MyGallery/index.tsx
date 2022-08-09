@@ -51,11 +51,13 @@ const MyGalleryTab: FC = () => {
   const listedHandler = useCallback((e, value: boolean) => {
     setListed(value);
     setInWallet(false);
+    setPage(0);
   }, []);
 
   const walletHandler = useCallback((e, value: boolean) => {
     setInWallet(value);
     setListed(false);
+    setPage(0);
   }, []);
 
   const onCardClick = useCallback((id: number) => {

@@ -11,6 +11,7 @@ const refreshTokens = async (store: MiddlewareAPI<any, State>) => {
   const {
     signedMsg,
     accessToken,
+    refreshToken,
   } = store.getState().nftMarket;
 
   const { address } = store.getState().tron;
@@ -19,6 +20,7 @@ const refreshTokens = async (store: MiddlewareAPI<any, State>) => {
     tronWalletAddress: address,
     signedMsg,
     accessToken,
+    refreshToken,
   });
 
   store.dispatch(nftMarketSetStateAction({
