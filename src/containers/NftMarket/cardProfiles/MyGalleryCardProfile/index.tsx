@@ -188,6 +188,7 @@ const MyGalleryCardProfile: FC = () => {
           marketType={actionType}
           isOpen={putOnActive}
           onToggle={togglePutOn}
+          id={id}
         />
       )}
       <DelistModal

@@ -11,13 +11,14 @@ import { getApproved, getTronContract, usePrice } from '../../utils';
 import { MarketType, SelectOption } from '../../types';
 import { useShallowSelector, useToggle } from '../../hooks';
 import { nftMarketSelector, uiSelector } from '../../store/selectors';
-import { nftMarketApproveAction, nftMarketPutOnAction } from '../../store/nftMarket/actions';
+import { nftMarketApproveAction, nftMarketGetProfileAction, nftMarketPutOnAction } from '../../store/nftMarket/actions';
 import { NftMarketActionTypes } from '../../store/nftMarket/actionTypes';
 
 type Props = {
   isOpen: boolean
   onToggle: () => void
   marketType: MarketType
+  id: string | null
 };
 
 const getSecondsFromDays = (days: number) => {
@@ -32,6 +33,7 @@ export const PutOnSaleModal: FC<Props> = ({
   isOpen,
   onToggle,
   marketType,
+  id,
 }) => {
   const {
     isActive: shouldApprove,
@@ -85,6 +87,7 @@ export const PutOnSaleModal: FC<Props> = ({
         nftAddress: selectedNft.cardId,
         maxDuration: getSecondsFromDays(Number(selectValue?.value)),
       }, () => {
+        if (id) dispatch(nftMarketGetProfileAction(id));
         toggleSale();
         onToggle();
       }));

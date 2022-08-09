@@ -98,13 +98,16 @@ export interface SaleCardState extends CardState {
   price: string
 }
 
+export type BidData = {
+  buyer: string
+  price: number
+  transaction: string
+  timestamp: string
+};
+
 export interface BidCardState extends CardState {
   bids: {
-    [key: string]: {
-      buyer: string
-      price: number
-      transaction: string
-    }
+    [key: string]: BidData
   }
 }
 
