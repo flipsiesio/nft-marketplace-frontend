@@ -73,7 +73,7 @@ export const useAPIInterceptors = (store: MiddlewareAPI<any, State>) => {
 
       try {
         // try to refresh token
-        originalRequest.headers.access_token = await refreshTokens(store);
+        originalRequest.headers.Authorization = `Bearer ${await refreshTokens(store)}`;
         return await marketClient(originalRequest);
       } catch (e) {
         store.dispatch(nftMarketSignOutAction());
