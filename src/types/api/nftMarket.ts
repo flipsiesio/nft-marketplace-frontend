@@ -8,6 +8,7 @@ export enum NftType {
   QUEEN = 'Queen',
   JACK = 'Jack',
   JOKER = 'Joker', // Jokers or One-of-ones
+  RARE = 'Rare',
 }
 
 export enum NftSuit {
