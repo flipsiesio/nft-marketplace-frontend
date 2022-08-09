@@ -41,13 +41,6 @@ const eventNames: EventNames = {
   OrderFilled: 'sold',
 };
 
-type SaleAndMintData = {
-  count: number
-  entities: {
-    [key: number]: HistoryData
-  }
-};
-
 const getHistory = (url: string, id: number, page: number, param?: AxiosRequestConfig['params']) => {
   return marketClient.get<HistoryData[]>(url, {
     params: {
@@ -265,23 +258,11 @@ export const CardHistory: FC<Props> = ({
   }, [selectedNft, bidPage, showBid]);
 
   useEffect(() => {
-    marketClient.get<SaleAndMintData>(marketURL.MARKETPLACE.GET_SALE_HISTORY, {
-      params: {
-        ids: [selectedNft.cardId],
-        skip: tradingPage * PAGE_ITEM_LIMIT,
-        take: PAGE_ITEM_LIMIT,
-        byOrder: false,
-        order: 'ASC',
-      },
-    }).then((data) => {
-      setTradingData(Object.values(data.data.entities));
-      setTradingCount(data.data.count);
-    });
-
-    // getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId, tradingPage)
-    //   .then((res) => {
-    //     setTradingData(res.data);
-    //   });
+    if (!selectedNft) return;
+    getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, selectedNft.cardId, tradingPage)
+      .then((res) => {
+        setTradingData(res.data);
+      });
   }, [selectedNft, tradingPage]);
 
   useEffect(() => {
@@ -294,9 +275,9 @@ export const CardHistory: FC<Props> = ({
       setBidCount(res.data);
     });
 
-    // getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
-    //   setTradingCount(res.data);
-    // });
+    getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, selectedNft.cardId).then((res) => {
+      setTradingCount(res.data);
+    });
   }, [selectedNft, showBid]);
 
   return (
