@@ -39,8 +39,9 @@ const MarketNftInteractionModal: FC<Props> = ({
     if (!balance) return true;
 
     const balanceSun: BigNumber =
-      new window.tronWeb.BigNumber(window.tronWeb.toSun(balance));
-    const priceBN: BigNumber = new window.tronWeb.BigNumber(price);
+      new window.tronWeb.BigNumber(balance);
+    const priceBN: BigNumber =
+      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(price)));
 
     return balanceSun.lte(priceBN);
   }, [price, balance]);
