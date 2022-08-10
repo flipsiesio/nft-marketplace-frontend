@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import { MarketType } from '../types';
 
 export const getMyAddress = () => {
@@ -19,13 +18,14 @@ export function checkTronAuth():boolean {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getTronContract = async (address: string): Promise<any> => {
-  try {
-    const contract = await window.tronWeb.contract().at(address);
-    return contract;
-  } catch (err) {
-    toast.error(err);
-    throw err;
-  }
+  // try {
+  //   const contract = await window.tronWeb.contract().at(address);
+  //   return contract;
+  // } catch (err) {
+  //   toast.error(err);
+  //   throw err;
+  // }
+  return address;
 };
 
 export const getTrxFromSun = (sun: string) => {
