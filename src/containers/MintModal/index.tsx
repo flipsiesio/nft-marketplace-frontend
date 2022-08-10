@@ -8,9 +8,9 @@ import { SelectOption } from 'types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { routes, TRONSCAN_URL } from 'appConstants';
+import { routes, SCAN_URL } from 'appConstants';
 import { useShallowSelector } from 'hooks';
-import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
+import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { nftMarketMintNowAction, nftMarketSignInAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
 import styles from './styles.module.scss';
@@ -36,7 +36,7 @@ const MintModal: FC<Props> = ({
   const { price, avaliableNftAmount } = useMintInfo();
   const [selectedOption, setSelectedOption] = useState<SelectOption>();
   const getMintStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.MINT_NOW'));
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
   const [trxHash, setTrxHash] = useState('');
   const [isSent, setSent] = useState(false);
@@ -119,7 +119,7 @@ const MintModal: FC<Props> = ({
           >
             {t('claimModalJackpot.seeInGallery')}
           </Button>
-          <a className={styles.link} href={`${TRONSCAN_URL}${trxHash}`} target="_blank" rel="noopener noreferrer">
+          <a className={styles.link} href={`${SCAN_URL}${trxHash}`} target="_blank" rel="noopener noreferrer">
             {t('claimModalJackpot.seeOnTronscan')}
           </a>
         </>

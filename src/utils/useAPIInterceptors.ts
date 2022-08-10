@@ -14,7 +14,7 @@ const refreshTokens = async (store: MiddlewareAPI<any, State>) => {
     refreshToken,
   } = store.getState().nftMarket;
 
-  const { address } = store.getState().tron;
+  const { address } = store.getState().wallet;
 
   const res = await authApi.post<NftMarketCheckSignRes>(marketURL.AUTH.REFRESH, {
     tronWalletAddress: address,

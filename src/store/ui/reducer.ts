@@ -1,12 +1,12 @@
 import type { UIState } from 'types/store/ui';
-import { TronActionTypes } from 'store/tron/actionTypes';
 import { MeActionTypes } from 'store/me/actionTypes';
 import { RequestStatus } from 'appConstants';
 import type { UIAction } from './actions';
+import { WalletActionType } from '../wallet/actionTypes';
 
 const initialState: UIState = {
-  [TronActionTypes.CONNECT]: RequestStatus.INIT,
-  [TronActionTypes.LOGOUT]: RequestStatus.INIT,
+  [WalletActionType.CONNECT]: RequestStatus.INIT,
+  [WalletActionType.DISCONNECT]: RequestStatus.INIT,
 
   [MeActionTypes.CONFIRM_EMAIL]: RequestStatus.INIT,
 };

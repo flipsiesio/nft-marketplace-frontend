@@ -2,9 +2,7 @@ import React, { FC, useCallback, useEffect } from 'react';
 import {
   Button, Icon, InfoModal, NftArtwork, Text,
 } from 'components';
-import {
-  useConnectWallet, useShallowSelector, useToggle,
-} from 'hooks';
+import { useConnectWallet, useShallowSelector, useToggle } from 'hooks';
 import { MintModal } from 'containers/MintModal';
 import { useTranslation } from 'react-i18next';
 import KingOfHearts from 'assets/img/nft/KingOfHearts.svg';
@@ -15,21 +13,20 @@ import { flipsiesGameUrl } from 'appConstants/url';
 import JackOfDiamonds from 'assets/img/nft/JackOfDiamonds.svg';
 import JackOfSpades from 'assets/img/nft/JackOfSpades.svg';
 import JackOfHearts from 'assets/img/nft/JackOfHearts.svg';
-import { TronStatus } from 'appConstants';
-import { tronSelector } from 'store/selectors';
+import { walletSelectors } from 'store/selectors';
 import styles from './styles.module.scss';
 import { history } from '../../utils';
+import { WalletStatus } from '../../store/wallet/types';
 
 const Explore: FC = () => {
   const { t } = useTranslation();
   const { isActive: mintActive, onToggle: toggleMint } = useToggle();
   const { isActive: infoIsActive, onToggle: toggleInfo } = useToggle();
   const { handleConnect } = useConnectWallet();
-  const { status } = useShallowSelector(tronSelector.getState);
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const { status, address } = useShallowSelector(walletSelectors.getState);
 
   const onMintClick = () => {
-    if (status !== TronStatus.ADDRESS_SELECTED) {
+    if (status !== WalletStatus.CONNECTED) {
       handleConnect();
     } else {
       toggleMint();

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Button, Text, MarketNftInteractionModal } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
-import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
+import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
 import styles from '../styles.module.scss';
@@ -19,7 +19,7 @@ const GalleryCardProfile: FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const dispatch = useDispatch();
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
 

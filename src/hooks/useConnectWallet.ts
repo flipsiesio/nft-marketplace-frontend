@@ -1,31 +1,15 @@
-import { useContext, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { useShallowSelector } from 'hooks';
-import { tronSelector } from 'store/selectors';
-import { connectTronAction } from 'store/tron/actions';
-import { ConnectWalletContext } from 'context';
-import { TronStatus } from 'appConstants';
+import { walletConnect } from '../store/wallet/actionCreators';
 
-type ReturnValues = {
-  handleConnect: (toRedirectAfterAuth?: string) => void,
-};
-
-export default function (): ReturnValues {
+export const useConnectWallet = () => {
   const dispatch = useDispatch();
-  const { status } = useShallowSelector(tronSelector.getState);
-  const { handleOpen } = useContext(ConnectWalletContext);
 
-  const handleConnect = useCallback((toRedirectAfterAuth) => {
-    if (status === TronStatus.NOT_AVAILABLE) {
-      handleOpen();
-      return;
-    }
-    if (status === TronStatus.AVAILABLE) {
-      dispatch(connectTronAction({ meta: toRedirectAfterAuth }));
-    }
-  }, [status]);
+  const handleConnect = useCallback(() => {
+    dispatch(walletConnect());
+  }, [dispatch]);
 
   return {
     handleConnect,
   };
-}
+};

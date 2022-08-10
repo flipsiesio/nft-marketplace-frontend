@@ -1,18 +1,19 @@
-import { TronStatus, routes, marketURL } from 'appConstants';
+import { marketURL, routes } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import React, { useEffect, useState } from 'react';
-import { nftMarketSelector, tronSelector } from 'store/selectors';
+import { nftMarketSelector, walletSelectors } from 'store/selectors';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Text } from '../components';
 import { jackpotApi } from '../store/api';
 import { JackpotIssue } from '../types';
+import { WalletStatus } from '../store/wallet/types';
 
 export const useJackpot = () => {
   const { t } = useTranslation();
   const accessToken = useShallowSelector(nftMarketSelector.getProp('accessToken'));
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
-  const { status } = useShallowSelector(tronSelector.getState);
+  const { status } = useShallowSelector(walletSelectors.getState);
   const [requestIds, setRequestIds] = useState<string[]>([]);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const useJackpot = () => {
   useEffect(() => {
     jackpotApi.defaults.headers.Authorization = `Bearer ${accessToken}`;
 
-    if (status === TronStatus.ADDRESS_SELECTED && isAuth) {
+    if (status === WalletStatus.CONNECTED && isAuth) {
       jackpotApi.get<JackpotIssue>(marketURL.JACKPOT.ISSUED).then((res) => {
         const { jackpots } = res.data;
         if (jackpots.length === 0) return;

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { getTronContract } from 'utils/tronHelpers';
 import { nftMarketMintNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { tronSelector } from '../../selectors';
+import { walletSelectors } from '../../selectors';
 import { simpleErrorHandler } from '../../../utils';
 
 function* nftMarketMintNowSaga(
@@ -14,7 +14,7 @@ function* nftMarketMintNowSaga(
 ) {
   try {
     yield put(apiActions.request(type));
-    const from: string = yield select(tronSelector.getProp('address'));
+    const from: string = yield select(walletSelectors.getProp('address'));
     const contract =
       yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
     const nftPrice = yield contract.price().call();

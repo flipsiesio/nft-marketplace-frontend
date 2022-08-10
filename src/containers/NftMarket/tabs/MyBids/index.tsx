@@ -13,7 +13,7 @@ import {
   Button, NotActiveCardIcon, Pagination, Table, Text, Link,
 } from '../../../../components';
 import { useShallowSelector, useTabHandlers } from '../../../../hooks';
-import { nftMarketSelector, tronSelector } from '../../../../store/selectors';
+import { nftMarketSelector, walletSelectors } from '../../../../store/selectors';
 import {
   nftMarketCancelBidAction,
   nftMarketGetMyBidsAction, nftMarketSelectProfileAction,
@@ -26,7 +26,7 @@ import { MyBidsCardData, NftReqDto, TableRowProps } from '../../../../types';
 type PriceProps = Pick<MyBidsCardData, 'bids'>;
 
 const Price: FC<PriceProps> = ({ bids }) => {
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const price = useMemo(() => {
     return Object
       .entries(bids)
@@ -49,7 +49,7 @@ const Price: FC<PriceProps> = ({ bids }) => {
 type DateColProps = Pick<MyBidsCardData, 'bids'>;
 
 const DateCol: FC<DateColProps> = ({ bids }) => {
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const date = useMemo(() => {
     const filteredBids = Object
       .entries(bids)

@@ -1,8 +1,9 @@
-import { Network, NETWORK_URL } from 'appConstants';
+import { Network, networkChains } from 'appConstants';
 
-function getNetworkName(url?: string): Network | null {
-  const target = (Object.keys(NETWORK_URL) as Network[]).find((key) => NETWORK_URL[key] === url);
+export const getNetworkName = (chainId?: string): Network | null => {
+  const target = (Object.keys(networkChains) as Network[])
+    .find((key) => networkChains[key] === chainId);
   return target || null;
-}
+};
 
 export default getNetworkName;

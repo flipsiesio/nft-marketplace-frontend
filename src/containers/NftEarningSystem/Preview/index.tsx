@@ -5,9 +5,9 @@ import Logo from 'components/Logo';
 import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 import { useShallowSelector } from '../../../hooks';
-import { tronSelector } from '../../../store/selectors';
-import { TronStatus } from '../../../appConstants';
+import { walletSelectors } from '../../../store/selectors';
 import { Text } from '../../../components';
+import { WalletStatus } from '../../../store/wallet/types';
 
 interface PreviewProps {
   classNameContainer?: string,
@@ -17,7 +17,7 @@ interface PreviewProps {
 const Preview:FC<PreviewProps> = ({
   classNameContainer, imageClassName, onClickPlay,
 }) => {
-  const status = useShallowSelector(tronSelector.getProp('status'));
+  const status = useShallowSelector(walletSelectors.getProp('status'));
   const { t } = useTranslation();
   return (
     <section className={cx(styles.preview__container, classNameContainer)}>
@@ -33,7 +33,7 @@ const Preview:FC<PreviewProps> = ({
       >
         {t('nftSystemEarn.playNow')}
       </Button>
-      {status !== TronStatus.ADDRESS_SELECTED && (
+      {status !== WalletStatus.CONNECTED && (
         <Text className={styles.preview__login_label}>
           Please
           &nbsp;

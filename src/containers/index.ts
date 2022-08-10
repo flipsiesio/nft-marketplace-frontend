@@ -9,7 +9,6 @@ export * from './NftMarket';
 export * from './MarketFilterModal';
 export * from './FlipsiesNft';
 export * from './MintModal';
-export * from './ClaimJackpotModal';
 export * from './Explore';
 export * from './CardHistory';
 export * from './PutOnSaleModal';

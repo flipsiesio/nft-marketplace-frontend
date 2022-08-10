@@ -1,13 +1,14 @@
-import { TokenOptions, TronStatus } from 'appConstants';
+import { TokenOptions } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { useEffect, useState } from 'react';
-import { tronSelector } from 'store/selectors';
+import { walletSelectors } from 'store/selectors';
 import { fromSunToNumber, getTronContract } from 'utils';
+import { WalletStatus } from '../store/wallet/types';
 
 export const useMintInfo = () => {
   const [price, setPrice] = useState(0);
   const [avaliableNftAmount, setAvaliableNftAmount] = useState(0);
-  const { status, address } = useShallowSelector(tronSelector.getState);
+  const { status, address } = useShallowSelector(walletSelectors.getState);
 
   useEffect(() => {
     const init = async () => {
@@ -33,7 +34,7 @@ export const useMintInfo = () => {
       setAvaliableNftAmount(amount);
     };
 
-    if (status === TronStatus.ADDRESS_SELECTED) {
+    if (status === WalletStatus.CONNECTED) {
       init();
     }
   }, [status, address]);

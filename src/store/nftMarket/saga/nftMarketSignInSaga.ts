@@ -4,15 +4,14 @@ import {
 import apiActions from 'store/api/actions';
 import { authApiSaga } from 'store/api';
 import { ApiResponse, NftMarketCheckSignRes } from 'types';
-import {
-  marketURL, routes, TronStatus, ERRORS,
-} from 'appConstants';
+import { ERRORS, marketURL, routes } from 'appConstants';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import { nftMarketSetStateAction, nftMarketSignInAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { nftMarketSelector, tronSelector } from '../../selectors';
+import { nftMarketSelector, walletSelectors } from '../../selectors';
 import { history } from '../../../utils';
+import { WalletStatus } from '../../wallet/types';
 
 function* checkSign(msg: string, address: string) {
   const res: ApiResponse<NftMarketCheckSignRes> = yield call(authApiSaga, {
@@ -51,11 +50,11 @@ const signMessage = async (str: string) => {
 function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSignInAction>) {
   try {
     yield put(apiActions.request(type));
-    const tronStatus: TronStatus = yield select(tronSelector.getProp('status'));
-    const address: string = yield select(tronSelector.getProp('address'));
+    const status: WalletStatus = yield select(walletSelectors.getProp('status'));
+    const address: string = yield select(walletSelectors.getProp('address'));
     const signedMsg: string = yield select(nftMarketSelector.getProp('signedMsg'));
 
-    if (tronStatus !== TronStatus.ADDRESS_SELECTED) {
+    if (status !== WalletStatus.CONNECTED) {
       toast.error(ERRORS.signInToTroLink);
       return;
     }

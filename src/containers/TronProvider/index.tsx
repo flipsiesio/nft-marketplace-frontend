@@ -1,18 +1,14 @@
-import React, { PropsWithChildren, FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { useShallowSelector } from 'hooks';
-import { uiSelector } from 'store/selectors';
-import { TronActionTypes } from 'store/tron/actionTypes';
+import { walletSelectors } from 'store/selectors';
 import { FullPreloader } from 'containers';
-import { RequestStatus } from 'appConstants';
+import { WalletStatus } from '../../store/wallet/types';
 
 const TronProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const tronStatus = useShallowSelector(uiSelector.getProp(TronActionTypes.CONNECT));
+  const status = useShallowSelector(walletSelectors.getProp('status'));
   return (
     <FullPreloader
-      isLoading={[
-        RequestStatus.REQUEST,
-        RequestStatus.INIT,
-      ].includes(tronStatus)}
+      isLoading={status === WalletStatus.LOADING}
     >
       {children}
     </FullPreloader>

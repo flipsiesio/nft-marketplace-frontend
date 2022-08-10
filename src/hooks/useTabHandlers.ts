@@ -6,12 +6,12 @@ import {
   fromSunToNumber, getBidPrice, getMyBidPrice, getTrxFromSun,
 } from '../utils';
 import { useShallowSelector } from './index';
-import { tronSelector } from '../store/selectors';
+import { walletSelectors } from '../store/selectors';
 
 export const useTabHandlers = (url: string) => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
 
   const updatePage = useCallback((dto: NftReqDto) => {
     marketClient.get<number>(url, {

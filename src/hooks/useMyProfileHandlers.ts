@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { marketURL } from '../appConstants';
 import { marketClient } from '../store/api';
-import { tronSelector } from '../store/selectors';
+import { walletSelectors } from '../store/selectors';
 import { BidCardState, SaleCardState } from '../types';
 import { fromSunToNumber, getBidPrice, getMyBidPrice } from '../utils';
 
@@ -18,7 +18,7 @@ const getState = <T>(url:string, id: string) => {
 
 export const useMyProfileHandlers = () => {
   const location = useLocation();
-  const address = useSelector(tronSelector.getProp('address'));
+  const address = useSelector(walletSelectors.getProp('address'));
   const [isSale, setIsSale] = useState(false);
   const [isBid, setIsBid] = useState(false);
   const [salePrice, setSalePrice] = useState('0');

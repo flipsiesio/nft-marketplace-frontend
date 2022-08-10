@@ -1,11 +1,54 @@
 export enum Network {
-  mainnet = 'Mainnet',
-  nile = 'Nile',
+  BSCMain = 'BSCMain',
+  BSCTest = 'BSCTest',
 }
 
-export const NETWORK_URL: Record<Network, string> = {
-  [Network.mainnet]: 'https://api.trongrid.io',
-  [Network.nile]: 'https://api.nileex.io',
+export const networkChains: Record<Network, string> = {
+  [Network.BSCMain]: '0x38',
+  [Network.BSCTest]: '0x61',
 };
 
-export const TRONSCAN_URL = 'https://nile.tronscan.org/#/transaction/';
+type Chain = {
+  chainId: string,
+  chainName: string,
+  nativeCurrency: {
+    name: string,
+    symbol: string,
+    decimals: number,
+  },
+  rpcUrls: string[],
+  blockExplorerUrls: string[],
+};
+
+type Chains = Pick<Record<Network, Chain>,
+Network.BSCMain | Network.BSCTest>;
+
+export const chains: Chains = {
+  [Network.BSCTest]: {
+    chainId: networkChains.BSCTest,
+    chainName: 'BSC Testnet',
+    nativeCurrency:
+      {
+        name: 'BNB',
+        symbol: 'BNB',
+        decimals: 18,
+      },
+    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
+    blockExplorerUrls: ['https://explorer.binance.org/smart-testnet'],
+  },
+  [Network.BSCMain]: {
+    chainId: networkChains.BSCMain,
+    chainName: 'Binance Smart Chain',
+    nativeCurrency: {
+      name: 'BNB',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    rpcUrls: ['https://bsc-dataseed.binance.org/'],
+    blockExplorerUrls: ['https://bscscan.com'],
+  },
+};
+
+export const SCAN_URL = 'https://etherscan.io/tx/';
+
+export const BSC_NETWORKS = [networkChains.BSCMain, networkChains.BSCTest];

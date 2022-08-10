@@ -1,6 +1,6 @@
 import detectEthereumProvider from '@metamask/detect-provider';
-import { networkChains } from 'appConstants';
 import { MetamaskRequestMethod } from 'store/wallet/types';
+import { networkChains } from '../appConstants';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Provider = any;
