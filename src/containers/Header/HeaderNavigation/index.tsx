@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import HeaderLink from '../HeaderLink';
 import HeaderLangSwitcher from '../HeaderLangSwitcher';
 import styles from './styles.module.scss';
-import { nftMarketSignInAction } from '../../../store/nftMarket/actions';
 import { WalletStatus } from '../../../store/wallet/types';
 
 type Props = {
@@ -31,15 +30,7 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
 
   const nftMarketHandler = useCallback<MouseEventHandler>((e) => {
     e.preventDefault();
-    if (status === WalletStatus.CONNECTED) {
-      dispatch(nftMarketSignInAction(() => {
-        history.push(routes.nftMarket.root);
-      }));
-    }
-    //
-    // if (status !== WalletStatus.CONNECTED) {
-    //   handleConnect(routes.nftMarket.root);
-    // }
+    handleConnect();
   }, [dispatch, history, status, handleConnect, nftMarketIsAuth]);
 
   return (

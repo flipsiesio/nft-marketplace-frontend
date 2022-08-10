@@ -1,11 +1,11 @@
 export enum Network {
-  BSCMain = 'BSCMain',
-  BSCTest = 'BSCTest',
+  BitTorrentMain = 'BitTorrentMain',
+  BitTorrentTest = 'BitTorrentTest',
 }
 
 export const networkChains: Record<Network, string> = {
-  [Network.BSCMain]: '0x38',
-  [Network.BSCTest]: '0x61',
+  [Network.BitTorrentMain]: '0xc7',
+  [Network.BitTorrentTest]: '0x405',
 };
 
 type Chain = {
@@ -21,34 +21,32 @@ type Chain = {
 };
 
 type Chains = Pick<Record<Network, Chain>,
-Network.BSCMain | Network.BSCTest>;
+Network.BitTorrentTest | Network.BitTorrentMain>;
 
 export const chains: Chains = {
-  [Network.BSCTest]: {
-    chainId: networkChains.BSCTest,
-    chainName: 'BSC Testnet',
+  [Network.BitTorrentMain]: {
+    chainId: networkChains.BitTorrentMain,
+    chainName: 'BitTorrent Chain Mainnet',
     nativeCurrency:
       {
-        name: 'BNB',
-        symbol: 'BNB',
+        name: 'BTT',
+        symbol: 'BTT',
         decimals: 18,
       },
-    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
-    blockExplorerUrls: ['https://explorer.binance.org/smart-testnet'],
+    rpcUrls: ['https://rpc.bt.io'],
+    blockExplorerUrls: ['https://bttcscan.com/'],
   },
-  [Network.BSCMain]: {
-    chainId: networkChains.BSCMain,
-    chainName: 'Binance Smart Chain',
+  [Network.BitTorrentTest]: {
+    chainId: networkChains.BitTorrentTest,
+    chainName: 'BitTorrent Chain Donau',
     nativeCurrency: {
-      name: 'BNB',
-      symbol: 'BNB',
+      name: 'BTT',
+      symbol: 'BTT',
       decimals: 18,
     },
-    rpcUrls: ['https://bsc-dataseed.binance.org/'],
-    blockExplorerUrls: ['https://bscscan.com'],
+    rpcUrls: ['https://pre-rpc.bt.io/'],
+    blockExplorerUrls: ['https://testnet.bttcscan.com/'],
   },
 };
 
 export const SCAN_URL = 'https://etherscan.io/tx/';
-
-export const BSC_NETWORKS = [networkChains.BSCMain, networkChains.BSCTest];
