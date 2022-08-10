@@ -8,7 +8,7 @@ import { SelectOption } from 'types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { routes, SCAN_URL } from 'appConstants';
+import { routes, scanTransactionUrl } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { nftMarketMintNowAction, nftMarketSignInAction } from '../../store/nftMarket/actions';
@@ -119,7 +119,12 @@ const MintModal: FC<Props> = ({
           >
             {t('claimModalJackpot.seeInGallery')}
           </Button>
-          <a className={styles.link} href={`${SCAN_URL}${trxHash}`} target="_blank" rel="noopener noreferrer">
+          <a
+            className={styles.link}
+            href={`${scanTransactionUrl}${trxHash}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {t('claimModalJackpot.seeOnTronscan')}
           </a>
         </>

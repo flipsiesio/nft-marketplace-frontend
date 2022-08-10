@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, TronProvider, Content } from 'containers';
-import ConnectWalletProvider from 'context/ConnectWalletProvider';
 import { useConnectWallet, useJackpot } from 'hooks';
 
 const App = () => {
@@ -13,19 +12,13 @@ const App = () => {
     connectOnStart();
   }, [connectOnStart]);
 
-  // useEffect(() => {
-  //   dispatch(connectTronAction({}));
-  // }, []);
-
   return (
-    <ConnectWalletProvider>
-      <TronProvider>
-        <ToastContainer hideProgressBar />
-        <Content>
-          <Routes />
-        </Content>
-      </TronProvider>
-    </ConnectWalletProvider>
+    <TronProvider>
+      <ToastContainer hideProgressBar />
+      <Content>
+        <Routes />
+      </Content>
+    </TronProvider>
   );
 };
 

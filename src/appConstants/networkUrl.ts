@@ -48,5 +48,3 @@ export const chains: Chains = {
     blockExplorerUrls: ['https://testnet.bttcscan.com/'],
   },
 };
-
-export const SCAN_URL = 'https://etherscan.io/tx/';
