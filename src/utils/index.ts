@@ -9,3 +9,4 @@ export * from './getBidPriceHelpers';
 export * from './shortenPhrase';
 export * from './usePrice';
 export * from './simpleErrorHandler';
+export * from './metamask';

@@ -3,6 +3,7 @@ import type { MeState } from './me';
 import type { UIState } from './ui';
 import type { TronState } from './tron';
 import { NftMarketState } from './nftMarket';
+import { WalletState } from '../../store/wallet/types';
 
 export * from './me';
 export * from './ui';
@@ -17,4 +18,5 @@ export type State = {
   tron: TronState,
   ui: UIState;
   nftMarket: NftMarketState,
+  wallet: WalletState
 };
