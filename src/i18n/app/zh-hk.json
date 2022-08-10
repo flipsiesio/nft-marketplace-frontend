@@ -2,6 +2,7 @@
     "header": {
         "rewardSystem": "獎勵系統",
         "faq": "常見問題",
+        "nftEarningSystem": "NFT 收益系統",
         "howToPlay": "遊戲方法",
         "wallet": "錢包",
         "tronlink": "TronLink",
@@ -171,6 +172,41 @@
             "content": "<b>Tron</b> 是去中心化的娛樂和內容共享平台，使用區塊鏈和點對點 (P2P) 技術。<br/><br/><b>頻寬</b>: 擁有 TRON 頻寬，就能夠在 TRON 主網絡上執行交易，無需繳付任何能量費。用於分散式應用程式（例如 Flipsies.io）時，擁有足夠的頻寬至關重要。你可在這裡執行數次金額較小的交易，無需擔心在過程中需要使用 TRX 代幣。頻寬還會用於確保你是 TRON 社區的活躍成員，讓你能夠投票選出超級代表。<br/><br/><b>能量</b>: 這是用於在 TRON 網絡上處理智能合約的特別資源。智能合約會消耗頻寬及能源，因此在轉移代幣時，請確保兩種資源都儲備充足。<br/><br/><b>凍結</b>是 Tron 區塊鏈的獨特機制。你可凍結 TRX 並藉此獲得某些利益。執行此項操作後，你的 Tron 仍然會屬於你，但你在 3 日之內無法將其傳送至任何地方。凍結類似於將現金存入儲蓄戶口：錢在那裡，但你無法使用。<br/>凍結 TRX 時，你會獲得數項利益。<br/> 首先，你可選擇以凍結 Tron 的方式獲取頻寬點 (BP) 或能量點 (EP)。此外，每凍結一個 TRX，無論你選擇上述哪種資源，你都會獲得 1 個 Tron Power。<br/> 首先，你可選擇以凍結 Tron 的方式獲取<i>頻寬點</i> (BP)or <i>能量點</i> (EP). 此外，每凍結一個 TRX，無論你選擇上述哪種資源，你都會獲得 1 個 <i>Tron Power</i>。"
         }
     },
+    "nftSystemEarn": {
+        "playNow": "Play now",
+        "buyback": {
+          "title": "Buyback system:",
+          "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
+          "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
+          "description2": "100% payout for Jackpot any time guarantee"
+        },
+        "stacking": {
+          "title": "Staking/holding system:",
+          "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
+          "description1": "The more and longer you are nfts owner the more rewards you will get",
+          "description2": "The higher the rarity score your tokens have the more rewards you will get",
+          "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
+          "description4": "Starting rates for owning nfts.",
+          "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
+          "description6": "You can claim rewards only every 7 days from token purchasing."
+        },
+        "allTokens": {
+          "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
+          "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+        },
+        "formula": {
+          "beforeTitle": "Here is the formula for total rate calculation for one group:",
+          "title": "(CurrentTimeRate + (T * B)  ) + R",
+          "description1": "*Will also be getting cashback as additional rewards",
+          "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
+          "description3": "Additional rewards for the number of tokens",
+          "description4": "The sum of all tokens rarity in one group",
+          "description5": "*Note that you will be also getting cashback as additional rewards",
+          "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
+          "description7": "B : additional rewards for the number of tokens.",
+          "description8": "R: the sum of all tokens rarity in one group"
+        }
+      },
     "footer": {
         "text": "Flipsies 提供網上賭博體驗，你必須年滿所在國家/地區的博彩歲數方可參加。在你的所在地區，假如賭博、彩票或網上賭博屬非法行為，你就不得進入本網站。 對於您所在地區執行的任何當地法律，Flipsies概不負責。 Flipsies遊戲基於公平，透明和有趣。 玩家應意識到這些風險，並據此進行管理。 請賭博並負責任地玩遊戲。",
         "link": "flipsies.io",

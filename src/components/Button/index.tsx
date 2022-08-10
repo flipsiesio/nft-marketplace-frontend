@@ -10,8 +10,8 @@ import styles from './styles.module.scss';
 
 type Props = {
   type?: 'submit' | 'button',
-  theme?: 'primary' | 'play' | 'success' | 'blue',
-  size?: 'small' | 'medium' | 'big' | 'tiny',
+  theme?: 'primary' | 'play' | 'success' | 'blue' | 'playNow',
+  size?: 'small' | 'medium' | 'big' | 'tiny' | 'huge',
   disabled?: boolean,
   bold?: boolean,
   use?: 'default' | 'rounded',

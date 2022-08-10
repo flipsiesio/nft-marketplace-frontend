@@ -9,7 +9,9 @@ import {
 } from '../../components';
 import styles from './styles.module.scss';
 import {
-  HistoryData, NftDto, TabItem, TableRowProps,
+  HistoryData,
+  NftDto, TabItem, TableRowProps, BidCardState,
+  BidData,
 } from '../../types';
 import { marketClient } from '../../store/api';
 import { marketURL, PAGE_ITEM_LIMIT, scanTransactionUrl } from '../../appConstants';
@@ -41,11 +43,17 @@ const eventNames: EventNames = {
   OrderFilled: 'sold',
 };
 
-type SaleAndMintData = {
-  count: number
-  entities: {
-    [key: number]: HistoryData
-  }
+const getBidData = (id: number, page: number, param?: AxiosRequestConfig['params']) => {
+  return marketClient.get<BidCardState>(marketURL.MARKETPLACE.GET_ACTUAL_BIDS, {
+    params: {
+      ids: [id],
+      skip: page * PAGE_ITEM_LIMIT,
+      take: PAGE_ITEM_LIMIT,
+      byOrder: false,
+      order: 'ASC',
+      ...param,
+    },
+  });
 };
 
 const getHistory = (url: string, id: number, page: number, param?: AxiosRequestConfig['params']) => {
@@ -146,7 +154,8 @@ export const CardHistory: FC<Props> = ({
   disabled,
   showBid = true,
 }) => {
-  const [bidData, setBidData] = useState<HistoryData[]>([]);
+  const [bids, setBids] = useState<BidData[]>([]);
+  const [bidCard, setBidCard] = useState<BidCardState>();
   const [tradingData, setTradingData] = useState<HistoryData[]>([]);
   const [bidCount, setBidCount] = useState(0);
   const [tradingCount, setTradingCount] = useState(0);
@@ -158,17 +167,17 @@ export const CardHistory: FC<Props> = ({
     {
       Header: 'Number',
       accessor: 'id',
-      Cell: ({ row: { index } }: TableRowProps<HistoryData>) => (
+      Cell: ({ row: { index } }: TableRowProps<BidData>) => (
         <Text>{index + 1}</Text>
       ),
     },
     {
       Header: 'Bid',
       accessor: 'amount',
-      Cell: ({ row: { original: { amount } } }: TableRowProps<HistoryData>) => (
+      Cell: ({ row: { original: { price } } }: TableRowProps<BidData>) => (
         <div className={styles.flex}>
-          <Text title={amount === null ? 0 : fromSunToNumber(`${amount}`)} className={styles.priceCol}>
-            {amount === null ? 0 : fromSunToNumber(`${amount}`)}
+          <Text title={price === null ? 0 : fromSunToNumber(`${price}`)} className={styles.priceCol}>
+            {price === null ? 0 : fromSunToNumber(`${price}`)}
           </Text>
           &nbsp;
           <Text className={styles.pink}>TRX</Text>
@@ -178,24 +187,24 @@ export const CardHistory: FC<Props> = ({
     {
       Header: 'Address',
       accessor: 'buyer',
-      Cell: ({ row: { original: { buyer } } }: TableRowProps<HistoryData>) => (
+      Cell: ({ row: { original: { buyer } } }: TableRowProps<BidData>) => (
         <Text>{buyer}</Text>
       ),
     },
     {
       Header: '',
       accessor: 'orderIndex',
-      Cell: ({ row: { original: { buyer, orderIndex, amount } } }: TableRowProps<HistoryData>) => (
+      Cell: ({ row: { original: { buyer, price } } }: TableRowProps<BidData>) => (
         <>
-          {actualOrderId === orderIndex && isMyGallery && (
+          {actualOrderId === bidCard?.orderIndex && isMyGallery && (
             <Button
               disabled={disabled}
               className={styles.acceptButton}
               onClick={onAcceptBidClick
                 ? () => onAcceptBidClick({
-                  orderId: `${orderIndex}`,
+                  orderId: `${bidCard?.orderIndex}`,
                   payerAddress: buyer || '',
-                  price: amount,
+                  price,
                 })
                 : undefined}
             >
@@ -236,7 +245,7 @@ export const CardHistory: FC<Props> = ({
             <Table
               className={styles.table}
               columns={bidCol}
-              data={bidData}
+              data={bids}
             />
             <Pagination
               page={bidPage}
@@ -249,39 +258,36 @@ export const CardHistory: FC<Props> = ({
     }
 
     return tabs;
-  }, [t, bidData, tradingData, bidCount, bidPage, tradingCount, tradingPage, bidCol, showBid]);
+  }, [
+    t,
+    bids, bidCard,
+    tradingData,
+    bidCount, bidPage,
+    tradingCount,
+    tradingPage,
+    bidCol,
+    showBid,
+  ]);
 
   useEffect(() => {
     if (!showBid) return;
-    getHistory(
-      marketURL.MARKETPLACE.GET_BID_HISTORY,
+    getBidData(
       selectedNft.cardId,
       bidPage,
       { name: ['Bid'] },
     )
       .then((res) => {
-        setBidData(res.data);
+        setBids(Object.values(res.data.bids));
+        setBidCard(res.data);
       });
   }, [selectedNft, bidPage, showBid]);
 
   useEffect(() => {
-    marketClient.get<SaleAndMintData>(marketURL.MARKETPLACE.GET_SALE_HISTORY, {
-      params: {
-        ids: [selectedNft.cardId],
-        skip: tradingPage * PAGE_ITEM_LIMIT,
-        take: PAGE_ITEM_LIMIT,
-        byOrder: false,
-        order: 'ASC',
-      },
-    }).then((data) => {
-      setTradingData(Object.values(data.data.entities));
-      setTradingCount(data.data.count);
-    });
-
-    // getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId, tradingPage)
-    //   .then((res) => {
-    //     setTradingData(res.data);
-    //   });
+    if (!selectedNft) return;
+    getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, selectedNft.cardId, tradingPage)
+      .then((res) => {
+        setTradingData(res.data);
+      });
   }, [selectedNft, tradingPage]);
 
   useEffect(() => {
@@ -294,9 +300,9 @@ export const CardHistory: FC<Props> = ({
       setBidCount(res.data);
     });
 
-    // getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, cardId).then((res) => {
-    //   setTradingCount(res.data);
-    // });
+    getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, selectedNft.cardId).then((res) => {
+      setTradingCount(res.data);
+    });
   }, [selectedNft, showBid]);
 
   return (

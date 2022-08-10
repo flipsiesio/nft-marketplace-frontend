@@ -93,12 +93,12 @@ const CardProfile: FC<Props> = ({
           <Text className={styles.bodyLabel}>
             {t('nftMarket.owner')}
             &nbsp;
-            <Link
+            <a
+              href={`${scanAddressUrl}${owner || selectedNft.owner}`}
               onClick={ownerClick}
-              to={`${scanAddressUrl}${owner || selectedNft.owner}`}
               className={styles.primary}
             >{cardOwner}
-            </Link>
+            </a>
           </Text>
         </div>
         <div className={styles.info}>

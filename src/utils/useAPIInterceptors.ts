@@ -10,6 +10,8 @@ import { nftMarketSetStateAction, nftMarketSignOutAction } from '../store/nftMar
 const refreshTokens = async (store: MiddlewareAPI<any, State>) => {
   const {
     signedMsg,
+    accessToken,
+    refreshToken,
   } = store.getState().nftMarket;
 
   const { address } = store.getState().tron;
@@ -17,6 +19,8 @@ const refreshTokens = async (store: MiddlewareAPI<any, State>) => {
   const res = await authApi.post<NftMarketCheckSignRes>(marketURL.AUTH.REFRESH, {
     tronWalletAddress: address,
     signedMsg,
+    accessToken,
+    refreshToken,
   });
 
   store.dispatch(nftMarketSetStateAction({
@@ -69,7 +73,7 @@ export const useAPIInterceptors = (store: MiddlewareAPI<any, State>) => {
 
       try {
         // try to refresh token
-        originalRequest.headers.access_token = await refreshTokens(store);
+        originalRequest.headers.Authorization = `Bearer ${await refreshTokens(store)}`;
         return await marketClient(originalRequest);
       } catch (e) {
         store.dispatch(nftMarketSignOutAction());

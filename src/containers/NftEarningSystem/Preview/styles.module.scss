@@ -1,0 +1,46 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+
+
+.preview__container {
+    @include flexbox();
+    flex-direction: column;
+
+    & .preview__image_wrapper {
+        max-width: 1044px;
+        width: 100%;
+        height: 60vh;
+        position: relative;
+        margin-bottom: 15px;
+
+        & .preview__image {
+            display: block;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            -webkit-transform: translate(50%,-50%);
+            transform: translate(50%,-50%);
+            z-index: 1;
+            pointer-events: none;
+            height: auto;
+        }
+    }
+}
+
+.preview__button {
+    z-index: 1;
+    position: relative;
+}
+
+.preview__login_label {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    font-weight: bold;
+}
+
+.preview__button_login {
+    color: $successColor;
+    font-weight: bold;
+}

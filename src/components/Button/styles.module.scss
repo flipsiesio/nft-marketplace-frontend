@@ -42,6 +42,15 @@ $disabledColor: #4F4F4F;
   padding: 14px 15px;
   min-width: 220px;
   font-size: 24px;
+
+}
+
+.huge {
+  padding: 14px 15px;
+  min-width: 220px;
+  @include title;
+  font-size: 24px;
+  line-height: 29px;
 }
 
 // themes
@@ -61,6 +70,24 @@ $disabledColor: #4F4F4F;
   background-color: $successColor;
   color: white;
   border-color: $successColor;
+
+  &.disabled {
+    background-color: $disabledColor;
+  }
+
+  @include for-tablet {
+    &:not(.disabled):hover {
+      background-color: black;
+      color: white;
+      border-color: black;
+    }
+  }
+}
+
+.playNow {
+  background: $secondaryColorGradient;
+  color: white;
+  border-color: transparent;
 
   &.disabled {
     background-color: $disabledColor;

@@ -23,7 +23,10 @@ const Content: FC<PropsWithChildren<Props>> = ({
         withLogo={withHeaderLogo}
         pathname={pathname}
       />
-      <main className={cx(styles.main, className)}>
+      <main className={cx(styles.main,
+        routes.nftEarningSystem.root.includes(pathname) && styles.main__nft_system,
+        className)}
+      >
         {children}
         <div className={styles.bg} />
       </main>

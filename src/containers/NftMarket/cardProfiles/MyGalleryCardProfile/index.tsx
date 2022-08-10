@@ -51,10 +51,6 @@ const MyGalleryCardProfile: FC = () => {
     if (id) dispatch(nftMarketGetProfileAction(id));
   }, [id]);
 
-  const successHandler = useCallback(() => {
-    if (id) dispatch(nftMarketGetProfileAction(id));
-  }, [id]);
-
   const {
     isActive: putOnActive,
     onToggle: togglePutOn,
@@ -74,6 +70,12 @@ const MyGalleryCardProfile: FC = () => {
     isActive: acceptBidActive,
     onToggle: acceptBidToggle,
   } = useToggle();
+
+  const successHandler = useCallback(() => {
+    if (id) dispatch(nftMarketGetProfileAction(id));
+    if (saleDelistActive) saleToggleDelist();
+    if (bidDelistActive) bidToggleDelist();
+  }, [id, saleDelistActive, bidDelistActive]);
 
   const onAcceptBidClick = useCallback((data: AcceptBidData) => {
     setAcceptBidData(data);
@@ -106,12 +108,13 @@ const MyGalleryCardProfile: FC = () => {
         orderId: selectedNft.orderId,
       }, successHandler));
     };
-  }, [dispatch, selectedNft]);
+  }, [dispatch, selectedNft, successHandler]);
 
   return (
     <>
       {selectedNft && (
         <CardProfile
+          owner={selectedNft.owner}
           showBid={isBid}
           disabled={isWait}
           actualOrderId={actualBidOrderId}
@@ -185,6 +188,7 @@ const MyGalleryCardProfile: FC = () => {
           marketType={actionType}
           isOpen={putOnActive}
           onToggle={togglePutOn}
+          id={id}
         />
       )}
       <DelistModal

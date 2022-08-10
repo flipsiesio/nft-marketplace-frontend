@@ -2,6 +2,7 @@
   "header": {
     "rewardSystem": "Реферальная программа",
     "faq": "FAQ",
+    "nftEarningSystem": "Система заработка NFT",
     "howToPlay": "Как играть?",
     "wallet": "Кошелек",
     "tronlink": "TronLink",
@@ -169,6 +170,41 @@
     "question9": {
       "title": "О TRON",
       "content": "<b>Tron</b> представляет собой децентрализованную платформу для развлечений и совместного использования контента, использующую технологию блокчейн и peer-to-peer (P2P).<br/><br/><b>Bandwidth</b>: Наличие  bandwidth TRON позволяет осуществлять операции в главной сети TRON без уплаты каких-либо платежей за газ. Наличие достаточного количества  bandwidth имеет решающее значение при использовании  dApps, таких как Flipsies.io, где Вы, возможно, захотите совершить несколько небольших транзакций, не беспокоясь об использовании в процессе работы  токенов TRX. Bandwith также используется для закрепления себя в качестве активного члена сообщества TRON, позволяя вам голосовать за суперпредставителей.<br/><br/><b>Energy</b>: Это специальный ресурс, используемый для обработки смарт-контрактов в сети TRON. Смарт контракты потребляют энергию в дополнение к bandwith, поэтому убедитесь, что у вас достаточно и того, и другого при отправке токенов.<br/><br/><b>Freezing</b> это уникальный механизм в блокчейне TRON. Вы можете заморозить свой TRX, чтобы получить определенные преимущества. Когда вы сделаете это, ваш Tron останется вашим, но вы не сможете отправить его куда-либо в течение 3 дней. Замораживание похоже на зачисление денег на сберегательный счет: деньги там, но вы не можете их потратить.<br/>Когда вы замораживаете свои TRX, есть несколько вещей, которые вы можете получить.<br/> Сначала вам нужно выбрать, хотите ли вы заморозить ваши TRX, чтобы получить либо <i>Bandwidth points</i> (BP), либо <i>Energy Points</i> (EP). Вдобавок ко всему, за каждый замороженный TRX вы получите 1 <i>Tron Power</i> - независимо от того, что из двух вариантов вы выберете."
+    }
+  },
+  "nftSystemEarn": {
+    "playNow": "Play now",
+    "buyback": {
+      "title": "Buyback system:",
+      "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
+      "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
+      "description2": "100% payout for Jackpot any time guarantee"
+    },
+    "stacking": {
+      "title": "Staking/holding system:",
+      "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
+      "description1": "The more and longer you are nfts owner the more rewards you will get",
+      "description2": "The higher the rarity score your tokens have the more rewards you will get",
+      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
+      "description4": "Starting rates for owning nfts.",
+      "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
+      "description6": "You can claim rewards only every 7 days from token purchasing."
+    },
+    "allTokens": {
+      "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
+      "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+    },
+    "formula": {
+      "beforeTitle": "Here is the formula for total rate calculation for one group:",
+      "title": "(CurrentTimeRate + (T * B)  ) + R",
+      "description1": "*Will also be getting cashback as additional rewards",
+      "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
+      "description3": "Additional rewards for the number of tokens",
+      "description4": "The sum of all tokens rarity in one group",
+      "description5": "*Note that you will be also getting cashback as additional rewards",
+      "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
+      "description7": "B : additional rewards for the number of tokens.",
+      "description8": "R: the sum of all tokens rarity in one group"
     }
   },
   "footer": {

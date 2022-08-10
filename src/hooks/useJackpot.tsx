@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { nftMarketSelector, tronSelector } from 'store/selectors';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import { Link, Text } from '../components';
+import { Text } from '../components';
 import { jackpotApi } from '../store/api';
 import { JackpotIssue } from '../types';
 
@@ -55,12 +55,12 @@ export const useJackpot = () => {
               <Text>
                 {t('jackpot.wonJackpot{{id}}', { id: j.tokenId })}
                 &nbsp;
-                <Link
+                <a
                   style={{ color: '#f15566', fontWeight: 'bold' }}
-                  to={`${routes.nftMarket.myGalleryProfile.root}?=id${j.tokenId}`}
+                  href={`${routes.nftMarket.myGalleryProfile.root}?=id${j.tokenId}`}
                 >
                   {t('jackpot.here')}
-                </Link>
+                </a>
               </Text>,
             );
           });

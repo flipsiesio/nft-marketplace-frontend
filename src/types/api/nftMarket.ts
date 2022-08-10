@@ -8,6 +8,7 @@ export enum NftType {
   QUEEN = 'Queen',
   JACK = 'Jack',
   JOKER = 'Joker', // Jokers or One-of-ones
+  RARE = 'Rare',
 }
 
 export enum NftSuit {
@@ -97,13 +98,16 @@ export interface SaleCardState extends CardState {
   price: string
 }
 
+export type BidData = {
+  buyer: string
+  price: number
+  transaction: string
+  timestamp: string
+};
+
 export interface BidCardState extends CardState {
   bids: {
-    [key: string]: {
-      buyer: string
-      price: number
-      transaction: string
-    }
+    [key: string]: BidData
   }
 }
 
@@ -126,6 +130,7 @@ export type CardData = {
   suitFrequency: number,
   state_sale?: SaleCardState | null
   state_bids?: BidCardState | null
+  ownerAddress?: string
 };
 
 export enum MarketType {

@@ -1,5 +1,5 @@
 import React, {
-  FC, useCallback, useEffect, useMemo,
+  FC, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -20,9 +20,14 @@ const GalleryCardProfile: FC = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const address = useShallowSelector(tronSelector.getProp('address'));
-  const balance = useShallowSelector(tronSelector.getProp('balance'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
+
+  const [balance, setBalance] = useState<number>();
+
+  useEffect(() => {
+    window.tronWeb.trx.getBalance(address).then((b) => setBalance(b));
+  }, [address]);
 
   useEffect(() => {
     const search = new URLSearchParams(location.search);
