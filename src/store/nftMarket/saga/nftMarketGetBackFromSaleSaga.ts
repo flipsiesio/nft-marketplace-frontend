@@ -1,10 +1,12 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract, simpleErrorHandler } from 'utils';
+import { simpleErrorHandler } from 'utils';
 import { toast } from 'react-toastify';
+import { Contract, ContractTransaction } from 'ethers';
 import { getBackFromSaleAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { MarketType } from '../../../types';
+import { getNftMarketPlaceContract, getNftSaleContract } from '../../../utils/contracts';
 
 function* nftMarketGetBackFromSaleSaga(
   { type, payload: { marketType, orderId }, callback }: ReturnType<typeof getBackFromSaleAction>,
@@ -16,14 +18,11 @@ function* nftMarketGetBackFromSaleSaga(
   }
   try {
     yield put(apiActions.request(type));
-    const contractName = marketType === MarketType.Auction
-      ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
-      : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
-    const contract =
-      yield getTronContract(contractName);
-    yield contract.getBackFromSale(orderId).send({
-      shouldPollResponse: true,
-    });
+    const contract: Contract = marketType === MarketType.Auction
+      ? yield getNftMarketPlaceContract()
+      : yield getNftSaleContract();
+    const tx: ContractTransaction = yield contract.getBackFromSale(orderId);
+    yield tx.wait();
     yield success();
   } catch (err) {
     if (err.error === 'Cannot find result in solidity node') {

@@ -1,4 +1,6 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, {
+  FC, useCallback, useState,
+} from 'react';
 import {
   Button, Modal, Select, Text,
 } from 'components';
@@ -8,12 +10,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { routes, scanTransactionUrl } from 'appConstants';
 import { useShallowSelector } from 'hooks';
-import { nftMarketSelector, uiSelector, walletSelectors } from 'store/selectors';
-import {
-  nftMarketAcceptBidAction,
-  nftMarketMintNowAction,
-  nftMarketSignInAction,
-} from '../../store/nftMarket/actions';
+import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
+import { nftMarketMintNowAction, nftMarketSignInAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
 import styles from './styles.module.scss';
 
@@ -49,30 +47,13 @@ const MintModal: FC<Props> = ({
 
   const mintHandler = useCallback(() => {
     if (!selectedOption) return;
-    dispatch(nftMarketAcceptBidAction({ orderId: '0', payerAddress: '0x1Ae3F0A9f468c4211d34f9018c24be148FeC9b9d' }));
-    // dispatch(nftMarketApproveAction({
-    //   actionType: MarketType.Auction,
-    //   tokenId: 201,
-    // }, () => {
-    //   dispatch(nftMarketPutOnAction({
-    //     marketType: MarketType.Auction,
-    //     nftAddress: 201,
-    //     maxDuration: 864000,
-    //     price: 1,
-    //   }, () => {}));
-    // }));
-
-    const b = 1;
-    // @ts-ignore
-    if (b === 2) {
-      dispatch(nftMarketMintNowAction(
-        parseInt(selectedOption.value, 36),
-        (res: string) => {
-          setTrxHash(res);
-          setSent(true);
-        },
-      ));
-    }
+    dispatch(nftMarketMintNowAction(
+      parseInt(selectedOption.value, 36),
+      (res: string) => {
+        setTrxHash(res);
+        setSent(true);
+      },
+    ));
   }, [selectedOption, dispatch, onToggle, setSent]);
 
   const seeGalleryHandler = useCallback(() => {

@@ -32,7 +32,8 @@ function* nftMarketBuyNowSaga(
     const feeInBps: ethers.BigNumber = yield contract.feeInBps();
     const maxFee: ethers.BigNumber = yield contract.MAX_FEE();
     const amountString = getFeeString1(feeInBps, maxFee, price);
-    const tx: ContractTransaction = yield contract.buy(0, { value: amountString });
+    const tx: ContractTransaction =
+      yield contract.buy(selectedNft.orderId, { value: amountString });
     yield tx.wait();
 
     yield success();
