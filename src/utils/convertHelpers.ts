@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
 import { MarketType } from '../types';
+import { getNftMarketPlaceContract, getNftSaleContract } from './contracts';
 
 export function getAmountSum(term1: string, term2: string) {
   const term1Trx = Number(window.tronWeb.fromSun(term1));
@@ -32,8 +33,8 @@ export const getFeeString1 =
     return amount.toString();
   };
 
-export const getContractName = (marketType: MarketType) => {
+export const getContractByMarketType = (marketType: MarketType) => {
   return marketType === MarketType.Auction
-    ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
-    : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
+    ? getNftMarketPlaceContract()
+    : getNftSaleContract();
 };

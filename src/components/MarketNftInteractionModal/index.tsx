@@ -5,7 +5,7 @@ import {
 } from 'components';
 import cx from 'classnames';
 import { toast } from 'react-toastify';
-import BigNumber from 'bignumber.js';
+import { ethers } from 'ethers';
 import styles from './styles.module.scss';
 import { fromSunToNumber } from '../../utils';
 
@@ -38,10 +38,8 @@ const MarketNftInteractionModal: FC<Props> = ({
     if (!price) return true;
     if (!balance) return true;
 
-    const balanceSun: BigNumber =
-      new window.tronWeb.BigNumber(balance);
-    const priceBN: BigNumber =
-      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(price)));
+    const balanceSun = ethers.BigNumber.from(balance);
+    const priceBN = ethers.utils.parseUnits(price, 18);
 
     return balanceSun.lte(priceBN);
   }, [price, balance]);
