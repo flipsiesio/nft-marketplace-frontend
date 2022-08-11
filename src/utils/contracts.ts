@@ -2,7 +2,9 @@ import {
   Contract, ethers, providers,
 } from 'ethers';
 import detectEthereumProvider from '@metamask/detect-provider';
-import { cardFactoryAbi, cardRandomAbi } from '../abi';
+import {
+  cardFactoryAbi, cardRandomAbi, nftCardAbi, nftMarketplaceAbi, nftSaleAbi,
+} from '../abi';
 
 export const getProvider = async () => {
   const ethProvider = await detectEthereumProvider() as providers.ExternalProvider;
@@ -23,6 +25,33 @@ export const getCardFactoryContract = async () => {
   return new Contract(
     process.env.REACT_APP_CONTRACT_CARD_FACTORY as string,
     cardFactoryAbi,
+    provider.getSigner(),
+  );
+};
+
+export const getNftMarketPlaceContract = async () => {
+  const provider = await getProvider();
+  return new Contract(
+    process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string,
+    nftMarketplaceAbi,
+    provider.getSigner(),
+  );
+};
+
+export const getNftSaleContract = async () => {
+  const provider = await getProvider();
+  return new Contract(
+    process.env.REACT_APP_CONTRACT_NFT_SALE as string,
+    nftSaleAbi,
+    provider.getSigner(),
+  );
+};
+
+export const getCardContract = async () => {
+  const provider = await getProvider();
+  return new Contract(
+    process.env.REACT_APP_CONTRACT_CARD as string,
+    nftCardAbi,
     provider.getSigner(),
   );
 };
