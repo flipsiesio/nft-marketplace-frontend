@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 
@@ -21,6 +21,21 @@ const FormuleDescription1 = () => {
   );
 };
 
+const StakingDescription: FC = () => {
+  const { t } = useTranslation();
+
+  return (
+    <ul className={styles.info__point_list}>
+      <li>{t('nftSystemEarn.stacking.description1')}</li>
+      <li>{t('nftSystemEarn.stacking.description2')}</li>
+      <li>{t('nftSystemEarn.stacking.description3')}</li>
+      <li>{t('nftSystemEarn.stacking.description4')}</li>
+      <li>{t('nftSystemEarn.stacking.description5')}</li>
+      <li>{t('nftSystemEarn.stacking.description6')}</li>
+    </ul>
+  );
+};
+
 export const content2 = [
   {
     beforeTitle: '',
@@ -30,7 +45,7 @@ export const content2 = [
   {
     beforeTitle: '',
     title: 'nftSystemEarn.stacking.title',
-    description: 'nftSystemEarn.stacking.description',
+    description: <StakingDescription />,
   },
   {
     beforeTitle: '',
