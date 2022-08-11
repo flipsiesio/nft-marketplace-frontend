@@ -35,11 +35,11 @@ const Preview:FC<PreviewProps> = ({
       </Button>
       {status !== WalletStatus.CONNECTED && (
         <Text className={styles.preview__login_label}>
-          Please
+          {t('nftSystemEarn.please')}
           &nbsp;
           <button className={styles.preview__button_login} type="button">sign in</button>
           &nbsp;
-          to TronLink and connect wallet to play
+          {t('nftSystemEarn.connectWallet')}
         </Text>
       )}
     </section>
