@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+import { ethers } from 'ethers';
 import { MarketType } from '../types';
 
 export function getAmountSum(term1: string, term2: string) {
@@ -23,6 +24,13 @@ export const getFeeString = (feeInBps: any, maxFee: any, price: BigNumber) => {
   const amount = price.plus(calcFee);
   return amount.integerValue(BigNumber.ROUND_CEIL).toString();
 };
+
+export const getFeeString1 =
+  (feeInBps: ethers.BigNumber, maxFee: ethers.BigNumber, price: ethers.BigNumber) => {
+    const calcFee = price.mul(feeInBps).div(maxFee);
+    const amount = price.add(calcFee);
+    return amount.toString();
+  };
 
 export const getContractName = (marketType: MarketType) => {
   return marketType === MarketType.Auction
