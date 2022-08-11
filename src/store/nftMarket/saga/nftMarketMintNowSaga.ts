@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { toast } from 'react-toastify';
-import { Contract, ContractTransaction } from 'ethers';
+import { Contract, ContractTransaction, ethers } from 'ethers';
 import { nftMarketMintNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { simpleErrorHandler } from '../../../utils';
@@ -16,11 +16,14 @@ function* nftMarketMintNowSaga(
     yield put(apiActions.request(type));
     const contract: Contract =
       yield getCardRandomMinterContract();
-    // const nftPrice = yield contract.price();
-    const tx: ContractTransaction = yield contract.mintRandom(payload, { value: 10 });
+    const nftPrice: ethers.BigNumber = yield contract.price();
+    const tx: ContractTransaction = yield contract.mintRandom(
+      payload,
+      { value: nftPrice.toString() },
+    );
     yield tx.wait();
     yield put(apiActions.success(type));
-    callback('');
+    callback(tx.hash);
     yield toast.success('Mint successful!');
   } catch (err) {
     simpleErrorHandler(err);
