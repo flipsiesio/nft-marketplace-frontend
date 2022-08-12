@@ -114,7 +114,7 @@ export const MyBidsTab: FC = () => {
       Cell: ({ row: { original: { url, tokenId, active } } }: TableRowProps<MyBidsCardData>) => (
         <div className={styles.smallCardIcon}>
           {active && (
-            <Link to={`${routes.nftMarket.myBidsProfile.root}?=id${tokenId}`} onClick={onLinkClick(tokenId)}>
+            <Link to={`${routes.nftMarket.myBidsProfile.root}?id=${tokenId}`} onClick={onLinkClick(tokenId)}>
               <NotActiveCardIcon showShadows url={url} />
             </Link>
           )}
