@@ -57,6 +57,11 @@ const TabWithFilter: FC<Props> = ({
     });
   }, [filters, dispatch, page, debounceSearchTerm]);
 
+  const onFilterApply = useCallback((data: FilterData) => {
+    setPage(0);
+    setFilters(data);
+  }, []);
+
   const onCardClick = useCallback((id: number) => {
     dispatch(nftMarketSelectProfileAction(undefined));
     history.push({
@@ -109,7 +114,7 @@ const TabWithFilter: FC<Props> = ({
       <Pagination pageCount={pageCount} page={page} onChange={setPage} />
 
       <MarketFilterModal
-        onApply={setFilters}
+        onApply={onFilterApply}
         onToggle={toggleModal}
         isOpen={modalActive}
         isSale={isSale}
