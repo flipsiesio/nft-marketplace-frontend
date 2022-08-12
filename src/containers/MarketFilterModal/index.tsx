@@ -61,11 +61,11 @@ const MarketFilterModal: FC<Props> = ({
       if (value) {
         newData.add(type);
 
-        if (type === NftType.JOKER) {
-          newData.add(NftType.RARE);
-        }
+        if (type === NftType.JOKER) newData.add(NftType.RARE);
       } else {
         newData.delete(type);
+
+        if (type === NftType.JOKER) newData.delete(NftType.RARE);
       }
 
       setData({

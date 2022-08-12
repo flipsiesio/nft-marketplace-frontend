@@ -284,7 +284,12 @@ export const CardHistory: FC<Props> = ({
 
   useEffect(() => {
     if (!selectedNft) return;
-    getHistory(marketURL.MARKETPLACE.GET_SALE_HISTORY, selectedNft.cardId, tradingPage)
+    getHistory(
+      marketURL.MARKETPLACE.GET_SALE_HISTORY,
+      selectedNft.cardId,
+      tradingPage,
+      { watchBids: false },
+    )
       .then((res) => {
         setTradingData(res.data);
       });
@@ -293,14 +298,18 @@ export const CardHistory: FC<Props> = ({
   useEffect(() => {
     if (!showBid) return;
     getHistoryCount(
-      marketURL.MARKETPLACE.GET_BID_HISTORY,
+      marketURL.MARKETPLACE.GET_ACTUAL_BIDS,
       selectedNft.cardId,
       { name: ['Bid'] },
     ).then((res) => {
       setBidCount(res.data);
     });
 
-    getHistoryCount(marketURL.MARKETPLACE.GET_SALE_HISTORY, selectedNft.cardId).then((res) => {
+    getHistoryCount(
+      marketURL.MARKETPLACE.GET_SALE_HISTORY,
+      selectedNft.cardId,
+      { watchBids: false },
+    ).then((res) => {
       setTradingCount(res.data);
     });
   }, [selectedNft, showBid]);

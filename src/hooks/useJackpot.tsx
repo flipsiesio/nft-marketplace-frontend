@@ -57,7 +57,7 @@ export const useJackpot = () => {
                 &nbsp;
                 <a
                   style={{ color: '#f15566', fontWeight: 'bold' }}
-                  href={`${routes.nftMarket.myGalleryProfile.root}?=id${j.tokenId}`}
+                  href={`${routes.nftMarket.myGalleryProfile.root}?id=${j.tokenId}`}
                 >
                   {t('jackpot.here')}
                 </a>
