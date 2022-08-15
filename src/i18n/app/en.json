@@ -100,10 +100,10 @@
     "title": "Flipsies NFT",
     "text1": "FlipsiesNFT is a series of 7,803 playing cards on the BitTorrent blockchain, each NFT is uniquely programmatically traited and auto-colored.",
     "text2": "They are comprised of",
-    "text3": "2,600 kings, 2,601 queens, 2,601 jacks, 25 jokers and 7 one-of-ones.",
+    "text3": "2,600 kings, 2,601 queens, 2,601 jacks, 25 jokers and 7 stories.",
     "text4": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders. Flipsies will also have a holding system, the earning rate of this system is based on rarity, the rarer your NFT is, the more it will earn.",
     "text5": "Throughout the years different nicknames have been given to distinctive playing cards. Most of these bynames come from poker games, here are a few of the classics, these are the seven",
-    "text6": "one-of-one",
+    "text6": "story",
     "text7": "NFTs.",
     "text8": "To gain access to our NFT marketplace, play-to-win or mint 1, 3 or 5 randomly generated NFTs!",
     "explore": "Explore"
@@ -157,12 +157,12 @@
       "description2": "100% payout for Jackpot any time guarantee"
     },
     "stacking": {
-      "title": "Staking/holding system:",
+      "title": "Holding system:",
       "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
       "description1": "The more and longer you are nfts owner the more rewards you will get",
       "description2": "The higher the rarity score your tokens have the more rewards you will get",
       "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
-      "description4": "Starting rates for owning nfts.",
+      "description4": "Holding after owning NFTs",
       "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
       "description6": "You can claim rewards only every 7 days from token purchasing."
     },
