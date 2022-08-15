@@ -48,9 +48,6 @@ const FlipsiesNft: FC = () => {
             {t('flipsiesNft.text7')}
           </Text>
         </Text>
-        <Text className={styles.text}>
-          {t('flipsiesNft.text8')}
-        </Text>
         <div className={styles.buttonWrapper}>
           <Button onClick={clickHandler} className={styles.button}>
             {t('flipsiesNft.explore')}
