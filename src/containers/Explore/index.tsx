@@ -58,6 +58,7 @@ const Explore: FC = () => {
 
         <Text className={styles.title}>{t('explore.title')}</Text>
         <Text className={styles.subTitle}>{t('explore.tryLuck')}</Text>
+        <Text className={styles.subTitle}>{t('explore.toGainAccess')}</Text>
         <Button onClick={onMintClick} className={styles.button}>{t('explore.mintNow')}</Button>
       </div>
 
