@@ -129,7 +129,7 @@
     },
     "kingOfDiamonds": {
       "title": "Man With The Axe",
-      "label": "This designation for the King of Diamonds reflects the fact that this is the only king not carrying a sword. That is why he is often referred to as The Man With The Axe. This card is frequently designated as wildcards in home games of draw poker. At the local card game, It was common to hear \"the game is seven card high/low with a buy on the last card. And just to make it more interesting, the man with the axe takes all."
+      "label": "This designation for the King of Diamonds reflects the fact that this is the only king not carrying a sword. That is why he is often referred to as The Man With The Axe. This card is frequently designated as wildcards in draw poker. At the local card game, It was common to hear \"the game is seven card high/low with a buy on the last card. And just to make it more interesting, the man with the axe takes all."
     },
     "queenOfSpades": {
       "title": "Black Widow",
@@ -159,12 +159,12 @@
     "stacking": {
       "title": "Holding system:",
       "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
-      "description1": "The more and longer you are nfts owner the more rewards you will get",
-      "description2": "The higher the rarity score your tokens have the more rewards you will get",
-      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
-      "description4": "Holding after owning NFTs",
+      "description1": "The more NFTs you have and the longer you hold, the more rewards you will earn",
+      "description2": "The higher the rarity score your NFTs have the more rewards you will get",
+      "description3": "You will get rewards as cash back according to amount of bets that you place on Flipsies platform",
+      "description4": "Rates for holding NFTs:",
       "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
-      "description6": "You can claim rewards only every 7 days from token purchasing."
+      "description6": "You can claim rewards every 7 days from token purchasing."
     },
     "allTokens": {
       "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
