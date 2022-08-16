@@ -29,8 +29,10 @@ const StakingDescription: FC = () => {
       <li>{t('nftSystemEarn.stacking.description1')}</li>
       <li>{t('nftSystemEarn.stacking.description2')}</li>
       <li>{t('nftSystemEarn.stacking.description3')}</li>
-      <li>{t('nftSystemEarn.stacking.description4')}</li>
-      <li>{t('nftSystemEarn.stacking.description5')}</li>
+      <li>
+        <p>{t('nftSystemEarn.stacking.description4')}</p>
+        <p>{t('nftSystemEarn.stacking.description5')}</p>
+      </li>
       <li>{t('nftSystemEarn.stacking.description6')}</li>
     </ul>
   );
