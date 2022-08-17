@@ -2,24 +2,12 @@
 @import '../../../assets/styles/mixins';
 
 .points__outer_container {
-  height: calc(100vh - 100px);
-  position: relative;
+  margin-top: 30px;
 
   &::after {
     content: '';
     @include cardsSymbolsBg;
 
-  }
-
-  @include forDesktopBig {
-    height: 100vh;
-  }
-
-  @include forTabletSm {
-    height: 120vh;
-  }
-  @include forPhone {
-    height: 160vh;
   }
 }
 
@@ -41,12 +29,12 @@
     .points__card_container {
       width: 562px;
       position: relative;
-    
+
       &:nth-of-type(1){
         padding: 20px 19px 24px 25px;
         order: 1;
       }
-    
+
       &:nth-of-type(2){
         padding: 23px 27px 24px 25px;
         margin-top: -20px;
@@ -56,17 +44,17 @@
           margin-top: 0;
         }
       }
-    
+
       &:nth-of-type(3){
         padding: 23px 25px 32px 25px;
         order: 2;
       }
-    
+
       &:nth-of-type(4){
         padding: 23px 49px 28px 25px;
         order: 4;
       }
-    
+
       &::after {
         content: '';
         position: absolute;
@@ -79,7 +67,7 @@
         opacity: 0.5;
         border-radius: 15px;
         z-index: -1;
-    
+
       }
-    
+
     }

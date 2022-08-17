@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { InfoCard } from 'components';
 import cx from 'classnames';
-import { FlipsiesLogo } from 'assets/img';
 import styles from './styles.module.scss';
 
 export interface IContentPoints {
@@ -24,7 +23,6 @@ const NftEarningPoints: FC<NftEarningPointsProps> = ({
 }) => {
   return (
     <section className={styles.points__outer_container}>
-      <img src={FlipsiesLogo} alt="FlipsiesLogo" className={styles.points__logo} />
       <div className={cx(styles.points__container, classNameContainer)}>
         {content.map((point) => (
           <InfoCard
