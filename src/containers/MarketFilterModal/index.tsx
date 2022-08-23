@@ -25,7 +25,7 @@ const MarketFilterModal: FC<Props> = ({
   isSale,
 }) => {
   const [data, setData] = useState<FilterData>({
-    price: 'DESC',
+    price: 'ASC',
     type: new Set<NftType>(),
     suit: new Set<NftSuit>(),
   });
