@@ -1,0 +1,26 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrapper {
+  @include flexbox();
+  flex-direction: column
+}
+
+.cardWrapper {
+  @include flexbox();
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.img {
+  min-height: 30px;
+  min-width: 30px;
+}
+
+.inputWrapper {
+  @include flexbox(center, space-between);
+  width: 360px;
+  margin-top: 20px;
+}

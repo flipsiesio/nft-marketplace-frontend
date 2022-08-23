@@ -68,4 +68,7 @@ export default {
   explore: {
     root: '/explore',
   },
+  nftView: {
+    root: '/nftView',
+  },
 };
