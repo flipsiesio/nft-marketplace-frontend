@@ -26,7 +26,7 @@ const LINKS = [
     className: styles.github,
   },
   {
-    href: 'https://t.co/5OIPpTaBVF',
+    href: 'https://discord.gg/WY2FtQweUh',
     icon: 'discord',
     className: styles.discord,
   },
