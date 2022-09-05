@@ -1,10 +1,8 @@
 export { default as routes } from './routes';
 export { default as ERRORS } from './errors';
-export { default as URL, marketURL } from './url';
-export { default as RANKS } from './ranks';
+export { marketURL } from './url';
 export { default as LANGUAGE_OPTIONS } from './languageOptions';
 export * from './enums';
-export * from './gameType';
 export * from './networkUrl';
 
 export const PAGE_ITEM_LIMIT = 10;
