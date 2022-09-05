@@ -27,24 +27,6 @@ export enum TronStatus {
   ADDRESS_SELECTED = 'ADDRESS_SELECTED',
 }
 
-export enum GameType {
-  WIN = 'win',
-  LOST = 'lost',
-  DRAW = 'draw',
-  JACKPOT = 'jackpot',
-}
-
-export enum GameSelectedColor {
-  RED = 'red',
-  BLACK = 'black',
-}
-
-export enum WSType {
-  RESULT = 'result',
-  ERROR = 'error',
-  CLAIMED = 'emitClaimed',
-}
-
 export enum TokenOptions {
   COLORIZED_OPTION = 0,
   CARDS_WITH_EGGS_OPTION = 1,
