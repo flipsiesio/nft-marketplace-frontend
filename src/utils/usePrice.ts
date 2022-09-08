@@ -2,14 +2,19 @@ import {
   ChangeEventHandler, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { ethers } from 'ethers';
+import { useShallowSelector } from 'hooks';
+import { walletSelectors } from 'store/selectors';
 import { MarketType } from '../types';
 import { getContractByMarketType, getFeeString1 } from './convertHelpers';
+import { getBalance } from './metamask';
 
 export const usePrice = (marketType?: MarketType) => {
   const [value, setValue] = useState<string>('');
   const [notEnoughFunds, setEnoughFunds] = useState(false);
   const [feeInBps, setFeeInBps] = useState<ethers.BigNumber>();
   const [maxFee, setMaxFee] = useState<ethers.BigNumber>();
+
+  const address = useShallowSelector(walletSelectors.getProp('address'));
 
   const changeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => {
     const newValue = e.target.value.replace(',', '.');
@@ -51,13 +56,10 @@ export const usePrice = (marketType?: MarketType) => {
     const price = ethers.utils.parseUnits(value, 18);
     const amountBN = ethers.BigNumber.from(getFeeString1(feeInBps, maxFee, price));
 
-    window.tronWeb.trx.getBalance(
-      window.tronWeb.defaultAddress?.base58 || '',
-    ).then((balance) => {
-      const balanceBN = ethers.BigNumber.from(balance);
-      setEnoughFunds(balanceBN.lte(amountBN));
+    getBalance(address).then((balance) => {
+      setEnoughFunds(balance.lte(amountBN));
     });
-  }, [marketType, value, hasError]);
+  }, [marketType, value, hasError, address]);
 
   return {
     changeHandler,

@@ -1,9 +1,10 @@
 import { useCallback, useState } from 'react';
+import { ethers } from 'ethers';
 import { marketClient } from '../store/api';
 import { PAGE_ITEM_LIMIT } from '../appConstants';
 import { CardDataForList, NftReqDto } from '../types';
 import {
-  fromSunToNumber, getBidPrice, getMyBidPrice, getTrxFromSun,
+  fromSunToNumber, getBidPrice, getMyBidPrice,
 } from '../utils';
 import { useShallowSelector } from './index';
 import { walletSelectors } from '../store/selectors';
@@ -24,7 +25,7 @@ export const useTabHandlers = (url: string) => {
 
   const getSalePrice = useCallback((item: CardDataForList) => {
     if (item.state_sale && item.state_sale.price) {
-      return `${getTrxFromSun(item.state_sale.price)}`;
+      return ethers.utils.formatUnits(item.state_sale.price).toString();
     }
     return '0';
   }, []);

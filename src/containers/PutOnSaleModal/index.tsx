@@ -3,11 +3,12 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { getApproved, getNftMarketPlaceContract, getNftSaleContract } from 'utils/contracts';
 import {
   Button, Input, Modal, Preloader, Select, Text,
 } from '../../components';
 import styles from './styles.module.scss';
-import { getApproved, getTronContract, usePrice } from '../../utils';
+import { usePrice } from '../../utils';
 import { MarketType, SelectOption } from '../../types';
 import { useShallowSelector, useToggle } from '../../hooks';
 import { nftMarketSelector, uiSelector } from '../../store/selectors';
@@ -100,13 +101,12 @@ export const PutOnSaleModal: FC<Props> = ({
 
   useEffect(() => {
     const init = async () => {
-      const contractName = marketType === MarketType.Auction
-        ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
-        : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
-      const contract = await getTronContract(contractName);
-      const maxExpirationDuration: string = await contract.maxExpirationDuration().call();
+      const contract = marketType === MarketType.Auction
+        ? await getNftMarketPlaceContract()
+        : await getNftSaleContract();
+      const maxExpirationDuration: string = await contract.maxExpirationDuration();
       const maxDuration = Number(maxExpirationDuration);
-      const minExpirationDuration: string = await contract.minExpirationDuration().call();
+      const minExpirationDuration: string = await contract.minExpirationDuration();
       const minDuration = Number(minExpirationDuration);
       const maxDay = getDayFromSeconds(maxDuration);
       const minDay = getDayFromSeconds(minDuration);

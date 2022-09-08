@@ -1,6 +1,7 @@
 import detectEthereumProvider from '@metamask/detect-provider';
 import { MetamaskRequestMethod } from 'store/wallet/types';
 import { networkChains } from '../appConstants';
+import { getProvider } from './contracts';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Provider = any;
@@ -38,4 +39,9 @@ export const checkValidationNetwork = async (id?: string) => {
 export const metamaskIsInstalled = async () => {
   const provider: Provider = await detectEthereumProvider();
   return !(!provider || !provider.isMetaMask);
+};
+
+export const getBalance = async (address: string) => {
+  const provider = await getProvider();
+  return provider.getBalance(address);
 };

@@ -14,6 +14,7 @@ export enum MetamaskRequestMethod {
   eth_requestAccounts = 'eth_requestAccounts',
   eth_accounts = 'eth_accounts',
   eth_chainId = 'eth_chainId',
+  eth_balance = 'eth_getBalance',
   wallet_switchEthereumChain = 'wallet_switchEthereumChain',
   wallet_addEthereumChain = 'wallet_addEthereumChain',
 }

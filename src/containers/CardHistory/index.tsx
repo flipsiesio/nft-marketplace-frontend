@@ -131,7 +131,7 @@ const tradingCol = [
     Cell: ({ row: { original: { timestamp, transaction } } }: TableRowProps<HistoryData>) => (
       <div className={styles.flex}>
         <Text>
-          {format(new Date(Number(timestamp)), 'dd.MM.yyyy')}
+          {format(new Date(Number(timestamp) * 1000), 'dd.MM.yyyy')}
         </Text>
         {transaction && (
           <Button

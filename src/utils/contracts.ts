@@ -2,6 +2,7 @@ import {
   Contract, ethers, providers,
 } from 'ethers';
 import detectEthereumProvider from '@metamask/detect-provider';
+import { MarketType } from 'types';
 import {
   cardFactoryAbi, cardRandomAbi, nftCardAbi, nftMarketplaceAbi, nftSaleAbi,
 } from '../abi';
@@ -54,4 +55,13 @@ export const getCardContract = async () => {
     nftCardAbi,
     provider.getSigner(),
   );
+};
+
+export const getApproved = async (cardId: number | string, type: MarketType) => {
+  const toAproveContractAddress = type === MarketType.Auction
+    ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
+    : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
+  const contract = await getCardContract();
+  const dataAddress: string = await contract.getApproved(cardId);
+  return toAproveContractAddress === dataAddress;
 };
