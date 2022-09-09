@@ -3,7 +3,9 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Button, Text, MarketNftInteractionModal } from 'components';
+import {
+  Button, Text, PurchaseConfirmationModal,
+} from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
@@ -89,14 +91,13 @@ const GalleryCardProfile: FC = () => {
           )}
         />
       )}
-      <MarketNftInteractionModal
+      <PurchaseConfirmationModal
         id={selectedNft?.cardId || 0}
-        price={selectedNft?.salePrice}
+        price={selectedNft?.salePrice || '0'}
         isOpen={buyIsActive}
         isLoading={buyNowStatus === RequestStatus.REQUEST}
         onToggle={toggleBuy}
         onSubmit={buyHandler}
-        title={t('nftMarket.purchaseConfirmation')}
         balance={balance}
       />
     </>

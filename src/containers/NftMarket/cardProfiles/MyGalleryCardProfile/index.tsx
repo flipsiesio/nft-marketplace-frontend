@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, DelistModal, MarketNftInteractionModal, Text,
+  Button, DelistModal, Text, WantToSellNftModal,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
@@ -205,14 +205,12 @@ const MyGalleryCardProfile: FC = () => {
         onSubmit={getBackClick(MarketType.Auction)}
         isOpen={bidDelistActive}
       />
-      <MarketNftInteractionModal
+      <WantToSellNftModal
         isLoading={isWait}
-        showNotFunds={false}
         id={selectedNft?.cardId || 0}
-        title={t('nftMarket.sellTitle')}
         onToggle={acceptBidToggle}
         onSubmit={acceptBidHandler}
-        isOpen={acceptBidActive || true}
+        isOpen={acceptBidActive}
         price={`${fromWeiToNumber(`${acceptBidData?.price || 0}`)}`}
       />
     </>
