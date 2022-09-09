@@ -12,7 +12,7 @@ import cx from 'classnames';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 import { RequestStatus } from '../../../../appConstants';
-import { history } from '../../../../utils';
+import { getBalance, history } from '../../../../utils';
 import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
 
 const GalleryCardProfile: FC = () => {
@@ -23,10 +23,10 @@ const GalleryCardProfile: FC = () => {
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
 
-  const [balance, setBalance] = useState<number>();
+  const [balance, setBalance] = useState<string>('0');
 
   useEffect(() => {
-    window.tronWeb.trx.getBalance(address).then((b) => setBalance(b));
+    getBalance(address).then((b) => setBalance(b.toString()));
   }, [address]);
 
   useEffect(() => {

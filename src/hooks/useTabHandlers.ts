@@ -4,7 +4,7 @@ import { marketClient } from '../store/api';
 import { PAGE_ITEM_LIMIT } from '../appConstants';
 import { CardDataForList, NftReqDto } from '../types';
 import {
-  fromSunToNumber, getBidPrice, getMyBidPrice,
+  fromWeiToNumber, getBidPrice, getMyBidPrice,
 } from '../utils';
 import { useShallowSelector } from './index';
 import { walletSelectors } from '../store/selectors';
@@ -46,7 +46,7 @@ export const useTabHandlers = (url: string) => {
 
   const getBidsOrSalePrice = useCallback((item: CardDataForList) => {
     if (item.state_sale) {
-      return `${fromSunToNumber(item.state_sale.price)}`;
+      return `${fromWeiToNumber(item.state_sale.price)}`;
     }
 
     if (item.state_bids) {

@@ -5,7 +5,7 @@ import { marketURL } from '../appConstants';
 import { marketClient } from '../store/api';
 import { walletSelectors } from '../store/selectors';
 import { BidCardState, SaleCardState } from '../types';
-import { fromSunToNumber, getBidPrice, getMyBidPrice } from '../utils';
+import { fromWeiToNumber, getBidPrice, getMyBidPrice } from '../utils';
 
 const getState = <T>(url:string, id: string) => {
   return marketClient.get<T>(url, {
@@ -39,7 +39,7 @@ export const useMyProfileHandlers = () => {
     getState<SaleCardState>(marketURL.MARKETPLACE.GET_ACTUAL_SALE, id).then((res) => {
       if (res.data) {
         setIsSale(true);
-        setSalePrice(`${fromSunToNumber(res.data.price)}`);
+        setSalePrice(`${fromWeiToNumber(res.data.price)}`);
         setIsActive(res.data.active);
       }
     });

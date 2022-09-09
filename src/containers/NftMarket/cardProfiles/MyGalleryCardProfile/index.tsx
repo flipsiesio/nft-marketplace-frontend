@@ -18,7 +18,7 @@ import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 import { PutOnSaleModal } from '../../../PutOnSaleModal';
 import { AcceptBidData } from '../../../CardHistory';
-import { history, fromSunToNumber } from '../../../../utils';
+import { history, fromWeiToNumber } from '../../../../utils';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
@@ -212,8 +212,8 @@ const MyGalleryCardProfile: FC = () => {
         title={t('nftMarket.sellTitle')}
         onToggle={acceptBidToggle}
         onSubmit={acceptBidHandler}
-        isOpen={acceptBidActive}
-        price={`${fromSunToNumber(`${acceptBidData?.price || 0}`)}`}
+        isOpen={acceptBidActive || true}
+        price={`${fromWeiToNumber(`${acceptBidData?.price || 0}`)}`}
       />
     </>
   );

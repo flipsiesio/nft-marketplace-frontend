@@ -3,7 +3,7 @@ import React, {
   FC, useCallback, useEffect, useMemo,
 } from 'react';
 import { useDispatch } from 'react-redux';
-import { fromSunToNumber } from 'utils';
+import { fromWeiToNumber } from 'utils';
 import cx from 'classnames';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
@@ -37,8 +37,8 @@ const Price: FC<PriceProps> = ({ bids }) => {
 
   return (
     <div style={{ display: 'flex' }}>
-      <Text title={fromSunToNumber(`${price}`)} className={styles.priceCol}>
-        {fromSunToNumber(`${price}`)}
+      <Text title={fromWeiToNumber(`${price}`)} className={styles.priceCol}>
+        {fromWeiToNumber(`${price}`)}
       </Text>
       &nbsp;
       <Text className={styles.primary}>TRX</Text>

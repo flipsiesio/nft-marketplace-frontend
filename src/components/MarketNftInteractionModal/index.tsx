@@ -7,7 +7,6 @@ import cx from 'classnames';
 import { toast } from 'react-toastify';
 import { ethers } from 'ethers';
 import styles from './styles.module.scss';
-import { fromSunToNumber } from '../../utils';
 
 type Props = {
   isLoading?: boolean,
@@ -17,7 +16,7 @@ type Props = {
   onSubmit: () => void
   price?: string
   id?: number
-  balance?: number
+  balance?: string
   showNotFunds?: boolean
 };
 
@@ -45,9 +44,10 @@ const MarketNftInteractionModal: FC<Props> = ({
   }, [price, balance]);
 
   const clickHandler = useCallback(() => {
-    const convertPrice = fromSunToNumber(`${price}`);
+    const balanceSun = ethers.BigNumber.from(balance);
+    const priceBN = ethers.utils.parseUnits(`${price}`, 18);
 
-    if (balance && balance < convertPrice) {
+    if (balanceSun.lte(priceBN)) {
       toast.error(t('nftMarket.notHaveEnoughFunds'));
       return;
     }
