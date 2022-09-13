@@ -1,15 +1,10 @@
 import BigNumber from 'bignumber.js';
+import { ethers } from 'ethers';
 import { MarketType } from '../types';
+import { getNftMarketPlaceContract, getNftSaleContract } from './contracts';
 
-export function getAmountSum(term1: string, term2: string) {
-  const term1Trx = Number(window.tronWeb.fromSun(term1));
-  const term2Trx = Number(window.tronWeb.fromSun(term2));
-
-  return term1Trx + term2Trx;
-}
-
-export function fromSunToNumber(value: string) {
-  return Number(window.tronWeb.fromSun(value));
+export function fromWeiToNumber(value: string) {
+  return parseFloat(ethers.utils.formatUnits(value, 18));
 }
 
 export function roundUpNumber(value: string | number, decimals = 2) {
@@ -24,8 +19,15 @@ export const getFeeString = (feeInBps: any, maxFee: any, price: BigNumber) => {
   return amount.integerValue(BigNumber.ROUND_CEIL).toString();
 };
 
-export const getContractName = (marketType: MarketType) => {
+export const getFeeString1 =
+  (feeInBps: ethers.BigNumber, maxFee: ethers.BigNumber, price: ethers.BigNumber) => {
+    const calcFee = price.mul(feeInBps).div(maxFee);
+    const amount = price.add(calcFee);
+    return amount.toString();
+  };
+
+export const getContractByMarketType = (marketType: MarketType) => {
   return marketType === MarketType.Auction
-    ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
-    : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
+    ? getNftMarketPlaceContract()
+    : getNftSaleContract();
 };

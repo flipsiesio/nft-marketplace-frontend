@@ -73,11 +73,6 @@ export const nftMarketMintNowAction = (payload: number, callback: (trxHash: stri
   callback,
 });
 
-export const nftMarketClaimJackpotAction = (callback: (trxHash: string) => void) => ({
-  type: NftMarketActionTypes.CLAIM_JACKPOT,
-  callback,
-});
-
 export const nftMarketApproveAction = (payload: {
   actionType: MarketType,
   tokenId: number,

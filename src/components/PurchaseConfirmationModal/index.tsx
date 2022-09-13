@@ -5,51 +5,42 @@ import {
 } from 'components';
 import cx from 'classnames';
 import { toast } from 'react-toastify';
-import BigNumber from 'bignumber.js';
+import { ethers } from 'ethers';
 import styles from './styles.module.scss';
-import { fromSunToNumber } from '../../utils';
 
 type Props = {
   isLoading?: boolean,
-  title?: string
   isOpen?: boolean
   onToggle: () => void
   onSubmit: () => void
-  price?: string
-  id?: number
-  balance?: number
-  showNotFunds?: boolean
+  price: string
+  id: number
+  balance: string
 };
 
-const MarketNftInteractionModal: FC<Props> = ({
+export const PurchaseConfirmationModal: FC<Props> = ({
   isLoading,
   isOpen = false,
   onSubmit,
   onToggle,
-  title,
   id,
   price,
   balance,
-  showNotFunds = true,
 }) => {
   const { t } = useTranslation();
 
   const notEnoughFunds = useMemo(() => {
-    if (!price) return true;
-    if (!balance) return true;
-
-    const balanceSun: BigNumber =
-      new window.tronWeb.BigNumber(balance);
-    const priceBN: BigNumber =
-      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(price)));
+    const balanceSun = ethers.BigNumber.from(balance);
+    const priceBN = ethers.utils.parseUnits(price, 18);
 
     return balanceSun.lte(priceBN);
   }, [price, balance]);
 
   const clickHandler = useCallback(() => {
-    const convertPrice = fromSunToNumber(`${price}`);
+    const balanceSun = ethers.BigNumber.from(balance);
+    const priceBN = ethers.utils.parseUnits(price, 18);
 
-    if (balance && balance < convertPrice) {
+    if (balanceSun.lte(priceBN)) {
       toast.error(t('nftMarket.notHaveEnoughFunds'));
       return;
     }
@@ -63,7 +54,7 @@ const MarketNftInteractionModal: FC<Props> = ({
       isOpen={isOpen}
       onClose={!isLoading ? onToggle : undefined}
     >
-      <Text className={styles.title}>{title}</Text>
+      <Text className={styles.title}>{t('nftMarket.purchaseConfirmation')}</Text>
       <div className={styles.row}>
         <div className={styles.col}>
           <Text className={styles.text}>
@@ -85,15 +76,13 @@ const MarketNftInteractionModal: FC<Props> = ({
       <Button
         className={styles.button}
         onClick={clickHandler}
-        disabled={isLoading || (showNotFunds && notEnoughFunds)}
+        disabled={isLoading || notEnoughFunds}
       >
         {isLoading ? t('explore.loading') : t('nftMarket.confirm')}
       </Button>
-      {notEnoughFunds && showNotFunds && (
+      {notEnoughFunds && (
         <Text className={styles.notFunds}>{t('nftMarket.notHaveEnoughFunds')}</Text>
       )}
     </Modal>
   );
 };
-
-export { MarketNftInteractionModal };

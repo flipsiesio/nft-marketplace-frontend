@@ -1,17 +1,18 @@
 import { useCallback, useState } from 'react';
+import { ethers } from 'ethers';
 import { marketClient } from '../store/api';
 import { PAGE_ITEM_LIMIT } from '../appConstants';
 import { CardDataForList, NftReqDto } from '../types';
 import {
-  fromSunToNumber, getBidPrice, getMyBidPrice, getTrxFromSun,
+  fromWeiToNumber, getBidPrice, getMyBidPrice,
 } from '../utils';
 import { useShallowSelector } from './index';
-import { tronSelector } from '../store/selectors';
+import { walletSelectors } from '../store/selectors';
 
 export const useTabHandlers = (url: string) => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
 
   const updatePage = useCallback((dto: NftReqDto) => {
     marketClient.get<number>(url, {
@@ -24,7 +25,7 @@ export const useTabHandlers = (url: string) => {
 
   const getSalePrice = useCallback((item: CardDataForList) => {
     if (item.state_sale && item.state_sale.price) {
-      return `${getTrxFromSun(item.state_sale.price)}`;
+      return ethers.utils.formatUnits(item.state_sale.price).toString();
     }
     return '0';
   }, []);
@@ -45,7 +46,7 @@ export const useTabHandlers = (url: string) => {
 
   const getBidsOrSalePrice = useCallback((item: CardDataForList) => {
     if (item.state_sale) {
-      return `${fromSunToNumber(item.state_sale.price)}`;
+      return `${fromWeiToNumber(item.state_sale.price)}`;
     }
 
     if (item.state_bids) {

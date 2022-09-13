@@ -15,7 +15,7 @@ import {
 } from '../../types';
 import { marketClient } from '../../store/api';
 import { marketURL, PAGE_ITEM_LIMIT, scanTransactionUrl } from '../../appConstants';
-import { fromSunToNumber } from '../../utils';
+import { fromWeiToNumber } from '../../utils';
 
 export type AcceptBidData = {
   payerAddress: string
@@ -117,8 +117,8 @@ const tradingCol = [
     accessor: 'amount',
     Cell: ({ row: { original: { price } } }: TableRowProps<HistoryData>) => (
       <div className={styles.flex}>
-        <Text title={price === null ? 0 : fromSunToNumber(`${price}`)} className={styles.priceCol}>
-          {price === null ? 0 : fromSunToNumber(`${price}`)}
+        <Text title={price === null ? 0 : fromWeiToNumber(`${price}`)} className={styles.priceCol}>
+          {price === null ? 0 : fromWeiToNumber(`${price}`)}
         </Text>
         &nbsp;
         <Text className={styles.pink}>TRX</Text>
@@ -131,7 +131,7 @@ const tradingCol = [
     Cell: ({ row: { original: { timestamp, transaction } } }: TableRowProps<HistoryData>) => (
       <div className={styles.flex}>
         <Text>
-          {format(new Date(Number(timestamp)), 'dd.MM.yyyy')}
+          {format(new Date(Number(timestamp) * 1000), 'dd.MM.yyyy')}
         </Text>
         {transaction && (
           <Button
@@ -176,8 +176,8 @@ export const CardHistory: FC<Props> = ({
       accessor: 'amount',
       Cell: ({ row: { original: { price } } }: TableRowProps<BidData>) => (
         <div className={styles.flex}>
-          <Text title={price === null ? 0 : fromSunToNumber(`${price}`)} className={styles.priceCol}>
-            {price === null ? 0 : fromSunToNumber(`${price}`)}
+          <Text title={price === null ? 0 : fromWeiToNumber(`${price}`)} className={styles.priceCol}>
+            {price === null ? 0 : fromWeiToNumber(`${price}`)}
           </Text>
           &nbsp;
           <Text className={styles.pink}>TRX</Text>

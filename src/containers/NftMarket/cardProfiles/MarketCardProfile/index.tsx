@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { nftMarketBidAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
-import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
+import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
 import styles from '../styles.module.scss';
@@ -18,7 +18,7 @@ const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BID));
   const id = useMemo(() => {

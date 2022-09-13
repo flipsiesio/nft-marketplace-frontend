@@ -2,10 +2,12 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract, simpleErrorHandler } from 'utils';
+import { simpleErrorHandler } from 'utils';
 import { toast } from 'react-toastify';
+import { ContractTransaction } from 'ethers';
 import { nftMarketAcceptBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { getNftMarketPlaceContract } from '../../../utils/contracts';
 
 function* nftMarketAcceptBidSaga(
   {
@@ -21,11 +23,9 @@ function* nftMarketAcceptBidSaga(
 
   try {
     yield put(apiActions.request(type));
-    const contract =
-      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
-    yield contract.performBuyOperation(payerAddress, orderId).send({
-      shouldPollResponse: true,
-    });
+    const contract = yield getNftMarketPlaceContract();
+    const tx: ContractTransaction = yield contract.performBuyOperation(payerAddress, orderId);
+    yield tx.wait();
     yield success();
   } catch (err) {
     if (err.error === 'Cannot find result in solidity node') {

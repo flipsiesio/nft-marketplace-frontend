@@ -1,0 +1,54 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrap {
+  @include flexbox();
+
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.button {
+  margin-top: 30px;
+}
+
+.text {
+  text-align: left;
+  margin-bottom: 4px;
+
+  &:first-child {
+    margin-bottom: 4px;
+  }
+}
+
+.primary {
+  color: $primaryColorGradient;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.row {
+  @include flexbox()
+}
+
+.col {
+  @include flexbox(flex-start);
+
+  flex-direction: column;
+
+  &:not(:first-child) {
+    margin-left: 40px;
+  }
+}
+
+.notFunds {
+  margin-top: 10px;
+  color: $primaryColor;
+}

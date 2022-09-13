@@ -3,10 +3,12 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getTronContract, simpleErrorHandler } from 'utils';
+import { simpleErrorHandler } from 'utils';
+import { Contract, ContractTransaction, ethers } from 'ethers';
 import { nftMarketPutOnAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { MarketType } from '../../../types';
+import { getNftMarketPlaceContract, getNftSaleContract } from '../../../utils/contracts';
 
 function* nftMarketPutOnSaga(
   { payload, type, callback }: ReturnType<typeof nftMarketPutOnAction>,
@@ -19,15 +21,13 @@ function* nftMarketPutOnSaga(
   }
   try {
     yield put(apiActions.request(type));
-    const contractName = payload.marketType === MarketType.Auction
-      ? process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string
-      : process.env.REACT_APP_CONTRACT_NFT_SALE as string;
-    const contract =
-      yield getTronContract(contractName);
-    const price = window.tronWeb.toSun(payload.price);
-    yield contract.acceptTokenToSell(payload.nftAddress, price, payload.maxDuration).send({
-      shouldPollResponse: true,
-    });
+    const contract: Contract = payload.marketType === MarketType.Auction
+      ? yield getNftMarketPlaceContract()
+      : yield getNftSaleContract();
+    const price = ethers.utils.parseUnits(`${payload.price}`, 18).toString();
+    const tx: ContractTransaction =
+      yield contract.acceptTokenToSell(payload.nftAddress, price, payload.maxDuration);
+    yield tx.wait();
     yield success();
   } catch (err) {
     if (err.error === 'Cannot find result in solidity node') {

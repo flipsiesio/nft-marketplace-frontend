@@ -1,29 +1,29 @@
 import {
-  put, select, takeLatest,
+  put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
 import { toast } from 'react-toastify';
-import { getTronContract } from 'utils/tronHelpers';
+import { Contract, ContractTransaction, ethers } from 'ethers';
 import { nftMarketMintNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
-import { tronSelector } from '../../selectors';
 import { simpleErrorHandler } from '../../../utils';
+import { getCardRandomMinterContract } from '../../../utils/contracts';
 
 function* nftMarketMintNowSaga(
   { type, payload, callback }: ReturnType<typeof nftMarketMintNowAction>,
 ) {
   try {
     yield put(apiActions.request(type));
-    const from: string = yield select(tronSelector.getProp('address'));
-    const contract =
-      yield getTronContract(process.env.REACT_APP_CONTRACT_CARD_RANDOM_MINTER as string);
-    const nftPrice = yield contract.price().call();
-    const trxHash = yield contract.mintRandom(payload).send({
-      from,
-      callValue: nftPrice.toString(),
-    });
+    const contract: Contract =
+      yield getCardRandomMinterContract();
+    const nftPrice: ethers.BigNumber = yield contract.price();
+    const tx: ContractTransaction = yield contract.mintRandom(
+      payload,
+      { value: nftPrice.toString() },
+    );
+    yield tx.wait();
     yield put(apiActions.success(type));
-    callback(trxHash);
+    callback(tx.hash);
     yield toast.success('Mint successful!');
   } catch (err) {
     simpleErrorHandler(err);

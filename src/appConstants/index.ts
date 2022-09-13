@@ -4,6 +4,7 @@ export { marketURL } from './url';
 export { default as LANGUAGE_OPTIONS } from './languageOptions';
 export * from './enums';
 export * from './networkUrl';
+export * from './notifications';
 
 export const PAGE_ITEM_LIMIT = 10;
 export const MIN_DESKTOP_WIDTH = 980;

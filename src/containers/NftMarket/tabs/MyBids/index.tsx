@@ -3,7 +3,7 @@ import React, {
   FC, useCallback, useEffect, useMemo,
 } from 'react';
 import { useDispatch } from 'react-redux';
-import { fromSunToNumber } from 'utils';
+import { fromWeiToNumber } from 'utils';
 import cx from 'classnames';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ import {
   Button, NotActiveCardIcon, Pagination, Table, Text, Link,
 } from '../../../../components';
 import { useShallowSelector, useTabHandlers } from '../../../../hooks';
-import { nftMarketSelector, tronSelector } from '../../../../store/selectors';
+import { nftMarketSelector, walletSelectors } from '../../../../store/selectors';
 import {
   nftMarketCancelBidAction,
   nftMarketGetMyBidsAction, nftMarketSelectProfileAction,
@@ -26,7 +26,7 @@ import { MyBidsCardData, NftReqDto, TableRowProps } from '../../../../types';
 type PriceProps = Pick<MyBidsCardData, 'bids'>;
 
 const Price: FC<PriceProps> = ({ bids }) => {
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const price = useMemo(() => {
     return Object
       .entries(bids)
@@ -37,8 +37,8 @@ const Price: FC<PriceProps> = ({ bids }) => {
 
   return (
     <div style={{ display: 'flex' }}>
-      <Text title={fromSunToNumber(`${price}`)} className={styles.priceCol}>
-        {fromSunToNumber(`${price}`)}
+      <Text title={fromWeiToNumber(`${price}`)} className={styles.priceCol}>
+        {fromWeiToNumber(`${price}`)}
       </Text>
       &nbsp;
       <Text className={styles.primary}>TRX</Text>
@@ -49,7 +49,7 @@ const Price: FC<PriceProps> = ({ bids }) => {
 type DateColProps = Pick<MyBidsCardData, 'bids'>;
 
 const DateCol: FC<DateColProps> = ({ bids }) => {
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const date = useMemo(() => {
     const filteredBids = Object
       .entries(bids)
