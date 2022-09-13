@@ -2,11 +2,12 @@ import {
   put, takeLatest,
 } from 'redux-saga/effects';
 import apiActions from 'store/api/actions';
-import { getFeeString, getTronContract, simpleErrorHandler } from 'utils';
-import BigNumber from 'bignumber.js';
+import { getFeeString1, simpleErrorHandler } from 'utils';
 import { toast } from 'react-toastify';
+import { ContractTransaction, ethers } from 'ethers';
 import { nftMarketBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
+import { getNftMarketPlaceContract } from '../../../utils/contracts';
 
 function* nftMarketBidSaga(
   { type, payload, successCallback }: ReturnType<typeof nftMarketBidAction>,
@@ -19,20 +20,15 @@ function* nftMarketBidSaga(
 
   try {
     yield put(apiActions.request(type));
-    const price: BigNumber =
-      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(payload.price)));
+    const price = ethers.utils.parseUnits(payload.price, 18);
 
-    const contract =
-      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_MARKETPLACE as string);
-    const feeInBps = yield contract.feeInBps().call();
-    const maxFee = yield contract.MAX_FEE().call();
+    const contract = yield getNftMarketPlaceContract();
+    const feeInBps: ethers.BigNumber = yield contract.feeInBps();
+    const maxFee: ethers.BigNumber = yield contract.MAX_FEE();
 
-    const amountString: string = getFeeString(feeInBps, maxFee, price);
-    yield contract.bid(`${payload.id}`, price.toString()).send({
-      callValue: amountString,
-      shouldPollResponse: true,
-    });
-
+    const amountString: string = getFeeString1(feeInBps, maxFee, price);
+    const tx: ContractTransaction = yield contract.bid(`${payload.id}`, price.toString(), { value: amountString });
+    yield tx.wait();
     yield success();
   } catch (err) {
     if (err.error === 'Cannot find result in solidity node') {

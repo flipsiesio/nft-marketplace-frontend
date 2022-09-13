@@ -18,8 +18,8 @@
     "title": "Terms of service",
     "flipsies": "Flipsies",
     "offers": "offers a online gambling experience that you must be of age to gamble in your country to participate in. If you reside in a location where gambling, lotteries or online betting is illegal, you must not enter this website.",
-    "provide": "The web site of Flipsies (\"we\") provides interface to the Smart Contract on the Tron blockchain, which accepts Tron tokens and transfers varying amounts of Tron tokens in return, depending on external factors.",
-    "verify": "We are not able to verify the legality of the service in each jurisdiction and provide you with any legal advice. It is your sole responsibility to comply with any relevant laws, policies and regulations of your jurisdiction regarding the use of Tron tokens in the way described above.",
+    "provide": "The web site of Flipsies (\"we\") provides interface to the Smart Contract on the BitTorrent blockchain, which accepts BTTC tokens and transfers varying amounts of BTTC tokens in return, depending on external factors.",
+    "verify": "We are not able to verify the legality of the service in each jurisdiction and provide you with any legal advice. It is your sole responsibility to comply with any relevant laws, policies and regulations of your jurisdiction regarding the use of BTTC tokens in the way described above.",
     "based": "Flipsies games are based on transparency, players should be aware of the risks and manage themselves accordingly. Please play responsibly and goodluck."
   },
   "jackpot": {
@@ -149,6 +149,8 @@
     }
   },
   "nftSystemEarn": {
+    "please": "Please",
+    "connectWallet": "to Metamask and connect wallet to play",
     "playNow": "Play now",
     "buyback": {
       "title": "Buyback system:",
@@ -189,7 +191,7 @@
     "jackpotNft": "Jackpot NFT!",
     "claim": "Claim",
     "nftSentLabel": "Your NFT has been successfully sent to your wallet address",
-    "claimLabel": "You have to claim your NFT by confirming the transaction in your TronLink wallet",
+    "claimLabel": "You have to claim your NFT by confirming the transaction in your Metamask wallet",
     "seeInGallery": "See in gallery",
     "seeOnTronscan": "See transaction on Tronscan"
   },

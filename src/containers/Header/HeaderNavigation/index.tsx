@@ -3,14 +3,15 @@ import React, { FC, MouseEventHandler, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import cx from 'classnames';
-import { routes, TronStatus } from 'appConstants';
+import { routes } from 'appConstants';
 import { useConnectWallet, useShallowSelector } from 'hooks';
-import { meSelector, nftMarketSelector, tronSelector } from 'store/selectors';
+import { meSelector, nftMarketSelector, walletSelectors } from 'store/selectors';
 import { useDispatch } from 'react-redux';
+import { nftMarketSignInAction } from 'store/nftMarket/actions';
 import HeaderLink from '../HeaderLink';
 import HeaderLangSwitcher from '../HeaderLangSwitcher';
 import styles from './styles.module.scss';
-import { nftMarketSignInAction } from '../../../store/nftMarket/actions';
+import { WalletStatus } from '../../../store/wallet/types';
 
 type Props = {
   isShowLangSwitcherTablet: boolean,
@@ -19,9 +20,9 @@ type Props = {
 const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
   const dispatch = useDispatch();
   const {
-    status: tronStatus,
+    status,
     address,
-  } = useShallowSelector(tronSelector.getState);
+  } = useShallowSelector(walletSelectors.getState);
   const history = useHistory();
   const { t } = useTranslation();
   const { handleConnect } = useConnectWallet();
@@ -30,16 +31,15 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
 
   const nftMarketHandler = useCallback<MouseEventHandler>((e) => {
     e.preventDefault();
-    if (tronStatus === TronStatus.ADDRESS_SELECTED) {
+    if (status !== WalletStatus.CONNECTED) {
+      handleConnect();
+    }
+    if (status === WalletStatus.CONNECTED) {
       dispatch(nftMarketSignInAction(() => {
         history.push(routes.nftMarket.root);
       }));
     }
-
-    if (tronStatus !== TronStatus.ADDRESS_SELECTED) {
-      handleConnect(routes.nftMarket.root);
-    }
-  }, [dispatch, history, tronStatus, handleConnect, nftMarketIsAuth]);
+  }, [dispatch, history, status, handleConnect, nftMarketIsAuth]);
 
   return (
     <nav className={styles.nav}>
@@ -62,12 +62,12 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
         className={cx(
           styles.walletMenu,
           {
-            [styles.walletMenuSelected]: tronStatus === TronStatus.ADDRESS_SELECTED,
+            [styles.walletMenuSelected]: status === WalletStatus.CONNECTED,
           },
         )}
         isActive={false}
-        isDisabled={tronStatus === TronStatus.ADDRESS_SELECTED}
-        text={t(tronStatus === TronStatus.ADDRESS_SELECTED ? address : 'header.wallet')}
+        isDisabled={status === WalletStatus.CONNECTED}
+        text={t(status === WalletStatus.CONNECTED ? address : 'header.wallet')}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();

@@ -1,5 +1,5 @@
 import { BidCardState } from '../types';
-import { fromSunToNumber } from './convertHelpers';
+import { fromWeiToNumber } from './convertHelpers';
 
 export const getBidPrice = (state?: BidCardState | null) => {
   if (state && state.bids) {
@@ -9,7 +9,7 @@ export const getBidPrice = (state?: BidCardState | null) => {
       .sort((a, b) => b - a);
 
     const price = prices[0];
-    return `${fromSunToNumber(price ? `${price}` : '0')}`;
+    return `${fromWeiToNumber(price ? `${price}` : '0')}`;
   }
   return '0';
 };
@@ -23,7 +23,7 @@ export const getMyBidPrice = (address: string, state?: BidCardState | null) => {
       .sort((a, b) => b - a);
 
     const price = prices[0];
-    return `${fromSunToNumber(price ? `${price}` : '0')}`;
+    return `${fromWeiToNumber(price ? `${price}` : '0')}`;
   }
   return '0';
 };

@@ -3,30 +3,32 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Button, Text, MarketNftInteractionModal } from 'components';
+import {
+  Button, Text, PurchaseConfirmationModal,
+} from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketBuyNowAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
-import { nftMarketSelector, tronSelector, uiSelector } from 'store/selectors';
+import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 import { RequestStatus } from '../../../../appConstants';
-import { history } from '../../../../utils';
+import { getBalance, history } from '../../../../utils';
 import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
 
 const GalleryCardProfile: FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const dispatch = useDispatch();
-  const address = useShallowSelector(tronSelector.getProp('address'));
+  const address = useShallowSelector(walletSelectors.getProp('address'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const buyNowStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BUY_NOW));
 
-  const [balance, setBalance] = useState<number>();
+  const [balance, setBalance] = useState<string>('0');
 
   useEffect(() => {
-    window.tronWeb.trx.getBalance(address).then((b) => setBalance(b));
+    getBalance(address).then((b) => setBalance(b.toString()));
   }, [address]);
 
   useEffect(() => {
@@ -89,14 +91,13 @@ const GalleryCardProfile: FC = () => {
           )}
         />
       )}
-      <MarketNftInteractionModal
+      <PurchaseConfirmationModal
         id={selectedNft?.cardId || 0}
-        price={selectedNft?.salePrice}
+        price={selectedNft?.salePrice || '0'}
         isOpen={buyIsActive}
         isLoading={buyNowStatus === RequestStatus.REQUEST}
         onToggle={toggleBuy}
         onSubmit={buyHandler}
-        title={t('nftMarket.purchaseConfirmation')}
         balance={balance}
       />
     </>

@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { FC } from 'react';
 import { useShallowSelector } from 'hooks';
-import { nftMarketSelector, tronSelector } from 'store/selectors';
+import { nftMarketSelector, walletSelectors } from 'store/selectors';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
-import { routes, TronStatus } from 'appConstants';
+import { routes } from 'appConstants';
+import { WalletStatus } from '../../store/wallet/types';
 
 type Props = {
   checkAccess?: boolean
@@ -14,7 +15,7 @@ const ProtectedRoute: FC<Props> = ({
   ...rest
 }) => {
   const accessToken = useShallowSelector(nftMarketSelector.getProp('accessToken'));
-  const tronStatus = useShallowSelector(tronSelector.getProp('status'));
+  const status = useShallowSelector(walletSelectors.getProp('status'));
 
   if (checkAccess) {
     return (
@@ -23,7 +24,7 @@ const ProtectedRoute: FC<Props> = ({
   }
 
   return (
-    tronStatus === TronStatus.ADDRESS_SELECTED ? (
+    status === WalletStatus.CONNECTED ? (
       <Route
         {...rest}
       />

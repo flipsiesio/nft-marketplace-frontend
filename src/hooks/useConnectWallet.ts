@@ -1,31 +1,30 @@
-import { useContext, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { useShallowSelector } from 'hooks';
-import { tronSelector } from 'store/selectors';
-import { connectTronAction } from 'store/tron/actions';
-import { ConnectWalletContext } from 'context';
-import { TronStatus } from 'appConstants';
+import { walletConnect } from '../store/wallet/actionCreators';
+import { useShallowSelector } from './index';
+import { nftMarketSelector, walletSelectors } from '../store/selectors';
+import { WalletStatus } from '../store/wallet/types';
 
-type ReturnValues = {
-  handleConnect: (toRedirectAfterAuth?: string) => void,
-};
-
-export default function (): ReturnValues {
+export const useConnectWallet = () => {
+  const accessToken = useShallowSelector(nftMarketSelector.getProp('accessToken'));
+  const status = useShallowSelector(walletSelectors.getProp('status'));
   const dispatch = useDispatch();
-  const { status } = useShallowSelector(tronSelector.getState);
-  const { handleOpen } = useContext(ConnectWalletContext);
 
-  const handleConnect = useCallback((toRedirectAfterAuth) => {
-    if (status === TronStatus.NOT_AVAILABLE) {
-      handleOpen();
-      return;
+  const handleConnect = useCallback(() => {
+    if (status !== WalletStatus.CONNECTED) {
+      dispatch(walletConnect());
     }
-    if (status === TronStatus.AVAILABLE) {
-      dispatch(connectTronAction({ meta: toRedirectAfterAuth }));
+  }, [dispatch, status]);
+
+  const connectOnStart = useCallback(() => {
+    console.log(accessToken);
+    if (status === WalletStatus.CONNECTED) {
+      dispatch(walletConnect());
     }
-  }, [status]);
+  }, [dispatch]);
 
   return {
     handleConnect,
+    connectOnStart,
   };
-}
+};

@@ -1,13 +1,3 @@
-export default {
-  USER: {
-    CREATE: '/v1/address',
-    REFERRAL_CODE: (address: string) => `/v1/address/${address}/referral-code`,
-    CREATE_LINK: (address: string) => `/v1/address/${address}/referral`,
-    CONFIRM_EMAIL: (confirmationCode: string) => `/v1/address/email-confirmation/${confirmationCode}`,
-    POKER_BETS_HISTORY: '/v1/game',
-  },
-};
-
 export const marketURL = {
   AUTH: {
     SIGN_IN: '/auth/sign-in',

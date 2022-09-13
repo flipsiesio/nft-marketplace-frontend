@@ -13,6 +13,7 @@ import reducer from './rootReducer';
 import rootSaga from './rootSaga';
 import { NftMarketState } from '../types';
 import { useAPIInterceptors } from '../utils';
+import { WalletState } from './wallet/types';
 
 export const expireTransform = createExpirationTransform({
   expireKey: 'persistExpiresAt', // default
@@ -30,10 +31,17 @@ const nftMarketConfig = {
   whitelist: ['refreshToken', 'accessToken', 'isAuth', 'signedMsg'] as Array<keyof NftMarketState>,
 };
 
+const walletConfig = {
+  key: 'wallet',
+  storage,
+  whitelist: ['status', 'address'] as Array<keyof WalletState>,
+};
+
 const reducers = {
   ...reducer,
   me: persistReducer(mePersistConfig, reducer.me),
   nftMarket: persistReducer(nftMarketConfig, reducer.nftMarket),
+  wallet: persistReducer(walletConfig, reducer.wallet),
 };
 
 const sagaMiddleware = createSagaMiddleware();

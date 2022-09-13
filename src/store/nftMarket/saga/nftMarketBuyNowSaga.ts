@@ -1,14 +1,15 @@
 import {
   put, select, takeLatest,
 } from 'redux-saga/effects';
-import { getFeeString, getTronContract, simpleErrorHandler } from 'utils';
+import { simpleErrorHandler, getFeeString1 } from 'utils';
 import apiActions from 'store/api/actions';
-import BigNumber from 'bignumber.js';
 import { toast } from 'react-toastify';
+import { Contract, ContractTransaction, ethers } from 'ethers';
 import { nftMarketBuyNowAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { nftMarketSelector } from '../../selectors';
 import { NftMarketState } from '../../../types';
+import { getNftSaleContract } from '../../../utils/contracts';
 
 function* nftMarketBuyNowSaga(
   { type, callback }: ReturnType<typeof nftMarketBuyNowAction>,
@@ -26,18 +27,14 @@ function* nftMarketBuyNowSaga(
 
     yield put(apiActions.request(type));
 
-    const contract =
-      yield getTronContract(process.env.REACT_APP_CONTRACT_NFT_SALE as string);
-    const price: BigNumber =
-      new window.tronWeb.BigNumber(window.tronWeb.toSun(parseFloat(selectedNft.salePrice)));
-    const feeInBps = yield contract.feeInBps().call();
-    const maxFee = yield contract.MAX_FEE().call();
-    const amountString = getFeeString(feeInBps, maxFee, price);
-
-    yield contract.buy(selectedNft.orderId).send({
-      callValue: amountString,
-      shouldPollResponse: true,
-    });
+    const contract: Contract = yield getNftSaleContract();
+    const price: ethers.BigNumber = yield contract.getSellOrderPrice(0);
+    const feeInBps: ethers.BigNumber = yield contract.feeInBps();
+    const maxFee: ethers.BigNumber = yield contract.MAX_FEE();
+    const amountString = getFeeString1(feeInBps, maxFee, price);
+    const tx: ContractTransaction =
+      yield contract.buy(selectedNft.orderId, { value: amountString });
+    yield tx.wait();
 
     yield success();
   } catch (err) {

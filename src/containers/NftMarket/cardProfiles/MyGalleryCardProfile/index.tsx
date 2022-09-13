@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Button, DelistModal, MarketNftInteractionModal, Text,
+  Button, DelistModal, Text, WantToSellNftModal,
 } from 'components';
 import { useShallowSelector, useToggle } from 'hooks';
 import { nftMarketSelector, uiSelector } from 'store/selectors';
@@ -18,7 +18,7 @@ import { useMyProfileHandlers } from '../../../../hooks/useMyProfileHandlers';
 import { RequestStatus } from '../../../../appConstants';
 import { PutOnSaleModal } from '../../../PutOnSaleModal';
 import { AcceptBidData } from '../../../CardHistory';
-import { history, fromSunToNumber } from '../../../../utils';
+import { history, fromWeiToNumber } from '../../../../utils';
 
 const MyGalleryCardProfile: FC = () => {
   const dispatch = useDispatch();
@@ -205,15 +205,13 @@ const MyGalleryCardProfile: FC = () => {
         onSubmit={getBackClick(MarketType.Auction)}
         isOpen={bidDelistActive}
       />
-      <MarketNftInteractionModal
+      <WantToSellNftModal
         isLoading={isWait}
-        showNotFunds={false}
         id={selectedNft?.cardId || 0}
-        title={t('nftMarket.sellTitle')}
         onToggle={acceptBidToggle}
         onSubmit={acceptBidHandler}
         isOpen={acceptBidActive}
-        price={`${fromSunToNumber(`${acceptBidData?.price || 0}`)}`}
+        price={`${fromWeiToNumber(`${acceptBidData?.price || 0}`)}`}
       />
     </>
   );
