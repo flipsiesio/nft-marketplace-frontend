@@ -19,7 +19,7 @@ function* nftMarketMintNowSaga(
     const nftPrice: ethers.BigNumber = yield contract.price();
     const tx: ContractTransaction = yield contract.mintRandom(
       payload,
-      { value: nftPrice.toString() },
+      { value: nftPrice.mul(payload).toString() },
     );
     yield tx.wait();
     yield put(apiActions.success(type));

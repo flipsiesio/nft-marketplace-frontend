@@ -7,7 +7,7 @@ import { WalletStatus } from '../store/wallet/types';
 import { getCardFactoryContract, getCardRandomMinterContract } from '../utils/contracts';
 
 export const useMintInfo = () => {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(ethers.BigNumber.from(0));
   const [avaliableNftAmount, setAvaliableNftAmount] = useState(0);
   const { status, address } = useShallowSelector(walletSelectors.getState);
 
@@ -17,7 +17,7 @@ export const useMintInfo = () => {
         await getCardRandomMinterContract();
 
       const nftPrice: ethers.BigNumber = await contract.price();
-      setPrice(nftPrice.toNumber());
+      setPrice(nftPrice);
 
       const factoryContract = await getCardFactoryContract();
       const colorizedNftAmount =
