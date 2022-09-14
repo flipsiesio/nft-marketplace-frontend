@@ -11,6 +11,7 @@ import { useHistory } from 'react-router';
 import { routes, scanTransactionUrl } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
+import { fromWeiToNumber } from 'utils';
 import { nftMarketMintNowAction, nftMarketSignInAction } from '../../store/nftMarket/actions';
 import { useMintInfo } from '../../hooks/useMintInfo';
 import styles from './styles.module.scss';
@@ -80,7 +81,8 @@ const MintModal: FC<Props> = ({
             &nbsp;
             {`${
               selectedOption ?
-                price * Number(selectedOption?.value) : price
+                fromWeiToNumber(price.mul(selectedOption.value)) :
+                fromWeiToNumber(price)
             } TRX`}
             &nbsp;
             {t('explore.mintModalTitle2')}

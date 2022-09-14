@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import { MarketType } from '../types';
 import { getNftMarketPlaceContract, getNftSaleContract } from './contracts';
 
-export function fromWeiToNumber(value: string) {
+export function fromWeiToNumber(value: ethers.BigNumberish) {
   return parseFloat(ethers.utils.formatUnits(value, 18));
 }
 
