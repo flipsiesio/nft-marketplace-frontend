@@ -80,7 +80,7 @@ const MarketCardProfile: FC = () => {
                     >
                       {selectedNft.bidPrice}
                     </Text>
-                    <Text className={styles.primary} tag="span">TRX</Text>
+                    <Text className={styles.primary} tag="span">BTTC</Text>
                   </div>
                 </div>
                 {!isOwner && (

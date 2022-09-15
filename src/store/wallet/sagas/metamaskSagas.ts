@@ -81,6 +81,7 @@ function* handlePayload({
           address,
         }));
         showNotificationMessage(NotificationName.AccountChanged);
+        yield put(nftMarketSignOutAction());
       } else {
         yield put(walletDisconnect({
           status: WalletStatus.LOST,

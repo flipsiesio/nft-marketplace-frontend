@@ -151,7 +151,7 @@
         "1": "Descarga e instala <1>la extensión de Chrome TronLink</1>.",
         "2": "Sigue las instrucciones en TronLink para crear o importar una cuenta.",
         "3": "Si tienes una extensión y una billetera, simplemente inicia sesión.",
-        "4": "Asegúrate de tener suficiente TRX, ancho de banda y energía para empezar a jugar..",
+        "4": "Asegúrate de tener suficiente BTTC, ancho de banda y energía para empezar a jugar..",
         "5": "¡Bien hecho!"
       },
       "mobile": {
@@ -159,7 +159,7 @@
         "1": "Descarga la aplicación móvil TronLink para dispositivos <1>IOS</1> o <3>Android</3>.",
         "2": "Crea o importa una cuenta siguiendo las instrucciones.",
         "3": "Ve al navegador integrado y pega https://flipsies.io/ para abrir Flipsies dapp.",
-        "4": "Asegúrate de tener suficiente TRX, ancho de banda y energía para empezar a jugar..",
+        "4": "Asegúrate de tener suficiente BTTC, ancho de banda y energía para empezar a jugar..",
         "5": "¡Bien hecho!"
       }
     },
@@ -169,7 +169,7 @@
     },
     "question9": {
       "title": "A cerca de TRON",
-      "content": "<b>Tron</b> es una plataforma descentralizada de entretenimiento e intercambio de contenido que utiliza tecnología blockchain y peer-to-peer (P2P). <br/><br/><b>Ancho de banda</b>: Disponer de ancho de banda de TRON te permite realizar transacciones en la red principal de TRON sin tener que pagar ninguna tarifa de gas. Disponer de suficiente ancho de banda es crucial cuando se utiliza para dApps como Flipsies.io , en la que podrías querer realizar varias transacciones pequeñas sin tener que preocuparte de utilizar tus tokens TRX en el proceso. El ancho de banda también se utiliza para consolidarte como un miembro activo de la comunidad de TRON, permitiéndote emitir votos para los Super Representantes. <br/><br/><b>Energía</b>: este es un recurso especial que se utiliza para procesar contratos inteligentes en la red TRON. Los contratos inteligentes consumen energía además del ancho de banda, así que asegúrate de tener suficiente de ambos cuando muevas tus tokens.<br/><br/><b>La congelación</b>  es un mecanismo único para el blockchain de Tron. Puedes congelar tu TRX para obtener ciertos beneficios. Al hacerlo, tu Tron seguirá siendo tuyo, pero no podrás enviarlo a ningún sitio durante 3 días. Congelar es similar a poner dinero en una cuenta de ahorro: el dinero está ahí pero no puedes gastarlo. <br/> Cuando congelas tu TRX, hay varias cosas que puedes ganar. <br/> Primero, tendrías que elegir si deseas congelar tu Tron para obtener puntos de ancho de banda (BP) o puntos de energía (EP). Además de esto, por cada TRX congelado obtendrás 1 Tron Power, sin importar cuál de los dos elijas."
+      "content": "<b>Tron</b> es una plataforma descentralizada de entretenimiento e intercambio de contenido que utiliza tecnología blockchain y peer-to-peer (P2P). <br/><br/><b>Ancho de banda</b>: Disponer de ancho de banda de TRON te permite realizar transacciones en la red principal de TRON sin tener que pagar ninguna tarifa de gas. Disponer de suficiente ancho de banda es crucial cuando se utiliza para dApps como Flipsies.io , en la que podrías querer realizar varias transacciones pequeñas sin tener que preocuparte de utilizar tus tokens BTTC en el proceso. El ancho de banda también se utiliza para consolidarte como un miembro activo de la comunidad de TRON, permitiéndote emitir votos para los Super Representantes. <br/><br/><b>Energía</b>: este es un recurso especial que se utiliza para procesar contratos inteligentes en la red TRON. Los contratos inteligentes consumen energía además del ancho de banda, así que asegúrate de tener suficiente de ambos cuando muevas tus tokens.<br/><br/><b>La congelación</b>  es un mecanismo único para el blockchain de Tron. Puedes congelar tu BTTC para obtener ciertos beneficios. Al hacerlo, tu Tron seguirá siendo tuyo, pero no podrás enviarlo a ningún sitio durante 3 días. Congelar es similar a poner dinero en una cuenta de ahorro: el dinero está ahí pero no puedes gastarlo. <br/> Cuando congelas tu BTTC, hay varias cosas que puedes ganar. <br/> Primero, tendrías que elegir si deseas congelar tu Tron para obtener puntos de ancho de banda (BP) o puntos de energía (EP). Además de esto, por cada BTTC congelado obtendrás 1 Tron Power, sin importar cuál de los dos elijas."
     }
   },
   "nftSystemEarn": {

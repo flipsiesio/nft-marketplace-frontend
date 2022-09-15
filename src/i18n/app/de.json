@@ -151,7 +151,7 @@
         "1": "Installieren Sie die <1>TronLink-Erweiterung für den Chrome-Browser.</1>",
         "2": "Folgen Sie den Anweisungen in TronLink, um ein Benutzerkonto zu erstellen oder zu importieren.",
         "3": "Wenn Sie bereits über ein Wallet verfügen und die Erweiterung installiert haben, melden Sie sich einfach mit Ihren Zugangsdaten an.",
-        "4": "Prüfen Sie, ob Sie über genügend TRX, Bandbreite und Energie verfügen, um spielen zu können.",
+        "4": "Prüfen Sie, ob Sie über genügend BTTC, Bandbreite und Energie verfügen, um spielen zu können.",
         "5": "Das war‘s schon!"
       },
       "mobile": {
@@ -159,7 +159,7 @@
         "1": "Laden Sie sich die TronLink-App für Ihr <1>iOS</1> oder <3>Android</3>-Gerät herunter.",
         "2": "Folgen Sie den Anweisungen, um ein Benutzerkonto zu erstellen oder zu importieren.",
         "3": "Öffnen Sie den integrierten Browser und geben Sie die Adresse https://flipsies.io/ ein, um die Flipsies-dApp zu starten.",
-        "4": "Prüfen Sie, ob Sie über genügend TRX, Bandbreite und Energie verfügen, um spielen zu können.",
+        "4": "Prüfen Sie, ob Sie über genügend BTTC, Bandbreite und Energie verfügen, um spielen zu können.",
         "5": "Das war‘s schon!"
       }
     },
@@ -169,7 +169,7 @@
     },
     "question9": {
       "title": "Über TRON",
-      "content": "<b>TRON</b> ist eine dezentrale Entertainment- und Content-Sharing-Plattform, die auf Blockchain- und Peer-to-Peer-Verfahren beruht.<br/><br/><b>Bandbreite</b>: Mithilfe von TRON-Bandbreite („Bandwidth“) können Sie Transaktionen im TRON-Mainnet durchführen, ohne Provisionsgebühren für die genutzten Ressourcen entrichten zu müssen. Ein ausreichendes Kontingent an Bandbreite ist bei der Nutzung von dApps wie Flipsies.io entscheidend, damit Sie auch mehrere kleinere Transaktionen durchführen können, ohne dass Ihnen dafür TRX-Tokens abgezogen werden. Ihr Bandbreitenkontingent können Sie außerdem dazu nutzen, um sich als aktives Mitglied der TRON-Community zu etablieren und für Super Representatives abzustimmen.<br/><br/><b>Energie</b>: Diese spezielle Ressource wird zur Verarbeitung von Smart Contracts im TRON-Netzwerk genutzt. Smart Contracts verbrauchen sowohl Energie als auch Bandbreite, also achten Sie beim Übertragen Ihrer Tokens darauf, dass Sie von beidem genug zur Verfügung haben.<br/><br/><b>Das Einfrieren</b> („Freezing“) ist ein einzigartiger Mechanismus für die TRON-Blockchain. Wenn Sie Ihre TRX einfrieren, erlangen Sie gewisse Vorteile. Allerdings können Sie eingefrorene TRX drei Tage lang nicht für Transaktionen nutzen. Das Ganze ist vergleichbar mit einem Sparkonto: Ihr Geld ist zwar da, steht Ihnen aber für einen begrenzten Zeitraum nicht zur Verfügung.<br/>Durch Einfrieren Ihrer TRX können Sie sich verschiedene Vergünstigungen sichern.<br/> Zunächst müssten Sie festlegen, ob Sie für das Einfrieren entweder <i>Bandbreitenpunkte</i> (BP) oder <i>Energiepunkte</i> (EP). Unabhängig davon, für welche Option Sie sich entscheiden, erhalten Sie für das Einfrieren obendrein <i>TRON Power</i> (TP), nämlich pro eingefrorenem TRX je 1 TP."
+      "content": "<b>TRON</b> ist eine dezentrale Entertainment- und Content-Sharing-Plattform, die auf Blockchain- und Peer-to-Peer-Verfahren beruht.<br/><br/><b>Bandbreite</b>: Mithilfe von TRON-Bandbreite („Bandwidth“) können Sie Transaktionen im TRON-Mainnet durchführen, ohne Provisionsgebühren für die genutzten Ressourcen entrichten zu müssen. Ein ausreichendes Kontingent an Bandbreite ist bei der Nutzung von dApps wie Flipsies.io entscheidend, damit Sie auch mehrere kleinere Transaktionen durchführen können, ohne dass Ihnen dafür BTTC-Tokens abgezogen werden. Ihr Bandbreitenkontingent können Sie außerdem dazu nutzen, um sich als aktives Mitglied der TRON-Community zu etablieren und für Super Representatives abzustimmen.<br/><br/><b>Energie</b>: Diese spezielle Ressource wird zur Verarbeitung von Smart Contracts im TRON-Netzwerk genutzt. Smart Contracts verbrauchen sowohl Energie als auch Bandbreite, also achten Sie beim Übertragen Ihrer Tokens darauf, dass Sie von beidem genug zur Verfügung haben.<br/><br/><b>Das Einfrieren</b> („Freezing“) ist ein einzigartiger Mechanismus für die TRON-Blockchain. Wenn Sie Ihre BTTC einfrieren, erlangen Sie gewisse Vorteile. Allerdings können Sie eingefrorene BTTC drei Tage lang nicht für Transaktionen nutzen. Das Ganze ist vergleichbar mit einem Sparkonto: Ihr Geld ist zwar da, steht Ihnen aber für einen begrenzten Zeitraum nicht zur Verfügung.<br/>Durch Einfrieren Ihrer BTTC können Sie sich verschiedene Vergünstigungen sichern.<br/> Zunächst müssten Sie festlegen, ob Sie für das Einfrieren entweder <i>Bandbreitenpunkte</i> (BP) oder <i>Energiepunkte</i> (EP). Unabhängig davon, für welche Option Sie sich entscheiden, erhalten Sie für das Einfrieren obendrein <i>TRON Power</i> (TP), nämlich pro eingefrorenem BTTC je 1 TP."
     }
   },
   "nftSystemEarn": {
