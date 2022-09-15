@@ -83,7 +83,7 @@ const MintModal: FC<Props> = ({
               selectedOption ?
                 fromWeiToNumber(price.mul(selectedOption.value)) :
                 fromWeiToNumber(price)
-            } TRX`}
+            } BTTC`}
             &nbsp;
             {t('explore.mintModalTitle2')}
           </Text>

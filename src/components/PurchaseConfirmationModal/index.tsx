@@ -69,7 +69,7 @@ export const PurchaseConfirmationModal: FC<Props> = ({
           <Text className={styles.bold}>
             {price}
             &nbsp;
-            <Text className={cx(styles.primary, styles.bold)} tag="span">TRX</Text>
+            <Text className={cx(styles.primary, styles.bold)} tag="span">BTTC</Text>
           </Text>
         </div>
       </div>

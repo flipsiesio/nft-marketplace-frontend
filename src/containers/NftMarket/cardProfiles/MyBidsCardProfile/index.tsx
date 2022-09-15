@@ -56,7 +56,7 @@ export const MyBidsCardProfile: FC = () => {
                   <Text className={styles.buttonLabel}>{t('nftMarket.myBid')}</Text>
                   <div className={styles.price}>
                     <Text title={myBidPrice} className={styles.infoBlockValue}>{`${myBidPrice}`}</Text>
-                    <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+                    <Text className={cx(styles.primary, styles.trx)} tag="span">BTTC</Text>
                   </div>
                 </div>
                 {!isActive && (

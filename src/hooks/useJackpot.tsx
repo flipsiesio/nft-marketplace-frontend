@@ -15,6 +15,7 @@ export const useJackpot = () => {
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
   const { status } = useShallowSelector(walletSelectors.getState);
   const [requestIds, setRequestIds] = useState<string[]>([]);
+  const [issuedReceived, setIssuedReceived] = useState(false);
 
   useEffect(() => {
     jackpotApi.defaults.headers.Authorization = `Bearer ${accessToken}`;
@@ -36,8 +37,8 @@ export const useJackpot = () => {
 
   useEffect(() => {
     jackpotApi.defaults.headers.Authorization = `Bearer ${accessToken}`;
-
-    if (status === WalletStatus.CONNECTED && isAuth) {
+    if (status === WalletStatus.CONNECTED && isAuth && !issuedReceived) {
+      setIssuedReceived(true);
       jackpotApi.get<JackpotIssue>(marketURL.JACKPOT.ISSUED).then((res) => {
         const { jackpots } = res.data;
         if (jackpots.length === 0) return;
@@ -69,5 +70,5 @@ export const useJackpot = () => {
         setRequestIds(ids);
       });
     }
-  }, [status, isAuth, accessToken, t]);
+  }, [status, isAuth, accessToken, t, issuedReceived]);
 };

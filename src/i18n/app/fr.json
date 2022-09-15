@@ -151,7 +151,7 @@
         "1": "Téléchargez et installez <>l’extension Chrome TronLink</>",
         "2": "Suivez les instructions sur TronLink pour créer ou importer un compte.",
         "3": "Si vous possédez une extension et un portefeuille, il suffit de vous connecter.",
-        "4": "Assurez-vous d’avoir suffisamment de TRX, de bande passante et d’énergie pour commencer à jouer.",
+        "4": "Assurez-vous d’avoir suffisamment de BTTC, de bande passante et d’énergie pour commencer à jouer.",
         "5": "Bien joué !"
       },
       "mobile": {
@@ -159,7 +159,7 @@
         "1": "Téléchargez l’application mobile TronLink pour <1>IOS</1> ou appareils <3>Android</3>.",
         "2": "Créez ou importez un compte en suivant les instructions.",
         "3": "Accédez au navigateur intégré et collez https://flipsies.io/ pour ouvrir la dApp Flipsies.",
-        "4": "Assurez-vous d’avoir suffisamment de TRX, de bande passante et d’énergie pour commencer à jouer.",
+        "4": "Assurez-vous d’avoir suffisamment de BTTC, de bande passante et d’énergie pour commencer à jouer.",
         "5": "Bien joué !"
       }
     },
@@ -169,7 +169,7 @@
     },
     "question9": {
       "title": "À propos de TRON",
-      "content": "<b>Tron</b> est une plate-forme de divertissement et de partage de contenu décentralisée qui utilise la technologie de chaîne de blocs et pair-à-pair (P2P). <br/><br/><b>Bande passante</b>: La bande passante TRON vous permet d’effectuer des transactions sur le réseau principal TRON sans payer de frais de transaction (gaz). Avoir une bande passante suffisante est crucial lors de l’utilisation d’applications décentralisées (dApps) tells que Flipsies.io, où vous voudrez peut-être effectuer plusieurs transactions de moindre importance sans avoir à vous soucier de l’utilisation de vos jetons TRX au cours du processus. La bande passante est également utilisée pour vous consolider en tant que membre actif de la communauté TRON, ce qui vous permet de voter pour les super représentants. <br/><br/><b>Énergie</b>: Il s’agit d’une ressource spéciale utilisée pour traiter les contrats intelligents sur le réseau TRON. Les contrats intelligents consomment de l’énergie en plus de la bande passante, alors assurez-vous d’en avoir lorsque vous effectuez des transactions de jetons.<br/><br/><b>Freezing</b> Le gel est un mécanisme unique pour la chaîne de blocs Tron. Vous pouvez geler votre TRX afin de bénéficier de certains avantages. Ainsi, votre Tron vous appartiendra toujours, mais il est impossible de le déplacer pendant 3 jours. Le gel est comparable à un dépôt d’argent sur un compte épargne : l’argent est présent, mais vous ne pouvez pas le dépenser.<br/Lorsque vous gelez votre TRX, vous pouvez acquérir plusieurs avantages.<br/> F En premier lieu, vous devez choisir si vous souhaitez geler votre Tron pour gagner des points de bande passante (BP - Bandwidth points) ou des points d’énergie (EP - Energy Points). En outre, pour chaque TRX gelé, vous obtiendrez 1 Tron Power et ce, peu importe l’option choisie."
+      "content": "<b>Tron</b> est une plate-forme de divertissement et de partage de contenu décentralisée qui utilise la technologie de chaîne de blocs et pair-à-pair (P2P). <br/><br/><b>Bande passante</b>: La bande passante TRON vous permet d’effectuer des transactions sur le réseau principal TRON sans payer de frais de transaction (gaz). Avoir une bande passante suffisante est crucial lors de l’utilisation d’applications décentralisées (dApps) tells que Flipsies.io, où vous voudrez peut-être effectuer plusieurs transactions de moindre importance sans avoir à vous soucier de l’utilisation de vos jetons BTTC au cours du processus. La bande passante est également utilisée pour vous consolider en tant que membre actif de la communauté TRON, ce qui vous permet de voter pour les super représentants. <br/><br/><b>Énergie</b>: Il s’agit d’une ressource spéciale utilisée pour traiter les contrats intelligents sur le réseau TRON. Les contrats intelligents consomment de l’énergie en plus de la bande passante, alors assurez-vous d’en avoir lorsque vous effectuez des transactions de jetons.<br/><br/><b>Freezing</b> Le gel est un mécanisme unique pour la chaîne de blocs Tron. Vous pouvez geler votre BTTC afin de bénéficier de certains avantages. Ainsi, votre Tron vous appartiendra toujours, mais il est impossible de le déplacer pendant 3 jours. Le gel est comparable à un dépôt d’argent sur un compte épargne : l’argent est présent, mais vous ne pouvez pas le dépenser.<br/Lorsque vous gelez votre BTTC, vous pouvez acquérir plusieurs avantages.<br/> F En premier lieu, vous devez choisir si vous souhaitez geler votre Tron pour gagner des points de bande passante (BP - Bandwidth points) ou des points d’énergie (EP - Energy Points). En outre, pour chaque BTTC gelé, vous obtiendrez 1 Tron Power et ce, peu importe l’option choisie."
     }
   },
   "nftSystemEarn": {
