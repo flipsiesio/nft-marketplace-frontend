@@ -53,7 +53,7 @@ const MarketCard: FC<Props> = ({
             <Text className={styles.infoBlockLabel}>{priceLabel || t('nftMarket.price')}</Text>
             <div className={styles.price}>
               <Text title={price} className={styles.infoBlockValue}>{`${price}`}</Text>
-              <Text className={cx(styles.primary, styles.trx)} tag="span">TRX</Text>
+              <Text className={cx(styles.primary, styles.trx)} tag="span">BTTC</Text>
             </div>
           </div>
         )}

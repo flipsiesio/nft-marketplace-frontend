@@ -41,7 +41,7 @@ const Price: FC<PriceProps> = ({ bids }) => {
         {fromWeiToNumber(`${price}`)}
       </Text>
       &nbsp;
-      <Text className={styles.primary}>TRX</Text>
+      <Text className={styles.primary}>BTTC</Text>
     </div>
   );
 };

@@ -151,7 +151,7 @@
                 "1": "Baixe e instale a <1>extensão TronLink do Chrome</1>",
                 "2": "Siga as instruções no TronLink para criar ou importar uma conta.",
                 "3": "Se você já tem a extensão e a carteira, é só fazer login.",
-                "4": "Antes de jogar, verifique se você tem TRX, largura de banda e energia suficientes.",
+                "4": "Antes de jogar, verifique se você tem BTTC, largura de banda e energia suficientes.",
                 "5": "Muito bem!"
             },
             "mobile": {
@@ -159,7 +159,7 @@
                 "1": "Baixe o app TronLink para dispositivos <1>iOS</1> ou <3>Android</3>.",
                 "2": "Create or Import Account following the instructions.",
                 "3": "Abra o navegador e cole https://flipsies.io/ para abrir o dapp do Flipsies.",
-                "4": "Antes de jogar, verifique se você tem TRX, largura de banda e energia suficientes.",
+                "4": "Antes de jogar, verifique se você tem BTTC, largura de banda e energia suficientes.",
                 "5": "Muito bem!"
             }
         },
@@ -169,7 +169,7 @@
         },
         "question9": {
             "title": "Sobre a TRON",
-            "content": "<b>TRON</b> é uma plataforma descentralizada de entretenimento e compartilhamento de conteúdo que usa tecnologia blockchain e peer-to-peer (P2P).<br/><br/><b>Largura de banda</b>: A largura de banda da TRON permite que você execute transações na rede principal da TRON sem pagar taxa de gás. Largura de banda suficiente é essencial ao usar dapps como Flipsies.io, onde você pode querer fazer várias transações menores sem se preocupar em usar seus tokens TRX no processo. Além disso, você usa a largura de banda para se consolidar como um membro ativo da comunidade TRON, o que permite que você vote para Super Representantes.<br/><br/><b>Energia</b>:  É um recurso especial usado para processar contratos inteligentes na rede TRON. Além de largura de banda, os contratos inteligentes consomem energia, portanto certifique-se de ter o suficiente dos dois ao mover seus tokens.<br/><br/><b>O congelamento</b> é um mecanismo único do blockchain da Tron. Para ganhar alguns benefícios, você pode congelar seu TRX. Ao fazer isso, seu Tron continuará sendo seu, mas você não pode enviá-lo para lugar algum por 3 dias. Congelar é semelhante a colocar dinheiro em uma conta poupança: o dinheiro está lá, mas você não pode usá-lo.<br/>é um mecanismo único do blockchain da Tron. Para ganhar alguns benefícios, você pode congelar seu TRX. Ao fazer isso, seu Tron continuará sendo seu, mas você não pode enviá-lo para lugar algum por 3 dias. Congelar é semelhante a colocar dinheiro em uma conta poupança: o dinheiro está lá, mas você não pode usá-lo.<br/> Primeiro, você precisa escolher se quer congelar seu Tron para ganhar <i>pontos de largura de banda</i> (BP) ou <i>pontos de energia</i> (EP). Além disso, para cada TRX congelado você receberá 1 <i>Tron Power</i> - independentemente de qual dos dois você escolher."
+            "content": "<b>TRON</b> é uma plataforma descentralizada de entretenimento e compartilhamento de conteúdo que usa tecnologia blockchain e peer-to-peer (P2P).<br/><br/><b>Largura de banda</b>: A largura de banda da TRON permite que você execute transações na rede principal da TRON sem pagar taxa de gás. Largura de banda suficiente é essencial ao usar dapps como Flipsies.io, onde você pode querer fazer várias transações menores sem se preocupar em usar seus tokens BTTC no processo. Além disso, você usa a largura de banda para se consolidar como um membro ativo da comunidade TRON, o que permite que você vote para Super Representantes.<br/><br/><b>Energia</b>:  É um recurso especial usado para processar contratos inteligentes na rede TRON. Além de largura de banda, os contratos inteligentes consomem energia, portanto certifique-se de ter o suficiente dos dois ao mover seus tokens.<br/><br/><b>O congelamento</b> é um mecanismo único do blockchain da Tron. Para ganhar alguns benefícios, você pode congelar seu BTTC. Ao fazer isso, seu Tron continuará sendo seu, mas você não pode enviá-lo para lugar algum por 3 dias. Congelar é semelhante a colocar dinheiro em uma conta poupança: o dinheiro está lá, mas você não pode usá-lo.<br/>é um mecanismo único do blockchain da Tron. Para ganhar alguns benefícios, você pode congelar seu BTTC. Ao fazer isso, seu Tron continuará sendo seu, mas você não pode enviá-lo para lugar algum por 3 dias. Congelar é semelhante a colocar dinheiro em uma conta poupança: o dinheiro está lá, mas você não pode usá-lo.<br/> Primeiro, você precisa escolher se quer congelar seu Tron para ganhar <i>pontos de largura de banda</i> (BP) ou <i>pontos de energia</i> (EP). Além disso, para cada BTTC congelado você receberá 1 <i>Tron Power</i> - independentemente de qual dos dois você escolher."
         }
     },
     "nftSystemEarn": {

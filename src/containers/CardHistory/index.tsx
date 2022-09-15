@@ -121,7 +121,7 @@ const tradingCol = [
           {price === null ? 0 : fromWeiToNumber(`${price}`)}
         </Text>
         &nbsp;
-        <Text className={styles.pink}>TRX</Text>
+        <Text className={styles.pink}>BTTC</Text>
       </div>
     ),
   },
@@ -180,7 +180,7 @@ export const CardHistory: FC<Props> = ({
             {price === null ? 0 : fromWeiToNumber(`${price}`)}
           </Text>
           &nbsp;
-          <Text className={styles.pink}>TRX</Text>
+          <Text className={styles.pink}>BTTC</Text>
         </div>
       ),
     },
