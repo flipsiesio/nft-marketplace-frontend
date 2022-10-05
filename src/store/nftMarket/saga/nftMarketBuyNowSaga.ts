@@ -28,7 +28,7 @@ function* nftMarketBuyNowSaga(
     yield put(apiActions.request(type));
 
     const contract: Contract = yield getNftSaleContract();
-    const price: ethers.BigNumber = yield contract.getSellOrderPrice(0);
+    const price: ethers.BigNumber = yield contract.getSellOrderPrice(selectedNft.orderId);
     const feeInBps: ethers.BigNumber = yield contract.feeInBps();
     const maxFee: ethers.BigNumber = yield contract.MAX_FEE();
     const amountString = getFeeString1(feeInBps, maxFee, price);
