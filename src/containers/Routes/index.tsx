@@ -19,7 +19,7 @@ import {
   MyBidsCardProfilePage,
   NftEarningSystemPage,
 } from 'pages';
-import { NftView } from 'pages/NftView';
+// import { NftView } from 'pages/NftView';
 
 const Routes = () => {
   const location = useLocation();
@@ -36,7 +36,7 @@ const Routes = () => {
 
       <Route path={routes.notFound.root} component={NotFound} />
       <Route path={routes.termsOfServices.root} component={TermsOfServices} />
-      <Route path={routes.nftView.root} component={NftView} />
+      {/* <Route path={routes.nftView.root} component={NftView} /> */}
 
       <ProtectedRoute
         path={routes.nftMarket.marketProfile.root}
