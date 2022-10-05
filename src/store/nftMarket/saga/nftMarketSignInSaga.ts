@@ -75,6 +75,12 @@ function* nftMarketSignInSaga({ type, callback }: ReturnType<typeof nftMarketSig
       toast.error((err as AxiosError).response?.data.message);
       history.push(routes.explore.root);
     }
+    yield put(nftMarketSetStateAction({
+      isAuth: false,
+      refreshToken: undefined,
+      accessToken: undefined,
+      signedMsg: undefined,
+    }));
     yield put(apiActions.error(type, err));
   }
 }
