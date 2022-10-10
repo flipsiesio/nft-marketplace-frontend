@@ -1,4 +1,6 @@
-import React, { FC, useMemo } from 'react';
+import React, {
+  FC, useMemo, useState, useCallback, Fragment,
+} from 'react';
 import {
   Tab, Tabs, TabList, TabPanel,
 } from 'react-tabs';
@@ -22,12 +24,7 @@ const NavTabs: FC<Props> = ({
   tabClassName,
 }) => {
   const location = useLocation();
-  const onSelect = (activeTab: number) => {
-    const param = new URLSearchParams(location.search);
-    param.set('tab', tabItems[activeTab].title);
-
-    history.push({ search: param.toString() });
-  };
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
 
   const selectedIndex = useMemo(() => {
     const search = new URLSearchParams(location.search);
@@ -36,29 +33,59 @@ const NavTabs: FC<Props> = ({
     return result === -1 ? 0 : result;
   }, [location, tabItems]);
 
-  return (
-    <Tabs
-      selectedIndex={shouldSearch ? selectedIndex : undefined}
-      onSelect={shouldSearch ? onSelect : undefined}
-      className={className}
-    >
-      <TabList className={styles.tabList}>
-        {tabItems.map(({ title }) => (
-          <Tab
-            key={title}
-            selectedClassName={styles.activeTab}
-            className={cx(styles.tab, tabClassName)}
-          >{title}
-          </Tab>
-        ))}
-      </TabList>
+  const onSelect = useCallback((activeTab: number) => {
+    const param = new URLSearchParams(location.search);
+    param.set('tab', tabItems[activeTab].title);
 
-      {tabItems.map(({ content, title }) => (
-        <TabPanel key={title}>
-          {content}
-        </TabPanel>
-      ))}
-    </Tabs>
+    history.push({ search: param.toString() });
+    const item = tabItems[activeTab];
+    if (item && item.menu) {
+      setIsShowMenu((state) => !state);
+    } else {
+      setIsShowMenu(false);
+    }
+  }, [selectedIndex]);
+
+  return (
+    <>
+      <Tabs
+        selectedIndex={shouldSearch ? selectedIndex : undefined}
+        onSelect={shouldSearch ? onSelect : undefined}
+        className={className}
+      >
+        <TabList className={styles.tabList}>
+          {tabItems.map(({ title, menu }, index) => (
+            <Fragment key={`tab-${title}`}>
+              <Tab
+                selectedClassName={styles.activeTab}
+                className={cx(styles.tab, tabClassName)}
+              >
+                {title}
+              </Tab>
+              {isShowMenu && selectedIndex === index && menu && (
+                <div className={styles.containerMenu} onMouseLeave={() => setIsShowMenu(false)} key={`menu-${title}`}>
+                  <ul className={styles.listMenu} key={`ul-${title}`}>
+                    {menu.map(({ title: titleMenu }) => (
+                      <li className={styles.itemMenu} key={`li-${titleMenu}`}>
+                        <button className={styles.linkMenu} type="button">
+                          {titleMenu}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </Fragment>
+          ))}
+        </TabList>
+
+        {tabItems.map(({ content, title }) => (
+          <TabPanel key={title}>
+            {content}
+          </TabPanel>
+        ))}
+      </Tabs>
+    </>
   );
 };
 

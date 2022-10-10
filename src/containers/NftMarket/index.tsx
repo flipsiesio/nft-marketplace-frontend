@@ -16,7 +16,32 @@ const NftMarket: FC = () => {
 
   const tabItems = useMemo<TabItem[]>(() => (
     [
-      { title: t('nftMarket.marketTab'), content: <MarketTab /> },
+      {
+        title: t('nftMarket.marketTab'),
+        content: <MarketTab />,
+        menu: [
+          {
+            title: 'View Auctions',
+            search: '',
+          },
+          {
+            title: 'View Buy Now',
+            search: '',
+          },
+          {
+            title: 'View All',
+            search: '',
+          },
+          {
+            title: 'View Price low/high',
+            search: '',
+          },
+          {
+            title: 'View Price high/low',
+            search: '',
+          },
+        ],
+      },
       { title: t('nftMarket.galleryTab'), content: <GalleryTab /> },
       { title: t('nftMarket.myGalleryTab'), content: <MyGalleryTab /> },
       { title: t('nftMarket.myBidsTab'), content: <MyBidsTab /> },

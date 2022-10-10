@@ -5,6 +5,11 @@
   @include flexbox(center);
 
   list-style-type: none;
+  position: relative;
+
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
 }
 
 .tab {
@@ -25,4 +30,76 @@
 .activeTab {
   color: $whiteColor;
   border-bottom: 2px solid $primaryColor;
+}
+
+.backdropMenu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: transparent;
+  z-index: 1999;
+}
+
+.containerMenu {
+  position: absolute;
+  position: absolute;
+  width: 150px;
+  top: -5px;
+  left: 0px;
+  z-index: 2000;
+  padding-top: 55px;
+  overflow: visible;
+}
+
+.listMenu {
+  width: 230px;
+  list-style-type: none;
+  background-color: $darkBlueColor;
+  padding: 20px;
+  border-radius: 10px;
+
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.itemMenu {
+
+}
+
+.linkMenu {
+  color: $grayColor;
+  padding: 3px 0;
+  font-size: 18px;
+
+  &:hover {
+    color: white;
+  }
+
+  cursor: pointer;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
