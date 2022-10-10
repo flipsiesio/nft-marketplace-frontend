@@ -4,7 +4,7 @@ import {
 import apiActions from 'store/api/actions';
 import { simpleErrorHandler } from 'utils';
 import { toast } from 'react-toastify';
-import { ContractTransaction } from 'ethers';
+import { ContractTransaction, Contract } from 'ethers';
 import { nftMarketAcceptBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { getNftMarketPlaceContract } from '../../../utils/contracts';
@@ -23,7 +23,7 @@ function* nftMarketAcceptBidSaga(
 
   try {
     yield put(apiActions.request(type));
-    const contract = yield getNftMarketPlaceContract();
+    const contract: Contract = yield getNftMarketPlaceContract();
     const tx: ContractTransaction = yield contract.performBuyOperation(payerAddress, orderId);
     yield tx.wait();
     yield success();

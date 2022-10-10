@@ -1,18 +1,23 @@
 import React, {
-  FC, useCallback, useEffect, useMemo,
+  FC, useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { Button, SetPriceModal, Text } from 'components';
+import {
+  Button, SetPriceModal, Text, WantToSellNftModal,
+} from 'components';
 import { useTranslation } from 'react-i18next';
 import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
-import { nftMarketBidAction, nftMarketGetProfileAction } from 'store/nftMarket/actions';
+import { nftMarketBidAction, nftMarketGetProfileAction, nftMarketAcceptBidAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
+import { AcceptBidData } from '../../../CardHistory';
 import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
 import { MarketType } from '../../../../types';
+import { history, fromWeiToNumber } from '../../../../utils';
+import { RequestStatus } from '../../../../appConstants';
 
 const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
@@ -21,6 +26,12 @@ const MarketCardProfile: FC = () => {
   const address = useShallowSelector(walletSelectors.getProp('address'));
   const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
   const getPutOnSaleStatus = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.BID));
+
+  const [acceptBidData, setAcceptBidData] = useState<AcceptBidData>();
+  const getAcceptBidState = useShallowSelector(uiSelector.getProp(NftMarketActionTypes.ACCEPT_BID));
+  const getBackFromSaleStatus =
+    useShallowSelector(uiSelector.getProp(NftMarketActionTypes.GET_BACK_FROM_SALE));
+
   const id = useMemo(() => {
     const search = new URLSearchParams(location.search);
     return search.get('id');
@@ -35,6 +46,16 @@ const MarketCardProfile: FC = () => {
     onToggle: toggleBid,
   } = useToggle();
 
+  const {
+    isActive: acceptBidActive,
+    onToggle: acceptBidToggle,
+  } = useToggle();
+
+  const onAcceptBidClick = useCallback((data: AcceptBidData) => {
+    setAcceptBidData(data);
+    acceptBidToggle();
+  }, [dispatch, acceptBidToggle]);
+
   const successCallback = useCallback(() => {
     toggleBid();
     if (id) dispatch(nftMarketGetProfileAction(id));
@@ -46,8 +67,15 @@ const MarketCardProfile: FC = () => {
     }
   }, [dispatch, selectedNft, successCallback]);
 
+  const isWait = useMemo(() => {
+    return getAcceptBidState === RequestStatus.REQUEST ||
+      getBackFromSaleStatus === RequestStatus.REQUEST;
+  }, [
+    getBackFromSaleStatus,
+    getAcceptBidState]);
+
   const isOwner = useMemo(() => {
-    return selectedNft?.owner === address;
+    return selectedNft?.owner?.toLowerCase() === address.toLowerCase();
   }, [selectedNft, address]);
 
   const isRaiseBid = useMemo(() => {
@@ -57,12 +85,21 @@ const MarketCardProfile: FC = () => {
     return false;
   }, [selectedNft, address]);
 
+  const acceptBidHandler = useCallback(() => {
+    if (!acceptBidData) return;
+    dispatch(nftMarketAcceptBidAction({
+      payerAddress: acceptBidData.payerAddress,
+      orderId: acceptBidData.orderId,
+    }, () => history.goBack()));
+  }, [acceptBidData, dispatch]);
+
   return (
     <>
       {selectedNft && (
         <CardProfile
           showExpirationTime
           active={selectedNft.active}
+          onAcceptBidClick={onAcceptBidClick}
           selectedNft={selectedNft}
           buttons={(
             <div className={styles.buttonContainer}>
@@ -84,7 +121,7 @@ const MarketCardProfile: FC = () => {
                   </div>
                 </div>
                 {!isOwner && (
-                  <Button onClick={toggleBid} className={styles.button}>
+                  <Button onClick={toggleBid} className={styles.button} theme="playNow">
                     {isRaiseBid ? t('nftMarket.raiseBid') : t('nftMarket.bid')}
                   </Button>
                 )}
@@ -99,6 +136,14 @@ const MarketCardProfile: FC = () => {
         onToggle={toggleBid}
         onSubmit={bidHandler}
         isOpen={bidIsActive}
+      />
+      <WantToSellNftModal
+        isLoading={isWait}
+        id={selectedNft?.cardId || 0}
+        onToggle={acceptBidToggle}
+        onSubmit={acceptBidHandler}
+        isOpen={acceptBidActive}
+        price={`${fromWeiToNumber(`${acceptBidData?.price || 0}`)}`}
       />
     </>
   );

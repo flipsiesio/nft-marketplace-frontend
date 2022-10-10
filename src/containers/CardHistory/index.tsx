@@ -30,6 +30,7 @@ type Props = {
   actualOrderId?: number
   disabled?: boolean
   showBid?: boolean
+  isOwner?: boolean
 };
 
 type EventNames = {
@@ -147,12 +148,13 @@ const tradingCol = [
 ];
 
 export const CardHistory: FC<Props> = ({
-  isMyGallery,
+  // isMyGallery,
   onAcceptBidClick,
   selectedNft,
-  actualOrderId,
+  // actualOrderId,
   disabled,
   showBid = true,
+  isOwner,
 }) => {
   const [bids, setBids] = useState<BidData[]>([]);
   const [bidCard, setBidCard] = useState<BidCardState>();
@@ -196,10 +198,11 @@ export const CardHistory: FC<Props> = ({
       accessor: 'orderIndex',
       Cell: ({ row: { original: { buyer, price } } }: TableRowProps<BidData>) => (
         <>
-          {actualOrderId === bidCard?.orderIndex && isMyGallery && (
+          {isOwner && bidCard?.orderIndex && (
             <Button
               disabled={disabled}
               className={styles.acceptButton}
+              theme="playNow"
               onClick={onAcceptBidClick
                 ? () => onAcceptBidClick({
                   orderId: `${bidCard?.orderIndex}`,
@@ -214,7 +217,7 @@ export const CardHistory: FC<Props> = ({
         </>
       ),
     },
-  ]), [onAcceptBidClick, isMyGallery, actualOrderId, disabled]);
+  ]), [onAcceptBidClick, disabled, bidCard, isOwner]);
 
   const tabItems = useMemo<TabItem[]>(() => {
     const tabs = [

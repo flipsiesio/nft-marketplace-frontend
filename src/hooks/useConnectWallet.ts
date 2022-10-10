@@ -2,11 +2,10 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { walletConnect } from '../store/wallet/actionCreators';
 import { useShallowSelector } from './index';
-import { nftMarketSelector, walletSelectors } from '../store/selectors';
+import { walletSelectors } from '../store/selectors';
 import { WalletStatus } from '../store/wallet/types';
 
 export const useConnectWallet = () => {
-  const accessToken = useShallowSelector(nftMarketSelector.getProp('accessToken'));
   const status = useShallowSelector(walletSelectors.getProp('status'));
   const dispatch = useDispatch();
 
@@ -17,7 +16,6 @@ export const useConnectWallet = () => {
   }, [dispatch, status]);
 
   const connectOnStart = useCallback(() => {
-    console.log(accessToken);
     if (status === WalletStatus.CONNECTED) {
       dispatch(walletConnect());
     }

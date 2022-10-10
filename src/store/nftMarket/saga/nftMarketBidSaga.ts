@@ -4,7 +4,7 @@ import {
 import apiActions from 'store/api/actions';
 import { getFeeString1, simpleErrorHandler } from 'utils';
 import { toast } from 'react-toastify';
-import { ContractTransaction, ethers } from 'ethers';
+import { ContractTransaction, ethers, Contract } from 'ethers';
 import { nftMarketBidAction } from '../actions';
 import { NftMarketActionTypes } from '../actionTypes';
 import { getNftMarketPlaceContract } from '../../../utils/contracts';
@@ -22,7 +22,7 @@ function* nftMarketBidSaga(
     yield put(apiActions.request(type));
     const price = ethers.utils.parseUnits(payload.price, 18);
 
-    const contract = yield getNftMarketPlaceContract();
+    const contract: Contract = yield getNftMarketPlaceContract();
     const feeInBps: ethers.BigNumber = yield contract.feeInBps();
     const maxFee: ethers.BigNumber = yield contract.MAX_FEE();
 

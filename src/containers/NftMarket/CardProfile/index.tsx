@@ -4,11 +4,13 @@ import React, {
 import {
   Icon, Link, NotActiveCardIcon, Text,
 } from 'components';
+import { useShallowSelector } from 'hooks';
 import { useHistory } from 'react-router-dom';
 import { NftDto } from 'types';
 import { useTranslation } from 'react-i18next';
 import { scanAddressUrl } from 'appConstants';
 import { differenceInDays } from 'date-fns';
+import { walletSelectors } from 'store/selectors';
 import styles from './styles.module.scss';
 import { ProfileAttribute } from '../ProfileAttribute';
 import { AcceptBidData, CardHistory } from '../../CardHistory';
@@ -41,6 +43,7 @@ const CardProfile: FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
+  const address = useShallowSelector(walletSelectors.getProp('address'));
 
   const goBack = useCallback(() => {
     history.goBack();
@@ -49,6 +52,10 @@ const CardProfile: FC<Props> = ({
   const cardOwner = useMemo(() => {
     return shortenPhrase(owner || selectedNft.owner || '');
   }, [owner, selectedNft]);
+
+  const isOwner = useMemo(() => {
+    return selectedNft?.owner?.toLowerCase() === address.toLowerCase();
+  }, [selectedNft, address]);
 
   const ownerClick = useCallback<MouseEventHandler<HTMLAnchorElement>>((e) => {
     e.preventDefault();
@@ -165,6 +172,7 @@ const CardProfile: FC<Props> = ({
           selectedNft={selectedNft}
           isMyGallery={isMyGallery}
           actualOrderId={actualOrderId}
+          isOwner={isOwner}
         />
       </div>
     </div>

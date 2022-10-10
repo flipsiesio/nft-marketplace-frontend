@@ -131,6 +131,7 @@ const MyGalleryCardProfile: FC = () => {
                       disabled={isWait}
                       onClick={onSaleButtonClick}
                       className={styles.button}
+                      theme="playNow"
                     >{t('nftMarket.putOnSale')}
                     </Button>
                   </div>
@@ -139,6 +140,7 @@ const MyGalleryCardProfile: FC = () => {
                       disabled={isWait}
                       onClick={onAuctionButtonClick}
                       className={styles.button}
+                      theme="playNow"
                     >{t('nftMarket.putOnAuction')}
                     </Button>
                   </div>
@@ -158,6 +160,7 @@ const MyGalleryCardProfile: FC = () => {
                     disabled={isWait}
                     onClick={saleToggleDelist}
                     className={styles.button}
+                    theme="playNow"
                   >{t('nftMarket.delist')}
                   </Button>
                 </div>
@@ -175,6 +178,7 @@ const MyGalleryCardProfile: FC = () => {
                     disabled={isWait}
                     onClick={bidToggleDelist}
                     className={styles.button}
+                    theme="playNow"
                   >{t('nftMarket.delist')}
                   </Button>
                 </div>

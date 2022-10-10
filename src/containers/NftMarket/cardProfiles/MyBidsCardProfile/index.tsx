@@ -64,6 +64,7 @@ export const MyBidsCardProfile: FC = () => {
                     disabled={getCancelBidStatus === RequestStatus.REQUEST}
                     onClick={cancelBidClick}
                     className={styles.button}
+                    theme="playNow"
                   >{t('nftMarket.cancelBid')}
                   </Button>
                 )}
