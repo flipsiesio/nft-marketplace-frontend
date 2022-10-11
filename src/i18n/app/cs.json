@@ -1,0 +1,204 @@
+{
+  "header": {
+    "rewardSystem": "Systém odměn",
+    "faq": "FAQ",
+    "howToPlay": "Jak hrát?",
+    "nftEarningSystem": "Systém výdělku NFT",
+    "nftMarket": "NFT trh",
+    "wallet": "Peněženka",
+    "tronlink": "Tronlink",
+    "referral": "Doporučení",
+    "betsHistory": "Moje sázky historie",
+    "logout": "Odhlásit se",
+    "extensionInstallTitle": "Nainstalujte prosím příponu nebo přihlášení",
+    "extensionInstall": "Nainstalujte rozšíření",
+    "extensionLogin": "Dobře, přihlásím se prostřednictvím přípony"
+  },
+  "termsOfServices": {
+    "title": "Podmínky služby",
+    "flipsies": "Flipsies",
+    "offers": "Nabízí online zážitek z hazardních her, který musíte být ve své zemi, abyste se mohli účastnit. Pokud bydlíte v místě, kde je hazardní hry, loterie nebo online sázení nezákonné, nesmíte zadat tento web.",
+    "provide": "Webová stránka Flipsies („my“) poskytuje rozhraní pro inteligentní smlouvu na BitTorrent Blockchain, která přijímá tokeny a převody BTTC různé množství tokenů BTTC na oplátku, v závislosti na externích faktorech.",
+    "verify": "V každé jurisdikci nejsme schopni ověřit zákonnost služby a poskytnout vám jakékoli právní rady. Je výhradní odpovědností dodržovat jakékoli relevantní zákony, zásady a předpisy vaší jurisdikce týkající se používání tokenů BTTC ve výše popsaném způsobu.",
+    "based": "Hry Flipsies jsou založeny na transparentnosti, hráči by si měli být vědomi rizik a podle toho se spravovat. Hrajte prosím zodpovědně a Goodluck."
+  },
+  "jackpot": {
+    "pendingJackpot": "Vyhráli jste jackpot. Jackpot čeká ...",
+    "wonJackpot{{id}}": "Vyhráli jste Jackpot ID #{{id}}. Lze to zobrazit",
+    "here": "tady"
+  },
+  "nftMarket": {
+    "todayEndExpiration": "Dnes skončí vypršení",
+    "dayBeforeExpiration{{day}}": "{{day}} dny - před vypršením",
+    "notHaveEnoughFunds": "Nemáte dostatek finančních prostředků",
+    "cancelBid": "Zrušit nabídku",
+    "empty": "Prázdný...",
+    "title": "NFT trh",
+    "marketTab": "Tržiště",
+    "galleryTab": "Opravte prodej",
+    "myGalleryTab": "Moje galerie",
+    "myBidsTab": "Moje nabídky",
+    "id": "Id",
+    "tradingHistory": "Historie obchodování",
+    "bids": "Nabídky",
+    "bid": "Nabídka",
+    "raiseBid": "Zvýšit nabídku",
+    "delist": "Vysunout",
+    "accept": "Akceptovat",
+    "buyNow": "Kup nyní",
+    "price": "Cena",
+    "setPrice": "Nastavit cenu",
+    "setSale": "Nastavit prodej",
+    "confirm": "Potvrdit",
+    "cancelBids": "Jste si jisti, že chcete nabídky zrušit?",
+    "cancelSale": "Jste si jisti, že chcete prodej zrušit?",
+    "purchaseConfirmation": "Potvrzení nákupu",
+    "putOnSale": "Uvedeno na prodej",
+    "putOnAuction": "Nabídky",
+    "sellTitle": "Jste si jisti, že chcete prodat NFT",
+    "tableCols": {
+      "event": "událost",
+      "address": "Adresa",
+      "price": "Cena",
+      "date": "datum",
+      "number": "Číslo"
+    },
+    "owner": "Majitel",
+    "approve": "Schválit",
+    "approveText": "Schvalujte prosím svou akci",
+    "bidPrice": "Nejvyšší nabídka",
+    "myBid": "Moje nabídka",
+    "highestBid": "Nejvyšší nabídka",
+    "salePrice": "Výpisová cena",
+    "attributes": "Atributy",
+    "type": "Typ"
+  },
+  "marketFilterModal": {
+    "title": "Filtry",
+    "price": {
+      "highestBid": "Nejvyšší nabídka",
+      "price": "Cena",
+      "asc": "ASC",
+      "desc": "Desc"
+    },
+    "type": {
+      "title": "Typ",
+      "king": "Král",
+      "jack": "Zvedák",
+      "queen": "Královna",
+      "rare": "Vzácný"
+    },
+    "suit": {
+      "title": "Oblek",
+      "hearts": "Srdce",
+      "clubs": "Kluby",
+      "diamonds": "Diamanty",
+      "spades": "Piky"
+    }
+  },
+  "flipsiesNft": {
+    "title": "Flipsies nft",
+    "text1": "Flipsies NFT jsou série 7 803 hracích karet na Bittorrent Blockchain, každý NFT je jedinečně programově zrádný a automaticky.",
+    "text2": "Jsou složeny z",
+    "text3": "2 600 králů, 2 601 královen, 2 601 jacků, 25 jokerů a 7 příběhů.",
+    "text4": "Naše platforma má automatický systém zpětného nákupu, který kupuje NFT a distribuuje je jako ceny jackpotů pro uživatele hrající flipsies, tato funkce udrží podlahu stoupající bez ohledu na „čerpání“ držáky. Flipsies bude mít také systém držení, míra výdělku tohoto systému je založena na vzácnosti, čím vzácnější je NFT, tím více vydělá.",
+    "text5": "V průběhu let byly různé přezdívky dány výrazným hracím kartám. Většina z těchto vedlejších jmen pochází z pokerových her, zde je několik klasiků, to jsou sedm",
+    "text6": "příběh",
+    "text7": "Nfts.",
+    "explore": "Prozkoumat"
+  },
+  "explore": {
+    "title": "Prozkoumejte Flipsies NFT",
+    "loading": "načítání",
+    "mintModalTitle1": "Musíte zaplatit",
+    "mintModalTitle2": "pro",
+    "mintModalLabel1": "Pospěšte si jen",
+    "mintModalLabel2": "Flipsies NFT odešel na mincovnu!",
+    "mint": "Máta",
+    "mintNow": "Mincovna teď!",
+    "claimNft": "Nárok na jackpot nft",
+    "tryLuck": "Vyzkoušejte štěstí, koupte si nyní náhodný NFT a uvidíte, který z nich získáte!",
+    "toGainAccess": "Chcete-li získat přístup na náš NFT Marketplace, play-to-win nebo mincovna 1, 3 nebo 5 náhodně generovaných NFT!",
+    "notEligible": "není způsobilý pro žádné jackpot nfts",
+    "playWin": "Hrát a vyhrát"
+  },
+  "exploreNft": {
+    "kingOfHearts": {
+      "title": "Sebevražedný král",
+      "label": "Král srdcí je obvykle znázorněn mečem, i když v palubě flipsies je vyzbrojen vajíčkem měnícím barvu. Obvykle se označuje jako „sebevražedný král“, protože na tradičním palubě je zobrazen jako bodnutí mečem nebo alespoň drží meč za hlavou."
+    },
+    "kingOfDiamonds": {
+      "title": "Muž se sekerou",
+      "label": "Toto označení pro krále diamantů odráží skutečnost, že toto je jediný král, který nese meč. Proto je často označován jako muž se sekerou. Tato karta je často označována jako zástupné znaky v draw poker. V místní karetní hře bylo běžné slyšet: „Hra je sedm karet vysoká/nízká s nákupem na poslední kartě. A jen aby byla zajímavější, muž se sekerou vezme vše."
+    },
+    "queenOfSpades": {
+      "title": "Černá vdova",
+      "label": "Přezdívka „Black Widow“ pro královnu piků je úzce spjata s hrou srdcí. V této trikové hře je myšlenka vyhnout se sbírání bodů, s kartami Hearts, které stojí za jeden bod, zatímco královna piků stojí masivních 13 pokutových bodů. Ve starých školních pokerových hrách byste ji někdy slyšeli, že se označuje jako Calamity Jane, slavná hranice, která ráda hraje na 5-kartu."
+    },
+    "queenOfClubs": {
+      "title": "Květinová královna",
+      "label": "Královna klubů je známá jako „Queen of Flowers“ nebo „Květinová královna“ ze zřejmého důvodu - je obvykle zobrazena drží květinu. Také se nazývá karta „Matka Mary“ nebo „Queen of Queens“ Toto je také nejvíce spekulovanější karta pro čtení tarotů a další psychické přesvědčení."
+    },
+    "jackOfDiamonds": {
+      "title": "Smích",
+      "label": "Jacks se také nazývají knaves a jsou horší než královské krále a královna, což je činí hravějšími. Jack of Diamonds je známý jako Laughing Boy a v některých variacích pokeru a Black Jack se očekává, že se hráči zachechtují pokaždé, když se tato karta přehrává nebo nakreslí."
+    },
+    "jackOfSpadesAndJackOfHearts": {
+      "title": "Jeden oči",
+      "label": "Na rozdíl od většiny ostatních soudních karet mají Jack of Spades a Jack of Hearts boční profil, a proto jejich označení jako „jednooký konektory“. Jeden oční jacks je fráze nejčastěji používaná k popisu karet, které jsou prohlášeny za divoké. Je to pohodlný způsob, jak určit, že polovina zvedáků by měla být divoká, a jako starověká část pokerového slangu je také zábavné říct. Jeden očí zvedáky jsou často spárovány s „sebevražedným králem“ při deklarování divokých karet."
+    }
+  },
+  "nftSystemEarn": {
+    "please": "Prosím",
+    "connectWallet": "Metamask a připojte k hraní peněženky",
+    "playNow": "hrát hned",
+    "buyback": {
+      "title": "Systém zpětného odkupu:",
+      "description": "Naše platforma má automatický systém zpětného nákupu, který kupuje NFT a distribuuje je jako ceny jackpotů pro uživatele hrající flipsies, tato funkce udrží podlahu stoupající bez ohledu na „čerpání“ držáky.",
+      "description1": "Platforma má automaticky systém zpětného odkupu, který vždy poskytuje NFT pro vítěze jackpotů",
+      "description2": "100% výplata za jackpot kdykoli záruka"
+    },
+    "stacking": {
+      "title": "Systém držení:",
+      "description": "Čím déle držíte NFT, tím více odměn získáte. Čím vyšší je skóre vzácnosti, které vaše žetony mají, tím více odměn získáte. Odměny získáte jako hotovost zpět podle výše sázek, které jste udělali na platformě Flipsies. Počáteční sazby pro vlastnictví NFT 1 měsíc - 3% TRX, 2 měsíce - 6% TRX, 1 rok - 36% TRX, 2 roky - 72% TRX, 3 roky - 108% TRX, 4 roky - 144% TRX. Odměny si můžete nárokovat každých 7 dní od nákupu tokenů",
+      "description1": "Čím více NFT máte a čím déle držíte, tím více odměn budete vydělávat",
+      "description2": "Čím vyšší je skóre vzácnosti, vaše NFT má, tím více odměn získáte",
+      "description3": "Získáte odměny jako hotovost zpět podle výše sázek, které umístíte na platformu Flipsies",
+      "description4": "Sazby pro držení NFT:",
+      "description5": "1 měsíc - 3% Trx, 2 měsíce - 6% TRX, 1 rok - 36% TRX, 2 roky - 72% TRX, 3 roky - 108% Trx, 4 roky - 144% Trx",
+      "description6": "Odměny si můžete nárokovat každých 7 dní od nákupu tokenů."
+    },
+    "allTokens": {
+      "description": "Všechny tokeny budou rozděleny do skupin podle data nákupu. Například všechny tokeny (NFT), které uživatel koupil 22. dubna, budou vloženy do jedné skupiny. Všechny tokeny, které uživatel koupil 23. dubna, budou vloženy do dalších skupin. Pokud se tento uživatel rozhodne prodat jakékoli množství tokenů z některých z těchto skupin, takže v tomto případě budou všechny odměny pevné a výpočet pro další odměny budou pokračovat od začátku. Výpočet odměn pro všechny skupiny se vypočítá odděleně od sebe.",
+      "description1": "Všechny tokeny budou odvedeny do skupin podle data nákupu. Například všechny žetony, které uživatel zakoupil 22. dubna, budou vloženy do jedné skupiny. Všechny tokeny, které uživatel koupil 23. dubna, budou vloženy do jiné skupiny. Pokud se tento uživatel rozhodne prodat jakoukoli částku od některých Z těchto skupin, takže v tomto případě budou všechny odměny pevné a výpočet dalších odměn bude pokračovat od začátku. To znamená od 1. dne držení. Přesně stejným způsobem, pokud uživatel právě koupil tyto žetony. Výpočet odměn pro všechny skupiny se vypočítá odděleně od sebe."
+    },
+    "formula": {
+      "beforeTitle": "Zde je vzorec pro výpočet celkové rychlosti pro jednu skupinu:",
+      "title": "(CurrentTimerate + (t * b)) + r",
+      "description1": "*Získá také cashback jako další odměny",
+      "description2": "Celková částka tokenů - 1 (protože není další odměna za vlastnictví pouze 1 token)",
+      "description3": "Další odměny za počet žetonů",
+      "description4": "Součet všech žetonů RARITY V jedné skupině",
+      "description5": "*Všimněte si, že také získáte cashback jako další odměny",
+      "description6": "T: Celková částka Tokes - 1 (protože není další odměna za vlastnictví pouze 1 token)",
+      "description7": "B: Další odměny za počet žetonů.",
+      "description8": "R: Součet všech žetonů v jedné skupině"
+    }
+  },
+  "claimModalJackpot": {
+    "address1": "Vaše adresa peněženky",
+    "address2": "má nárok na",
+    "jackpotNft": "Jackpot NFT!",
+    "claim": "Nárok",
+    "nftSentLabel": "Váš NFT byl úspěšně odeslán na vaši adresu peněženky",
+    "claimLabel": "Musíte si nárokovat svůj NFT potvrzením transakce v peněžence Metamask",
+    "seeInGallery": "Viz v galerii",
+    "seeOnTronscan": "Viz transakce na Tronscan"
+  },
+  "footer": {
+    "text": "Flipsies nabízí online zážitek z hazardních her. Musíte být starší 18 let, abyste klikli na jakékoli činnosti související s hazardem na flipsies. Pokud bydlíte v místě, kde je hazardní hry, loterie nebo internetové sázky nezákonné, nesmíte kliknout na nic nalezeného na tomto webu. Flipsies- nebudou odpovědné za porušení místních zákonů vynucovaných ve vašem regionu. Hry Flipsies jsou založeny na spravedlnosti, transparentnosti a zábavě. Hráči by si měli být vědomi rizik a podle toho se zvládnout. Hrajte a hrajte zodpovědně.",
+    "link": "flipsies.io",
+    "copyright": "autorská práva",
+    "reserved": "Všechna práva vyhrazena"
+  }
+}

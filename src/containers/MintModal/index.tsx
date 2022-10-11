@@ -28,7 +28,7 @@ const options: SelectOption[] = [
 ];
 
 const optionsToken: SelectOption[] = [
-  { value: 'BTTC', label: 'BTTC' },
+  { value: 'BTT', label: 'BTT' },
   { value: 'USDC', label: 'USDC' },
   { value: 'BNB', label: 'BNB' },
   { value: 'TRX', label: 'TRX' },

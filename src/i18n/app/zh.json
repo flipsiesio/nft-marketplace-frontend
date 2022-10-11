@@ -1,215 +1,204 @@
 {
   "header": {
     "rewardSystem": "奖励系统",
-    "faq": "常见问题",
-    "nftEarningSystem": "NFT 收益系统",
-    "howToPlay": "游戏方法?",
+    "faq": "常问问题",
+    "howToPlay": "怎么玩？",
+    "nftEarningSystem": "NFT赚取系统",
+    "nftMarket": "NFT市场",
     "wallet": "钱包",
-    "tronlink": "TronLink",
+    "tronlink": "Tronlink",
     "referral": "推荐",
-    "betsHistory": "我的投注历史",
-    "logout": "退出",
-    "extensionInstallTitle": "请安装扩展程序或登录",
-    "extensionInstall": "安装扩展程序",
-    "extensionLogin": "好的，我将通过扩展程序登录"
-  },
-  "preview": {
-    "title": "请 <1>登录</1> TronLink 并连接钱包以玩游戏",
-    "playNow": "立即游戏"
-  },
-  "betsHistory": {
-    "title": "我的投注历史",
-    "bet": "投注",
-    "payout": "奖金",
-    "flip": "扑克",
-    "color": "颜色",
-    "date": "日期和时间"
-  },
-  "preloader": {
-    "alert": "请点击 TronLink 扩展程序以激活应用程序或登录 TronLink !"
-  },
-  "combinations": {
-    "royalFlush": "同花大顺",
-    "straightFlush": "同花顺",
-    "quads": "四条",
-    "fullHouse": "葫芦",
-    "flush": "同花",
-    "straight": "顺子",
-    "threeOfKind": "三条",
-    "twoPair": "两对",
-    "pair": "一对",
-    "highCard": "高牌"
-  },
-  "game": {
-    "handleRankings": "用户排名",
-    "showResults": "显示结果",
-    "playAgain": "再次游戏",
-    "home": "主页",
-    "jackpot": "累积奖金",
-    "betOn": "您投注",
-    "colorBet": "您的颜色注",
-    "win": "赢了",
-    "lost": "输了",
-    "red": "红",
-    "black": "黑",
-    "youWon": "您赢了",
-    "youLost": "您输了",
-    "youDraw": "平局",
-    "youWonJackpot": "您赢得了累积奖金",
-    "results": "结果",
-    "pokerHand": "扑克",
-    "flopColor": "颜色",
-    "start": "开始",
-    "sameBet": "相同赌注",
-    "bet": "投注",
-    "probablyFair": "Flipsies 是一款<1>可验证的公平</1> 游戏。"
-  },
-  "profile": {
-    "referral": "推荐",
-    "betsHistory": "我的投注历史",
-    "invitedPlayers": "邀请的玩家",
-    "currentRank": "当前排名",
-    "ofHouseEdge": "庄家优势",
-    "totalEarnings": "总收入",
-    "withdraw": "提款",
-    "note": "请注意：提款交易必须支付能量费."
-  },
-  "ranks": {
-    "bronze": "铜",
-    "silver": "银",
-    "gold": "金",
-    "platinum": "白金",
-    "diamond": "钻石",
-    "emerald": "绿宝石",
-    "sapphire": "蓝宝石"
-  },
-  "rating": {
-    "jackpotWinners": "累积奖金得主",
-    "jackpot": "累积奖金"
-  },
-  "referral": {
-    "title": "与朋友分享推荐链接，并在朋友获胜时获得奖励。",
-    "provideEmail": "提供您的电子邮件地址以加入我们的推荐计划！",
-    "enterEmail": "输入您的电子邮件地址",
-    "join": "加入",
-    "copy": "复制",
-    "rankUp": "提升排名以获得更高的奖励！",
-    "yourReferralLink": "您的推荐链接",
-    "completeRank": "完成以提升排名"
-  },
-  "notifications": {
-    "copy": "值已复制"
+    "betsHistory": "我的赌注历史",
+    "logout": "登出",
+    "extensionInstallTitle": "请安装扩展名或登录",
+    "extensionInstall": "安装扩展",
+    "extensionLogin": "好，我会通过扩展登录"
   },
   "termsOfServices": {
     "title": "服务条款",
-    "flipsies": "Flipsies",
-    "offers": "提供在线博彩体验，您必须达到您所在国家/地区的博彩年龄才能参加。如果您所在地区认定赌博、彩票或在线博彩是非法的，则您不得进入本网站。",
-    "provide": "Flipsies 网站(\"我们\")在 Tron 区块链上提供了智能合约的接口，接受 Tron 代币并根据外部系数转回不同数量的 Tron 代币。",
-    "verify": "我们无法在每个司法管辖区验证服务的合法性，也无法为您提供任何法律建议。您有责任按照上述说明遵守您所在地区有关使用 Tron 代币的任何相关法律、政策和法规.",
-    "based": "Flipsies 游戏以透明为基础，玩家应意识到风险并据此进行管理。请负责任地游戏，祝您好运。"
+    "flipsies": "翻转",
+    "offers": "提供在线赌博体验，您必须年龄在您的国家赌博才能参加。如果您居住在赌博，彩票或在线投注是非法的地方，则不得进入此网站。",
+    "provide": "Flipsies的网站（“我们”）在Bittorrent区块链上提供了智能合约的接口，该区块链接受BTTC令牌并根据外部因素而转移不同数量的BTTC令牌。",
+    "verify": "我们无法验证每个司法管辖区服务的合法性，并为您提供任何法律建议。 您的唯一责任是遵守有关上述方式使用BTTC代币的任何相关法律，政策和法规。",
+    "based": "Flipsies游戏基于透明度，玩家应意识到风险并相应地管理自己。 请负责任地玩耍。"
   },
-  "howToPlay": {
-    "title": "如何玩 Flipsies",
-    "gameDerived": "Flipsies 是一款源自扑克中“抛硬币”的游戏 (英文称为\"coin flip\"或 \"flip\")，您和对手有相等的机会获胜。我们增加了一个可选的边注，您可投注翻牌花色的主要颜色（2张或以上的红色或黑色牌 ）。这称为边注或附加赌注，通常在私人扑克游戏中提供。",
-    "followStandart": "Flipsies 遵循标准的德州扑克牌型大小规则，在游戏左上角的下拉菜单中可查阅牌型大小",
-    "thankYou": "谢谢，祝您成功 ！",
-    "step": "步骤",
-    "step1": "给您和庄家各发两张牌",
-    "step2": "选择扑克手牌(flip bet)和翻牌颜色注的金额，没有其他投注。.",
-    "step3": "发出翻牌（前 3 张牌）、转牌（第 4 张牌）和河牌（第 5 张牌）- 这些是公共牌。",
-    "step4": "最大的 5 张牌牌型赢得“抛硬币”投注。如果是平局，底池将被平分。"
+  "jackpot": {
+    "pendingJackpot": "你赢得了大奖。 大奖正在等待...",
+    "wonJackpot{{id}}": "您已经赢得了头奖ID＃{{id}}。 可以查看",
+    "here": "这里"
   },
-  "faq": {
-    "title": "常见问题",
-    "question1": {
-      "title": "Flipsies 是否提供推荐计划？",
-      "content": "是的，我们的推荐计划分为七级（铜、银、金、白金、钻石、绿宝石和蓝宝石），每级根据被推荐玩家的投注额解锁。"
+  "nftMarket": {
+    "todayEndExpiration": "今天结束到期",
+    "dayBeforeExpiration{{day}}": "{{day}}天 - 到期前",
+    "notHaveEnoughFunds": "你没有足够的资金",
+    "cancelBid": "取消出价",
+    "empty": "空的...",
+    "title": "NFT市场",
+    "marketTab": "市场",
+    "galleryTab": "修复销售",
+    "myGalleryTab": "我的图片库",
+    "myBidsTab": "我的出价",
+    "id": "ID",
+    "tradingHistory": "交易历史",
+    "bids": "投标",
+    "bid": "出价",
+    "raiseBid": "提高出价",
+    "delist": "Delist",
+    "accept": "接受",
+    "buyNow": "立即购买",
+    "price": "价格",
+    "setPrice": "设定价格",
+    "setSale": "设定销售",
+    "confirm": "确认",
+    "cancelBids": "您确定要取消投标吗？",
+    "cancelSale": "您确定要取消销售吗？",
+    "purchaseConfirmation": "购买确认",
+    "putOnSale": "出售",
+    "putOnAuction": "竞标",
+    "sellTitle": "您确定要出售NFT吗",
+    "tableCols": {
+      "event": "事件",
+      "address": "地址",
+      "price": "价格",
+      "date": "日期",
+      "number": "数字"
     },
-    "question2": {
-      "title": "我需要注册帐户吗？",
-      "content": "不需要。不强制注册，不过我们的推荐计划能给予丰厚奖励，所以建议您注册。"
+    "owner": "所有者",
+    "approve": "批准",
+    "approveText": "请批准您的行动",
+    "bidPrice": "最高出价",
+    "myBid": "我的出价",
+    "highestBid": "最高出价",
+    "salePrice": "上市价格",
+    "attributes": "属性",
+    "type": "类型"
+  },
+  "marketFilterModal": {
+    "title": "过滤器",
+    "price": {
+      "highestBid": "最高出价",
+      "price": "价格",
+      "asc": "ASC",
+      "desc": "desc"
     },
-    "question3": {
-      "title": "庄家优势是什么？",
-      "content": "每次投注的 1.5%（用于支付运营游戏的成本）。0.2% 计入累积奖金。"
+    "type": {
+      "title": "类型",
+      "king": "国王",
+      "jack": "杰克",
+      "queen": "女王",
+      "rare": "稀有的"
     },
-    "question4": {
-      "title": "什么是可验证的公平 (provably fair)？",
-      "content": "大多数玩家认为他们会被在线娱乐场欺骗，大部分情况下的确如此。从技术上讲，在线娱乐场骗您非常容易。加密货币博彩世界提供了被称为可验证的公平的解决方案，它通过实施智能合约来实现完全透明。智能合约包含一组不能被篡改并自动执行的规则。任何一方都可以审核这些智能合约，因为它们是公开的。我们的随机数生成器在这些智能合约上执行，因此从技术上讲无论如何都无法操纵它们。"
-    },
-    "question5": {
-      "title": "Flipsies 是可验证公平的游戏吗？",
-      "content": "是的，所有 Flipsies 投注都通过 TRON 网络上的智能合约执行。这样可为所有用户确保完全透明和公平。"
-    },
-    "question6": {
-      "title": "遇到问题时该与谁联系？",
-      "content": "support@flipsies.io"
-    },
-    "question7": {
-      "title": "如何创建帐户？",
-      "desktop": {
-        "1": "下载并安装  <1>TronLink Chrome 扩展程序 </1>",
-        "2": "按照 TronLink 中的说明创建或导入帐户。",
-        "3": "如果您有扩展程序和钱包，只需登录。",
-        "4": "确保您有足够的 BTTC、带宽和能量，然后就能开始游戏了。",
-        "5": "做得好！"
-      },
-      "mobile": {
-        "title": "对于移动设备s",
-        "1": "下载适用于  <1>IOS</1> 或 <3>Android</3> 设备的 TronLink 移动应用程序。",
-        "2": "按照说明创建或导入帐户",
-        "3": "转到内置浏览器并粘贴 https://flipsies.io/ 以打开 Flipsies 分布式应用。",
-        "4": "确保您有足够的 BTTC、带宽和能量，然后就能开始游戏了。",
-        "5": "做得好！"
-      }
-    },
-    "question8": {
-      "title": "如果我的手机或电脑断开连接或电池突然没电了，该怎么办？",
-      "content": "不用担心，您可以在我的投注历史中认领所有赢得的彩金。"
-    },
-    "question9": {
-      "title": "关于 TRON",
-      "content": "<b>Tron</b> 是一个去中心化的娱乐和内容共享平台，使用区块链和点对点 (P2P) 技术。<br/><br/><b>带宽</b>: 拥有 TRON 带宽就可以在 TRON 主网上执行交易，无需支付任何能量费。用于分布式应用（如 Flipsies.io）时，拥有足够的带宽至关重要。您可在这里执行一些较小的交易，不必担心在此过程中使用 BTTC 代币。带宽还用于确保您是 TRON 社区的活跃成员，使您可以为超级代表投票。<br/><br/><b>能量</b>: 这是用于在 TRON 网络上处理智能合约的特殊资源。智能合约消耗带宽和能源，因此在转移代币时，请确保您的这两种资源都很充足。<br/><br/><b>冻结</b> 是 Tron 区块链的独特机制。您可以冻结 BTTC 以获得某些好处。执行此操作后，您的 Tron 仍属于您，但您在 3 天内无法将其发送到任何地方。冻结类似于将钱存入储蓄帐户：钱就在那里，但您不能花掉。<br/>冻结 BTTC 时，您会获得一些好处。<br/> 首先，您可选择冻结 Tron 以获取带宽点 (BP) 或能量点 (EP)。此外，每冻结一个 BTTC，无论您选择上述哪种资源，您都将获得 1 个 Tron Power。"
+    "suit": {
+      "title": "套装",
+      "hearts": "心",
+      "clubs": "俱乐部",
+      "diamonds": "钻石",
+      "spades": "黑桃"
     }
-  }, "nftSystemEarn": {
-    "playNow": "Play now",
+  },
+  "flipsiesNft": {
+    "title": "翻转nft",
+    "text1": "Flipsies NFTS是Bittorrent区块链上的7,803张扑克牌，每个NFT都是独特的编程性特征和自动颜色的。",
+    "text2": "他们由",
+    "text3": "2,600王，2,601个皇后，2,601个杰克，25个笑话和7个故事。",
+    "text4": "我们的平台有一个自动回购系统，该系统将购买NFT并将其分配为用于使用Flipsies的用户的大奖奖品，无论持有者的“抽水”如何，此功能都会使地板上升。 翻转也将具有一个固定系统，该系统的收入率是基于稀有性，您的NFT越稀有，它将获得越多。",
+    "text5": "多年来，已经给出了独特的扑克牌昵称。 这些字样大多数来自扑克游戏，这里有一些经典，这是七个",
+    "text6": "故事",
+    "text7": "nfts。",
+    "explore": "探索"
+  },
+  "explore": {
+    "title": "探索flipsies nft",
+    "loading": "加载",
+    "mintModalTitle1": "你需要付款",
+    "mintModalTitle2": "为了",
+    "mintModalLabel1": "快点，只有",
+    "mintModalLabel2": "nft掉了薄荷！",
+    "mint": "薄荷",
+    "mintNow": "现在薄荷！",
+    "claimNft": "要求大奖nft",
+    "tryLuck": "尝试运气，立即购买随机的NFT，看看您会得到哪一个！",
+    "toGainAccess": "为了获得我们的NFT市场，可以随机生成的NFT，打球或薄荷1、3或5个！",
+    "notEligible": "不符合任何大奖NFT的资格",
+    "playWin": "玩并赢"
+  },
+  "exploreNft": {
+    "kingOfHearts": {
+      "title": "自杀国王",
+      "label": "心脏之王通常用剑描绘，尽管在翻转甲板上，他装有颜色换鸡蛋。 他通常被称为“自杀王”，因为在传统的甲板上，他被描绘成用剑刺伤自己，或者至少将剑握在头后面。"
+    },
+    "kingOfDiamonds": {
+      "title": "斧头",
+      "label": "钻石之王的这个名称反映了以下事实：这是唯一不携带剑的国王。 这就是为什么他经常被称为斧头的人。 该卡通常被指定为Draw Poker中的通配符。 在当地的纸牌游戏中，通常会听到“游戏是七张纸牌高/低，并在最后一张卡上买入。"
+    },
+    "queenOfSpades": {
+      "title": "黑寡妇",
+      "label": "黑桃女王的昵称“黑寡妇”与“心灵”游戏紧密相连。 在这款挑战游戏中，想法是避免收集积分，而心牌的每一张都值得一分，而黑桃女王的罚款则是13个罚款。 在老式的扑克游戏中，您有时会听到她被称为Calamity Jane，这是一位著名的边疆女士，喜欢玩5卡螺柱。"
+    },
+    "queenOfClubs": {
+      "title": "花女王",
+      "label": "出于明显的原因，俱乐部女王被称为“鲜花女王”或“花女王”  - 通常被描绘成拿着花。 也称为“玛丽母亲”卡或“皇后女王”，这也是塔罗牌阅读和其他心理信念的最推测的卡片。"
+    },
+    "jackOfDiamonds": {
+      "title": "笑男孩",
+      "label": "千斤顶也被称为刀具，不如更富丽堂皇的国王和皇后区，使它们更有趣。 钻石的杰克被称为笑男孩，在扑克和黑色杰克的某些变化中，每次播放或绘制这张卡时，玩家都会笑。"
+    },
+    "jackOfSpadesAndJackOfHearts": {
+      "title": "一只眼睛的千斤顶",
+      "label": "与大多数其他法院卡不同，黑桃和千斤顶的千斤顶都有一个侧面配置文件，因此将其称为“单眼千斤顶”。 一个眼睛的千斤顶是最常用来描述被宣布为狂野的卡的短语。 这是一种说明一半千斤顶应该是狂野的方便方法，作为扑克语的古老部分，这也很有趣。 一只眼睛的千斤顶经常与宣布通配符的“自杀王”配对。"
+    }
+  },
+  "nftSystemEarn": {
+    "please": "请",
+    "connectWallet": "进行元掩模并连接钱包以播放",
+    "playNow": "现在播放",
     "buyback": {
-      "title": "Buyback system:",
-      "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
-      "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
-      "description2": "100% payout for Jackpot any time guarantee"
+      "title": "回购系统：",
+      "description": "我们的平台有一个自动回购系统，该系统将购买NFT并将其分配为用于使用Flipsies的用户的大奖奖品，无论持有者的“抽水”如何，此功能都会使地板上升。",
+      "description1": "平台自动回购系统总是为大奖获奖者提供NFT",
+      "description2": "100％的奖金支出任何时间保证"
     },
     "stacking": {
-      "title": "Staking/holding system:",
-      "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
-      "description1": "The more and longer you are nfts owner the more rewards you will get",
-      "description2": "The higher the rarity score your tokens have the more rewards you will get",
-      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
-      "description4": "Starting rates for owning nfts.",
-      "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
-      "description6": "You can claim rewards only every 7 days from token purchasing."
+      "title": "持有系统：",
+      "description": "持有NFT的时间越长，您将获得的奖励越多。 您的令牌的稀有分数越高，您将获得的奖励越多。 您将根据您在Flipsies平台上的赌注数量获得奖励作为现金返还。 拥有NFT 1个月的起始率-3％TRX，2个月-6％TRX，1年-36％TRX，2年-72％TRX，3年-108％TRX，4年-144％TRX。 您可以每7天从代币购买一次奖励",
+      "description1": "您拥有的NFT越多，您持有的时间越长，您将获得的回报越多",
+      "description2": "您的NFT的稀有分数越高，您将获得的回报越多",
+      "description3": "您将根据您在Flipsies Platform上放置的赌注获得奖励作为现金返还",
+      "description4": "持有NFT的费率：",
+      "description5": "1个月-3％TRX，2个月-6％TRX，1年-36％TRX，2年-72％TRX，3年-108％TRX，4年-144％TRX",
+      "description6": "您可以从代币购买每7天要求一次奖励。"
     },
     "allTokens": {
-      "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
-      "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+      "description": "所有令牌将根据购买日期分为组。 例如，用户在4月22日购买的所有代币（NFT）都将分为一个组。 用户在4月23日购买的所有代币都将分为另一组。 如果此用户决定从其中一些组中出售任何数量的令牌，因此在这种情况下，所有奖励都将是固定的，并且从一开始就将继续进行进一步的奖励。 任何组的奖励计算都将彼此分开计算。",
+      "description1": "所有令牌将根据购买日期分为小组。 例如，用户在4月22日购买的所有代币都将放入一个组中。用户在4月23日购买的所有代币都将放入另一组。如果该用户决定从某些中出售任何数量的令牌 在这些组中，在这种情况下，所有奖励将是固定的，并且从一开始就将继续进行进一步奖励的计算。 这意味着要从持有的第一天。 如果用户刚刚购买了这些令牌，完全一样。 任何组的奖励计算都将彼此分开计算。"
     },
     "formula": {
-      "beforeTitle": "Here is the formula for total rate calculation for one group:",
-      "title": "(CurrentTimeRate + (T * B)  ) + R",
-      "description1": "*Will also be getting cashback as additional rewards",
-      "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
-      "description3": "Additional rewards for the number of tokens",
-      "description4": "The sum of all tokens rarity in one group",
-      "description5": "*Note that you will be also getting cashback as additional rewards",
-      "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
-      "description7": "B : additional rewards for the number of tokens.",
-      "description8": "R: the sum of all tokens rarity in one group"
+      "beforeTitle": "这是一组总率计算的公式：",
+      "title": "（CurrentTimerate +（t * b）） + r",
+      "description1": "*还将获得现金返还作为额外的奖励",
+      "description2": "总代币金额-1（因为仅拥有1个令牌没有其他奖励）",
+      "description3": "代币数量的额外奖励",
+      "description4": "一组中所有令牌稀有性的总和",
+      "description5": "*请注意，您还将获得现金返还作为额外的奖励",
+      "description6": "T：总代股金额-1（因为仅拥有1个令牌没有其他奖励）",
+      "description7": "B：代币数量的额外奖励。",
+      "description8": "R：一组中所有令牌稀有性的总和"
     }
   },
+  "claimModalJackpot": {
+    "address1": "您的钱包地址",
+    "address2": "有资格",
+    "jackpotNft": "头奖nft！",
+    "claim": "宣称",
+    "nftSentLabel": "您的NFT已成功发送到您的钱包地址",
+    "claimLabel": "您必须通过确认MetAmask钱包中的交易来要求您的NFT",
+    "seeInGallery": "在画廊中看到",
+    "seeOnTronscan": "请参阅Tronscan上的交易"
+  },
   "footer": {
-    "text": "Flipsies提供在线赌博体验。您必须年满18岁，才能在Flipsies上单击任何与赌博相关的活动。如果您居住在赌博，彩票或互联网博彩为非法的地方，则不得单击此网站上的任何内容。 Flipsies-对您所在地区执行的任何当地法律的违反概不负责。 Flipsies游戏基于公平，透明和有趣。玩家应意识到这些风险，并据此进行管理。请赌博并负责任地玩游戏。",
-    "terms": "T服务条款",
+    "text": "Flipsies提供在线赌博体验。 您必须年满18岁才能单击有关赌博的任何有关赌博活动的活动。 如果您居住在赌博，彩票或互联网投注是非法的位置，则不得单击此网站上的任何内容。 翻转 - 将对您所在地区执行的任何违反当地法律的行为不承担任何责任。 Flipsies游戏基于公平，透明和乐趣。 玩家应该意识到风险并相应地管理自己。 请赌博并负责任地玩。",
+    "link": "flipsies.io",
     "copyright": "版权",
-    "reserved": "保留所有权利"
+    "reserved": "版权所有"
   }
 }

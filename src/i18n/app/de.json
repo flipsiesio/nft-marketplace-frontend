@@ -2,215 +2,203 @@
   "header": {
     "rewardSystem": "Belohnungssystem",
     "faq": "FAQ",
-    "nftEarningSystem": "NFT-Verdienstsystem",
     "howToPlay": "Spielanleitung?",
-    "wallet": "Wallet",
-    "tronlink": "TronLink",
-    "referral": "Referral-Programm",
-    "betsHistory": "Bisherige Einsätze",
-    "logout": "Abmeldung",
-    "extensionInstallTitle": "Bitte Erweiterung installieren oder anmelden",
+    "nftEarningSystem": "NFT -Verdienstsystem",
+    "nftMarket": "NFT -Markt",
+    "wallet": "Geldbörse",
+    "tronlink": "Tronlink",
+    "referral": "Verweisung",
+    "betsHistory": "Meine Wettengeschichte",
+    "logout": "Ausloggen",
+    "extensionInstallTitle": "Bitte installieren Sie die Erweiterung oder die Anmeldung",
     "extensionInstall": "Erweiterung installieren",
-    "extensionLogin": "Über Erweiterung anmelden"
-  },
-  "preview": {
-    "title": "Bitte <1>anmelden</1> bei TronLink und Wallet verbinden zum spielen",
-    "playNow": "Jetzt spielen"
-  },
-  "betsHistory": {
-    "title": "Bisherige Einsätze",
-    "bet": "Einsatz",
-    "payout": "Gewinn",
-    "flip": "Poker",
-    "color": "Farbe",
-    "date": "Datum & Uhrzeit"
-  },
-  "preloader": {
-    "alert": "Zur Aktivierung der App oder zur Anmeldung bei TronLink bitte auf die TronLink-Erweiterung klicken!"
-  },
-  "combinations": {
-    "royalFlush": "Royal Flush",
-    "straightFlush": "Straight Flush",
-    "quads": "Vierling",
-    "fullHouse": "Full House",
-    "flush": "Flush",
-    "straight": "Straße",
-    "threeOfKind": "Drilling",
-    "twoPair": "Zwei Paare",
-    "pair": "Ein Paar",
-    "highCard": "Höchste Karte"
-  },
-  "game": {
-    "handleRankings": " Spielerrang",
-    "showResults": "Ergebnisse anzeigen",
-    "playAgain": "Erneut spielen",
-    "home": "Home",
-    "jackpot": "Jackpot",
-    "betOn": "Ihr Tipp:",
-    "colorBet": "Farbwette",
-    "win": "gewonnen",
-    "lost": "verloren",
-    "red": "Rot",
-    "black": "Schwarz",
-    "youWon": "Gewonnen",
-    "youLost": "Leider verloren",
-    "youDraw": "Unentschieden",
-    "youWonJackpot": "Jackpot-Gewinn!",
-    "results": "Ergebnisse",
-    "pokerHand": "Poker",
-    "flopColor": "Farbe",
-    "start": "Start",
-    "sameBet": "Tipp und Einsatz wiederholen",
-    "bet": "Bet",
-    "probablyFair": "Flipsies ist ein <1>nachweislich faires</1> Spiel."
-  },
-  "profile": {
-    "referral": "Referral-Programm",
-    "betsHistory": "Bisherige Einsätze",
-    "invitedPlayers": "Eingeladene Spieler",
-    "currentRank": "Derzeitiger Rang",
-    "ofHouseEdge": "Hausvorteil",
-    "totalEarnings": "Gesamtgewinn",
-    "withdraw": "Auszahlung",
-    "note": "Hinweis: Für die Auszahlung werden Ihnen Energiepunkte berechnet."
-  },
-  "ranks": {
-    "bronze": "Bronze",
-    "silver": "Silver",
-    "gold": "Gold",
-    "platinum": "Platin",
-    "diamond": "Diamant",
-    "emerald": "Smaragd",
-    "sapphire": "Saphir"
-  },
-  "rating": {
-    "jackpotWinners": "Jackpot-Gewinner",
-    "jackpot": "Jackpot"
-  },
-  "referral": {
-    "title": "Laden Sie Freunde über Ihren Referral-Link ein. Jedes Mal, wenn einer Ihrer Freunde gewinnt, erhalten Sie einen kleinen Bonus.",
-    "provideEmail": "Um am Referral-Programm teilzunehmen, müssen Sie Ihre E-Mail-Adresse angeben.",
-    "enterEmail": "Ihre E-Mail-Adresse",
-    "join": "Teilnehmen",
-    "copy": "Kopieren",
-    "rankUp": "Mit einem höheren Rang erhalten Sie auch höhere Boni!",
-    "yourReferralLink": "Ihr Referral-Link",
-    "completeRank": "Fertigstellen und höheren Rang sichern"
-  },
-  "notifications": {
-    "copy": "Wert kopiert"
+    "extensionLogin": "Ok, ich werde mich über Erweiterung anmelden"
   },
   "termsOfServices": {
     "title": "Nutzungsbedingungen",
-    "flipsies": "Flipsies",
-    "offers": "ist ein Glücksspiel, an dem nur Spieler teilnehmen dürfen, die das erforderliche Mindestalter für die Glücksspielteilnahme in ihrem Land erreicht haben. Falls Glücksspiele, Lotterien oder Online-Wettportale in Ihrem Land oder Ihrer Region illegal sind, dürfen Sie das Angebot auf dieser Website nicht nutzen.",
-    "provide": "Die Flipsies-Website („wir“) bietet eine Schnittstelle zum Smart Contract der TRON-Blockchain, über den in Abhängigkeit von externen Faktoren TRON-Tokens entgegengenommen und gesendet werden.",
-    "verify": "Wir können die Legalität des Service nicht für jeden möglichen Gerichtsstand prüfen und bieten Ihnen auch keine Rechtsberatung. Es obliegt Ihrer alleinigen Verantwortung, die an Ihrem Gerichtsstand geltenden Vorschriften und Gesetze hinsichtlich der oben beschriebenen Nutzung von TRON-Tokens einzuhalten.",
-    "based": "Dem Flipsies-Spiel liegen transparente Verfahren zugrunde. Spieler sollten sich der Risiken bewusst sein und ihr eigenes Verhalten entsprechend kontrollieren. Bitte spielen Sie verantwortungsvoll. Viel Glück!"
+    "flipsies": "Flipsien",
+    "offers": "Bietet ein Online -Glücksspielerlebnis, dass Sie mit dem Alter in Ihrem Land sind, um daran teilzunehmen. Wenn Sie an einem Ort wohnen, an dem Glücksspiel, Lotterien oder Online -Wetten illegal sind, dürfen Sie diese Website nicht eingeben.",
+    "provide": "Die Website von Flipsies (\"We\") bietet eine Schnittstelle zum Smart -Vertrag auf der BitTorrent -Blockchain, die BTTC -Token und überträgt unterschiedliche Mengen an BTTC -Token im Gegenzug, abhängig von externen Faktoren.",
+    "verify": "Wir sind nicht in der Lage, die Rechtmäßigkeit des Dienstes in jeder Gerichtsbarkeit zu überprüfen und Ihnen jegliche Rechtsberatung zu geben. Es ist Ihre alleinige Verantwortung, relevante Gesetze, Richtlinien und Vorschriften Ihrer Zuständigkeit in Bezug auf die Verwendung von BTTC -Token in der oben beschriebenen Weise einzuhalten.",
+    "based": "Flipsies -Spiele basieren auf Transparenz, die Spieler sollten sich der Risiken bewusst sein und sich entsprechend verwalten. Bitte spielen Sie verantwortungsbewusst und viel Glück."
   },
-  "howToPlay": {
-    "title": "Flipsies-Spielregeln",
-    "gameDerived": "Der Name „Flipsies“ leitet sich vom englischen Begriff „Coin Flip“, oder kurz „Flip“, für „Münzwurf“ ab. Beim Poker sind damit Situationen gemeint, in denen Sie und Ihr Gegner mit dem aktuellen Blatt etwa gleiche Chancen auf den Sieg haben. Ergänzt wird das Ganze durch eine optionale Nebenwette, bei der Sie darauf wetten können, welche Farbe die Mehrheit der Flop-Karten hat (mindestens zwei rote oder schwarze Karten). Derartige Nebenwetten („Side Bets“ oder „Prop Bets“) gibt es oft bei privaten Pokerspielen.",
-    "followStandart": "Flipsies follows standard Texas Holdem hand rankings, these rankings are provided in the drop down menu on the upper left hand corner of the game.",
-    "thankYou": "Vielen Dank und viel Glück!",
-    "step": "Schritt",
-    "step1": "Sie und der Dealer erhalten jeweils zwei Karten.",
-    "step2": "Wählen Sie Ihren Einsatz für das Pokerblatt und geben Sie Ihren Tipp für die Flop-Farbe ab. Weitere Einsätze oder Wetten sind nicht nötig.",
-    "step3": "Der Flop (die ersten drei Karten), Turn (vierte Karte) und River (fünfte Karte) werden gegeben. Dies sind die Gemeinschaftskarten („Community Cards“), die von allen Spielern genutzt werden dürfen.",
-    "step4": "Der Spieler mit dem besten Pokerblatt aus fünf Karten gewinnt die Runde. Falls die Pokerblätter gleichwertig sind (Unentschieden), wird der Pot zu gleichen Teilen unter den Spielern aufgeteilt."
+  "jackpot": {
+    "pendingJackpot": "Sie haben den Jackpot gewonnen. Der Jackpot steht aus ...",
+    "wonJackpot{{id}}": "Sie haben die Jackpot -ID #{{id}} gewonnen. Es kann gesehen werden",
+    "here": "hier"
   },
-  "faq": {
-    "title": "FAQ",
-    "question1": {
-      "title": "Gibt es für Flipsies ein Referral-Programm?",
-      "content": "Ja, unser Referral-Programm umfasst sieben Stufen (Bronze, Silber, Gold, Platin, Diamant, Smaragd und Saphir). Abhängig davon, wie viel ein von Ihnen eingeladener Spieler spielt, erlangen Sie eine höhere Stufe."
+  "nftMarket": {
+    "todayEndExpiration": "Heute Ende des Ablaufs",
+    "dayBeforeExpiration{{day}}": "{{day}} Tage - vor Ablauf",
+    "notHaveEnoughFunds": "Sie haben nicht genug Mittel",
+    "cancelBid": "Angebot abbrechen",
+    "empty": "Leer...",
+    "title": "NFT -Markt",
+    "marketTab": "Marktplatz",
+    "galleryTab": "Sale reparieren",
+    "myGalleryTab": "Meine Gallerie",
+    "myBidsTab": "Meine Gebote",
+    "id": "ICH WÜRDE",
+    "tradingHistory": "Handelsgeschichte",
+    "bids": "Gebote",
+    "bid": "Gebot",
+    "raiseBid": "Angebot erhöhen",
+    "delist": "Delist",
+    "accept": "Annehmen",
+    "buyNow": "Kaufe jetzt",
+    "price": "Preis",
+    "setPrice": "Preis festsetzen",
+    "setSale": "Set Sale",
+    "confirm": "Bestätigen",
+    "cancelBids": "Sind Sie sicher, dass Sie die Gebote stornieren möchten?",
+    "cancelSale": "Sind Sie sicher, dass Sie den Verkauf stornieren möchten?",
+    "purchaseConfirmation": "Kaufbestätigung",
+    "putOnSale": "Zum Verkauf angeboten",
+    "putOnAuction": "Gebote aufstellen",
+    "sellTitle": "Sind Sie sicher, dass Sie NFT verkaufen möchten?",
+    "tableCols": {
+      "event": "Vorfall",
+      "address": "Adresse",
+      "price": "Preis",
+      "date": "Datum",
+      "number": "Nummer"
     },
-    "question2": {
-      "title": "Muss ich mich für ein Benutzerkonto registrieren?",
-      "content": "Nein, eine Registrierung ist nicht zwingend erforderlich. Trotzdem empfehlen wir Ihnen die Registrierung, denn so können Sie an unserem Referral-Programm teilnehmen und sich ein paar Boni sichern."
+    "owner": "Eigentümer",
+    "approve": "Genehmigen",
+    "approveText": "Bitte genehmigen Sie Ihre Aktion",
+    "bidPrice": "Höchstes Gebot",
+    "myBid": "Mein Angebot",
+    "highestBid": "Höchstes Gebot",
+    "salePrice": "Listenpreis",
+    "attributes": "Attribute",
+    "type": "Typ"
+  },
+  "marketFilterModal": {
+    "title": "Filter",
+    "price": {
+      "highestBid": "Höchstes Gebot",
+      "price": "Preis",
+      "asc": "ASC",
+      "desc": "Vor"
     },
-    "question3": {
-      "title": "Wie hoch ist der Hausanteil („Rake“)?",
-      "content": "1,5 % des jeweiligen Einsatzes. (Damit decken wir unsere Kosten für die Bereitstellung des Spiels ab.) Ein Anteil von 0,2 % geht in den Jackpot."
+    "type": {
+      "title": "Typ",
+      "king": "König",
+      "jack": "Jack",
+      "queen": "Königin",
+      "rare": "Selten"
     },
-    "question4": {
-      "title": "Was bedeutet „nachweislich fair“?",
-      "content": "Viele Spieler denken, dass sie in einem Onlinecasino betrogen werden können. Und meist haben sie damit auch recht. Denn eigentlich ist es für ein Onlinecasino ganz leicht, Sie übers Ohr zu hauen. Beim „Crypto Gambling“, also bei Glücksspielen unter Einsatz von Kryptowährungen, kommen allerdings intelligente Verträge zum Einsatz, sogenannte „Smart Contracts“, die für höchste Transparenz sorgen. Damit wird das Spiel nachweislich fair („provably fair“). Smart Contracts umfassen eine Menge an Regeln, die automatisch durchgesetzt werden und sich nicht manipulieren lassen. Da diese Smart Contracts öffentlich einsehbar sind, kann jeder Spieler die Regeln selbst genau prüfen. Unsere Zufallsgeneratoren werden durch solche Smart Contracts gesteuert und sind somit technisch nicht manipulierbar."
+    "suit": {
+      "title": "Passen",
+      "hearts": "Herzen",
+      "clubs": "Clubs",
+      "diamonds": "Diamanten",
+      "spades": "Spaten"
+    }
+  },
+  "flipsiesNft": {
+    "title": "Flipsies nft",
+    "text1": "Flipsies NFTs sind eine Reihe von 7.803 Spielkarten auf der BitTorrent-Blockchain. Jedes NFT ist einzigartig programmgesteuert und automatisch.",
+    "text2": "Sie bestehen aus",
+    "text3": "2.600 Kings, 2.601 Queens, 2.601 Jacks, 25 Joker und 7 Geschichten.",
+    "text4": "Unsere Plattform verfügt über ein automatisches Rückkaufsystem, das NFTs kauft und als Jackpot-Preise für Benutzer spielt, die Flipsies spielen. Diese Funktion hält den Boden, unabhängig vom „Pumpen“ durch Inhaber. Flipsies haben auch ein Haltesystem, die Verdienerrate dieses Systems basiert auf Seltenheit. Je seltener Ihr NFT ist, desto mehr wird es verdienen.",
+    "text5": "Im Laufe der Jahre wurden unterschiedliche Spielkarten verschiedene Spitznamen gegeben. Die meisten dieser Bynames stammen aus Pokerspielen, hier sind einige der Klassiker, das sind die sieben",
+    "text6": "Geschichte",
+    "text7": "Nfts.",
+    "explore": "Entdecken"
+  },
+  "explore": {
+    "title": "Erforschen Sie Flipsies NFT",
+    "loading": "Wird geladen",
+    "mintModalTitle1": "Du musst bezahlen",
+    "mintModalTitle2": "zum",
+    "mintModalLabel1": "Beeilen Sie sich nur",
+    "mintModalLabel2": "Flipsies nft, um Minze zu machen!",
+    "mint": "Minze",
+    "mintNow": "Minze jetzt!",
+    "claimNft": "Anspruch auf Jackpot NFT",
+    "tryLuck": "Versuchen Sie Ihr Glück, kaufen Sie jetzt eine zufällige NFT und sehen Sie, welches Sie erhalten!",
+    "toGainAccess": "Um Zugang zu unserem NFT-Marktplatz zu erhalten, spielten Sie mit dem Spielen oder einer Mint 1, 3 oder 5 zufällig generierten NFTs!",
+    "notEligible": "ist nicht für Jackpot -NFTs berechtigt",
+    "playWin": "Spielen und gewinnen"
+  },
+  "exploreNft": {
+    "kingOfHearts": {
+      "title": "Selbstmordkönig",
+      "label": "Der König der Herzen wird normalerweise mit einem Schwert dargestellt, obwohl er im Flipies -Deck mit einem Farbwechsel Ei bewaffnet ist. Er wird normalerweise als \"Selbstmordkönig\" bezeichnet, weil er auf einem traditionellen Deck als stechend mit einem Schwert stechen oder zumindest ein Schwert hinter seinem Kopf hält."
     },
-    "question5": {
-      "title": "Ist Flipsies nachweislich fair?",
-      "content": "Ja, alle Flipsies-Wetten werden mithilfe von Smart Contracts über das TRON-Netzwerk abgewickelt. So ist für absolute Transparenz und Fairness gesorgt."
+    "kingOfDiamonds": {
+      "title": "Mann mit der Axt",
+      "label": "Diese Bezeichnung für den König der Diamanten spiegelt die Tatsache wider, dass dies der einzige König ist, der kein Schwert trägt. Deshalb wird er oft als Mann mit der Axt bezeichnet. Diese Karte wird häufig als Platzhalter im Draw Poker bezeichnet. Beim örtlichen Kartenspiel war es üblich, zu hören: \"Das Spiel ist sieben Kartenhoch/niedrig mit einem Buy auf der letzten Karte. Und nur um es interessanter zu machen, nimmt der Mann mit der Axt alles."
     },
-    "question6": {
-      "title": "An wen kann ich mich bei Problemen wenden?",
-      "content": "support@flipsies.io"
+    "queenOfSpades": {
+      "title": "Schwarze Witwe",
+      "label": "Der Spitzname \"Black Widow\" für die Königin der Spades ist eng mit dem Spiel der Herzen verbunden. In diesem Trick-Taking-Spiel ist es die Idee, zu vermeiden, dass Punkte mit Herzenskarten sammeln, und die Karten des Herzens haben jeweils einen Punkt wert, während die Queen of Spades massiv 13 Strafpunkte kostet. In Pokerspielen Old-School-Spiele hört man manchmal als Calamity Jane, eine berühmte Grenzerfrau, die es liebte, 5-Card-Gestüt zu spielen."
     },
-    "question7": {
-      "title": "Wie erstelle ich ein Benutzerkonto?",
-      "desktop": {
-        "1": "Installieren Sie die <1>TronLink-Erweiterung für den Chrome-Browser.</1>",
-        "2": "Folgen Sie den Anweisungen in TronLink, um ein Benutzerkonto zu erstellen oder zu importieren.",
-        "3": "Wenn Sie bereits über ein Wallet verfügen und die Erweiterung installiert haben, melden Sie sich einfach mit Ihren Zugangsdaten an.",
-        "4": "Prüfen Sie, ob Sie über genügend BTTC, Bandbreite und Energie verfügen, um spielen zu können.",
-        "5": "Das war‘s schon!"
-      },
-      "mobile": {
-        "title": "Für Mobilgeräte",
-        "1": "Laden Sie sich die TronLink-App für Ihr <1>iOS</1> oder <3>Android</3>-Gerät herunter.",
-        "2": "Folgen Sie den Anweisungen, um ein Benutzerkonto zu erstellen oder zu importieren.",
-        "3": "Öffnen Sie den integrierten Browser und geben Sie die Adresse https://flipsies.io/ ein, um die Flipsies-dApp zu starten.",
-        "4": "Prüfen Sie, ob Sie über genügend BTTC, Bandbreite und Energie verfügen, um spielen zu können.",
-        "5": "Das war‘s schon!"
-      }
+    "queenOfClubs": {
+      "title": "Blumenkönigin",
+      "label": "Die Königin der Clubs ist aus einem offensichtlichen Grund als \"Königin der Blumen\" oder \"Blumenkönigin\" bekannt - sie wird normalerweise dargestellt, eine Blume zu halten. Auch die \"Mutter Mary\" -Karte oder die \"Königin der Queens\" genannt, ist dies auch die am meisten spekulierte Karte für Tarot -Lesungen und andere psychische Überzeugungen."
     },
-    "question8": {
-      "title": "Was passiert, wenn mein Smartphone oder Computer die Verbindung verliert oder mein Akku plötzlich leer ist?",
-      "content": "Keine Sorge. Alle gewonnenen Wetten können im Wettverlauf eingesehen werden."
+    "jackOfDiamonds": {
+      "title": "Lachender Junge",
+      "label": "Jacks werden auch als Knayern bezeichnet und sind den königlicheren Königen und Königinnen unterlegen, was sie verspielter macht. Der Jack of Diamonds ist als der lachende Junge bekannt, und in einigen Variationen von Poker und Black Jack wird erwartet, dass die Spieler jedes Mal kichern, wenn diese Karte gespielt oder gezogen wird."
     },
-    "question9": {
-      "title": "Über TRON",
-      "content": "<b>TRON</b> ist eine dezentrale Entertainment- und Content-Sharing-Plattform, die auf Blockchain- und Peer-to-Peer-Verfahren beruht.<br/><br/><b>Bandbreite</b>: Mithilfe von TRON-Bandbreite („Bandwidth“) können Sie Transaktionen im TRON-Mainnet durchführen, ohne Provisionsgebühren für die genutzten Ressourcen entrichten zu müssen. Ein ausreichendes Kontingent an Bandbreite ist bei der Nutzung von dApps wie Flipsies.io entscheidend, damit Sie auch mehrere kleinere Transaktionen durchführen können, ohne dass Ihnen dafür BTTC-Tokens abgezogen werden. Ihr Bandbreitenkontingent können Sie außerdem dazu nutzen, um sich als aktives Mitglied der TRON-Community zu etablieren und für Super Representatives abzustimmen.<br/><br/><b>Energie</b>: Diese spezielle Ressource wird zur Verarbeitung von Smart Contracts im TRON-Netzwerk genutzt. Smart Contracts verbrauchen sowohl Energie als auch Bandbreite, also achten Sie beim Übertragen Ihrer Tokens darauf, dass Sie von beidem genug zur Verfügung haben.<br/><br/><b>Das Einfrieren</b> („Freezing“) ist ein einzigartiger Mechanismus für die TRON-Blockchain. Wenn Sie Ihre BTTC einfrieren, erlangen Sie gewisse Vorteile. Allerdings können Sie eingefrorene BTTC drei Tage lang nicht für Transaktionen nutzen. Das Ganze ist vergleichbar mit einem Sparkonto: Ihr Geld ist zwar da, steht Ihnen aber für einen begrenzten Zeitraum nicht zur Verfügung.<br/>Durch Einfrieren Ihrer BTTC können Sie sich verschiedene Vergünstigungen sichern.<br/> Zunächst müssten Sie festlegen, ob Sie für das Einfrieren entweder <i>Bandbreitenpunkte</i> (BP) oder <i>Energiepunkte</i> (EP). Unabhängig davon, für welche Option Sie sich entscheiden, erhalten Sie für das Einfrieren obendrein <i>TRON Power</i> (TP), nämlich pro eingefrorenem BTTC je 1 TP."
+    "jackOfSpadesAndJackOfHearts": {
+      "title": "Ein Augenhaut",
+      "label": "Im Gegensatz zu den meisten anderen Hofkarten haben die Jack of Spades und der Jack of Hearts beide ein Nebenprofil, daher ihre Bezeichnung als \"Einäugigen Jacks\". One Eyed Jacks ist ein Satz, der am häufigsten verwendet wird, um Karten zu beschreiben, die wild erklärt werden. Es ist eine bequeme Möglichkeit, festzustellen, dass die Hälfte der Jacks wild sein sollte, und als alter Teil des Poker -Slangs macht es auch nur Spaß zu sagen. One Eyed Jacks werden oft mit dem \"Selbstmordkönig\" bei der Deklarierung von Wildkarten gepaart."
     }
   },
   "nftSystemEarn": {
-    "playNow": "Play now",
+    "please": "Bitte",
+    "connectWallet": "Metamaskieren und Verbinden von Brieftaschen zum Spielen",
+    "playNow": "Jetzt spielen",
     "buyback": {
-      "title": "Buyback system:",
-      "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
-      "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
-      "description2": "100% payout for Jackpot any time guarantee"
+      "title": "Rückkaufsystem:",
+      "description": "Unsere Plattform verfügt über ein automatisches Rückkaufsystem, das NFTs kauft und als Jackpot-Preise für Benutzer spielt, die Flipsies spielen. Diese Funktion hält den Boden, unabhängig vom „Pumpen“ durch Inhaber.",
+      "description1": "Die Plattform hat automatisch ein Rückkaufsystem, das immer NFTs für Jackpot -Gewinner bietet",
+      "description2": "100% Auszahlung für Jackpot jederzeit Garantie"
     },
     "stacking": {
-      "title": "Staking/holding system:",
-      "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
-      "description1": "The more and longer you are nfts owner the more rewards you will get",
-      "description2": "The higher the rarity score your tokens have the more rewards you will get",
-      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
-      "description4": "Starting rates for owning nfts.",
-      "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
-      "description6": "You can claim rewards only every 7 days from token purchasing."
+      "title": "Haltesystem:",
+      "description": "Je länger Sie eine NFT halten, desto mehr Belohnungen erhalten Sie. Je höher die Seltenheit, desto mehr Belohnungen erhalten Sie. Sie erhalten Belohnungen als Cashback gemäß der Menge an Wetten, die Sie auf der Plattform der Flipsies gemacht haben. Startraten für den Besitz von NFTs 1 Monat - 3% TRX, 2 Monate - 6% TRX, 1 Jahr - 36% TRX, 2 Jahre - 72% TRX, 3 Jahre - 108% TRX, 4 Jahre - 144% TRX. Sie können alle 7 Tage beim Token -Kauf Belohnungen beantragen",
+      "description1": "Je mehr NFT Sie haben und je länger Sie halten, desto mehr Belohnungen erhalten Sie",
+      "description2": "Je höher die Raritätsbewertung, die Ihr NFT hat, desto mehr Belohnungen erhalten Sie",
+      "description3": "Sie erhalten Belohnungen als Cash -Back nach Betrag der Wetten, die Sie auf der Flipsies -Plattform platzieren",
+      "description4": "Preise für das Halten von NFTs:",
+      "description5": "1 Monat - 3% TRX, 2 Monate - 6% TRX, 1 Jahr - 36% TRX, 2 Jahre - 72% TRX, 3 Jahre - 108% TRX, 4 Jahre - 144% TRX",
+      "description6": "Sie können alle 7 Tage beim Einkauf von Token belohnt."
     },
     "allTokens": {
-      "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
-      "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+      "description": "Alle Token werden gemäß dem Kaufdatum in Gruppen unterteilt. Zum Beispiel werden alle Token (NFTs), die ein Benutzer am 22. April gekauft hat, in eine Gruppe gebracht. Alle Token, die ein Benutzer am 23. April gekauft hat, werden in eine andere Gruppen gesteckt. Wenn dieser Benutzer beschließt, eine beliebige Anzahl von Token aus einigen dieser Gruppen zu verkaufen, werden in diesem Fall alle Belohnungen festgelegt und die Berechnung weiterer Belohnungen von Anfang an. Die Berechnung der Belohnung für alle Gruppen berechnet getrennt voneinander.",
+      "description1": "Alle Token werden gemäß dem Kaufdatum in Gruppen eingewiesen. Zum Beispiel werden alle Token, die der Benutzer am 22. April gekauft hat Von diesen Gruppen werden in diesem Fall alle Belohnungen festgelegt und die Berechnung für weitere Belohnungen von Anfang an. Das heißt ab dem 1. Tag des Haltens. Genau auf die gleiche Weise, wenn der Benutzer diese Token gerade gekauft hat. Die Berechnung der Belohnung für alle Gruppen berechnet getrennt voneinander."
     },
     "formula": {
-      "beforeTitle": "Here is the formula for total rate calculation for one group:",
-      "title": "(CurrentTimeRate + (T * B)  ) + R",
-      "description1": "*Will also be getting cashback as additional rewards",
-      "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
-      "description3": "Additional rewards for the number of tokens",
-      "description4": "The sum of all tokens rarity in one group",
-      "description5": "*Note that you will be also getting cashback as additional rewards",
-      "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
-      "description7": "B : additional rewards for the number of tokens.",
-      "description8": "R: the sum of all tokens rarity in one group"
+      "beforeTitle": "Hier ist die Formel für die Gesamtrate -Berechnung für eine Gruppe:",
+      "title": "(CurrentTimerate + (t * b)) + r",
+      "description1": "*Wird auch Cashback als zusätzliche Belohnungen erhalten",
+      "description2": "Gesamt -Token -Betrag - 1 (da es keine zusätzliche Belohnung für den Besitz von nur 1 Token gibt)",
+      "description3": "Zusätzliche Belohnungen für die Anzahl der Tokens",
+      "description4": "Die Summe aller Token -Seltenheit in einer Gruppe",
+      "description5": "*Beachten Sie, dass Sie auch Cashback als zusätzliche Belohnungen erhalten",
+      "description6": "T: Gesamttokesbetrag - 1 (da es keine zusätzliche Belohnung für den Besitz von nur 1 Token gibt)",
+      "description7": "B: Zusätzliche Belohnungen für die Anzahl der Token.",
+      "description8": "R: Die Summe aller Token -Seltenheit in einer Gruppe"
     }
   },
+  "claimModalJackpot": {
+    "address1": "Ihre Brieftaschenadresse",
+    "address2": "ist berechtigt",
+    "jackpotNft": "Jackpot Nft!",
+    "claim": "Beanspruchen",
+    "nftSentLabel": "Ihr NFT wurde erfolgreich an Ihre Brieftaschenadresse gesendet",
+    "claimLabel": "Sie müssen Ihre NFT beanspruchen, indem Sie die Transaktion in Ihrer Metamaske -Brieftasche bestätigen",
+    "seeInGallery": "Siehe in der Galerie",
+    "seeOnTronscan": "Siehe Transaktion auf Tronscan"
+  },
   "footer": {
-    "text": "Flipsies bietet ein Online-Glücksspiel-Erlebnis. Sie müssen über 18 Jahre alt sein, um auf Glücksspiele auf Flipsies zu klicken. Wenn Sie an einem Ort wohnen, an dem Glücksspiele, Lotterien oder Internetwetten illegal sind, dürfen Sie nichts anklicken, was auf dieser Website zu finden ist. Flipsies übernimmt keine Verantwortung für Verstöße gegen lokale Gesetze, die in Ihrer Region gelten. Die Flipsies-Spiele basieren auf Fairness, Transparenz und Spaß. Die Spieler sollten sich der Risiken bewusst sein und sich entsprechend verhalten. Bitte spielen Sie verantwortungsbewusst.",
-    "terms": "Nutzungsbedingungen",
-    "copyright": "Copyright",
-    "reserved": "Alle Rechte vorbehalten."
+    "text": "Flipsies bietet ein Online -Glücksspielerlebnis. Sie müssen über 18 Jahre alt sein, um auf Flipsien auf Glücksspielaktivitäten zu klicken. Wenn Sie an einem Ort wohnen, an dem Glücksspiel, Lotterien oder Internetwetten illegal sind, dürfen Sie auf dieser Website nicht auf etwas Klicken. Flipsies- werden nicht für Verstöße gegen die in Ihrer Region erzwungenen örtlichen Gesetze verantwortlich gemacht. Flipsies -Spiele basieren auf Fairness, Transparenz und Spaß. Die Spieler sollten sich der Risiken bewusst sein und sich entsprechend verwalten. Bitte spielen Sie und spielen Sie verantwortungsbewusst.",
+    "link": "flipsies.io",
+    "copyright": "Urheberrechte ©",
+    "reserved": "Alle Rechte vorbehalten"
   }
 }

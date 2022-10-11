@@ -2,218 +2,203 @@
   "header": {
     "rewardSystem": "報賞制度",
     "faq": "よくある質問",
-    "howToPlay": "遊び方?",
-    "nftEarningSystem": "NFT獲得システム",
-    "wallet": "ウォレット",
-    "tronlink": "TronLink",
-    "referral": "紹介",
-    "betsHistory": "ベット履歴",
+    "howToPlay": "遊び方？",
+    "nftEarningSystem": "NFT収益システム",
+    "nftMarket": "NFT市場",
+    "wallet": "財布",
+    "tronlink": "tronlink",
+    "referral": "照会",
+    "betsHistory": "私の賭けの歴史",
     "logout": "ログアウト",
-    "extensionInstallTitle": "拡張機能をインストールするかログインしてください",
-    "extensionInstall": "拡張機能をインストール",
-    "extensionLogin": "OK、拡張機能からログインします"
-  },
-  "preview": {
-    "title": "プレイするにはTronLinkにサインインしてウォレットに接続してください",
-    "playNow": "今すぐプレイ"
-  },
-  "betsHistory": {
-    "title": "ベット履歴",
-    "bet": "ベット",
-    "payout": "ペイアウト",
-    "flip": "ポーカー",
-    "color": "色",
-    "date": "日付と時間"
-  },
-  "preloader": {
-    "alert": "TronLink拡張機能をクリックしてアプリを有効にするか、TronLinkにログインしてください！"
-  },
-  "combinations": {
-    "royalFlush": "ロイヤルフラッシュ",
-    "straightFlush": "ストレートフラッシュ",
-    "quads": "クアッド",
-    "fullHouse": "フルハウス",
-    "flush": "フラッシュ",
-    "straight": "ストレート",
-    "threeOfKind": "スリーカード",
-    "twoPair": "ツーペア",
-    "pair": "ペア",
-    "highCard": "ハイカード"
-  },
-  "game": {
-    "handleRankings": "ハンドルランキング",
-    "showResults": "結果を表示",
-    "playAgain": "再度プレイする",
-    "home": "ホーム",
-    "jackpot": "ジャックポット",
-    "betOn": "賭けの対象",
-    "colorBet": "",
-    "win": "色へのベットで勝ちました",
-    "lost": "Your color bet lost - 色へのベットで負けました",
-    "red": "赤",
-    "black": "黒",
-    "youWon": "勝ちました",
-    "youLost": "負けました",
-    "youDraw": "引き分けです",
-    "youWonJackpot": " ジャックポットを獲得しました",
-    "results": "結果",
-    "pokerHand": "ポーカー",
-    "flopColor": "色",
-    "start": "スタート",
-    "sameBet": "同じベット",
-    "bet": "ベット",
-    "probablyFair": "Flipsiesは<1>証明可能な公正さ</1>のゲームです。"
-  },
-  "profile": {
-    "referral": "紹介",
-    "betsHistory": "ベット履歴",
-    "invitedPlayers": "招待されたプレイヤー",
-    "currentRank": "現在のランク",
-    "ofHouseEdge": "のハウスエッジ勝利",
-    "totalEarnings": "総収入",
-    "withdraw": "引き出し",
-    "note": "注：取引を引き出すにはエネルギー手数料を支払う必要があります"
-  },
-  "ranks": {
-    "bronze": "ブロンズ",
-    "silver": "シルバー",
-    "gold": "ゴールド",
-    "platinum": "プラチナ",
-    "diamond": "ダイヤモンド",
-    "emerald": "エメラルド",
-    "sapphire": "サファイア"
-  },
-  "rating": {
-    "jackpotWinners": "ジャックポット勝者",
-    "jackpot": "ジャックポット"
-  },
-  "referral": {
-    "title": "紹介リンクを友達と共有して、友達が勝つたびに報酬を受け取りましょう。",
-    "provideEmail": "紹介プログラムに参加するにはEメールを提供してください！",
-    "enterEmail": "Eメールを入力",
-    "join": "参加",
-    "copy": "コピー",
-    "rankUp": "ランクを上げて、より大きな報酬を受け取りましょう！",
-    "yourReferralLink": "紹介リンク",
-    "completeRank": "完成させてランクアップ"
-  },
-  "notifications": {
-    "copy": "値がコピーされました"
+    "extensionInstallTitle": "拡張機能またはログインをインストールしてください",
+    "extensionInstall": "拡張機能をインストールします",
+    "extensionLogin": "わかりました、私は拡張機能を介してログインします"
   },
   "termsOfServices": {
-    "title": "サービス利用規約",
-    "flipsies": "Flipsies",
-    "offers": "は、参加するために居住国でギャンブルを行うことができる年齢に達していなければならないオンラインギャンブル体験を提供しています。ギャンブル、宝くじ、オンラインベッティングが違法である場所に居住している場合は、このウェブサイトにアクセスしないでください。",
-    "provide": "Flipsiesのウェブサイトは、Tronブロックチェーン上のスマートコントラクトへのインターフェイスを提供します。これは、Tronトークンを受け入れ、外部要因に応じて、さまざまな量のTronトークンを転送します。",
-    "verify": "弊社は各法域におけるサービスの合法性を確認し、法的アドバイスを提供することはできません。上記の方法でのTronトークンの使用に関して、あなたの管轄区域の関連する法律、ポリシー、および規制を遵守することは、あなたの単独の責任です。",
-    "based": "Flipsiesゲームは透明性に基づいているため、プレイヤーはリスクを認識し、それに応じて自分自身を管理する必要があります。責任をもってプレイしてください。幸運を祈っています。"
+    "title": "利用規約",
+    "flipsies": "フリップス",
+    "offers": "あなたが参加するためにあなたの国でギャンブルをするために年齢が必要なオンラインギャンブルエクスペリエンスを提供します。ギャンブル、宝くじ、またはオンラインベットが違法である場所に居住している場合は、このウェブサイトに入ってはなりません。",
+    "provide": "FlypiesのWebサイト（ \"We\"）は、BTTCトークンを受け入れ、外部要因に応じて、BTTCトークンのさまざまな量のBTTCトークンを転送するBitTorrentブロックチェーンのスマートコントラクトへのインターフェイスを提供します。",
+    "verify": "各管轄区域のサービスの合法性を検証し、法的助言を提供することはできません。 上記の方法でのBTTCトークンの使用に関する関連する法律、政策、および規制を遵守することは、あなたの唯一の責任です。",
+    "based": "フリップスゲームは透明性に基づいており、プレイヤーはリスクを認識し、それに応じて自分自身を管理する必要があります。 責任を持って良いラックをプレイしてください。"
   },
-  "howToPlay": {
-    "title": "Flipsiesの遊び方",
-    "gameDerived": "Flipsiesは、ポーカーの「コイントス」または「フリップ」から派生したゲームで、あなたと対戦相手の両方は同じ確率でハンドで勝利します。サイドベットまたはプロップベットとして知られている、フロップのスーツの大部分の色（赤または黒の2つ以上）にベットできるオプションのサイドベットを追加しました。これは、プライベートポーカーゲームでよく行われています。",
-    "followStandart": "Flipsiesは、標準のテキサスホールデムのハンドランキングに従います。これらのランキングは、ゲームの左上隅にあるドロップダウンメニューで提供されます。",
-    "thankYou":"ありがとうございます。幸運を祈っております。",
-    "step": "手順",
-    "step1": "あなたは2枚のカードを配られ、ハウスも2枚のカードを配られます",
-    "step2": "フリップベット（ポーカーハンド）とフロップカラーベットのサイズを選択してください。それ以上のベットはありません。",
-    "step3": "フロップ（最初の3枚）、ターン（4番目のカード）およびリバー（5枚目のカード）が配られます。これらはコミュニティーカードです。",
-    "step4": "最高の5カードハンドをつくった人がフリップで勝利します。引き分け（タイ）の場合、ポットは等分に分けられます。"
+  "jackpot": {
+    "pendingJackpot": "ジャックポットを獲得しました。 ジャックポットは保留中です...",
+    "wonJackpot{{id}}": "ジャックポットID＃{{id}}を獲得しました。 表示できます",
+    "here": "ここ"
   },
-  "faq": {
-    "title": "よくある質問",
-    "question1": {
-      "title": "Flipsiesは紹介プログラムを提供していますか。",
-      "content": "はい。弊社の紹介プログラムは7つのレベルで構成されています（ブロンズ、シルバー、ゴールド、プラチナ、ダイヤモンド、エメラルド、サファイア）。各レベルは、紹介したプレイヤーのプレイ頻度に応じてロック解除されます。"
+  "nftMarket": {
+    "todayEndExpiration": "今日は有効期限を終えます",
+    "dayBeforeExpiration{{day}}": "{{day}}日 - 有効期限前",
+    "notHaveEnoughFunds": "十分な資金がありません",
+    "cancelBid": "入札をキャンセルします",
+    "empty": "空の...",
+    "title": "NFT市場",
+    "marketTab": "市場",
+    "galleryTab": "販売を修正します",
+    "myGalleryTab": "私のギャラリー",
+    "myBidsTab": "私の入札",
+    "id": "ID",
+    "tradingHistory": "取引履歴",
+    "bids": "入札",
+    "bid": "入札",
+    "raiseBid": "入札を引き上げる",
+    "delist": "登録者",
+    "accept": "承認",
+    "buyNow": "今買う",
+    "price": "価格",
+    "setPrice": "価格を設定します",
+    "setSale": "セットセール",
+    "confirm": "確認",
+    "cancelBids": "入札をキャンセルしたいですか？",
+    "cancelSale": "販売をキャンセルしたいですか？",
+    "purchaseConfirmation": "購入確認",
+    "putOnSale": "発売されます",
+    "putOnAuction": "入札を行います",
+    "sellTitle": "NFTを販売したいのですが",
+    "tableCols": {
+      "event": "イベント",
+      "address": "住所",
+      "price": "価格",
+      "date": "日にち",
+      "number": "番号"
     },
-    "question2": {
-      "title": "アカウントに登録する必要はありますか。",
-      "content": "いいえ。インセンティブを提供する紹介プログラムのために登録をお勧めしますが、登録は必須ではありません。"
+    "owner": "オーナー",
+    "approve": "承認",
+    "approveText": "あなたの行動を承認してください",
+    "bidPrice": "最高入札",
+    "myBid": "私の入札",
+    "highestBid": "最高入札",
+    "salePrice": "リスト価格",
+    "attributes": "属性",
+    "type": "タイプ"
+  },
+  "marketFilterModal": {
+    "title": "フィルター",
+    "price": {
+      "highestBid": "最高入札",
+      "price": "価格",
+      "asc": "ASC",
+      "desc": "desc"
     },
-    "question3": {
-      "title": "ハウスエッジはいくつですか。",
-      "content": "ベットごとに1.5%（これはゲームを運営し続けるための請求書の支払いに当てられます）。0.2%がジャックポットに拠出されます。"
+    "type": {
+      "title": "タイプ",
+      "king": "王",
+      "jack": "ジャック",
+      "queen": "女王",
+      "rare": "レア"
     },
-    "question4": {
-      "title": "証明可能な公正さとは何ですか。",
-      "content": "ほとんどのプレイヤーは、オンラインカジノでだまされる可能性があると考えており、ほとんどの場合彼らは正しいです。技術的には、オンラインカジノがあなたをだますのは非常に簡単です。暗号ギャンブルの世界では、証明可能な公正さと呼ばれるソリューションがあります。これにより、スマートコントラクトを実装することで完全な透明性が実現します。スマートコントラクトには、改ざんできず、自動的に適用される一連のルールが含まれています。これらのスマートコントラクトは公開されているため、どの当事者も監査できます。弊社の乱数ジェネレーターはこれらのスマートコントラクトで実行されます。つまり、それらを不正に操作することは技術的に不可能です。"
+    "suit": {
+      "title": "スーツ",
+      "hearts": "心",
+      "clubs": "クラブ",
+      "diamonds": "ダイヤモンド",
+      "spades": "スペード"
+    }
+  },
+  "flipsiesNft": {
+    "title": "フリップスnft",
+    "text1": "Flypies NFTSは、BitTorrentブロックチェーンでの7,803のトランプのシリーズであり、各NFTはプログラムで特徴的で自動色です。",
+    "text2": "それらは構成されています",
+    "text3": "2,600キングス、2,601クイーン、2,601ジャック、25のジョーカー、7階建て。",
+    "text4": "当社のプラットフォームには、NFTを購入し、それらをフリップをプレイするユーザーのジャックポット賞として配布する自動購入システムがあります。この機能は、所有者による「ポンピング」に関係なくフロアを上昇させ続けます。 また、フリップスには保持システムがあり、このシステムの収益率は希少性に基づいており、NFTがより多く稼ぐほどまれであることに基づいています。",
+    "text5": "長年にわたり、独特のトランプに異なるニックネームが与えられてきました。 これらのバイネームのほとんどはポーカーゲームから来ています、ここにクラシックのいくつかがあります、これらは7つです",
+    "text6": "話",
+    "text7": "NFTS。",
+    "explore": "探検"
+  },
+  "explore": {
+    "title": "フリップスnftを探索します",
+    "loading": "読み込み",
+    "mintModalTitle1": "あなたは支払う必要があります",
+    "mintModalTitle2": "為に",
+    "mintModalLabel1": "急いで、のみ",
+    "mintModalLabel2": "ミントに残ったフリップスnft！",
+    "mint": "ミント",
+    "mintNow": "今ミント！",
+    "claimNft": "ジャックポットnftを主張します",
+    "tryLuck": "運を試して、今すぐランダムなNFTを購入して、どれを手に入れるかを見てください！",
+    "toGainAccess": "NFTマーケットプレイスにアクセスするには、プレイツーウィンまたはミント1、3または5ランダムに生成されたNFTS！",
+    "notEligible": "ジャックポットNFTの資格はありません",
+    "playWin": "プレイして勝ちます"
+  },
+  "exploreNft": {
+    "kingOfHearts": {
+      "title": "自殺王",
+      "label": "King of Heartsは通常剣で描かれていますが、フリップスデッキでは、色を変える卵で武装しています。 彼は通常、「自殺王」と呼ばれています。なぜなら、伝統的なデッキでは、彼は剣で自分自身を刺したり、少なくとも頭の後ろに剣を持っていると描かれているからです。"
     },
-    "question5": {
-      "title": "Flipsiesは証明可能な公正さですか。",
-      "content": "はい、すべてのFlipsiesの賭けは、TRONネットワーク上のスマートコントラクトを通じて実行されます。これにより、すべてのユーザーに完全な透明性と公平性が保証されます。"
+    "kingOfDiamonds": {
+      "title": "xを持つ男",
+      "label": "キングオブダイヤモンドのこの指定は、これが剣を運んでいない唯一の王であるという事実を反映しています。 それが彼がしばしばxを持つ男と呼ばれる理由です。 このカードは、ドローポーカーのワイルドカードとして頻繁に指定されます。 ローカルカードゲームでは、「ゲームは最後のカードで購入して7枚のカードが高く/低いと聞くのが一般的でした。そして、それをより面白くするためだけに、xを持つ男がすべてを取ります。"
     },
-    "question6": {
-      "title": "問題が発生した場合、どこに連絡すればよいですか。",
-      "content": "support@flipsies.io"
+    "queenOfSpades": {
+      "title": "ブラックウィドウ",
+      "label": "スペードの女王のニックネーム「ブラックウィドウ」は、ハートのゲームと密接に関連しています。 このトリックテイキングゲームでは、ポイントの収集を避けることであり、ハートカードはそれぞれ1ポイント相当のハートカードで、スペードの女王は13ペナルティポイントを大幅に課しています。 昔ながらのポーカーゲームでは、彼女が5カードのスタッドを演奏するのが大好きな有名なフロンティアウーマンであるCalamity Janeと呼ばれる彼女を聞くことがあります。"
     },
-    "question7": {
-      "title": "アカウントを作成するにはどうすればよいですか。",
-      "desktop": {
-        "1": "<1>TronLink Chrome拡張機能</1>をダウンロードしてインストールします",
-        "2": "TronLinkの指示に従って、アカウントを作成またはインポートします。",
-        "3": "拡張機能とウォレットを持っている場合は、ログインするだけです。",
-        "4": "アプリで«ウォレット»を押し、TronLinkを選択して接続します。",
-        "5": "プレイを開始するのに十分なTRX、帯域幅、およびエネルギーがあることを確認してください。.",
-        "6": "よくできました！"
-      },
-      "mobile": {
-        "title": "モバイルデバイスに関しては",
-        "1": "<1>iOS</1>または<3>Android</3>デバイス用のTronLinkモバイルアプリケーションをダウンロードします。",
-        "2": "指示に従ってアカウントを作成またはインポートします。",
-        "3": "ビルトインブラウザに移動し、https://flipsies.io/を貼り付けてFlipsiesdappを開きます。",
-        "4": "アプリで«ウォレット»を押し、TronLinkを選択して接続します。",
-        "5": "プレイを開始するのに十分なTRX、帯域幅、およびエネルギーがあることを確認してください。.",
-        "6": "よくできました！"
-      }
+    "queenOfClubs": {
+      "title": "花の女王",
+      "label": "クラブの女王は、明らかな理由で「花の女王」または「花の女王」として知られています。彼女は通常、花を持って描かれています。 「マザーメアリー」カードまたは「クイーンズオブクイーンズ」とも呼ばれます。これは、タロットリーディングやその他の精神的信念の最も推測されるカードでもあります。"
     },
-    "question8": {
-      "title": "電話またはコンピューターの接続が切断またはバッテリーが突然切れた場合、どうなりますか。",
-      "content": "ご心配無用です。すべての賭けはベット履歴で所有権を主張できます。"
+    "jackOfDiamonds": {
+      "title": "笑う少年",
+      "label": "ジャックはナーブとも呼ばれ、より堂々とした王や女王よりも劣っているため、より遊び心があります。 ダイヤモンドのジャックは笑いの少年として知られており、ポーカーとブラックジャックのいくつかのバリエーションでは、プレイヤーはこのカードが演奏または描かれるたびに笑うことが期待されています。"
     },
-    "question9": {
-      "title": "TRONとは",
-      "content": "<b>Tron</b> は、ブロックチェーンおよびピアツーピア（P2P）テクノロジーを使用する分散型エンターテインメントおよびコンテンツ共有プラットフォームです。<br/><br/><b>帯域幅</b>: TRON帯域幅があると、ガス料金を支払うことなくTRONメインネットで取引を実行できます。プロセスでTRXトークンを使用することを心配せずに、いくつかの小さな取引を実行できるFlipsies.ioなどのdAppを使用する場合は、十分な帯域幅を確保することが重要です。帯域幅は、TRONコミュニティーの積極的なメンバーとしての地位を固めるためにも使用され、Super Representativesに投票することができます。<br/><br/><b>エネルギー</b>: これは、TRONネットワークでスマートコントラクトを処理するために使用される特別なリソースです。スマートコントラクトは帯域幅に加えてエネルギーを消費するため、トークンを移動するときは両方を十分に確保してください。<br/><br/><b>凍結</b> は、Tronブロックチェーンのユニークなメカニズムです。特定のメリットを得るために、TRXを凍結することができます。これを行うと、Tronは引き続きあなたのものですが、3日間どこにも送信できません。凍結は普通預金口座にお金を入れることに似ています。お金はそこにありますが、使うことはできません。<br/> TRXを凍結すると、いくつかのことが得られます。まず、Tronを凍結して、帯域幅ポイント（BP）またはエネルギーポイント（EP）のいずれかを取得するかどうかを選択する必要があります。さらに、凍結されたTRXごとに、2つのうちどちらを選択しても1つのTron Powerが得られます。<br/>まず、Tronを凍結して、帯域幅ポイント（BP）またはエネルギーポイント（EP）のいずれかを取得するかどうかを選択する必要があります。さらに、凍結されたTRXごとに、2つのうちどちらを選択しても1つのTron Powerが得られます。"
+    "jackOfSpadesAndJackOfHearts": {
+      "title": "1つの目のジャック",
+      "label": "他のほとんどのコートカードとは異なり、スペードのジャックとハートのジャックはどちらもサイドプロファイルを持っているため、「片目ジャック」としての指定があります。 One Eyed Jacksは、野生と宣言されているカードを説明するために最もよく使用されるフレーズです。 ジャックの半分がワイルドであるべきであることを指定するのに便利な方法であり、ポーカースラングの古代の部分として、言うのも楽しいです。 1つの目のジャックは、多くの場合、ワイルドカードを宣言する「自殺王」と組み合わされます。"
     }
   },
   "nftSystemEarn": {
-    "playNow": "Play now",
+    "please": "お願いします",
+    "connectWallet": "メタマスクと接続してウォレットを接続して再生します",
+    "playNow": "今すぐ遊んでください",
     "buyback": {
-      "title": "Buyback system:",
-      "description": "Our platform has an automatic buy-back system that buys NFTs and distributes them as jackpot prizes for users playing Flipsies, this feature will keep the floor rising regardless of “pumping” by holders.",
-      "description1": "Platform has automatically buyback system that always provide nfts for Jackpot winners",
-      "description2": "100% payout for Jackpot any time guarantee"
+      "title": "買い戻しシステム：",
+      "description": "当社のプラットフォームには、NFTを購入し、それらをフリップをプレイするユーザーのジャックポット賞として配布する自動購入システムがあります。この機能は、所有者による「ポンピング」に関係なくフロアを上昇させ続けます。",
+      "description1": "プラットフォームには、ジャックポットの勝者に常にNFTを提供する自動的に買い戻しシステムがあります",
+      "description2": "Jackpotの100％の支払いはいつでも保証されます"
     },
     "stacking": {
-      "title": "Staking/holding system:",
-      "description": "The longer you hold a NFT the more rewards you will get. The higher the rarity score your tokens have the more rewards you will get. You will get rewards as cash back according to the amount of bets that you did on Flipsies platform. Starting rates for owning NFTs 1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx. You can claim rewards every 7 days from token purchasing",
-      "description1": "The more and longer you are nfts owner the more rewards you will get",
-      "description2": "The higher the rarity score your tokens have the more rewards you will get",
-      "description3": "You will get rewards as cash back according to amount of bets that you did on Flipsies platform",
-      "description4": "Starting rates for owning nfts.",
-      "description5": "1 month - 3% trx, 2 months - 6% trx, 1 year - 36% trx, 2 years - 72% trx, 3 years - 108% trx, 4 years - 144% trx",
-      "description6": "You can claim rewards only every 7 days from token purchasing."
+      "title": "保持システム：",
+      "description": "NFTを長く保持するほど、より多くの報酬が得られます。 トークンには希少スコアが高いほど、より多くの報酬が得られます。 フリップスプラットフォームで行った賭け金の量に応じて、キャッシュバックとして報酬を得ることができます。 NFTを所有するための開始率1か月 -  3％TRX、2か月 -  6％TRX、1年 -  36％TRX、2年 -  72％TRX、3年-108％TRX、4年 -  144％TRX。 トークン購入から7日ごとに報酬を請求できます",
+      "description1": "より多くのNFTを持っているほど、保持するのが長くなればなるほど、より多くの報酬を獲得します",
+      "description2": "希少性スコアが高いほど、NFTにはより多くの報酬が得られます",
+      "description3": "フリップスプラットフォームに配置する賭け金の量に応じて、キャッシュバックとして報酬を得ることができます",
+      "description4": "NFTを保持するための料金：",
+      "description5": "1か月-3％TRX、2か月-6％TRX、1年-36％TRX、2年 -  72％TRX、3年-108％TRX、4年 -  144％TRX",
+      "description6": "トークン購入から7日ごとに報酬を請求できます。"
     },
     "allTokens": {
-      "description": "All tokens will be divided into groups according to the purchase date. For example all tokens(NFTs) that a user has bought on the 22nd of April will be put into one group. All tokens that a user has bought on the 23 of April will be put into another groups. If this user decides to sell any amount of tokens from some of these groups, so in this case all rewards will be fixed and calculation for further rewards will continue from the start. Reward calculation for any groups will calculate separately from each other.",
-      "description1": "All tokens will be devided into groups according to purchase date. For example all tokens that user has bought on the 22nd of April will be put into one group.All tokens that user has bought on the 23 of April will be put into another groups.If this user decides to sell any amount of tokens from some of these groups so in this case all rewards will be fixed and calculation for further rewards will continue from the start. That means  from 1st day of holding. Exactly in the same way if user just bought these tokens. Reward calculation for any groups will calculate separately from each other."
+      "description": "すべてのトークンは、購入日に従ってグループに分割されます。 たとえば、4月22日にユーザーが購入したすべてのトークン（NFT）が1つのグループに入れられます。 4月23日にユーザーが購入したすべてのトークンは、別のグループに配置されます。 このユーザーがこれらのグループの一部から任意の量のトークンを販売することを決定した場合、この場合、すべての報酬が固定され、さらなる報酬の計算が最初から継続されます。 グループの報酬計算は、互いに個別に計算されます。",
+      "description1": "すべてのトークンは、購入日に応じてグループに分類されます。 たとえば、4月22日にユーザーが購入したすべてのトークンは1つのグループに配置されます。4月23日に購入したユーザーが別のグループに配置されます。 これらのグループのうち、この場合、すべての報酬が修正され、さらなる報酬のための計算が最初から継続されます。 それは、開催の1日目からです。 ユーザーがこれらのトークンを購入したばかりの場合、まったく同じように。 グループの報酬計算は、互いに個別に計算されます。"
     },
     "formula": {
-      "beforeTitle": "Here is the formula for total rate calculation for one group:",
-      "title": "(CurrentTimeRate + (T * B)  ) + R",
-      "description1": "*Will also be getting cashback as additional rewards",
-      "description2": "Total token amount - 1 (since there is not additional reward for owning just 1 token)",
-      "description3": "Additional rewards for the number of tokens",
-      "description4": "The sum of all tokens rarity in one group",
-      "description5": "*Note that you will be also getting cashback as additional rewards",
-      "description6": "T : total tokes amount - 1 (since there is not additional reward for owning just 1 token)",
-      "description7": "B : additional rewards for the number of tokens.",
-      "description8": "R: the sum of all tokens rarity in one group"
+      "beforeTitle": "1つのグループの合計レート計算の式は次のとおりです。",
+      "title": "（CurrentTimerate +（T * B）） + R",
+      "description1": "*追加の報酬としてキャッシュバックも取得されます",
+      "description2": "総トークン量-1（1つのトークンを所有するための追加の報酬はないため）",
+      "description3": "トークンの数に対する追加の報酬",
+      "description4": "すべてのトークンの合計は、1つのグループで珍しいものです",
+      "description5": "*追加の報酬としてキャッシュバックも取得することに注意してください",
+      "description6": "T：総トークス額-1（1つのトークンを所有するための追加の報酬はないため）",
+      "description7": "B：トークンの数に対する追加の報酬。",
+      "description8": "R：すべてのトークンの合計1つのグループの希少性"
     }
   },
+  "claimModalJackpot": {
+    "address1": "あなたのウォレットアドレス",
+    "address2": "の資格があります",
+    "jackpotNft": "ジャックポットnft！",
+    "claim": "請求",
+    "nftSentLabel": "あなたのNFTはあなたのウォレットアドレスに正常に送信されました",
+    "claimLabel": "メタマスクウォレットのトランザクションを確認して、NFTを請求する必要があります",
+    "seeInGallery": "ギャラリーを参照してください",
+    "seeOnTronscan": "Tronscanのトランザクションを参照してください"
+  },
   "footer": {
-    "text": "Flipsiesはオンラインギャンブル体験を提供します。 Flipsiesでギャンブル関連のアクティビティをクリックするには、18歳以上である必要があります。ギャンブル、宝くじ、インターネット賭博が違法である場所に住んでいる場合は、このWebサイトにあるものをクリックしてはなりません。 Flipsies-お住まいの地域で施行されている現地法の違反については責任を負いません。 Flipsiesゲームは、公平性、透明性、楽しさに基づいています。プレイヤーはリスクを認識し、それに応じて自分自身を管理する必要があります。ギャンブルをして責任を持ってプレイしてください。",
+    "text": "Flysiesはオンラインギャンブルエクスペリエンスを提供します。 フリップスに関するギャンブル関連のアクティビティをクリックするには、18歳以上でなければなりません。 ギャンブル、宝くじ、またはインターネットの賭けが違法な場所に居住している場合は、このウェブサイトで見つかったものをクリックしてはいけません。 フリップス - お住まいの地域で実施されている地方法の違反に対して責任はありません。 フリップスゲームは、公平性、透明性、楽しみに基づいています。 プレイヤーはリスクを認識し、それに応じて自分自身を管理する必要があります。 ギャンブルをして責任を持ってプレイしてください。",
     "link": "flipsies.io",
-    "terms": "サービス利用規約",
     "copyright": "著作権",
-    "reserved": "無断複写・転載を禁じます"
+    "reserved": "全著作権所有"
   }
 }
