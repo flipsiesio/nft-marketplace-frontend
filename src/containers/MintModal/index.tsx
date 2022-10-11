@@ -27,6 +27,14 @@ const options: SelectOption[] = [
   { value: '5', label: '5x random Flipsies NFT' },
 ];
 
+const optionsToken: SelectOption[] = [
+  { value: 'BTTC', label: 'BTTC' },
+  { value: 'USDC', label: 'USDC' },
+  { value: 'BNB', label: 'BNB' },
+  { value: 'TRX', label: 'TRX' },
+  { value: 'ETH', label: 'ETH' },
+];
+
 const MintModal: FC<Props> = ({
   isOpen,
   onToggle,
@@ -36,6 +44,7 @@ const MintModal: FC<Props> = ({
   const history = useHistory();
   const { price, avaliableNftAmount } = useMintInfo();
   const [selectedOption, setSelectedOption] = useState<SelectOption>();
+  const [selectedTokeOption, setSelectedTokenOption] = useState<SelectOption>(optionsToken[0]);
   const getMintStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.MINT_NOW'));
   const address = useShallowSelector(walletSelectors.getProp('address'));
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
@@ -44,6 +53,10 @@ const MintModal: FC<Props> = ({
 
   const selectHandler = useCallback((option) => {
     setSelectedOption(option as SelectOption);
+  }, []);
+
+  const selectTokenHandler = useCallback((option) => {
+    setSelectedTokenOption(option as SelectOption);
   }, []);
 
   const mintHandler = useCallback(() => {
@@ -83,7 +96,13 @@ const MintModal: FC<Props> = ({
               selectedOption ?
                 fromWeiToNumber(price.mul(selectedOption.value)) :
                 fromWeiToNumber(price)
-            } BTTC`}
+            } `}
+            <Select
+              value={selectedTokeOption}
+              onChange={selectTokenHandler}
+              className={styles.selectorToken}
+              options={optionsToken}
+            />
             &nbsp;
             {t('explore.mintModalTitle2')}
           </Text>

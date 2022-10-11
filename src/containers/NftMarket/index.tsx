@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { TabItem } from 'types/components';
 import styles from './styles.module.scss';
 import { MarketTab } from './tabs/Market';
-import { GalleryTab } from './tabs/Gallery';
+// import { GalleryTab } from './tabs/Gallery';
 import { MyGalleryTab } from './tabs/MyGallery';
 import { MyBidsTab } from './tabs/MyBids';
 
@@ -42,7 +42,7 @@ const NftMarket: FC = () => {
           },
         ],
       },
-      { title: t('nftMarket.galleryTab'), content: <GalleryTab /> },
+      // { title: t('nftMarket.galleryTab'), content: <GalleryTab /> },
       { title: t('nftMarket.myGalleryTab'), content: <MyGalleryTab /> },
       { title: t('nftMarket.myBidsTab'), content: <MyBidsTab /> },
     ]
