@@ -36,6 +36,7 @@ const NavTabs: FC<Props> = ({
   const onSelect = useCallback((activeTab: number) => {
     const param = new URLSearchParams(location.search);
     param.set('tab', tabItems[activeTab].title);
+    param.delete('filter');
 
     history.push({ search: param.toString() });
     const item = tabItems[activeTab];
@@ -44,6 +45,18 @@ const NavTabs: FC<Props> = ({
     } else {
       setIsShowMenu(false);
     }
+  }, [selectedIndex]);
+
+  const onSelectMenu = useCallback((search: string) => () => {
+    const param = new URLSearchParams(location.search);
+    if(search) {
+      param.set('filter', search);
+    } else {
+      param.delete('filter');
+    }
+
+    history.push({ search: param.toString() });
+    setIsShowMenu(false);
   }, [selectedIndex]);
 
   return (
@@ -65,9 +78,9 @@ const NavTabs: FC<Props> = ({
               {isShowMenu && selectedIndex === index && menu && (
                 <div className={styles.containerMenu} onMouseLeave={() => setIsShowMenu(false)} key={`menu-${title}`}>
                   <ul className={styles.listMenu} key={`ul-${title}`}>
-                    {menu.map(({ title: titleMenu }) => (
+                    {menu.map(({ title: titleMenu, search }) => (
                       <li className={styles.itemMenu} key={`li-${titleMenu}`}>
-                        <button className={styles.linkMenu} type="button">
+                        <button className={styles.linkMenu} type="button" onClick={onSelectMenu(search)}>
                           {titleMenu}
                         </button>
                       </li>

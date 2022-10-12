@@ -27,7 +27,8 @@ const GalleryTab: FC = () => {
   return (
     <TabWithFilter
       onUpdate={onUpdate}
-      link={routes.nftMarket.galleryProfile.root}
+      linkSale={routes.nftMarket.galleryProfile.root}
+      linkBid={routes.nftMarket.marketProfile.root}
       items={gallery}
       getPrice={getSalePrice}
       pageCount={pageCount}

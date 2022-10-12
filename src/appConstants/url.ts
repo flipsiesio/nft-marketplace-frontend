@@ -6,7 +6,7 @@ export const marketURL = {
     REFRESH: '/auth/refresh',
   },
   MARKETPLACE: {
-    MARKET_LIST: '/marketplace/offer-list',
+    MARKET_LIST: '/marketplace/offer-sale-list',
     GALLERY_LIST: '/marketplace/sale-list',
     PERSONAL_LIST: '/marketplace/personal-list',
     MY_BIDS_LIST: '/marketplace/personalBids',

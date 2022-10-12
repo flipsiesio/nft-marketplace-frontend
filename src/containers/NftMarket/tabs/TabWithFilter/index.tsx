@@ -2,7 +2,7 @@ import React, {
   FC, useCallback, useEffect, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useDebounce, useToggle } from 'hooks';
 import {
@@ -17,25 +17,26 @@ import { PAGE_ITEM_LIMIT } from 'appConstants';
 import styles from '../styles.module.scss';
 
 type Props = {
-  items: CardDataForList[]
-  link: string
-  onUpdate: (filters: NftReqDto) => void
+  items: CardDataForList[],
+  linkBid: string,
+  linkSale: string,
+  onUpdate: (filters: NftReqDto) => void,
   getPrice: (item: CardDataForList) => string,
   pageCount: number,
-  priceLabel?: string
-  isSale?: boolean
+  isSale?: boolean,
 };
 
 const TabWithFilter: FC<Props> = ({
   items,
-  link,
+  linkBid,
+  linkSale,
   onUpdate,
   getPrice,
   pageCount,
-  priceLabel,
   isSale,
 }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const history = useHistory();
   const { t } = useTranslation();
   const [filters, setFilters] = useState<FilterData>();
@@ -46,7 +47,9 @@ const TabWithFilter: FC<Props> = ({
   const { isActive: modalActive, onToggle: toggleModal } = useToggle();
 
   useEffect(() => {
-    onUpdate({
+    const search = new URLSearchParams(location.search);
+    const filterUrl = search.get('filter');
+    const data: NftReqDto = {
       order: filters?.price,
       faces: filters?.type ? Array.from(filters.type) : undefined,
       suits: filters?.suit ? Array.from(filters.suit) : undefined,
@@ -54,15 +57,20 @@ const TabWithFilter: FC<Props> = ({
       skip: page * PAGE_ITEM_LIMIT,
       cardsId: debounceSearchTerm.length > 0 ? [debounceSearchTerm] : undefined,
       active: true,
-    });
-  }, [filters, dispatch, page, debounceSearchTerm]);
+    };
+
+    if (filterUrl === 'bids') data.stateBids = true;
+    if (filterUrl === 'sale') data.stateSale = true;
+
+    onUpdate(data);
+  }, [filters, dispatch, page, debounceSearchTerm, location.search]);
 
   const onFilterApply = useCallback((data: FilterData) => {
     setPage(0);
     setFilters(data);
   }, []);
 
-  const onCardClick = useCallback((id: number) => {
+  const onCardClick = useCallback((link: string) => (id: number) => {
     dispatch(nftMarketSelectProfileAction(undefined));
     history.push({
       pathname: link,
@@ -98,7 +106,7 @@ const TabWithFilter: FC<Props> = ({
         )}
         {items.map((item) => (
           <MarketCard
-            priceLabel={priceLabel}
+            priceLabel={item.state_sale ? t('nftMarket.price') : t('nftMarket.highestBid')}
             active={item.state_sale?.active || item.state_bids?.active || false}
             className={styles.card}
             key={item.cardId}
@@ -106,7 +114,7 @@ const TabWithFilter: FC<Props> = ({
             img={item.url || img}
             type={item.face}
             price={getPrice(item)}
-            onCardClick={onCardClick}
+            onCardClick={onCardClick(item.state_sale ? linkSale : linkBid)}
           />
         ))}
       </div>

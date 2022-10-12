@@ -29,6 +29,8 @@ export type NftReqDto = {
   inWalletListed?: 'All'| 'Wallet' | 'Listed'
   cardsId?: string[]
   active?: boolean
+  stateBids?: boolean,
+  stateSale?: boolean
 };
 
 export type NftProperty = {

@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { TabItem } from 'types/components';
 import styles from './styles.module.scss';
 import { MarketTab } from './tabs/Market';
-// import { GalleryTab } from './tabs/Gallery';
 import { MyGalleryTab } from './tabs/MyGallery';
 import { MyBidsTab } from './tabs/MyBids';
 
@@ -22,27 +21,18 @@ const NftMarket: FC = () => {
         menu: [
           {
             title: 'View Auctions',
-            search: '',
+            search: 'bids',
           },
           {
             title: 'View Buy Now',
-            search: '',
+            search: 'sale',
           },
           {
             title: 'View All',
             search: '',
           },
-          {
-            title: 'View Price low/high',
-            search: '',
-          },
-          {
-            title: 'View Price high/low',
-            search: '',
-          },
         ],
       },
-      // { title: t('nftMarket.galleryTab'), content: <GalleryTab /> },
       { title: t('nftMarket.myGalleryTab'), content: <MyGalleryTab /> },
       { title: t('nftMarket.myBidsTab'), content: <MyBidsTab /> },
     ]

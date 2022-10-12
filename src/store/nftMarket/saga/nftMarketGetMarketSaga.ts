@@ -18,7 +18,6 @@ function* nftMarketGetMarketSaga({ type, payload }: ReturnType<typeof nftMarketG
       url: marketURL.MARKETPLACE.MARKET_LIST,
       params: {
         ...payload,
-        stateBids: true,
       },
     });
 
