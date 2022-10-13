@@ -27,7 +27,7 @@
 yarn
 
 # start dev server
-yarn start
+yarn start:dev
 
 # run build
 yarn build 
