@@ -280,7 +280,9 @@ export const CardHistory: FC<Props> = ({
       { name: ['Bid'] },
     )
       .then((res) => {
-        setBids(Object.values(res.data.bids));
+        if (res.data.bids) {
+          setBids(Object.values(res.data.bids));
+        }
         setBidCard(res.data);
       });
   }, [selectedNft, bidPage, showBid]);

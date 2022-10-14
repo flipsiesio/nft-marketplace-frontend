@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { useShallowSelector } from 'hooks';
+import { nftMarketSelector, walletSelectors } from 'store/selectors';
 import { marketURL } from '../appConstants';
 import { marketClient } from '../store/api';
-import { walletSelectors } from '../store/selectors';
 import { BidCardState, SaleCardState } from '../types';
 import { fromWeiToNumber, getBidPrice, getMyBidPrice } from '../utils';
 
@@ -19,6 +20,8 @@ const getState = <T>(url:string, id: string) => {
 export const useMyProfileHandlers = () => {
   const location = useLocation();
   const address = useSelector(walletSelectors.getProp('address'));
+  const selectedNft = useShallowSelector(nftMarketSelector.getProp('selectedNft'));
+
   const [isSale, setIsSale] = useState(false);
   const [isBid, setIsBid] = useState(false);
   const [salePrice, setSalePrice] = useState('0');
@@ -41,9 +44,11 @@ export const useMyProfileHandlers = () => {
         setIsSale(true);
         setSalePrice(`${fromWeiToNumber(res.data.price)}`);
         setIsActive(res.data.active);
+      } else {
+        setIsSale(false);
       }
     });
-  }, [address, id]);
+  }, [address, id, selectedNft?.active]);
 
   useEffect(() => {
     if (!address) return;
@@ -56,9 +61,11 @@ export const useMyProfileHandlers = () => {
         setBidPrice(getBidPrice(res.data));
         setIsActive(res.data.active);
         setActualOrderId(res.data.orderIndex);
+      } else {
+        setIsBid(false);
       }
     });
-  }, [address, id]);
+  }, [address, id, selectedNft?.active]);
 
   return {
     isSale,
