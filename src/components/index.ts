@@ -27,4 +27,5 @@ export * from './NotActiveCardIcon';
 export * from './InfoCard';
 export * from './WantToSellNftModal';
 export * from './PurchaseConfirmationModal';
+export * from './SelectToken';
 export { default as NeedExtenstionModal } from './NeedExtenstionModal';

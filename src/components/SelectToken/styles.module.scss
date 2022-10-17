@@ -1,0 +1,61 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.buttonForChoose {
+  margin: 0 10px;
+  padding: 5px 15px;
+  min-height: 40px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  box-shadow: none;
+
+  color: white;
+
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.container {
+  margin-top: 5px;
+  font-size: 16px;
+  padding-right: 5px;
+  min-height: 40px;
+  border-radius: 10px;
+  border: none;
+  color: $grayColor;
+
+  cursor: pointer;
+  background-color: black;
+  box-shadow: none;
+  z-index: 100000;
+}
+
+.menuItem {
+  background-color: black;
+  color: $grayColor;
+}
+
+.menuItemActive {
+  background-color: black;
+  color: $grayColor;
+}
+
+.menuItemHover {
+  background-color: black;
+  color: white;
+}
+
+.divider {
+  border-bottom: 1px solid #535252;
+  margin: 0;
+  // padding: 2px 0;
+}
+
+.submenuItem {
+  background-color: black;
+  z-index: 100000;
+}
