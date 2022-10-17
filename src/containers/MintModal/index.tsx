@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
   FC, useCallback, useState,
 } from 'react';
 import {
-  Button, Modal, Select, Text,
+  Button, Modal, Select, Text, SelectToken,
 } from 'components';
 import { SelectOption } from 'types';
 import { useTranslation } from 'react-i18next';
@@ -97,12 +98,7 @@ const MintModal: FC<Props> = ({
                 fromWeiToNumber(price.mul(selectedOption.value)) :
                 fromWeiToNumber(price)
             } `}
-            <Select
-              value={selectedTokeOption}
-              onChange={selectTokenHandler}
-              className={styles.selectorToken}
-              options={optionsToken}
-            />
+            <SelectToken />
             &nbsp;
             {t('explore.mintModalTitle2')}
           </Text>
