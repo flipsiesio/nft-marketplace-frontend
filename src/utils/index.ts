@@ -8,3 +8,4 @@ export * from './shortenPhrase';
 export * from './usePrice';
 export * from './simpleErrorHandler';
 export * from './metamask';
+export * from './contracts';

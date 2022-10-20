@@ -3,8 +3,8 @@ import { ethers } from 'ethers';
 import { MarketType } from '../types';
 import { getNftMarketPlaceContract, getNftSaleContract } from './contracts';
 
-export function fromWeiToNumber(value: ethers.BigNumberish) {
-  return parseFloat(ethers.utils.formatUnits(value, 18));
+export function fromWeiToNumber(value: ethers.BigNumberish, decimal: number = 18) {
+  return parseFloat(ethers.utils.formatUnits(value, decimal));
 }
 
 export function roundUpNumber(value: string | number, decimals = 2) {

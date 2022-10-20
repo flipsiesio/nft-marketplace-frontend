@@ -4,7 +4,7 @@ import {
 import detectEthereumProvider from '@metamask/detect-provider';
 import { MarketType } from 'types';
 import {
-  cardFactoryAbi, cardRandomAbi, nftCardAbi, nftMarketplaceAbi, nftSaleAbi,
+  cardFactoryAbi, cardRandomAbi, nftCardAbi, nftMarketplaceAbi, nftSaleAbi, erc20Abi,
 } from '../abi';
 
 export const getProvider = async () => {
@@ -64,4 +64,13 @@ export const getApproved = async (cardId: number | string, type: MarketType) => 
   const contract = await getCardContract();
   const dataAddress: string = await contract.getApproved(cardId);
   return toAproveContractAddress === dataAddress;
+};
+
+export const getTokenContract = async (tokenAddress: string) => {
+  const provider = await getProvider();
+  return new Contract(
+    tokenAddress,
+    erc20Abi,
+    provider.getSigner(),
+  );
 };

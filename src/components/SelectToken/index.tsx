@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import cx from 'classnames';
+import { Token } from 'types';
 import { tokens } from 'appConstants';
 import {
   Menu, MenuItem, MenuButton, SubMenu, MenuDivider,
@@ -34,7 +35,7 @@ type Props = {
   className?: string,
   value: string,
   onSelect: (
-    { address, label, price }: { address: string, label: string, price: string | number }
+    token: Token,
   ) => void,
 };
 
@@ -47,6 +48,7 @@ export const SelectToken:FC<Props> = ({ className, onSelect, value }) => {
       onItemClick={(e) => onSelect({
         address: tokens[convertName[e.value] ?? 'Native'].address,
         price: tokens[convertName[e.value] ?? 'Native'].price,
+        decimals: tokens[convertName[e.value] ?? 'Native'].decimals,
         label: e.value,
       })}
     >
