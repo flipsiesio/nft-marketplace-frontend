@@ -67,7 +67,13 @@ export const nftMarketMakeOfferAction = (payload: string) => ({
   payload,
 });
 
-export const nftMarketMintNowAction = (payload: number, callback: (trxHash: string) => void) => ({
+export const nftMarketMintNowAction = (
+  payload: {
+    amount: number,
+    token: string,
+  },
+  callback: (trxHash: string) => void,
+) => ({
   type: NftMarketActionTypes.MINT_NOW,
   payload,
   callback,

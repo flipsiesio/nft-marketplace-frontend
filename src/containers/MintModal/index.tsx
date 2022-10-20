@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
   FC, useCallback, useState,
 } from 'react';
@@ -9,7 +8,7 @@ import { SelectOption } from 'types';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { routes, scanTransactionUrl } from 'appConstants';
+import { routes, scanTransactionUrl, tokens } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
 import { fromWeiToNumber } from 'utils';
@@ -22,18 +21,12 @@ type Props = {
   onToggle: () => void
 };
 
+type Token = { address: string, label: string, price: string | number };
+
 const options: SelectOption[] = [
   { value: '1', label: '1x random Flipsies NFT' },
   { value: '3', label: '3x random Flipsies NFT' },
   { value: '5', label: '5x random Flipsies NFT' },
-];
-
-const optionsToken: SelectOption[] = [
-  { value: 'BTT', label: 'BTT' },
-  { value: 'USDC', label: 'USDC' },
-  { value: 'BNB', label: 'BNB' },
-  { value: 'TRX', label: 'TRX' },
-  { value: 'ETH', label: 'ETH' },
 ];
 
 const MintModal: FC<Props> = ({
@@ -45,7 +38,11 @@ const MintModal: FC<Props> = ({
   const history = useHistory();
   const { price, avaliableNftAmount } = useMintInfo();
   const [selectedOption, setSelectedOption] = useState<SelectOption>();
-  const [selectedTokeOption, setSelectedTokenOption] = useState<SelectOption>(optionsToken[0]);
+  const [selectedTokeOption, setSelectedTokenOption] = useState<Token>({
+    address: tokens.Native.address,
+    label: 'BTT',
+    price: tokens.Native.price,
+  });
   const getMintStatus = useShallowSelector(uiSelector.getProp('NFT_MARKET.MINT_NOW'));
   const address = useShallowSelector(walletSelectors.getProp('address'));
   const isAuth = useShallowSelector(nftMarketSelector.getProp('isAuth'));
@@ -56,19 +53,16 @@ const MintModal: FC<Props> = ({
     setSelectedOption(option as SelectOption);
   }, []);
 
-  const selectTokenHandler = useCallback((option) => {
-    setSelectedTokenOption(option as SelectOption);
-  }, []);
-
   const mintHandler = useCallback(() => {
     if (!selectedOption) return;
-    dispatch(nftMarketMintNowAction(
-      parseInt(selectedOption.value, 36),
-      (res: string) => {
-        setTrxHash(res);
-        setSent(true);
-      },
-    ));
+    dispatch(nftMarketMintNowAction({
+      amount: parseInt(selectedOption.value, 36),
+      token: selectedTokeOption.address,
+    },
+    (res: string) => {
+      setTrxHash(res);
+      setSent(true);
+    }));
   }, [selectedOption, dispatch, onToggle, setSent]);
 
   const seeGalleryHandler = useCallback(() => {
@@ -82,6 +76,10 @@ const MintModal: FC<Props> = ({
     }
   }, [history, isAuth, dispatch]);
 
+  const handleSelectToken = useCallback((token: Token) => {
+    setSelectedTokenOption(token);
+  }, []);
+
   return (
     <Modal
       classNameContent={styles.wrap}
@@ -90,18 +88,23 @@ const MintModal: FC<Props> = ({
     >
       {!isSent && (
         <>
-          <Text className={styles.title}>
-            {t('explore.mintModalTitle1')}
-            &nbsp;
-            {`${
-              selectedOption ?
-                fromWeiToNumber(price.mul(selectedOption.value)) :
-                fromWeiToNumber(price)
-            } `}
-            <SelectToken />
-            &nbsp;
-            {t('explore.mintModalTitle2')}
-          </Text>
+          <div className={styles.containerTitle}>
+            <Text className={styles.title}>
+              {t('explore.mintModalTitle1')}
+              &nbsp;
+              {`${
+                selectedOption ?
+                  fromWeiToNumber(price.mul(selectedOption.value)) :
+                  fromWeiToNumber(price)
+              } `}
+            </Text>
+
+            <SelectToken onSelect={handleSelectToken} value={selectedTokeOption.label} />
+            <Text className={styles.title}>
+              &nbsp;
+              {t('explore.mintModalTitle2')}
+            </Text>
+          </div>
           <Select
             value={selectedOption}
             onChange={selectHandler}

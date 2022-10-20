@@ -16,10 +16,11 @@ function* nftMarketMintNowSaga(
     yield put(apiActions.request(type));
     const contract: Contract =
       yield getCardRandomMinterContract();
-    const nftPrice: ethers.BigNumber = yield contract.price();
+    const nftPrice: ethers.BigNumber = yield contract.getMintPrice(payload.token);
     const tx: ContractTransaction = yield contract.mintRandom(
-      payload,
-      { value: nftPrice.mul(payload).toString() },
+      payload.amount,
+      payload.token,
+      { value: nftPrice.mul(payload.amount).toString() },
     );
     yield tx.wait();
     yield put(apiActions.success(type));

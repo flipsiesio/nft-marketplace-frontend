@@ -7,9 +7,15 @@
   flex-direction: column;
 }
 
+.containerTitle {
+  @include flexbox();
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
 .title {
   font-size: 24px;
-  margin-bottom: 40px;
 
   display: flex;
   align-items: center;

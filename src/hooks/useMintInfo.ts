@@ -1,4 +1,5 @@
-import { TokenOptions } from 'appConstants';
+/* eslint-disable no-console */
+import { TokenOptions, tokens } from 'appConstants';
 import { useShallowSelector } from 'hooks';
 import { useEffect, useState } from 'react';
 import { walletSelectors } from 'store/selectors';
@@ -16,7 +17,7 @@ export const useMintInfo = () => {
       const contract =
         await getCardRandomMinterContract();
 
-      const nftPrice: ethers.BigNumber = await contract.price();
+      const nftPrice: ethers.BigNumber = await contract.getMintPrice(tokens.Native.address);
       setPrice(nftPrice);
 
       const factoryContract = await getCardFactoryContract();

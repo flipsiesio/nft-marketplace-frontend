@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import cx from 'classnames';
+import { tokens } from 'appConstants';
 import {
   Menu, MenuItem, MenuButton, SubMenu, MenuDivider,
 } from '@szhsin/react-menu';
@@ -16,42 +17,62 @@ const menuItemClassName = ({ hover, active }: { hover: boolean, active: boolean 
   return styles.menuItem;
 };
 
-type Props = {
-  className?: string
+const convertName: Record<string, keyof typeof tokens> = {
+  BTT: 'Native',
+  'USDT-eth': 'USDT-E',
+  'USDT-tron': 'USDT-T',
+  'USDT-bsc': 'USDT-B',
+  'USDC-eth': 'USDC-E',
+  'USDC-tron': 'USDC-T',
+  'USDC-bsc': 'USDC-B',
+  BNB: 'BNB',
+  TRX: 'TRX',
+  ETH: 'Ethereum',
 };
 
-export const SelectToken:FC<Props> = ({ className }) => {
+type Props = {
+  className?: string,
+  value: string,
+  onSelect: (
+    { address, label, price }: { address: string, label: string, price: string | number }
+  ) => void,
+};
+
+export const SelectToken:FC<Props> = ({ className, onSelect, value }) => {
   return (
     <Menu
-      menuButton={<MenuButton className={styles.buttonForChoose}>BTT</MenuButton>}
+      menuButton={<MenuButton className={styles.buttonForChoose}>{value}</MenuButton>}
       transition
       menuClassName={cx(styles.container, className)}
-      // eslint-disable-next-line no-console
-      onItemClick={(e) => console.log(`[Menu] ${e.value} clicked`)}
+      onItemClick={(e) => onSelect({
+        address: tokens[convertName[e.value] ?? 'Native'].address,
+        price: tokens[convertName[e.value] ?? 'Native'].price,
+        label: e.value,
+      })}
     >
-      <MenuItem className={menuItemClassName}>BTT</MenuItem>
+      <MenuItem className={menuItemClassName} value="BTT"><span>BTT</span></MenuItem>
       <MenuDivider className={styles.divider} />
       <SubMenu label="USDT" className={cx(styles.submenuItem)} menuClassName={cx(styles.container)}>
-        <MenuItem className={menuItemClassName}>USDT-eth</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDT-eth"><span>USDT-eth</span></MenuItem>
         <MenuDivider className={styles.divider} />
-        <MenuItem className={menuItemClassName}>USDT-tron</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDT-tron"><span>USDT-tron</span>n</MenuItem>
         <MenuDivider className={styles.divider} />
-        <MenuItem className={menuItemClassName}>USDT-bsc</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDT-bsc"><span>USDT-bsc</span></MenuItem>
       </SubMenu>
       <MenuDivider className={styles.divider} />
       <SubMenu label="USDC" className={cx(styles.submenuItem)} menuClassName={cx(styles.container)}>
-        <MenuItem className={menuItemClassName} value="USDC-e">USDC-eth</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDC-eth"><span>USDC-eth</span></MenuItem>
         <MenuDivider className={styles.divider} />
-        <MenuItem className={menuItemClassName} value="USDC-t">USDC-tron</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDC-tron"><span>USDC-tron</span></MenuItem>
         <MenuDivider className={styles.divider} />
-        <MenuItem className={menuItemClassName} value="USDC-b">USDC-bsc</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDC-bsc"><span>USDC-bsc</span></MenuItem>
       </SubMenu>
       <MenuDivider className={styles.divider} />
-      <MenuItem className={menuItemClassName}>BNB</MenuItem>
+      <MenuItem className={menuItemClassName} value="BNB"><span>BNB</span></MenuItem>
       <MenuDivider className={styles.divider} />
-      <MenuItem className={menuItemClassName}>TRX</MenuItem>
+      <MenuItem className={menuItemClassName} value="TRX"><span>TRX</span></MenuItem>
       <MenuDivider className={styles.divider} />
-      <MenuItem className={menuItemClassName}>ETH</MenuItem>
+      <MenuItem className={menuItemClassName} value="ETH"><span>ETH</span></MenuItem>
     </Menu>
   );
 };
