@@ -57,7 +57,7 @@ export const SelectToken:FC<Props> = ({ className, onSelect, value }) => {
       <SubMenu label="USDT" className={cx(styles.submenuItem)} menuClassName={cx(styles.container)}>
         <MenuItem className={menuItemClassName} value="USDT-eth"><span>USDT-eth</span></MenuItem>
         <MenuDivider className={styles.divider} />
-        <MenuItem className={menuItemClassName} value="USDT-tron"><span>USDT-tron</span>n</MenuItem>
+        <MenuItem className={menuItemClassName} value="USDT-tron"><span>USDT-tron</span></MenuItem>
         <MenuDivider className={styles.divider} />
         <MenuItem className={menuItemClassName} value="USDT-bsc"><span>USDT-bsc</span></MenuItem>
       </SubMenu>

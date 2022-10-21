@@ -12,7 +12,7 @@ export const tokens = {
   TRX: {
     address: '0x8e009872B8A6d469939139BE5e3BBd99A731212F',
     price: 0.1,
-    decimals: 18,
+    decimals: 6,
   },
   BNB: {
     address: '0x61a17734E6b497cba51f16ae23BCf85aeB6984CB',

@@ -160,7 +160,7 @@ const MintModal: FC<Props> = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t('claimModalJackpot.seeOnTronscan')}
+            {t('claimModalJackpot.seeOnBttcscan')}
           </a>
         </>
       )}
