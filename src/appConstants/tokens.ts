@@ -47,6 +47,6 @@ export const tokens = {
   'USDC-B': {
     address: '0x766aCb4FC73efC7Cbb17fD550F8283062A36eEc1',
     price: 0.1,
-    decimals: 6,
+    decimals: 18,
   },
 };
