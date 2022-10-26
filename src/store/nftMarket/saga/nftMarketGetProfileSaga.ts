@@ -71,9 +71,7 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       suit: currentCard.suit,
       face: currentCard.face,
       properties,
-      owner: currentCard.state_sale?.seller ||
-        currentCard.state_bids?.seller ||
-        currentCard.ownerAddress,
+      owner: currentCard.ownerAddress,
       faceRarity: percent(currentCard.faceFrequency),
       suitRarity: percent(currentCard.suitFrequency),
       url: currentCard.url,
