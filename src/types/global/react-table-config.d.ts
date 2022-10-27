@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
   This types is required for "react-table" library
   See: https://gist.github.com/ggascoigne/646e14c9d54258e40588a13aabf0102d

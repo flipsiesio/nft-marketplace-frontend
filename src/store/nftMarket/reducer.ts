@@ -1,4 +1,4 @@
-import { NftMarketState } from 'types/store';
+import { NftMarketState, NftDto } from 'types';
 import { NftMarketAction, NftMarketActionTypes } from './actionTypes';
 
 const initialState: NftMarketState = {
@@ -7,6 +7,7 @@ const initialState: NftMarketState = {
   market: [],
   myGallery: [],
   isAuth: false,
+  selectedNft: undefined,
 };
 
 export default (state = initialState, action: NftMarketAction): NftMarketState => {
@@ -20,7 +21,7 @@ export default (state = initialState, action: NftMarketAction): NftMarketState =
       const { payload } = action;
       return {
         ...state,
-        selectedNft: payload,
+        selectedNft: payload ? payload as NftDto : undefined,
       };
     }
     default:

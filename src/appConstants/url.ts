@@ -4,6 +4,7 @@ export const marketURL = {
     CHECK_SIGN: '/auth/check-sign',
     PROFILE: '/auth/profile',
     REFRESH: '/auth/refresh',
+    ADMIN_STATISTICS: '/admin/statistics-download',
   },
   MARKETPLACE: {
     MARKET_LIST: '/marketplace/offer-sale-list',

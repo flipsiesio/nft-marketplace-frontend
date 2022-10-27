@@ -5,3 +5,4 @@ export * from './NftMarket';
 export * from './cardProfiles';
 export * from './Explore';
 export * from './NftEarningSystem';
+export * from './Admin';

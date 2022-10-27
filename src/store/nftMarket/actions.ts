@@ -41,7 +41,7 @@ export const nftMarketGetProfileAction = (id: string) => ({
   },
 });
 
-export const nftMarketSelectProfileAction = (payload?: NftDto) => ({
+export const nftMarketSelectProfileAction = (payload: NftDto | undefined) => ({
   type: NftMarketActionTypes.SELECT_PROFILE,
   payload,
 });

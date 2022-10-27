@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module 'connected-react-router' {
   import * as React from 'react';
   import { Middleware, Reducer } from 'redux';
@@ -89,6 +91,7 @@ declare module 'connected-react-router' {
     goForward: GoForward;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   export interface LocationActionPayload<A = any[]> {
     method: string;
     args?: A;

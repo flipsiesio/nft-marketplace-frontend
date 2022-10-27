@@ -8,6 +8,6 @@ export type NftMarketState = {
   myBids: MyBidsCardData[]
   accessToken?: string
   refreshToken?: string
-  selectedNft?: NftDto
+  selectedNft: NftDto | undefined
   signedMsg?: string
 };
