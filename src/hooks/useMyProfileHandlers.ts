@@ -56,7 +56,7 @@ export const useMyProfileHandlers = () => {
 
     getState<BidCardState>(marketURL.MARKETPLACE.GET_ACTUAL_BIDS, id).then((res) => {
       if (res.data) {
-        setIsBid(true);
+        setIsBid(res.data.active);
         setMyBidPrice(getMyBidPrice(address, res.data));
         setBidPrice(getBidPrice(res.data));
         setIsActive(res.data.active);

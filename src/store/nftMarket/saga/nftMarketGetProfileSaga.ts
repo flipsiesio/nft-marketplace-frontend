@@ -63,6 +63,8 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
         label: `${trait.main.color.name} (#${trait.main.color.color})`,
       }));
 
+    const isActive = currentCard.state_bids?.active || currentCard.state_sale?.active;
+
     yield put(nftMarketSelectProfileAction({
       active: currentCard.state_bids?.active || currentCard.state_sale?.active || false,
       cardId: Number(payload.id),
@@ -71,7 +73,9 @@ function* nftMarketGetProfileSaga({ type, payload }: ReturnType<typeof nftMarket
       suit: currentCard.suit,
       face: currentCard.face,
       properties,
-      owner: currentCard.ownerAddress,
+      owner: isActive ? (currentCard.state_sale?.seller ||
+        currentCard.state_bids?.seller) :
+        currentCard.ownerAddress,
       faceRarity: percent(currentCard.faceFrequency),
       suitRarity: percent(currentCard.suitFrequency),
       url: currentCard.url,

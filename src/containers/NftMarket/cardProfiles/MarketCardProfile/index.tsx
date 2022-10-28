@@ -9,18 +9,19 @@ import { useShallowSelector, useToggle } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { nftMarketBidAction, nftMarketGetProfileAction, nftMarketAcceptBidAction } from 'store/nftMarket/actions';
 import { nftMarketSelector, walletSelectors, uiSelector } from 'store/selectors';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import cx from 'classnames';
+import { NftMarketActionTypes } from 'store/nftMarket/actionTypes';
+import { MarketType } from 'types';
+import { fromWeiToNumber } from 'utils';
+import { RequestStatus } from 'appConstants';
 import styles from '../styles.module.scss';
 import { CardProfile } from '../../CardProfile';
 import { AcceptBidData } from '../../../CardHistory';
-import { NftMarketActionTypes } from '../../../../store/nftMarket/actionTypes';
-import { MarketType } from '../../../../types';
-import { history, fromWeiToNumber } from '../../../../utils';
-import { RequestStatus } from '../../../../appConstants';
 
 const MarketCardProfile: FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { t } = useTranslation();
   const location = useLocation();
   const address = useShallowSelector(walletSelectors.getProp('address'));
@@ -90,7 +91,10 @@ const MarketCardProfile: FC = () => {
     dispatch(nftMarketAcceptBidAction({
       payerAddress: acceptBidData.payerAddress,
       orderId: acceptBidData.orderId,
-    }, () => history.goBack()));
+    }, () => {
+      history.push('/nftMarket');
+      acceptBidToggle();
+    }));
   }, [acceptBidData, dispatch]);
 
   return (
