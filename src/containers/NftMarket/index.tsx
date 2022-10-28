@@ -1,8 +1,5 @@
 import React, { FC, useMemo } from 'react';
-import {
-  NavTabs,
-  Text,
-} from 'components';
+import { NavTabs, Text } from 'components';
 import { useTranslation } from 'react-i18next';
 import { TabItem } from 'types/components';
 import styles from './styles.module.scss';
@@ -20,15 +17,15 @@ const NftMarket: FC = () => {
         content: <MarketTab />,
         menu: [
           {
-            title: 'View Auctions',
+            title: t('nftMarket.viewAuctions'),
             search: 'bids',
           },
           {
-            title: 'View Buy Now',
+            title: t('nftMarket.viewBuyNow'),
             search: 'sale',
           },
           {
-            title: 'View All',
+            title: t('nftMarket.viewAll'),
             search: '',
           },
         ],
@@ -40,7 +37,7 @@ const NftMarket: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <Text className={styles.title}>{t('nftMarket.title')}</Text>
+      <Text className={styles.title}>{`NFT ${t('nftMarket.title')}`}</Text>
 
       <NavTabs className={styles.tab} tabItems={tabItems} />
     </div>

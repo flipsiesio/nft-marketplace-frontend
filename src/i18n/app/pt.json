@@ -3,8 +3,8 @@
     "rewardSystem": "Sistema de recompensa",
     "faq": "Perguntas frequentes",
     "howToPlay": "Como jogar?",
-    "nftEarningSystem": "Sistema de ganho de NFT",
-    "nftMarket": "NFT Market",
+    "nftEarningSystem": "Sistema de ganho",
+    "nftMarket": "Mercado",
     "wallet": "Carteira",
     "tronlink": "TronLink",
     "referral": "Referência",
@@ -33,8 +33,11 @@
     "notHaveEnoughFunds": "Você não tem fundos suficientes",
     "cancelBid": "Cancelar lances",
     "empty": "Vazia...",
-    "title": "NFT Market",
+    "title": "Mercado",
     "marketTab": "Mercado",
+    "viewAuctions": "Ver leilões",
+    "viewBuyNow": "Ver Comprar agora",
+    "viewAll": "Ver tudo",
     "galleryTab": "Corrigir venda",
     "myGalleryTab": "Minha galeria",
     "myBidsTab": "Meus lances",
@@ -98,11 +101,11 @@
   },
   "flipsiesNft": {
     "title": "Flipsies NFT",
-    "text1": "Os NFTs de Flipsies são uma série de 7.803 cartas de jogo no BitTorrent Blockchain, cada NFT é característica de forma exclusiva e cor de cor.",
+    "text1": "O FlipSiesNfts é uma série de 7.803 cartas de jogo no BitTorrent Blockchain, cada NFT é característica de forma exclusiva e cor de cor.",
     "text2": "Eles são compostos de",
     "text3": "2.600 reis, 2.601 Queens, 2.601 Jacks, 25 Jokers e 7 andares.",
-    "text4": "Nossa plataforma possui um sistema automático de recompra que compra NFTs e os distribui como prêmios de jackpot para os usuários que jogam flipes, esse recurso manterá o chão subindo, independentemente do \"bombeamento\" dos titulares. Os flipes também terão um sistema de retenção, a taxa de ganho desse sistema é baseada na raridade, quanto mais rara sua NFT, mais ele ganhará.",
-    "text5": "Ao longo dos anos, apelidos diferentes foram dados a cartas de jogo distintas. A maioria desses nomes bynes vem de jogos de poker, aqui estão alguns dos clássicos, esses são os sete",
+    "text4": "Nossa plataforma possui um sistema automático de recompra que compra NFTs e os distribui como prêmios de jackpot para os usuários que jogam flipes, esse recurso manterá o chão subindo, independentemente do \"bombeamento\" dos titulares. Os flipes também terão um sistema de retenção, a taxa de ganho desse sistema é baseada na raridade, quanto mais rara é sua NFT, mais ele ganhará.",
+    "text5": "Ao longo dos anos, apelidos diferentes foram dados a cartas de jogo distintas. A maioria desses nomes bynames vem de jogos de poker, aqui estão alguns dos clássicos, esses são os sete",
     "text6": "história",
     "text7": "NFTS.",
     "explore": "Explorar"
@@ -114,6 +117,7 @@
     "mintModalTitle2": "por",
     "mintModalLabel1": "Apresse -se, apenas",
     "mintModalLabel2": "Flipsies NFT deixou para a hortelã!",
+    "approve": "Aprovar",
     "mint": "hortelã",
     "mintNow": "Mint agora!",
     "claimNft": "Reivindicar jackpot nft",
@@ -125,7 +129,7 @@
   "exploreNft": {
     "kingOfHearts": {
       "title": "Rei suicida",
-      "label": "O rei de corações é geralmente retratado com uma espada, embora no convés dos flipos esteja armado com um ovo que muda de cor. Ele é tipicamente referido como o \"rei suicida\" porque em um deck tradicional ele é retratado como esfaqueando -se com uma espada, ou pelo menos segurando uma espada atrás da cabeça."
+      "label": "O rei de corações é geralmente retratado com uma espada, embora no convés dos flipos esteja armado com um ovo que muda de cor. Ele é tipicamente referido como o \"rei suicida\" porque em um deck tradicional ele é retratado como esfaqueado com uma espada, ou pelo menos segurando uma espada atrás da cabeça."
     },
     "kingOfDiamonds": {
       "title": "Homem com o machado",
@@ -193,7 +197,7 @@
     "nftSentLabel": "Sua NFT foi enviada com sucesso para o endereço da sua carteira",
     "claimLabel": "Você tem que reivindicar sua NFT confirmando a transação em sua carteira de metamask",
     "seeInGallery": "Veja na galeria",
-    "seeOnBttcscan": "Veja a transação no Bttcscan"
+    "seeOnBttcscan": "Veja a transação no BTTCScan"
   },
   "footer": {
     "text": "Flipsies oferece uma experiência de jogo online. Você deve ter mais de 18 anos para clicar em qualquer atividade relacionada ao jogo em flipses. Se você residir em um local em que o jogo, as loterias ou as apostas na Internet é ilegal, não deve clicar em nada encontrado neste site. Flipesies- não será responsabilizado por qualquer violação das leis locais aplicadas em sua região. Os jogos de fliperama são baseados em justiça, transparência e diversão. Os jogadores devem estar cientes dos riscos e se administrar de acordo. Por favor, jogue e jogue com responsabilidade.",

@@ -3,8 +3,8 @@
     "rewardSystem": "Belohnungssystem",
     "faq": "FAQ",
     "howToPlay": "Spielanleitung?",
-    "nftEarningSystem": "NFT -Verdienstsystem",
-    "nftMarket": "NFT -Markt",
+    "nftEarningSystem": "Verdienstsystem",
+    "nftMarket": "Markt",
     "wallet": "Geldbörse",
     "tronlink": "Tronlink",
     "referral": "Verweisung",
@@ -33,8 +33,11 @@
     "notHaveEnoughFunds": "Sie haben nicht genug Mittel",
     "cancelBid": "Angebot abbrechen",
     "empty": "Leer...",
-    "title": "NFT -Markt",
+    "title": "Markt",
     "marketTab": "Marktplatz",
+    "viewAuctions": "Auktionen anzeigen",
+    "viewBuyNow": "Jetzt kaufen",
+    "viewAll": "Alle ansehen",
     "galleryTab": "Sale reparieren",
     "myGalleryTab": "Meine Gallerie",
     "myBidsTab": "Meine Gebote",
@@ -98,7 +101,7 @@
   },
   "flipsiesNft": {
     "title": "Flipsies nft",
-    "text1": "Flipsies NFTs sind eine Reihe von 7.803 Spielkarten auf der BitTorrent-Blockchain. Jedes NFT ist einzigartig programmgesteuert und automatisch.",
+    "text1": "FlipsiesNFTs sind eine Reihe von 7.803 Spielkarten auf der BitTorrent-Blockchain. Jedes NFT ist einzigartig programmgesteuert und automatisch.",
     "text2": "Sie bestehen aus",
     "text3": "2.600 Kings, 2.601 Queens, 2.601 Jacks, 25 Joker und 7 Geschichten.",
     "text4": "Unsere Plattform verfügt über ein automatisches Rückkaufsystem, das NFTs kauft und als Jackpot-Preise für Benutzer spielt, die Flipsies spielen. Diese Funktion hält den Boden, unabhängig vom „Pumpen“ durch Inhaber. Flipsies haben auch ein Haltesystem, die Verdienerrate dieses Systems basiert auf Seltenheit. Je seltener Ihr NFT ist, desto mehr wird es verdienen.",
@@ -114,6 +117,7 @@
     "mintModalTitle2": "zum",
     "mintModalLabel1": "Beeilen Sie sich nur",
     "mintModalLabel2": "Flipsies nft, um Minze zu machen!",
+    "approve": "Genehmigen",
     "mint": "Minze",
     "mintNow": "Minze jetzt!",
     "claimNft": "Anspruch auf Jackpot NFT",
@@ -133,7 +137,7 @@
     },
     "queenOfSpades": {
       "title": "Schwarze Witwe",
-      "label": "Der Spitzname \"Black Widow\" für die Königin der Spades ist eng mit dem Spiel der Herzen verbunden. In diesem Trick-Taking-Spiel ist es die Idee, zu vermeiden, dass Punkte mit Herzenskarten sammeln, und die Karten des Herzens haben jeweils einen Punkt wert, während die Queen of Spades massiv 13 Strafpunkte kostet. In Pokerspielen Old-School-Spiele hört man manchmal als Calamity Jane, eine berühmte Grenzerfrau, die es liebte, 5-Card-Gestüt zu spielen."
+      "label": "Der Spitzname \"Black Widow\" für die Königin der Spades ist eng mit dem Spiel der Herzen verbunden. In diesem Trick-Taking-Spiel ist es die Idee, zu vermeiden, dass Punkte mit Herzenskarten sammeln, und die Karten von Herzen pro jeweils einen Punkt wert sind, während die Königin der Spaten massive 13 Strafpunkte kostet. In Pokerspielen Old-School-Spiele hört man manchmal als Calamity Jane, eine berühmte Grenzerfrau, die es liebte, 5-Card-Gestüt zu spielen."
     },
     "queenOfClubs": {
       "title": "Blumenkönigin",
@@ -145,7 +149,7 @@
     },
     "jackOfSpadesAndJackOfHearts": {
       "title": "Ein Augenhaut",
-      "label": "Im Gegensatz zu den meisten anderen Hofkarten haben die Jack of Spades und der Jack of Hearts beide ein Nebenprofil, daher ihre Bezeichnung als \"Einäugigen Jacks\". One Eyed Jacks ist ein Satz, der am häufigsten verwendet wird, um Karten zu beschreiben, die wild erklärt werden. Es ist eine bequeme Möglichkeit, festzustellen, dass die Hälfte der Jacks wild sein sollte, und als alter Teil des Poker -Slangs macht es auch nur Spaß zu sagen. One Eyed Jacks werden oft mit dem \"Selbstmordkönig\" bei der Deklarierung von Wildkarten gepaart."
+      "label": "Im Gegensatz zu den meisten anderen Hofkarten haben die Jack of Spades und der Jack of Hearts beide ein Nebenprofil, daher ihre Bezeichnung als \"Einäugige Jacks\". One Eyed Jacks ist ein Satz, der am häufigsten verwendet wird, um Karten zu beschreiben, die wild erklärt werden. Es ist eine bequeme Möglichkeit, festzustellen, dass die Hälfte der Jacks wild sein sollte, und als alter Teil des Poker -Slangs macht es auch nur Spaß zu sagen. One Eyed Jacks werden oft mit dem \"Selbstmordkönig\" bei der Deklarierung von Wildkarten gepaart."
     }
   },
   "nftSystemEarn": {
@@ -193,7 +197,7 @@
     "nftSentLabel": "Ihr NFT wurde erfolgreich an Ihre Brieftaschenadresse gesendet",
     "claimLabel": "Sie müssen Ihre NFT beanspruchen, indem Sie die Transaktion in Ihrer Metamaske -Brieftasche bestätigen",
     "seeInGallery": "Siehe in der Galerie",
-    "seeOnBttcscan": "Siehe Transaktion auf Bttcscan"
+    "seeOnBttcscan": "Siehe Transaktion auf BTTCScan"
   },
   "footer": {
     "text": "Flipsies bietet ein Online -Glücksspielerlebnis. Sie müssen über 18 Jahre alt sein, um auf Flipsien auf Glücksspielaktivitäten zu klicken. Wenn Sie an einem Ort wohnen, an dem Glücksspiel, Lotterien oder Internetwetten illegal sind, dürfen Sie auf dieser Website nicht auf etwas Klicken. Flipsies- werden nicht für Verstöße gegen die in Ihrer Region erzwungenen örtlichen Gesetze verantwortlich gemacht. Flipsies -Spiele basieren auf Fairness, Transparenz und Spaß. Die Spieler sollten sich der Risiken bewusst sein und sich entsprechend verwalten. Bitte spielen Sie und spielen Sie verantwortungsbewusst.",

@@ -46,13 +46,13 @@ const HeaderNavigation: FC<Props> = ({ isShowLangSwitcherTablet }) => {
       <HeaderLink
         to={routes.nftEarningSystem.root}
         className={cx(styles.nftEarningSystem)}
-        text={t('header.nftEarningSystem')}
+        text={`NFT ${t('header.nftEarningSystem')}`}
       />
       <HeaderLink
         to={routes.nftMarket.root}
         className={cx(styles.howToPlay, { [styles.blink]: !isTutorialShown })}
         icon="market"
-        text={t('header.nftMarket')}
+        text={`NFT ${t('header.nftMarket')}`}
         onClick={nftMarketHandler}
       />
 

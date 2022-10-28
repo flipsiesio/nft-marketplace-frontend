@@ -3,8 +3,8 @@
     "rewardSystem": "Systém odměn",
     "faq": "FAQ",
     "howToPlay": "Jak hrát?",
-    "nftEarningSystem": "Systém výdělku NFT",
-    "nftMarket": "NFT trh",
+    "nftEarningSystem": "Výdělkový systém",
+    "nftMarket": "Trh",
     "wallet": "Peněženka",
     "tronlink": "Tronlink",
     "referral": "Doporučení",
@@ -33,8 +33,11 @@
     "notHaveEnoughFunds": "Nemáte dostatek finančních prostředků",
     "cancelBid": "Zrušit nabídku",
     "empty": "Prázdný...",
-    "title": "NFT trh",
+    "title": "Trh",
     "marketTab": "Tržiště",
+    "viewAuctions": "Zobrazit aukce",
+    "viewBuyNow": "Zobrazit koupit hned",
+    "viewAll": "Zobrazit vše",
     "galleryTab": "Opravte prodej",
     "myGalleryTab": "Moje galerie",
     "myBidsTab": "Moje nabídky",
@@ -98,7 +101,7 @@
   },
   "flipsiesNft": {
     "title": "Flipsies nft",
-    "text1": "Flipsies NFT jsou série 7 803 hracích karet na Bittorrent Blockchain, každý NFT je jedinečně programově zrádný a automaticky.",
+    "text1": "Flipsiesnfts je řada 7 803 hracích karet na BitTorrent Blockchain, každý NFT je jedinečně programově zrádný a automaticky.",
     "text2": "Jsou složeny z",
     "text3": "2 600 králů, 2 601 královen, 2 601 jacků, 25 jokerů a 7 příběhů.",
     "text4": "Naše platforma má automatický systém zpětného nákupu, který kupuje NFT a distribuuje je jako ceny jackpotů pro uživatele hrající flipsies, tato funkce udrží podlahu stoupající bez ohledu na „čerpání“ držáky. Flipsies bude mít také systém držení, míra výdělku tohoto systému je založena na vzácnosti, čím vzácnější je NFT, tím více vydělá.",
@@ -114,6 +117,7 @@
     "mintModalTitle2": "pro",
     "mintModalLabel1": "Pospěšte si jen",
     "mintModalLabel2": "Flipsies NFT odešel na mincovnu!",
+    "approve": "Schválit",
     "mint": "Máta",
     "mintNow": "Mincovna teď!",
     "claimNft": "Nárok na jackpot nft",
@@ -133,7 +137,7 @@
     },
     "queenOfSpades": {
       "title": "Černá vdova",
-      "label": "Přezdívka „Black Widow“ pro královnu piků je úzce spjata s hrou srdcí. V této trikové hře je myšlenka vyhnout se sbírání bodů, s kartami Hearts, které stojí za jeden bod, zatímco královna piků stojí masivních 13 pokutových bodů. Ve starých školních pokerových hrách byste ji někdy slyšeli, že se označuje jako Calamity Jane, slavná hranice, která ráda hraje na 5-kartu."
+      "label": "Přezdívka „Black Widow“ pro královnu piků je úzce spjata s hrou srdcí. V této trikové hře je myšlenka vyhnout se sbírání bodů, s kartami Hearts, které stojí za jeden bod, zatímco královna piků stojí obrovské 13 pokutových bodů. Ve starých školních pokerových hrách byste ji někdy slyšeli, že se označuje jako Calamity Jane, slavná hranice, která ráda hraje na 5-kartu."
     },
     "queenOfClubs": {
       "title": "Květinová královna",
@@ -193,7 +197,7 @@
     "nftSentLabel": "Váš NFT byl úspěšně odeslán na vaši adresu peněženky",
     "claimLabel": "Musíte si nárokovat svůj NFT potvrzením transakce v peněžence Metamask",
     "seeInGallery": "Viz v galerii",
-    "seeOnBttcscan": "Viz transakce na Bttcscan"
+    "seeOnBttcscan": "Viz transakce na BTTCSCAN"
   },
   "footer": {
     "text": "Flipsies nabízí online zážitek z hazardních her. Musíte být starší 18 let, abyste klikli na jakékoli činnosti související s hazardem na flipsies. Pokud bydlíte v místě, kde je hazardní hry, loterie nebo internetové sázky nezákonné, nesmíte kliknout na nic nalezeného na tomto webu. Flipsies- nebudou odpovědné za porušení místních zákonů vynucovaných ve vašem regionu. Hry Flipsies jsou založeny na spravedlnosti, transparentnosti a zábavě. Hráči by si měli být vědomi rizik a podle toho se zvládnout. Hrajte a hrajte zodpovědně.",

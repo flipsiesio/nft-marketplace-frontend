@@ -3,8 +3,8 @@
     "rewardSystem": "奖励系统",
     "faq": "常问问题",
     "howToPlay": "怎么玩？",
-    "nftEarningSystem": "NFT赚取系统",
-    "nftMarket": "NFT市场",
+    "nftEarningSystem": "赚取系统",
+    "nftMarket": "市场",
     "wallet": "钱包",
     "tronlink": "Tronlink",
     "referral": "推荐",
@@ -33,8 +33,11 @@
     "notHaveEnoughFunds": "你没有足够的资金",
     "cancelBid": "取消出价",
     "empty": "空的...",
-    "title": "NFT市场",
+    "title": "市场",
     "marketTab": "市场",
+    "viewAuctions": "查看拍卖",
+    "viewBuyNow": "查看立即购买",
+    "viewAll": "查看全部",
     "galleryTab": "修复销售",
     "myGalleryTab": "我的图片库",
     "myBidsTab": "我的出价",
@@ -98,7 +101,7 @@
   },
   "flipsiesNft": {
     "title": "翻转nft",
-    "text1": "Flipsies NFTS是Bittorrent区块链上的7,803张扑克牌，每个NFT都是独特的编程性特征和自动颜色的。",
+    "text1": "Flipsiesnfts是Bittorrent区块链上的7,803张扑克牌，每个NFT都是独特的编程性特征和自动颜色的。",
     "text2": "他们由",
     "text3": "2,600王，2,601个皇后，2,601个杰克，25个笑话和7个故事。",
     "text4": "我们的平台有一个自动回购系统，该系统将购买NFT并将其分配为用于使用Flipsies的用户的大奖奖品，无论持有者的“抽水”如何，此功能都会使地板上升。 翻转也将具有一个固定系统，该系统的收入率是基于稀有性，您的NFT越稀有，它将获得越多。",
@@ -114,6 +117,7 @@
     "mintModalTitle2": "为了",
     "mintModalLabel1": "快点，只有",
     "mintModalLabel2": "nft掉了薄荷！",
+    "approve": "批准",
     "mint": "薄荷",
     "mintNow": "现在薄荷！",
     "claimNft": "要求大奖nft",
@@ -129,7 +133,7 @@
     },
     "kingOfDiamonds": {
       "title": "斧头",
-      "label": "钻石之王的这个名称反映了以下事实：这是唯一不携带剑的国王。 这就是为什么他经常被称为斧头的人。 该卡通常被指定为Draw Poker中的通配符。 在当地的纸牌游戏中，通常会听到“游戏是七张纸牌高/低，并在最后一张卡上买入。"
+      "label": "钻石之王的这个名称反映了这样一个事实，即这是唯一不携带剑的国王。 这就是为什么他经常被称为斧头的人。 该卡通常被指定为Draw Poker中的通配符。 在当地的纸牌游戏中，通常会听到“游戏是七张纸牌高/低，并在最后一张卡上买入。"
     },
     "queenOfSpades": {
       "title": "黑寡妇",
@@ -145,7 +149,7 @@
     },
     "jackOfSpadesAndJackOfHearts": {
       "title": "一只眼睛的千斤顶",
-      "label": "与大多数其他法院卡不同，黑桃和千斤顶的千斤顶都有一个侧面配置文件，因此将其称为“单眼千斤顶”。 一个眼睛的千斤顶是最常用来描述被宣布为狂野的卡的短语。 这是一种说明一半千斤顶应该是狂野的方便方法，作为扑克语的古老部分，这也很有趣。 一只眼睛的千斤顶经常与宣布通配符的“自杀王”配对。"
+      "label": "与大多数其他法院卡不同，黑桃和千斤顶的千斤顶都有一个侧面配置文件，因此称为“单眼千斤顶”。 一个眼睛的千斤顶是最常用来描述被宣布为狂野的卡的短语。 这是一种说明一半千斤顶应该是狂野的方便方法，作为扑克语的古老部分，这也很有趣。 一只眼睛的千斤顶经常与宣布通配符的“自杀王”配对。"
     }
   },
   "nftSystemEarn": {
@@ -193,7 +197,7 @@
     "nftSentLabel": "您的NFT已成功发送到您的钱包地址",
     "claimLabel": "您必须通过确认MetAmask钱包中的交易来要求您的NFT",
     "seeInGallery": "在画廊中看到",
-    "seeOnBttcscan": "请参阅Bttcscan上的交易"
+    "seeOnBttcscan": "请参阅BTTCScan上的交易"
   },
   "footer": {
     "text": "Flipsies提供在线赌博体验。 您必须年满18岁才能单击有关赌博的任何有关赌博活动的活动。 如果您居住在赌博，彩票或互联网投注是非法的位置，则不得单击此网站上的任何内容。 翻转 - 将对您所在地区执行的任何违反当地法律的行为不承担任何责任。 Flipsies游戏基于公平，透明和乐趣。 玩家应该意识到风险并相应地管理自己。 请赌博并负责任地玩。",
