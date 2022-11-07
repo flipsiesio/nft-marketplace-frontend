@@ -11,7 +11,36 @@ services:
     container_name: {{ CI_PROJECT_NAME }}
     volumes:
       - './nginx.config:/etc/nginx/conf.d/default.conf:rw,z'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nft-marketplace-frontend.entrypoints=websecure"
+      - "traefik.http.routers.nft-marketplace-frontend.rule=Host(`flipsiesnft.sfxdx.com`)"
+      - "traefik.http.routers.nft-marketplace-frontend.service=nft-marketplace-frontend"
+      - "traefik.http.services.nft-marketplace-frontend.loadbalancer.server.port=81"
     command: [nginx-debug,'-g','daemon off;']
     restart: on-failure
+    
+
+  traefik:
+    container_name: traefik
+    image: traefik:latest
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.letsencrypt.acme.email=staging@sfxdx.com
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.http.tls=true
+      - --entrypoints.websecure.http.tls.certResolver=letsencrypt
     ports:
-      - "80:81"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./certs:/letsencrypt
+    restart: always
